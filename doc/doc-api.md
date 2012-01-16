@@ -2,8 +2,12 @@
 
 ## T-Shirts
 
+### Getting all my t-shirts
+*GET* `/api/tshirt/mine`
+List all my t-shirts, as described with the following resource.
+
 ### Getting t-shirt description
-`/api/tshirt/:tshirt_id`
+*GET* `/api/tshirt/:tshirt_id`
 	{
 		"tshirt": {
 			"identifier": "xxx",
