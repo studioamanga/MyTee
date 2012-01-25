@@ -34,7 +34,7 @@
 		
 		return $new_array;
 	}
-	
+		
 	function clean_output($output)
 	{
 		$output = str_replace('\/', '/', $output);

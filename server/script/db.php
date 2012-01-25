@@ -26,14 +26,24 @@
 			mysql_close($this->db_connection);
 		}
 		
-		public function fetch($table_name)
+		public function fetch($table_name, $condition = null)
 		{
-			$result = mysql_query('SELECT * FROM '.$table_name, $this->db_connection);
+			$request = 'SELECT * FROM '.$table_name;
+			if($condition)
+			{
+				$request .= ' WHERE '.$condition;
+			}
+			
+			$result = mysql_query($request, $this->db_connection);
 			
 			$tabs = array();
-			while ($tab = mysql_fetch_object($result))
+			
+			if($result)
 			{
-				$tabs[] = $tab;
+				while ($tab = mysql_fetch_object($result))
+				{
+					$tabs[] = $tab;
+				}
 			}
 			
 			return $tabs;

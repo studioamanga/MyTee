@@ -2,6 +2,7 @@
 	header('Content-type: application/json');
 	
 	include_once('script/toolbox.php');
+	include_once('script/store.php');
 	include_once('script/db.php');
 
 	$database = new mt_database();
@@ -9,17 +10,38 @@
 	
 	$request_uri = $_SERVER['REQUEST_URI'];
 	
-	if(ends_with($request_uri, '/api/store/all'))
+	$store_uri = '/api/store/';
+	if (strpos($request_uri, $store_uri) !== false)
 	{
-		$stores = $database->fetch('mt_store');
+		$store_id = substr($request_uri, strpos($request_uri, $store_uri)+strlen($store_uri));
 		
-		foreach ($stores as &$store)
+		if($store_id=='all')
 		{
-			$store = rename_keys($store, array('sto_id', 'sto_name', 'sto_type', 'sto_address'), array('identifier', 'name', 'type', 'address'), true);
-		}
+			$stores = $database->fetch('mt_store');
 		
-		$stores_json = json_encode($stores);
-		echo clean_output($stores_json);
+			foreach ($stores as &$store)
+			{
+				$store = clean_store_from_db($store);
+			}
+		
+			$stores_json = json_encode($stores);
+			echo clean_output($stores_json);
+		}
+		else if (ctype_alnum($store_id))
+		{
+			$stores = $database->fetch('mt_store', 'sto_id='.$store_id.'');
+			
+			if(count($stores)==1)
+			{
+				$store = clean_store_from_db($stores[0]);
+				$store_json = json_encode($store);
+				echo clean_output($store_json);
+			}
+		}
+		else
+		{
+			header('Status: 404 Not Found');
+		}
 	}
 	
 	$database->disconnect();
