@@ -2,9 +2,10 @@
 	echo 'Hello World';
 
 	include_once('script/db.php');
-	$db_connection = db_connect();
+	$database = new mt_database();
+	$database->connect();
 	
-	$request_uri $_SERVER['REQUEST_URI'];
+	$request_uri = $_SERVER['REQUEST_URI'];
 	
-	db_disconnect($db_connection);
+	$database->disconnect();
 ?>
