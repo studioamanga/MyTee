@@ -6,7 +6,7 @@
 			
 		if($store['type']=='Web')
 		{
-			$store['URL'] = $store['address'];
+			$store['url'] = $store['address'];
 			unset($store['address']);
 		}
 		

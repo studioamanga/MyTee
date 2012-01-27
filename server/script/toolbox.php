@@ -41,4 +41,9 @@
 		return $output;
 	}
 
+	function output_json($object)
+	{
+		$tshirt_json = json_encode($object);
+		echo clean_output($tshirt_json);
+	}
 ?>
