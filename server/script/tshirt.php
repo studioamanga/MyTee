@@ -4,6 +4,8 @@
 	{
 		$tshirt = rename_keys($tshirt, array('tsh_id', 'tsh_name', 'tsh_size', 'tsh_color', 'tsh_condition', 'tsh_rating', 'tsh_tags', 'tsh_store_id', 'tsh_note', 'tsh_img'), array('identifier', 'name', 'size', 'color', 'condition', 'rating', 'tags', 'store_id', 'note', 'image_url'), true);
 		
+		$tshirt['image_url'] = 'http://www.studioamanga.com/mytee/img/tshirts/'.$tshirt['identifier'].'/'.$tshirt['image_url'];
+		
 		return $tshirt;
 	}
 	
