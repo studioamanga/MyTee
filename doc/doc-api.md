@@ -53,7 +53,7 @@ List all the stores, as described with the following resource.
 		"name": "xxx",
 		"type": "xxx",
 		"address": "xxx",
-		"URL": "xxx",
+		"url": "xxx",
 		"latitude": xxx,
 		"longitude": xxx
 	}
