@@ -21,6 +21,7 @@
 		1F7BF99914D4429500D7F4A3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97E14D4429500D7F4A3 /* CoreData.framework */; };
 		1F7BF9A114D4429500D7F4A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF99F14D4429500D7F4A3 /* InfoPlist.strings */; };
 		1F7BF9A414D4429500D7F4A3 /* myteeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9A314D4429500D7F4A3 /* myteeTests.m */; };
+		1F7BF9BA14D44D9A00D7F4A3 /* libCedar-StaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		1F7BF9A014D4429500D7F4A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F7BF9A214D4429500D7F4A3 /* myteeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myteeTests.h; sourceTree = "<group>"; };
 		1F7BF9A314D4429500D7F4A3 /* myteeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myteeTests.m; sourceTree = "<group>"; };
+		1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libCedar-StaticLib.a"; path = "Libraries/cedar/build/Release-iphoneos/libCedar-StaticLib.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F7BF9BA14D44D9A00D7F4A3 /* libCedar-StaticLib.a in Frameworks */,
 				1F7BF99614D4429500D7F4A3 /* SenTestingKit.framework in Frameworks */,
 				1F7BF99714D4429500D7F4A3 /* UIKit.framework in Frameworks */,
 				1F7BF99814D4429500D7F4A3 /* Foundation.framework in Frameworks */,
@@ -86,6 +89,7 @@
 				1F7BF98014D4429500D7F4A3 /* mytee */,
 				1F7BF99C14D4429500D7F4A3 /* myteeTests */,
 				1F7BF97714D4429500D7F4A3 /* Frameworks */,
+				1F7BF9BC14D44DA600D7F4A3 /* Libraries */,
 				1F7BF97514D4429500D7F4A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -150,6 +154,14 @@
 				1F7BF99F14D4429500D7F4A3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F7BF9BC14D44DA600D7F4A3 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,8 +394,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "myteeTests/myteeTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-lstdc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/cedar/Source/Headers/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -399,8 +417,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "myteeTests/myteeTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-lstdc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/cedar/Source/Headers/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -424,6 +448,7 @@
 				1F7BF9A914D4429500D7F4A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F7BF9AA14D4429500D7F4A3 /* Build configuration list for PBXNativeTarget "myteeTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +457,7 @@
 				1F7BF9AC14D4429500D7F4A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
