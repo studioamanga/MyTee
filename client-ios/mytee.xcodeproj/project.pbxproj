@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
+		1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97A14D4429500D7F4A3 /* Foundation.framework */; };
+		1F7BF97D14D4429500D7F4A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */; };
+		1F7BF97F14D4429500D7F4A3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97E14D4429500D7F4A3 /* CoreData.framework */; };
+		1F7BF98514D4429500D7F4A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF98314D4429500D7F4A3 /* InfoPlist.strings */; };
+		1F7BF98714D4429500D7F4A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF98614D4429500D7F4A3 /* main.m */; };
+		1F7BF98B14D4429500D7F4A3 /* MTEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */; };
+		1F7BF98E14D4429500D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF98C14D4429500D7F4A3 /* mytee.xcdatamodeld */; };
+		1F7BF99614D4429500D7F4A3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF99514D4429500D7F4A3 /* SenTestingKit.framework */; };
+		1F7BF99714D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
+		1F7BF99814D4429500D7F4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97A14D4429500D7F4A3 /* Foundation.framework */; };
+		1F7BF99914D4429500D7F4A3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97E14D4429500D7F4A3 /* CoreData.framework */; };
+		1F7BF9A114D4429500D7F4A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF99F14D4429500D7F4A3 /* InfoPlist.strings */; };
+		1F7BF9A414D4429500D7F4A3 /* myteeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9A314D4429500D7F4A3 /* myteeTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F7BF99A14D4429500D7F4A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F7BF96B14D4429400D7F4A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F7BF97314D4429500D7F4A3;
+			remoteInfo = mytee;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F7BF97414D4429500D7F4A3 /* mytee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mytee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F7BF97814D4429500D7F4A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F7BF97A14D4429500D7F4A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1F7BF97E14D4429500D7F4A3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1F7BF98214D4429500D7F4A3 /* mytee-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "mytee-Info.plist"; sourceTree = "<group>"; };
+		1F7BF98414D4429500D7F4A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F7BF98614D4429500D7F4A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1F7BF98814D4429500D7F4A3 /* mytee-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mytee-Prefix.pch"; sourceTree = "<group>"; };
+		1F7BF98914D4429500D7F4A3 /* MTEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTEAppDelegate.h; sourceTree = "<group>"; };
+		1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTEAppDelegate.m; sourceTree = "<group>"; };
+		1F7BF98D14D4429500D7F4A3 /* mytee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mytee.xcdatamodel; sourceTree = "<group>"; };
+		1F7BF99414D4429500D7F4A3 /* myteeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myteeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F7BF99514D4429500D7F4A3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1F7BF99E14D4429500D7F4A3 /* myteeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myteeTests-Info.plist"; sourceTree = "<group>"; };
+		1F7BF9A014D4429500D7F4A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F7BF9A214D4429500D7F4A3 /* myteeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myteeTests.h; sourceTree = "<group>"; };
+		1F7BF9A314D4429500D7F4A3 /* myteeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myteeTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F7BF97114D4429500D7F4A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */,
+				1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */,
+				1F7BF97D14D4429500D7F4A3 /* CoreGraphics.framework in Frameworks */,
+				1F7BF97F14D4429500D7F4A3 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F7BF99014D4429500D7F4A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7BF99614D4429500D7F4A3 /* SenTestingKit.framework in Frameworks */,
+				1F7BF99714D4429500D7F4A3 /* UIKit.framework in Frameworks */,
+				1F7BF99814D4429500D7F4A3 /* Foundation.framework in Frameworks */,
+				1F7BF99914D4429500D7F4A3 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F7BF96914D4429400D7F4A3 = {
+			isa = PBXGroup;
+			children = (
+				1F7BF98014D4429500D7F4A3 /* mytee */,
+				1F7BF99C14D4429500D7F4A3 /* myteeTests */,
+				1F7BF97714D4429500D7F4A3 /* Frameworks */,
+				1F7BF97514D4429500D7F4A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F7BF97514D4429500D7F4A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF97414D4429500D7F4A3 /* mytee.app */,
+				1F7BF99414D4429500D7F4A3 /* myteeTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F7BF97714D4429500D7F4A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF97814D4429500D7F4A3 /* UIKit.framework */,
+				1F7BF97A14D4429500D7F4A3 /* Foundation.framework */,
+				1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */,
+				1F7BF97E14D4429500D7F4A3 /* CoreData.framework */,
+				1F7BF99514D4429500D7F4A3 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F7BF98014D4429500D7F4A3 /* mytee */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF98914D4429500D7F4A3 /* MTEAppDelegate.h */,
+				1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */,
+				1F7BF98C14D4429500D7F4A3 /* mytee.xcdatamodeld */,
+				1F7BF98114D4429500D7F4A3 /* Supporting Files */,
+			);
+			path = mytee;
+			sourceTree = "<group>";
+		};
+		1F7BF98114D4429500D7F4A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF98214D4429500D7F4A3 /* mytee-Info.plist */,
+				1F7BF98314D4429500D7F4A3 /* InfoPlist.strings */,
+				1F7BF98614D4429500D7F4A3 /* main.m */,
+				1F7BF98814D4429500D7F4A3 /* mytee-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F7BF99C14D4429500D7F4A3 /* myteeTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF9A214D4429500D7F4A3 /* myteeTests.h */,
+				1F7BF9A314D4429500D7F4A3 /* myteeTests.m */,
+				1F7BF99D14D4429500D7F4A3 /* Supporting Files */,
+			);
+			path = myteeTests;
+			sourceTree = "<group>";
+		};
+		1F7BF99D14D4429500D7F4A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF99E14D4429500D7F4A3 /* myteeTests-Info.plist */,
+				1F7BF99F14D4429500D7F4A3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F7BF97314D4429500D7F4A3 /* mytee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F7BF9A714D4429500D7F4A3 /* Build configuration list for PBXNativeTarget "mytee" */;
+			buildPhases = (
+				1F7BF97014D4429500D7F4A3 /* Sources */,
+				1F7BF97114D4429500D7F4A3 /* Frameworks */,
+				1F7BF97214D4429500D7F4A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mytee;
+			productName = mytee;
+			productReference = 1F7BF97414D4429500D7F4A3 /* mytee.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1F7BF99314D4429500D7F4A3 /* myteeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F7BF9AA14D4429500D7F4A3 /* Build configuration list for PBXNativeTarget "myteeTests" */;
+			buildPhases = (
+				1F7BF98F14D4429500D7F4A3 /* Sources */,
+				1F7BF99014D4429500D7F4A3 /* Frameworks */,
+				1F7BF99114D4429500D7F4A3 /* Resources */,
+				1F7BF99214D4429500D7F4A3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F7BF99B14D4429500D7F4A3 /* PBXTargetDependency */,
+			);
+			name = myteeTests;
+			productName = myteeTests;
+			productReference = 1F7BF99414D4429500D7F4A3 /* myteeTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F7BF96B14D4429400D7F4A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Keres-Sy, Studio AMANgA";
+			};
+			buildConfigurationList = 1F7BF96E14D4429500D7F4A3 /* Build configuration list for PBXProject "mytee" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1F7BF96914D4429400D7F4A3;
+			productRefGroup = 1F7BF97514D4429500D7F4A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F7BF97314D4429500D7F4A3 /* mytee */,
+				1F7BF99314D4429500D7F4A3 /* myteeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F7BF97214D4429500D7F4A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7BF98514D4429500D7F4A3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F7BF99114D4429500D7F4A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7BF9A114D4429500D7F4A3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F7BF99214D4429500D7F4A3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F7BF97014D4429500D7F4A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7BF98714D4429500D7F4A3 /* main.m in Sources */,
+				1F7BF98B14D4429500D7F4A3 /* MTEAppDelegate.m in Sources */,
+				1F7BF98E14D4429500D7F4A3 /* mytee.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F7BF98F14D4429500D7F4A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7BF9A414D4429500D7F4A3 /* myteeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F7BF99B14D4429500D7F4A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F7BF97314D4429500D7F4A3 /* mytee */;
+			targetProxy = 1F7BF99A14D4429500D7F4A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1F7BF98314D4429500D7F4A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7BF98414D4429500D7F4A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F7BF99F14D4429500D7F4A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7BF9A014D4429500D7F4A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F7BF9A514D4429500D7F4A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F7BF9A614D4429500D7F4A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F7BF9A814D4429500D7F4A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
+				INFOPLIST_FILE = "mytee/mytee-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1F7BF9A914D4429500D7F4A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
+				INFOPLIST_FILE = "mytee/mytee-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1F7BF9AB14D4429500D7F4A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/mytee.app/mytee";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
+				INFOPLIST_FILE = "myteeTests/myteeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1F7BF9AC14D4429500D7F4A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/mytee.app/mytee";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
+				INFOPLIST_FILE = "myteeTests/myteeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F7BF96E14D4429500D7F4A3 /* Build configuration list for PBXProject "mytee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F7BF9A514D4429500D7F4A3 /* Debug */,
+				1F7BF9A614D4429500D7F4A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F7BF9A714D4429500D7F4A3 /* Build configuration list for PBXNativeTarget "mytee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F7BF9A814D4429500D7F4A3 /* Debug */,
+				1F7BF9A914D4429500D7F4A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1F7BF9AA14D4429500D7F4A3 /* Build configuration list for PBXNativeTarget "myteeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F7BF9AB14D4429500D7F4A3 /* Debug */,
+				1F7BF9AC14D4429500D7F4A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F7BF98C14D4429500D7F4A3 /* mytee.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F7BF98D14D4429500D7F4A3 /* mytee.xcdatamodel */,
+			);
+			currentVersion = 1F7BF98D14D4429500D7F4A3 /* mytee.xcdatamodel */;
+			path = mytee.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1F7BF96B14D4429400D7F4A3 /* Project object */;
+}
