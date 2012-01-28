@@ -14,7 +14,6 @@
 		1F7BF98514D4429500D7F4A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF98314D4429500D7F4A3 /* InfoPlist.strings */; };
 		1F7BF98714D4429500D7F4A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF98614D4429500D7F4A3 /* main.m */; };
 		1F7BF98B14D4429500D7F4A3 /* MTEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */; };
-		1F7BF98E14D4429500D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF98C14D4429500D7F4A3 /* mytee.xcdatamodeld */; };
 		1F7BF99614D4429500D7F4A3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF99514D4429500D7F4A3 /* SenTestingKit.framework */; };
 		1F7BF99714D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
 		1F7BF99814D4429500D7F4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97A14D4429500D7F4A3 /* Foundation.framework */; };
@@ -24,6 +23,7 @@
 		1F7BF9BA14D44D9A00D7F4A3 /* libCedar-StaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */; };
 		1F7BF9C214D4526D00D7F4A3 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */; };
 		1F7BF9C414D4529400D7F4A3 /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */; };
+		1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,16 +48,16 @@
 		1F7BF98814D4429500D7F4A3 /* mytee-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mytee-Prefix.pch"; sourceTree = "<group>"; };
 		1F7BF98914D4429500D7F4A3 /* MTEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTEAppDelegate.h; sourceTree = "<group>"; };
 		1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTEAppDelegate.m; sourceTree = "<group>"; };
-		1F7BF98D14D4429500D7F4A3 /* mytee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mytee.xcdatamodel; sourceTree = "<group>"; };
 		1F7BF99414D4429500D7F4A3 /* myteeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myteeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7BF99514D4429500D7F4A3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1F7BF99E14D4429500D7F4A3 /* myteeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myteeTests-Info.plist"; sourceTree = "<group>"; };
 		1F7BF9A014D4429500D7F4A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F7BF9A214D4429500D7F4A3 /* myteeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myteeTests.h; sourceTree = "<group>"; };
 		1F7BF9A314D4429500D7F4A3 /* myteeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myteeTests.m; sourceTree = "<group>"; };
-		1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libCedar-StaticLib.a"; path = "Libraries/cedar/build/Release-iphoneos/libCedar-StaticLib.a"; sourceTree = "<group>"; };
+		1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCedar-StaticLib.a"; path = "Libraries/cedar/build/Release-iphoneos/libCedar-StaticLib.a"; sourceTree = "<group>"; };
 		1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Resources/Storyboards/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = Resources/Storyboards/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
+		1F7BF9F714D4543A00D7F4A3 /* mytee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mytee.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +188,7 @@
 		1F7BF9BF14D4521000D7F4A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1F7BF98C14D4429500D7F4A3 /* mytee.xcdatamodeld */,
+				1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			files = (
 				1F7BF98714D4429500D7F4A3 /* main.m in Sources */,
 				1F7BF98B14D4429500D7F4A3 /* MTEAppDelegate.m in Sources */,
-				1F7BF98E14D4429500D7F4A3 /* mytee.xcdatamodeld in Sources */,
+				1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,13 +502,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		1F7BF98C14D4429500D7F4A3 /* mytee.xcdatamodeld */ = {
+		1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				1F7BF98D14D4429500D7F4A3 /* mytee.xcdatamodel */,
+				1F7BF9F714D4543A00D7F4A3 /* mytee.xcdatamodel */,
 			);
-			currentVersion = 1F7BF98D14D4429500D7F4A3 /* mytee.xcdatamodel */;
-			path = mytee.xcdatamodeld;
+			currentVersion = 1F7BF9F714D4543A00D7F4A3 /* mytee.xcdatamodel */;
+			name = mytee.xcdatamodeld;
+			path = ../MyTee/Resources/Model/mytee.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

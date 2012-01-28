@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2mb-jW-cge">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <scene sceneID="7qu-61-DR7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e04-EW-Xb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="kpu-Nw-1Ss" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zm5-8h-35r">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="MyTee" id="Avn-VE-fh0"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="604" y="35"/>
+        </scene>
+        <scene sceneID="GBn-tS-qTd">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSU-73-Gu5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="2mb-jW-cge" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4F4-Ga-jew">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kpu-Nw-1Ss" kind="relationship" relationship="rootViewController" id="Alx-NT-Phd"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="78" y="35"/>
+        </scene>
+    </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
