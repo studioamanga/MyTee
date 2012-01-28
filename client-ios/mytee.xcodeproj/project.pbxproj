@@ -22,6 +22,8 @@
 		1F7BF9A114D4429500D7F4A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF99F14D4429500D7F4A3 /* InfoPlist.strings */; };
 		1F7BF9A414D4429500D7F4A3 /* myteeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9A314D4429500D7F4A3 /* myteeTests.m */; };
 		1F7BF9BA14D44D9A00D7F4A3 /* libCedar-StaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */; };
+		1F7BF9C214D4526D00D7F4A3 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */; };
+		1F7BF9C414D4529400D7F4A3 /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		1F7BF9A214D4429500D7F4A3 /* myteeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myteeTests.h; sourceTree = "<group>"; };
 		1F7BF9A314D4429500D7F4A3 /* myteeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myteeTests.m; sourceTree = "<group>"; };
 		1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libCedar-StaticLib.a"; path = "Libraries/cedar/build/Release-iphoneos/libCedar-StaticLib.a"; sourceTree = "<group>"; };
+		1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Resources/Storyboards/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
+		1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = Resources/Storyboards/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +122,8 @@
 		1F7BF98014D4429500D7F4A3 /* mytee */ = {
 			isa = PBXGroup;
 			children = (
-				1F7BF98914D4429500D7F4A3 /* MTEAppDelegate.h */,
-				1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */,
-				1F7BF98C14D4429500D7F4A3 /* mytee.xcdatamodeld */,
+				1F7BF9BD14D451D100D7F4A3 /* App Delegate */,
+				1F7BF9BE14D4520500D7F4A3 /* Resources */,
 				1F7BF98114D4429500D7F4A3 /* Supporting Files */,
 			);
 			path = mytee;
@@ -162,6 +165,41 @@
 				1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		1F7BF9BD14D451D100D7F4A3 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF98914D4429500D7F4A3 /* MTEAppDelegate.h */,
+				1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		1F7BF9BE14D4520500D7F4A3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF9C014D4522300D7F4A3 /* Storyboards */,
+				1F7BF9BF14D4521000D7F4A3 /* Model */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1F7BF9BF14D4521000D7F4A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF98C14D4429500D7F4A3 /* mytee.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1F7BF9C014D4522300D7F4A3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */,
+				1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7BF98514D4429500D7F4A3 /* InfoPlist.strings in Resources */,
+				1F7BF9C214D4526D00D7F4A3 /* Storyboard_iPhone.storyboard in Resources */,
+				1F7BF9C414D4529400D7F4A3 /* Storyboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
