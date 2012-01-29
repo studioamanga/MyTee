@@ -28,7 +28,7 @@
         <scene sceneID="FvS-Rw-q5d">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4G-aA-4er" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="sCN-V5-V8R" sceneMemberID="viewController">
+                <tableViewController id="sCN-V5-V8R" customClass="MTESettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="K4i-3C-Y9d">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +56,9 @@
                                                     <color key="textColor" red="0.21960785984992981" green="0.32941177487373352" blue="0.52941179275512695" alpha="1" colorSpace="deviceRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="sCN-V5-V8R" id="SYq-4o-nbK"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -82,6 +85,9 @@
                                                     <color key="textColor" red="0.2196078598" green="0.32941177490000001" blue="0.52941179279999995" alpha="1" colorSpace="deviceRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="sCN-V5-V8R" id="YzM-zr-zZM"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -120,6 +126,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Login" id="aFf-gl-dng"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="SfJ-tX-Ygj" id="fdO-q6-1Yr"/>
+                        <outlet property="passwordTextField" destination="xo4-au-u1B" id="12Q-TW-qeu"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1671" y="740"/>

@@ -25,6 +25,7 @@
 		1F7BF9C414D4529400D7F4A3 /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */; };
 		1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */; };
 		1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079314D4CBA400909A11 /* MBProgressHUD.m */; };
+		1FDE079A14D4CE7700909A11 /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +48,8 @@
 		1F7BF98414D4429500D7F4A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F7BF98614D4429500D7F4A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7BF98814D4429500D7F4A3 /* mytee-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mytee-Prefix.pch"; sourceTree = "<group>"; };
-		1F7BF98914D4429500D7F4A3 /* MTEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTEAppDelegate.h; sourceTree = "<group>"; };
-		1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTEAppDelegate.m; sourceTree = "<group>"; };
+		1F7BF98914D4429500D7F4A3 /* MTEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MTEAppDelegate.h; path = ../MyTee/Classes/MTEAppDelegate.h; sourceTree = "<group>"; };
+		1F7BF98A14D4429500D7F4A3 /* MTEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTEAppDelegate.m; path = ../MyTee/Classes/MTEAppDelegate.m; sourceTree = "<group>"; };
 		1F7BF99414D4429500D7F4A3 /* myteeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myteeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7BF99514D4429500D7F4A3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1F7BF99E14D4429500D7F4A3 /* myteeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myteeTests-Info.plist"; sourceTree = "<group>"; };
@@ -61,6 +62,8 @@
 		1F7BF9F714D4543A00D7F4A3 /* mytee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mytee.xcdatamodel; sourceTree = "<group>"; };
 		1FDE079214D4CBA400909A11 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = SOURCE_ROOT; };
 		1FDE079314D4CBA400909A11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
+		1FDE079814D4CE7700909A11 /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +128,7 @@
 		1F7BF98014D4429500D7F4A3 /* mytee */ = {
 			isa = PBXGroup;
 			children = (
-				1FDE079014D4CB9500909A11 /* UI */,
+				1FDE079614D4CE0500909A11 /* View Controllers */,
 				1F7BF9BD14D451D100D7F4A3 /* App Delegate */,
 				1F7BF9BE14D4520500D7F4A3 /* Resources */,
 				1F7BF98114D4429500D7F4A3 /* Supporting Files */,
@@ -221,6 +224,24 @@
 				1FDE079314D4CBA400909A11 /* MBProgressHUD.m */,
 			);
 			name = "Progress HUD";
+			sourceTree = "<group>";
+		};
+		1FDE079614D4CE0500909A11 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE079714D4CE2700909A11 /* Settings */,
+				1FDE079014D4CB9500909A11 /* UI */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1FDE079714D4CE2700909A11 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE079814D4CE7700909A11 /* MTESettingsViewController.h */,
+				1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +356,7 @@
 				1F7BF98B14D4429500D7F4A3 /* MTEAppDelegate.m in Sources */,
 				1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */,
 				1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */,
+				1FDE079A14D4CE7700909A11 /* MTESettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
