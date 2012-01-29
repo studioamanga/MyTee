@@ -24,6 +24,7 @@
 		1F7BF9C214D4526D00D7F4A3 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */; };
 		1F7BF9C414D4529400D7F4A3 /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */; };
 		1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */; };
+		1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079314D4CBA400909A11 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Resources/Storyboards/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = Resources/Storyboards/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1F7BF9F714D4543A00D7F4A3 /* mytee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mytee.xcdatamodel; sourceTree = "<group>"; };
+		1FDE079214D4CBA400909A11 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = SOURCE_ROOT; };
+		1FDE079314D4CBA400909A11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 		1F7BF98014D4429500D7F4A3 /* mytee */ = {
 			isa = PBXGroup;
 			children = (
+				1FDE079014D4CB9500909A11 /* UI */,
 				1F7BF9BD14D451D100D7F4A3 /* App Delegate */,
 				1F7BF9BE14D4520500D7F4A3 /* Resources */,
 				1F7BF98114D4429500D7F4A3 /* Supporting Files */,
@@ -200,6 +204,23 @@
 				1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		1FDE079014D4CB9500909A11 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE079514D4CBB300909A11 /* Progress HUD */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		1FDE079514D4CBB300909A11 /* Progress HUD */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE079214D4CBA400909A11 /* MBProgressHUD.h */,
+				1FDE079314D4CBA400909A11 /* MBProgressHUD.m */,
+			);
+			name = "Progress HUD";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +334,7 @@
 				1F7BF98714D4429500D7F4A3 /* main.m in Sources */,
 				1F7BF98B14D4429500D7F4A3 /* MTEAppDelegate.m in Sources */,
 				1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */,
+				1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
