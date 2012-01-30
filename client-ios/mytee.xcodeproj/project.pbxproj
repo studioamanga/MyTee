@@ -13,6 +13,9 @@
 		1F294E0414D7457900A24AED /* 19-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0214D7457900A24AED /* 19-check@2x.png */; };
 		1F294E0714D745AB00A24AED /* 20-no.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0514D745AB00A24AED /* 20-no.png */; };
 		1F294E0814D745AB00A24AED /* 20-no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0614D745AB00A24AED /* 20-no@2x.png */; };
+		1F294E0B14D74D4E00A24AED /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0A14D74D4E00A24AED /* Icon.png */; };
+		1F294E0D14D74D6600A24AED /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0C14D74D6600A24AED /* Icon@2x.png */; };
+		1F294E0F14D74D6F00A24AED /* Icon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0E14D74D6F00A24AED /* Icon_iPad.png */; };
 		1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
 		1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97A14D4429500D7F4A3 /* Foundation.framework */; };
 		1F7BF97D14D4429500D7F4A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */; };
@@ -53,6 +56,9 @@
 		1F294E0214D7457900A24AED /* 19-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-check@2x.png"; path = "MyTee/Resources/Images/19-check@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F294E0514D745AB00A24AED /* 20-no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "20-no.png"; path = "MyTee/Resources/Images/20-no.png"; sourceTree = SOURCE_ROOT; };
 		1F294E0614D745AB00A24AED /* 20-no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "20-no@2x.png"; path = "MyTee/Resources/Images/20-no@2x.png"; sourceTree = SOURCE_ROOT; };
+		1F294E0A14D74D4E00A24AED /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		1F294E0C14D74D6600A24AED /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		1F294E0E14D74D6F00A24AED /* Icon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_iPad.png; path = ../Icon_iPad.png; sourceTree = "<group>"; };
 		1F7BF97414D4429500D7F4A3 /* mytee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mytee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7BF97814D4429500D7F4A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F7BF97A14D4429500D7F4A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -143,6 +149,16 @@
 				1F294E0614D745AB00A24AED /* 20-no@2x.png */,
 			);
 			name = Check/No;
+			sourceTree = "<group>";
+		};
+		1F294E1014D74D7900A24AED /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				1F294E0E14D74D6F00A24AED /* Icon_iPad.png */,
+				1F294E0C14D74D6600A24AED /* Icon@2x.png */,
+				1F294E0A14D74D4E00A24AED /* Icon.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 		1F7BF96914D4429400D7F4A3 = {
@@ -239,6 +255,7 @@
 		1F7BF9BE14D4520500D7F4A3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F294E1014D74D7900A24AED /* Icons */,
 				1F294E0014D744AE00A24AED /* Images */,
 				1F7BF9C014D4522300D7F4A3 /* Storyboards */,
 				1F7BF9BF14D4521000D7F4A3 /* Model */,
@@ -376,6 +393,9 @@
 				1F294E0414D7457900A24AED /* 19-check@2x.png in Resources */,
 				1F294E0714D745AB00A24AED /* 20-no.png in Resources */,
 				1F294E0814D745AB00A24AED /* 20-no@2x.png in Resources */,
+				1F294E0B14D74D4E00A24AED /* Icon.png in Resources */,
+				1F294E0D14D74D6600A24AED /* Icon@2x.png in Resources */,
+				1F294E0F14D74D6F00A24AED /* Icon_iPad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

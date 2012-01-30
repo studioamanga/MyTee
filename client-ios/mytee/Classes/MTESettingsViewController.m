@@ -49,15 +49,25 @@
     }
     if(indexPath.section==1)
     {
-        if ([emailTextField isFirstResponder])
-            [emailTextField resignFirstResponder];
-        if ([passwordTextField isFirstResponder])
-            [passwordTextField resignFirstResponder];
-        
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        [self startAuthenticatingWithEmail:[emailTextField text] password:[passwordTextField text]];
-        //[self dismissModalViewControllerAnimated:YES];
+        if (![emailTextField text] || [[emailTextField text] isEqualToString:@""])
+        {
+            [emailTextField becomeFirstResponder];
+        }
+        else if (![passwordTextField text] || [[passwordTextField text] isEqualToString:@""])
+        {
+            [passwordTextField becomeFirstResponder];
+        }
+        else
+        {
+            if ([emailTextField isFirstResponder])
+                [emailTextField resignFirstResponder];
+            if ([passwordTextField isFirstResponder])
+                [passwordTextField resignFirstResponder];
+        
+            [self startAuthenticatingWithEmail:[emailTextField text] password:[passwordTextField text]];
+        }
     }
 }
 
