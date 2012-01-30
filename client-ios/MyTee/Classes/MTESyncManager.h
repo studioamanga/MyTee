@@ -12,4 +12,8 @@
 
 + (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password;
 
++ (void)storeEmail:(NSString*)email password:(NSString*)password;
++ (NSString*)emailFromKeychain;
++ (NSString*)passwordFromKeychain;
+
 @end

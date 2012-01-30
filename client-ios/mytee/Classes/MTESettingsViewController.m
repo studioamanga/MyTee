@@ -21,12 +21,27 @@
 
 #pragma mark - View lifecycle
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    emailTextField.text = [MTESyncManager emailFromKeychain];
+    passwordTextField.text = [MTESyncManager passwordFromKeychain];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     
     [self setEmailTextField:nil];
     [self setPasswordTextField:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [emailTextField becomeFirstResponder];
 }
 
 #pragma mark - Table view data source
@@ -109,6 +124,8 @@
             if (status==200)
             {
                 authenticationSuccessful = YES;
+                
+                [MTESyncManager storeEmail:email password:password];
                 
                 progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
                 progressHUD.mode = MBProgressHUDModeCustomView;

@@ -16,6 +16,9 @@
 		1F294E0B14D74D4E00A24AED /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0A14D74D4E00A24AED /* Icon.png */; };
 		1F294E0D14D74D6600A24AED /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0C14D74D6600A24AED /* Icon@2x.png */; };
 		1F294E0F14D74D6F00A24AED /* Icon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0E14D74D6F00A24AED /* Icon_iPad.png */; };
+		1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1F294E1714D7515A00A24AED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F294E1614D7515A00A24AED /* Security.framework */; };
+		1F294E1A14D7558600A24AED /* MTESyncManagerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
 		1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97A14D4429500D7F4A3 /* Foundation.framework */; };
 		1F7BF97D14D4429500D7F4A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */; };
@@ -59,6 +62,10 @@
 		1F294E0A14D74D4E00A24AED /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		1F294E0C14D74D6600A24AED /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		1F294E0E14D74D6F00A24AED /* Icon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_iPad.png; path = ../Icon_iPad.png; sourceTree = "<group>"; };
+		1F294E1114D74F2300A24AED /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainItemWrapper.h; path = Libraries/KeychainItemWrapper/KeychainItemWrapper.h; sourceTree = SOURCE_ROOT; };
+		1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainItemWrapper.m; path = Libraries/KeychainItemWrapper/KeychainItemWrapper.m; sourceTree = SOURCE_ROOT; };
+		1F294E1614D7515A00A24AED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MTESyncManagerSpec.mm; path = MyTeeTests/Specs/MTESyncManagerSpec.mm; sourceTree = SOURCE_ROOT; };
 		1F7BF97414D4429500D7F4A3 /* mytee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mytee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7BF97814D4429500D7F4A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F7BF97A14D4429500D7F4A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F294E1714D7515A00A24AED /* Security.framework in Frameworks */,
 				1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */,
 				1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */,
 				1F7BF97D14D4429500D7F4A3 /* CoreGraphics.framework in Frameworks */,
@@ -116,8 +124,8 @@
 		1F294DF714D73B9E00A24AED /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				1F294DF914D73BC800A24AED /* MTESyncManager.h */,
-				1F294DFA14D73BC800A24AED /* MTESyncManager.m */,
+				1F294E1514D74F3000A24AED /* Sync Manager */,
+				1F294E1414D74F2600A24AED /* Keychain Access */,
 				1F294DFF14D73F0E00A24AED /* NSString Category */,
 			);
 			name = Shared;
@@ -161,6 +169,32 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		1F294E1414D74F2600A24AED /* Keychain Access */ = {
+			isa = PBXGroup;
+			children = (
+				1F294E1114D74F2300A24AED /* KeychainItemWrapper.h */,
+				1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */,
+			);
+			name = "Keychain Access";
+			sourceTree = "<group>";
+		};
+		1F294E1514D74F3000A24AED /* Sync Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1F294DF914D73BC800A24AED /* MTESyncManager.h */,
+				1F294DFA14D73BC800A24AED /* MTESyncManager.m */,
+			);
+			name = "Sync Manager";
+			sourceTree = "<group>";
+		};
+		1F294E1814D752F100A24AED /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */,
+			);
+			name = Specs;
+			sourceTree = "<group>";
+		};
 		1F7BF96914D4429400D7F4A3 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +218,7 @@
 		1F7BF97714D4429500D7F4A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F294E1614D7515A00A24AED /* Security.framework */,
 				1F7BF97814D4429500D7F4A3 /* UIKit.framework */,
 				1F7BF97A14D4429500D7F4A3 /* Foundation.framework */,
 				1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */,
@@ -219,6 +254,7 @@
 		1F7BF99C14D4429500D7F4A3 /* myteeTests */ = {
 			isa = PBXGroup;
 			children = (
+				1F294E1814D752F100A24AED /* Specs */,
 				1F7BF9A214D4429500D7F4A3 /* myteeTests.h */,
 				1F7BF9A314D4429500D7F4A3 /* myteeTests.m */,
 				1F7BF99D14D4429500D7F4A3 /* Supporting Files */,
@@ -437,6 +473,7 @@
 				1FDE079A14D4CE7700909A11 /* MTESettingsViewController.m in Sources */,
 				1F294DFB14D73BC800A24AED /* MTESyncManager.m in Sources */,
 				1F294DFE14D73EE300A24AED /* NSString+NSStringURL.m in Sources */,
+				1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7BF9A414D4429500D7F4A3 /* myteeTests.m in Sources */,
+				1F294E1A14D7558600A24AED /* MTESyncManagerSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
