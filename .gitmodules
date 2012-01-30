@@ -1,0 +1,9 @@
+[submodule "client-ios/Libraries/cedar"]
+	path = client-ios/Libraries/cedar
+	url = git://github.com/pivotal/cedar.git
+[submodule "client-ios/Libraries/MBProgressHUD"]
+	path = client-ios/Libraries/MBProgressHUD
+	url = git://github.com/jdg/MBProgressHUD.git
+[submodule "client-ios/Libraries/KeychainItemWrapper"]
+	path = client-ios/Libraries/KeychainItemWrapper
+	url = git@gist.github.com:1409718.git
