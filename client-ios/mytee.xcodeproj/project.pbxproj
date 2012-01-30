@@ -570,6 +570,7 @@
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -581,6 +582,7 @@
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -603,7 +605,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/cedar/Source/Headers/**";
+				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/cedar/Source/Headers\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -626,7 +628,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/cedar/Source/Headers/**";
+				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/cedar/Source/Headers\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
