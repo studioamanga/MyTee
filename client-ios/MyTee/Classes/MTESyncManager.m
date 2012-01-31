@@ -11,8 +11,10 @@
 #import "KeychainItemWrapper.h"
 #import "NSString+NSStringURL.h"
 
+#import "MTETShirt.h"
+
 #define MTE_URL_API @"http://www.studioamanga.com/mytee/api/"
-#define MTE_URL_TSHIRTS_ALL @"http://www.studioamanga.com/mytee/api/tshirt/all"
+#define MTE_URL_API_TSHIRTS_ALL @"/tshirt/all"
 #define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/store/all"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
@@ -22,14 +24,19 @@
 
 #pragma mark - Keychain
 
-+ (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password
++ (NSString*)pathForResource:(NSString*)resourcePath withEmail:(NSString*)email password:(NSString*)password
 {
     NSString * urlString = [NSString stringWithFormat:@"%@?login=%@&password=%@",
-                            MTE_URL_AUTHENTICATION,
+                            resourcePath,
                             [email URLEncode],
                             [password URLEncode]];
     
-    NSURL * url = [NSURL URLWithString:urlString];
+    return urlString;
+}
+
++ (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password
+{
+    NSURL * url = [NSURL URLWithString:[self pathForResource:MTE_URL_AUTHENTICATION withEmail:email password:password]];
     NSMutableURLRequest * request = [NSURLRequest requestWithURL:url];
     
     return request;
@@ -68,7 +75,7 @@
 
 - (void)setupSyncManager
 {
-    // RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
+    //RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
     
     RKObjectManager * objectManager = [RKObjectManager objectManagerWithBaseURL:MTE_URL_API];
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
@@ -79,15 +86,17 @@
 
 - (void)startSync
 {
-    /*
-     RKManagedObjectMapping* tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class]];
+    RKManagedObjectMapping* tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class]];
     [tshirtMapping setPrimaryKeyAttribute:@"identifier"];
-    [tshirtMapping mapKeyPath:@"identifier" toAttribute:@"identifier"];
+    [tshirtMapping mapAttributes:@"identifier", @"name", @"size", @"color", @"condition", @"location", @"rating", @"tags", @"note", @"image_url", nil];
     
-    [[RKObjectManager sharedManager].mappingProvider setMapping:tshirtMapping forKeyPath:@"tshirt"];
-    */
+    [[RKObjectManager sharedManager].mappingProvider setMapping:tshirtMapping forKeyPath:@""];
     
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:MTE_URL_TSHIRTS_ALL delegate:self];
+    NSString * email = [MTESyncManager emailFromKeychain];
+    NSString * password = [MTESyncManager passwordFromKeychain];
+    NSString * tshirtPath = [MTESyncManager pathForResource:MTE_URL_API_TSHIRTS_ALL withEmail:email password:password];
+    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:tshirtPath delegate:self];
 }
 
 #pragma mark - Object loader

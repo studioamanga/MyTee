@@ -44,6 +44,7 @@
 		1FF7D5E414D88E58000BDE04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E314D88E58000BDE04 /* SystemConfiguration.framework */; };
 		1FF7D5E614D88E65000BDE04 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E514D88E65000BDE04 /* libxml2.dylib */; };
 		1FF7D5E914D8936E000BDE04 /* MTETShirtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */; };
+		1FF7D5EF14D89D2B000BDE04 /* MTETShirt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		1FF7D5E714D8936E000BDE04 /* MTETShirtsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtsViewController.h; path = MyTee/Classes/MTETShirtsViewController.h; sourceTree = SOURCE_ROOT; };
 		1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtsViewController.m; path = MyTee/Classes/MTETShirtsViewController.m; sourceTree = SOURCE_ROOT; };
 		1FF7D5EB14D89B61000BDE04 /* MTEConstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEConstView.h; path = MyTee/Classes/MTEConstView.h; sourceTree = SOURCE_ROOT; };
+		1FF7D5ED14D89D2B000BDE04 /* MTETShirt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirt.h; path = MyTee/Classes/MTETShirt.h; sourceTree = SOURCE_ROOT; };
+		1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirt.m; path = MyTee/Classes/MTETShirt.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				1F294DF714D73B9E00A24AED /* Shared */,
+				1FF7D5EC14D89D10000BDE04 /* Model */,
 				1FDE079614D4CE0500909A11 /* View Controllers */,
 				1F7BF9BD14D451D100D7F4A3 /* App Delegate */,
 				1F7BF9BE14D4520500D7F4A3 /* Resources */,
@@ -386,6 +390,15 @@
 			name = "T-Shirts";
 			sourceTree = "<group>";
 		};
+		1FF7D5EC14D89D10000BDE04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FF7D5ED14D89D2B000BDE04 /* MTETShirt.h */,
+				1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,6 +523,7 @@
 				1F294DFE14D73EE300A24AED /* NSString+NSStringURL.m in Sources */,
 				1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */,
 				1FF7D5E914D8936E000BDE04 /* MTETShirtsViewController.m in Sources */,
+				1FF7D5EF14D89D2B000BDE04 /* MTETShirt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
