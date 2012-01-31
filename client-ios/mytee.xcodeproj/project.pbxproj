@@ -43,6 +43,7 @@
 		1FF7D5E214D88E51000BDE04 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */; };
 		1FF7D5E414D88E58000BDE04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E314D88E58000BDE04 /* SystemConfiguration.framework */; };
 		1FF7D5E614D88E65000BDE04 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E514D88E65000BDE04 /* libxml2.dylib */; };
+		1FF7D5E914D8936E000BDE04 /* MTETShirtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1FF7D5E314D88E58000BDE04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1FF7D5E514D88E65000BDE04 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		1FF7D5E714D8936E000BDE04 /* MTETShirtsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtsViewController.h; path = MyTee/Classes/MTETShirtsViewController.h; sourceTree = SOURCE_ROOT; };
+		1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtsViewController.m; path = MyTee/Classes/MTETShirtsViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +359,7 @@
 		1FDE079614D4CE0500909A11 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1FF7D5EA14D89373000BDE04 /* T-Shirts */,
 				1FDE079714D4CE2700909A11 /* Settings */,
 				1FDE079014D4CB9500909A11 /* UI */,
 			);
@@ -369,6 +373,15 @@
 				1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		1FF7D5EA14D89373000BDE04 /* T-Shirts */ = {
+			isa = PBXGroup;
+			children = (
+				1FF7D5E714D8936E000BDE04 /* MTETShirtsViewController.h */,
+				1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */,
+			);
+			name = "T-Shirts";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,6 +507,7 @@
 				1F294DFB14D73BC800A24AED /* MTESyncManager.m in Sources */,
 				1F294DFE14D73EE300A24AED /* NSString+NSStringURL.m in Sources */,
 				1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */,
+				1FF7D5E914D8936E000BDE04 /* MTETShirtsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +603,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/RestKit/\"/**";
 				WRAPPER_EXTENSION = app;
@@ -601,7 +620,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
-				OTHER_CPLUSPLUSFLAGS = (
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);

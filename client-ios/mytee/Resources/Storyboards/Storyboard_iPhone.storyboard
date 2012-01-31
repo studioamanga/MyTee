@@ -5,26 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
     </dependencies>
     <scenes>
-        <scene sceneID="7qu-61-DR7">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e04-EW-Xb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="kpu-Nw-1Ss" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zm5-8h-35r">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="MyTee" id="Avn-VE-fh0">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="kL6-Ee-vAk">
-                            <connections>
-                                <segue destination="Snp-cF-hnH" kind="modal" modalTransitionStyle="coverVertical" id="aWU-MM-GNf"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="604" y="35"/>
-        </scene>
         <scene sceneID="FvS-Rw-q5d">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4G-aA-4er" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -145,11 +125,43 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kpu-Nw-1Ss" kind="relationship" relationship="rootViewController" id="Alx-NT-Phd"/>
+                        <segue destination="f2x-PP-cMl" kind="relationship" relationship="rootViewController" id="g5D-Yz-hSe"/>
                     </connections>
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="78" y="35"/>
+        </scene>
+        <scene sceneID="T3N-NY-Is5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BRs-wO-P0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="f2x-PP-cMl" customClass="MTETShirtsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gIS-eL-OKQ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MTETShirtCell" id="B7p-bd-qQo">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="f2x-PP-cMl" id="YTo-tY-gHA"/>
+                            <outlet property="delegate" destination="f2x-PP-cMl" id="XUM-3b-FvQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="MyTee" id="HAE-sy-cDo"/>
+                    <connections>
+                        <segue destination="Snp-cF-hnH" kind="modal" identifier="MTELoginSegue" id="1gn-Jo-TYU"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="565" y="35"/>
         </scene>
         <scene sceneID="auR-ws-a1u">
             <objects>
@@ -169,15 +181,6 @@
             <point key="canvasLocation" x="1145" y="740"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="MTESettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTESettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

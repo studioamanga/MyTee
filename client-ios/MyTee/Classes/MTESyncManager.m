@@ -69,7 +69,13 @@
 
 + (void)setupSyncManager
 {
-    [RKObjectManager sharedManager];
+    // RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
+    
+    RKObjectManager * objectManager = [RKObjectManager objectManagerWithBaseURL:MTE_URL_API];
+    objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+    objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"mytee.sqlite"];
+    
+    [RKObjectManager setSharedManager:objectManager];
 }
 
 @end
