@@ -6,8 +6,13 @@
 //  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@class MTESyncManager;
 
 @interface MTETShirtsViewController : UITableViewController
+
+@property (strong, nonatomic) MTESyncManager * syncManager;
+
+- (void)syncFinished:(id)sender;
+- (void)syncFailed:(id)sender;
 
 @end

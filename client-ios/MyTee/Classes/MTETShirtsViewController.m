@@ -10,19 +10,26 @@
 
 #import "MTESyncManager.h"
 
+#import "MBProgressHUD.h"
+#import "MTEConstView.h"
+
 @implementation MTETShirtsViewController
+
+@synthesize syncManager;
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.syncManager = [MTESyncManager new];
+    [self.syncManager setupSyncManager];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self selector:@selector(syncFinished:) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self selector:@selector(syncFailed:) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 
 - (void)viewDidUnload
@@ -48,7 +55,7 @@
     }
     else
     {
-        
+        [self.syncManager startSync];
     }
 }
 
@@ -103,6 +110,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+}
+
+#pragma mark - Sync
+
+- (void)syncFinished:(id)sender
+{
+    MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.labelText = @"Sync Successful!";
+    
+    [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
+}
+
+- (void)syncFailed:(id)sender
+{
+    MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
+    progressHUD.mode = MBProgressHUDModeCustomView;
+    progressHUD.labelText = @"Sync Failed";
+    
+    [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
 }
 
 @end

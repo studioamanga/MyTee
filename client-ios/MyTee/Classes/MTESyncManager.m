@@ -11,9 +11,8 @@
 #import "KeychainItemWrapper.h"
 #import "NSString+NSStringURL.h"
 
-#import "RestKit.h"
-
 #define MTE_URL_API @"http://www.studioamanga.com/mytee/api/"
+#define MTE_URL_TSHIRTS_ALL @"http://www.studioamanga.com/mytee/api/tshirt/all"
 #define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/store/all"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
@@ -67,7 +66,7 @@
 
 #pragma mark - RestKit
 
-+ (void)setupSyncManager
+- (void)setupSyncManager
 {
     // RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
     
@@ -76,6 +75,31 @@
     objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"mytee.sqlite"];
     
     [RKObjectManager setSharedManager:objectManager];
+}
+
+- (void)startSync
+{
+    /*
+     RKManagedObjectMapping* tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class]];
+    [tshirtMapping setPrimaryKeyAttribute:@"identifier"];
+    [tshirtMapping mapKeyPath:@"identifier" toAttribute:@"identifier"];
+    
+    [[RKObjectManager sharedManager].mappingProvider setMapping:tshirtMapping forKeyPath:@"tshirt"];
+    */
+    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:MTE_URL_TSHIRTS_ALL delegate:self];
+}
+
+#pragma mark - Object loader
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 
 @end

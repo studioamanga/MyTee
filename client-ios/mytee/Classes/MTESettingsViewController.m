@@ -10,14 +10,12 @@
 
 #import "MTESyncManager.h"
 
+#import "MTEConstView.h"
+
 @implementation MTESettingsViewController
 
 @synthesize emailTextField;
 @synthesize passwordTextField;
-
-#define MTE_HUD_HIDE_DELAY 2
-#define MTE_HUD_IMAGE_SUCCESS @"19-check"
-#define MTE_HUD_IMAGE_ERROR @"20-no"
 
 #pragma mark - View lifecycle
 

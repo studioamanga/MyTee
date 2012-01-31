@@ -6,9 +6,12 @@
 //  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "RestKit.h"
 
-@interface MTESyncManager : NSObject
+#define MTE_NOTIFICATION_SYNC_FINISHED @"MTENotifSyncFinished"
+#define MTE_NOTIFICATION_SYNC_FAILED @"MTENotifSyncFailed"
+
+@interface MTESyncManager : NSObject <RKObjectLoaderDelegate>
 
 + (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password;
 
@@ -16,6 +19,8 @@
 + (NSString*)emailFromKeychain;
 + (NSString*)passwordFromKeychain;
 
-+ (void)setupSyncManager;
+- (void)setupSyncManager;
+
+- (void)startSync;
 
 @end

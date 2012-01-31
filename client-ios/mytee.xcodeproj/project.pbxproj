@@ -104,6 +104,7 @@
 		1FF7D5E514D88E65000BDE04 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		1FF7D5E714D8936E000BDE04 /* MTETShirtsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtsViewController.h; path = MyTee/Classes/MTETShirtsViewController.h; sourceTree = SOURCE_ROOT; };
 		1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtsViewController.m; path = MyTee/Classes/MTETShirtsViewController.m; sourceTree = SOURCE_ROOT; };
+		1FF7D5EB14D89B61000BDE04 /* MTEConstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEConstView.h; path = MyTee/Classes/MTEConstView.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				1FDE079514D4CBB300909A11 /* Progress HUD */,
+				1FF7D5EB14D89B61000BDE04 /* MTEConstView.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";

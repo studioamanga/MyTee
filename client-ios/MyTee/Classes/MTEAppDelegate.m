@@ -8,8 +8,6 @@
 
 #import "MTEAppDelegate.h"
 
-#import "MTESyncManager.h"
-
 @implementation MTEAppDelegate
 
 @synthesize window = _window;
@@ -19,11 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [MTESyncManager setupSyncManager];
-    
-    UINavigationController * navController = (UINavigationController*)self.window.rootViewController;
-    UIViewController * rootController = [[navController viewControllers] lastObject];
-    
     return YES;
 }
 
