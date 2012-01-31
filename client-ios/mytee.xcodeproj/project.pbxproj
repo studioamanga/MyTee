@@ -45,6 +45,7 @@
 		1FF7D5E614D88E65000BDE04 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E514D88E65000BDE04 /* libxml2.dylib */; };
 		1FF7D5E914D8936E000BDE04 /* MTETShirtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */; };
 		1FF7D5EF14D89D2B000BDE04 /* MTETShirt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */; };
+		1FF7D5F214D8A20A000BDE04 /* MTETShirtExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5F114D8A20A000BDE04 /* MTETShirtExplorer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		1FF7D5EB14D89B61000BDE04 /* MTEConstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEConstView.h; path = MyTee/Classes/MTEConstView.h; sourceTree = SOURCE_ROOT; };
 		1FF7D5ED14D89D2B000BDE04 /* MTETShirt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirt.h; path = MyTee/Classes/MTETShirt.h; sourceTree = SOURCE_ROOT; };
 		1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirt.m; path = MyTee/Classes/MTETShirt.m; sourceTree = SOURCE_ROOT; };
+		1FF7D5F014D8A20A000BDE04 /* MTETShirtExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtExplorer.h; path = MyTee/Classes/MTETShirtExplorer.h; sourceTree = SOURCE_ROOT; };
+		1FF7D5F114D8A20A000BDE04 /* MTETShirtExplorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtExplorer.m; path = MyTee/Classes/MTETShirtExplorer.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +398,8 @@
 			children = (
 				1FF7D5ED14D89D2B000BDE04 /* MTETShirt.h */,
 				1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */,
+				1FF7D5F014D8A20A000BDE04 /* MTETShirtExplorer.h */,
+				1FF7D5F114D8A20A000BDE04 /* MTETShirtExplorer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -524,6 +529,7 @@
 				1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */,
 				1FF7D5E914D8936E000BDE04 /* MTETShirtsViewController.m in Sources */,
 				1FF7D5EF14D89D2B000BDE04 /* MTETShirt.m in Sources */,
+				1FF7D5F214D8A20A000BDE04 /* MTETShirtExplorer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
