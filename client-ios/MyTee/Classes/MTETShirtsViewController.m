@@ -10,12 +10,16 @@
 
 #import "MTESyncManager.h"
 
+#import "MTETShirt.h"
+#import "MTETShirtExplorer.h"
+
 #import "MBProgressHUD.h"
 #import "MTEConstView.h"
 
 @implementation MTETShirtsViewController
 
 @synthesize syncManager;
+@synthesize tshirtExplorer;
 
 #pragma mark - View lifecycle
 
@@ -25,6 +29,11 @@
     
     self.syncManager = [MTESyncManager new];
     [self.syncManager setupSyncManager];
+    
+    self.tshirtExplorer = [MTETShirtExplorer new];
+    NSManagedObjectContext * context = [[[RKObjectManager sharedManager] objectStore] managedObjectContext];
+    [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
+    [self.tshirtExplorer updateData];
 
     [[NSNotificationCenter defaultCenter] 
      addObserver:self selector:@selector(syncFinished:) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
@@ -89,19 +98,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.tshirtExplorer numberOfTShirts];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
+    static NSString *CellIdentifier = @"MTETShirtCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
     
-    // Configure the cell...
+    MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
+    cell.textLabel.text = tshirt.name;
     
     return cell;
 }
@@ -122,6 +128,9 @@
     progressHUD.labelText = @"Sync Successful!";
     
     [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
+    
+    [self.tshirtExplorer updateData];
+    [self.tableView reloadData];
 }
 
 - (void)syncFailed:(id)sender
