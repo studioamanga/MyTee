@@ -38,6 +38,11 @@
 		1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */; };
 		1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079314D4CBA400909A11 /* MBProgressHUD.m */; };
 		1FDE079A14D4CE7700909A11 /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */; };
+		1FF7D5DD14D88D84000BDE04 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5DC14D88D84000BDE04 /* libRestKit.a */; };
+		1FF7D5E014D88E3F000BDE04 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5DF14D88E3F000BDE04 /* CFNetwork.framework */; };
+		1FF7D5E214D88E51000BDE04 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */; };
+		1FF7D5E414D88E58000BDE04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E314D88E58000BDE04 /* SystemConfiguration.framework */; };
+		1FF7D5E614D88E65000BDE04 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E514D88E65000BDE04 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +96,11 @@
 		1FDE079314D4CBA400909A11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		1FDE079814D4CE7700909A11 /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		1FF7D5DC14D88D84000BDE04 /* libRestKit.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libRestKit.a; path = "Libraries/RestKit/build/Release-iphoneos/libRestKit.a"; sourceTree = "<group>"; };
+		1FF7D5DF14D88E3F000BDE04 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		1FF7D5E314D88E58000BDE04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1FF7D5E514D88E65000BDE04 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +108,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF7D5E614D88E65000BDE04 /* libxml2.dylib in Frameworks */,
+				1FF7D5E414D88E58000BDE04 /* SystemConfiguration.framework in Frameworks */,
+				1FF7D5E214D88E51000BDE04 /* MobileCoreServices.framework in Frameworks */,
+				1FF7D5E014D88E3F000BDE04 /* CFNetwork.framework in Frameworks */,
+				1FF7D5DD14D88D84000BDE04 /* libRestKit.a in Frameworks */,
 				1F294E1714D7515A00A24AED /* Security.framework in Frameworks */,
 				1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */,
 				1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */,
@@ -218,6 +233,9 @@
 		1F7BF97714D4429500D7F4A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FF7D5E314D88E58000BDE04 /* SystemConfiguration.framework */,
+				1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */,
+				1FF7D5DF14D88E3F000BDE04 /* CFNetwork.framework */,
 				1F294E1614D7515A00A24AED /* Security.framework */,
 				1F7BF97814D4429500D7F4A3 /* UIKit.framework */,
 				1F7BF97A14D4429500D7F4A3 /* Foundation.framework */,
@@ -274,7 +292,9 @@
 		1F7BF9BC14D44DA600D7F4A3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				1FF7D5E514D88E65000BDE04 /* libxml2.dylib */,
 				1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */,
+				1FF7D5DC14D88D84000BDE04 /* libRestKit.a */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -570,7 +590,7 @@
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/RestKit/\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -581,8 +601,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/RestKit/\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

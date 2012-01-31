@@ -16,4 +16,6 @@
 + (NSString*)emailFromKeychain;
 + (NSString*)passwordFromKeychain;
 
++ (void)setupSyncManager;
+
 @end

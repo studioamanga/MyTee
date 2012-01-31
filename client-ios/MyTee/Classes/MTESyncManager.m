@@ -11,12 +11,17 @@
 #import "KeychainItemWrapper.h"
 #import "NSString+NSStringURL.h"
 
+#import "RestKit.h"
+
+#define MTE_URL_API @"http://www.studioamanga.com/mytee/api/"
 #define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/store/all"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
 #define MTE_KEYCHAIN_ACCESS_GROUP @"77S3V3W24J.com.studioamanga.mytee"
 
 @implementation MTESyncManager
+
+#pragma mark - Keychain
 
 + (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password
 {
@@ -58,6 +63,13 @@
 + (NSString*)passwordFromKeychain;
 {
     return [self valueFromKeychainWithKey:(__bridge NSString*)kSecValueData];
+}
+
+#pragma mark - RestKit
+
++ (void)setupSyncManager
+{
+    [RKObjectManager sharedManager];
 }
 
 @end
