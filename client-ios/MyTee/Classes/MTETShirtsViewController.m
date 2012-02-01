@@ -16,6 +16,8 @@
 #import "MBProgressHUD.h"
 #import "MTEConstView.h"
 
+#import "MTETShirtViewController.h"
+
 @implementation MTETShirtsViewController
 
 @synthesize syncManager;
@@ -57,14 +59,17 @@
 {
     [super viewDidAppear:animated];
     
-    NSString * email = [MTESyncManager emailFromKeychain];
-    if (!email)
+    static BOOL firstTime = YES;
+    
+    if (firstTime)
     {
-        [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
-    }
-    else
-    {
-        [self.syncManager startSync];
+        NSString * email = [MTESyncManager emailFromKeychain];
+        if (!email)
+            [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+        else
+            [self.syncManager startSync];
+        
+        firstTime = NO;
     }
 }
 
@@ -81,6 +86,14 @@
 {
     if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
     {
+    }
+    if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
+    {
+        MTETShirtViewController * viewController = segue.destinationViewController;
+        
+        NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
+        MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
+        viewController.tshirt = tshirt;
     }
 }
 
@@ -109,12 +122,14 @@
     MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
     cell.textLabel.text = tshirt.name;
     
+    /*
     NSString * imagePath = [MTETShirt pathToLocalImageWithIdentifier:tshirt.identifier];
     UIImage * image = [UIImage imageWithContentsOfFile:imagePath];
     if (image)
     {
         [cell.imageView setImage:image];
     }
+    */
     
     return cell;
 }
