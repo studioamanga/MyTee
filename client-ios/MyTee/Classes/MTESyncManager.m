@@ -104,6 +104,31 @@
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
+    
+    if ([[objectLoader resourcePath] rangeOfString:MTE_URL_API_TSHIRTS_ALL].location!=NSNotFound)
+    {
+        NSFileManager * fileManager = [NSFileManager defaultManager];
+        NSOperationQueue * queue = [NSOperationQueue new];
+        
+        for (MTETShirt * tshirt in objects) {
+            if ([tshirt isMemberOfClass:[MTETShirt class]] && tshirt.image_url && ![tshirt.image_url isEqualToString:@""])
+            {
+                NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:tshirt.identifier];
+                if (![fileManager fileExistsAtPath:pathToImage])
+                {
+                    NSURL * url = [NSURL URLWithString:tshirt.image_url];
+                    NSURLRequest * urlRequest = [NSURLRequest requestWithURL:url];
+                    
+                    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse*response, NSData*data, NSError*error){
+                        if(response)
+                        {
+                            [data writeToFile:pathToImage atomically:YES];
+                        }
+                    }];
+                }
+            }
+        }
+    }
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error

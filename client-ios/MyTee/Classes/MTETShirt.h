@@ -22,4 +22,6 @@
 @property (nonatomic, retain) NSString * note;
 @property (nonatomic, retain) NSString * image_url;
 
++ (NSString*)pathToLocalImageWithIdentifier:(NSString*)identifier;
+
 @end

@@ -8,7 +8,6 @@
 
 #import "MTETShirt.h"
 
-
 @implementation MTETShirt
 
 @dynamic identifier;
@@ -21,5 +20,11 @@
 @dynamic tags;
 @dynamic note;
 @dynamic image_url;
+
++ (NSString*)pathToLocalImageWithIdentifier:(NSString*)identifier
+{
+    NSString * directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    return [directory stringByAppendingPathComponent:[NSString stringWithFormat:@"MTE_%@.png", identifier]];
+}
 
 @end
