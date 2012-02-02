@@ -123,15 +123,13 @@
     
     MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
     cell.textLabel.text = tshirt.name;
-    
-    /*
-    NSString * imagePath = [MTETShirt pathToLocalImageWithIdentifier:tshirt.identifier];
+
+    NSString * imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
     UIImage * image = [UIImage imageWithContentsOfFile:imagePath];
     if (image)
     {
         [cell.imageView setImage:image];
     }
-    */
     
     return cell;
 }

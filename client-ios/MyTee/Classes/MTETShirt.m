@@ -30,4 +30,10 @@
     return [directory stringByAppendingPathComponent:[NSString stringWithFormat:@"MTE_%@.jpg", identifier]];
 }
 
++ (NSString*)pathToMiniatureLocalImageWithIdentifier:(NSString*)identifier
+{
+    NSString * directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    return [directory stringByAppendingPathComponent:[NSString stringWithFormat:@"MTE_%@_mini.jpg", identifier]];
+}
+
 @end

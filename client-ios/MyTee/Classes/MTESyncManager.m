@@ -115,6 +115,15 @@
 
 #pragma mark - Object loader
 
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
+{
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();    
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
@@ -137,6 +146,11 @@
                         if(response)
                         {
                             [data writeToFile:pathToImage atomically:YES];
+                        
+                            UIImage * image = [UIImage imageWithData:data];
+                            UIImage * miniImage = [MTESyncManager imageWithImage:image scaledToSize:CGSizeMake(MTE_MINIATURE_IMAGE_SIZE, MTE_MINIATURE_IMAGE_SIZE)];
+                            NSString * pathMini = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
+                            [UIImageJPEGRepresentation(miniImage, 0.8) writeToFile:pathMini atomically:YES];
                         }
                     }];
                 }

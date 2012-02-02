@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+#define MTE_MINIATURE_IMAGE_SIZE 44
+
 @interface MTETShirt : NSManagedObject
 
 @property (nonatomic, retain) NSString * identifier;
@@ -26,5 +28,6 @@
 @property (nonatomic, retain) NSSet * washs;
 
 + (NSString*)pathToLocalImageWithIdentifier:(NSString*)identifier;
++ (NSString*)pathToMiniatureLocalImageWithIdentifier:(NSString*)identifier;
 
 @end
