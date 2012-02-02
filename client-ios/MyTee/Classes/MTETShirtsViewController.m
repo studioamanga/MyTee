@@ -144,7 +144,7 @@
 
 - (void)syncFinished:(id)sender
 {
-    MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.labelText = @"Sync Successful!";
@@ -157,7 +157,7 @@
 
 - (void)syncFailed:(id)sender
 {
-    MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.labelText = @"Sync Failed";

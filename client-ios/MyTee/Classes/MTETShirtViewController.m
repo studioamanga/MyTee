@@ -39,9 +39,15 @@
     UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
     [self.tshirtImageView setImage:image];
     
-    [[self.tshirtImageView layer] setShadowRadius:10];
+    [[self.tshirtImageView layer] setShadowRadius:7];
     [[self.tshirtImageView layer] setShadowColor:[[UIColor blackColor] CGColor]];
     [[self.tshirtImageView layer] setShadowOpacity:0.7];
+    [[self.tshirtImageView layer] setBorderColor:[[UIColor blackColor] CGColor]];
+    [[self.tshirtImageView layer] setBorderWidth:1];
+    
+    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
+    [self.view setBackgroundColor:woodColor];
 }
 
 - (void)viewDidUnload
@@ -54,8 +60,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
