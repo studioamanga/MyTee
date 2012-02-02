@@ -21,6 +21,9 @@
 @dynamic note;
 @dynamic image_url;
 
+@dynamic wears;
+@dynamic washs;
+
 + (NSString*)pathToLocalImageWithIdentifier:(NSString*)identifier
 {
     NSString * directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];

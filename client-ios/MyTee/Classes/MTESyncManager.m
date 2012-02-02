@@ -12,6 +12,8 @@
 #import "NSString+NSStringURL.h"
 
 #import "MTETShirt.h"
+#import "MTEWash.h"
+#import "MTEWear.h"
 
 #define MTE_URL_API @"http://www.studioamanga.com/mytee/api/"
 #define MTE_URL_API_TSHIRTS_ALL @"/tshirt/all"
@@ -75,7 +77,7 @@
 
 - (void)setupSyncManager
 {
-    //RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
+    // RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
     
     RKObjectManager * objectManager = [RKObjectManager objectManagerWithBaseURL:MTE_URL_API];
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
@@ -86,9 +88,21 @@
 
 - (void)startSync
 {
+    RKManagedObjectMapping* wearMapping = [RKManagedObjectMapping mappingForClass:[MTEWear class]];
+    [wearMapping setPrimaryKeyAttribute:@"identifier"];
+    [wearMapping mapAttributes:@"identifier", @"date", nil];
+    //[[RKObjectManager sharedManager].mappingProvider setMapping:wearMapping forKeyPath:@"wear"];
+    
+    RKManagedObjectMapping* washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class]];
+    [washMapping setPrimaryKeyAttribute:@"identifier"];
+    [washMapping mapAttributes:@"identifier", @"date", nil];
+    //[[RKObjectManager sharedManager].mappingProvider setMapping:washMapping forKeyPath:@"wash"];
+    
     RKManagedObjectMapping* tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class]];
     [tshirtMapping setPrimaryKeyAttribute:@"identifier"];
     [tshirtMapping mapAttributes:@"identifier", @"name", @"size", @"color", @"condition", @"location", @"rating", @"tags", @"note", @"image_url", nil];
+    //[tshirtMapping mapKeyPath:@"wear" toRelationship:@"wears" withMapping:wearMapping];
+    //[tshirtMapping mapKeyPath:@"wash" toRelationship:@"washs" withMapping:washMapping];
     
     [[RKObjectManager sharedManager].mappingProvider setMapping:tshirtMapping forKeyPath:@""];
     

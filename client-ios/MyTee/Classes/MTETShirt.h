@@ -22,6 +22,9 @@
 @property (nonatomic, retain) NSString * note;
 @property (nonatomic, retain) NSString * image_url;
 
+@property (nonatomic, retain) NSSet * wears;
+@property (nonatomic, retain) NSSet * washs;
+
 + (NSString*)pathToLocalImageWithIdentifier:(NSString*)identifier;
 
 @end

@@ -20,6 +20,9 @@
 		1F294E1714D7515A00A24AED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F294E1614D7515A00A24AED /* Security.framework */; };
 		1F294E1A14D7558600A24AED /* MTESyncManagerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F6AC78814D9FE890040A06A /* MTETShirtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78714D9FE890040A06A /* MTETShirtViewController.m */; };
+		1F6AC78C14DA03E00040A06A /* MTEWearWashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78B14DA03E00040A06A /* MTEWearWashViewController.m */; };
+		1F6AC78F14DA05DB0040A06A /* MTEWash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78E14DA05DB0040A06A /* MTEWash.m */; };
+		1F6AC79214DA05DC0040A06A /* MTEWear.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC79114DA05DC0040A06A /* MTEWear.m */; };
 		1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
 		1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97A14D4429500D7F4A3 /* Foundation.framework */; };
 		1F7BF97D14D4429500D7F4A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */; };
@@ -77,6 +80,12 @@
 		1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MTESyncManagerSpec.mm; path = MyTeeTests/Specs/MTESyncManagerSpec.mm; sourceTree = SOURCE_ROOT; };
 		1F6AC78614D9FE890040A06A /* MTETShirtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtViewController.h; path = MyTee/Classes/MTETShirtViewController.h; sourceTree = SOURCE_ROOT; };
 		1F6AC78714D9FE890040A06A /* MTETShirtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtViewController.m; path = MyTee/Classes/MTETShirtViewController.m; sourceTree = SOURCE_ROOT; };
+		1F6AC78A14DA03E00040A06A /* MTEWearWashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEWearWashViewController.h; path = MyTee/Classes/MTEWearWashViewController.h; sourceTree = SOURCE_ROOT; };
+		1F6AC78B14DA03E00040A06A /* MTEWearWashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEWearWashViewController.m; path = MyTee/Classes/MTEWearWashViewController.m; sourceTree = SOURCE_ROOT; };
+		1F6AC78D14DA05DB0040A06A /* MTEWash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEWash.h; path = MyTee/Classes/MTEWash.h; sourceTree = SOURCE_ROOT; };
+		1F6AC78E14DA05DB0040A06A /* MTEWash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEWash.m; path = MyTee/Classes/MTEWash.m; sourceTree = SOURCE_ROOT; };
+		1F6AC79014DA05DC0040A06A /* MTEWear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEWear.h; path = MyTee/Classes/MTEWear.h; sourceTree = SOURCE_ROOT; };
+		1F6AC79114DA05DC0040A06A /* MTEWear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEWear.m; path = MyTee/Classes/MTEWear.m; sourceTree = SOURCE_ROOT; };
 		1F7BF97414D4429500D7F4A3 /* mytee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mytee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7BF97814D4429500D7F4A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F7BF97A14D4429500D7F4A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -394,6 +403,8 @@
 				1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */,
 				1F6AC78614D9FE890040A06A /* MTETShirtViewController.h */,
 				1F6AC78714D9FE890040A06A /* MTETShirtViewController.m */,
+				1F6AC78A14DA03E00040A06A /* MTEWearWashViewController.h */,
+				1F6AC78B14DA03E00040A06A /* MTEWearWashViewController.m */,
 			);
 			name = "T-Shirts";
 			sourceTree = "<group>";
@@ -405,6 +416,10 @@
 				1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */,
 				1FF7D5F014D8A20A000BDE04 /* MTETShirtExplorer.h */,
 				1FF7D5F114D8A20A000BDE04 /* MTETShirtExplorer.m */,
+				1F6AC79014DA05DC0040A06A /* MTEWear.h */,
+				1F6AC79114DA05DC0040A06A /* MTEWear.m */,
+				1F6AC78D14DA05DB0040A06A /* MTEWash.h */,
+				1F6AC78E14DA05DB0040A06A /* MTEWash.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -536,6 +551,9 @@
 				1FF7D5EF14D89D2B000BDE04 /* MTETShirt.m in Sources */,
 				1FF7D5F214D8A20A000BDE04 /* MTETShirtExplorer.m in Sources */,
 				1F6AC78814D9FE890040A06A /* MTETShirtViewController.m in Sources */,
+				1F6AC78C14DA03E00040A06A /* MTEWearWashViewController.m in Sources */,
+				1F6AC78F14DA05DB0040A06A /* MTEWash.m in Sources */,
+				1F6AC79214DA05DC0040A06A /* MTEWear.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

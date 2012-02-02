@@ -82,11 +82,13 @@
 {
     [super viewDidDisappear:animated];
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
     {
     }
+    
     if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
     {
         MTETShirtViewController * viewController = segue.destinationViewController;

@@ -10,6 +10,8 @@
 
 #import "MTETShirt.h"
 
+#import "MTEWearWashViewController.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @implementation MTETShirtViewController
@@ -54,6 +56,20 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"MTEWearSegue"])
+    {
+        MTEWearWashViewController * viewController = segue.destinationViewController;
+        viewController.datesObjects = [tshirt.wears allObjects];
+    }
+    if ([[segue identifier] isEqualToString:@"MTEWashSegue"])
+    {
+        MTEWearWashViewController * viewController = segue.destinationViewController;
+        viewController.datesObjects = [tshirt.washs allObjects];
+    }
 }
 
 @end
