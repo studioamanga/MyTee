@@ -33,9 +33,8 @@
 {
     [super viewDidLoad];
     
+    [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
     self.title = tshirt.name;
-    
-    NSLog(@"%@", [tshirt.wears description]);
     
     NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:tshirt.identifier];
     UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
