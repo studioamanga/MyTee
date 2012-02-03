@@ -77,32 +77,33 @@
 
 - (void)setupSyncManager
 {
-    // RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
+    //RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
     
     RKObjectManager * objectManager = [RKObjectManager objectManagerWithBaseURL:MTE_URL_API];
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"mytee.sqlite"];
+    
+    NSTimeZone * utc = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    [RKManagedObjectMapping addDefaultDateFormatterForString:@"yyyy-MM-dd" inTimeZone:utc];
     
     [RKObjectManager setSharedManager:objectManager];
 }
 
 - (void)startSync
 {
-    RKManagedObjectMapping* wearMapping = [RKManagedObjectMapping mappingForClass:[MTEWear class]];
+    RKManagedObjectMapping * wearMapping = [RKManagedObjectMapping mappingForClass:[MTEWear class]];
     [wearMapping setPrimaryKeyAttribute:@"identifier"];
     [wearMapping mapAttributes:@"identifier", @"date", nil];
-    //[[RKObjectManager sharedManager].mappingProvider setMapping:wearMapping forKeyPath:@"wear"];
     
     RKManagedObjectMapping* washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class]];
     [washMapping setPrimaryKeyAttribute:@"identifier"];
     [washMapping mapAttributes:@"identifier", @"date", nil];
-    //[[RKObjectManager sharedManager].mappingProvider setMapping:washMapping forKeyPath:@"wash"];
     
-    RKManagedObjectMapping* tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class]];
+    RKManagedObjectMapping * tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class]];
     [tshirtMapping setPrimaryKeyAttribute:@"identifier"];
     [tshirtMapping mapAttributes:@"identifier", @"name", @"size", @"color", @"condition", @"location", @"rating", @"tags", @"note", @"image_url", nil];
-    //[tshirtMapping mapKeyPath:@"wear" toRelationship:@"wears" withMapping:wearMapping];
-    //[tshirtMapping mapKeyPath:@"wash" toRelationship:@"washs" withMapping:washMapping];
+    [tshirtMapping mapKeyPath:@"wear" toRelationship:@"wears" withMapping:wearMapping];
+    [tshirtMapping mapKeyPath:@"wash" toRelationship:@"washs" withMapping:washMapping];
     
     [[RKObjectManager sharedManager].mappingProvider setMapping:tshirtMapping forKeyPath:@""];
     
@@ -126,6 +127,8 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
+    NSLog(@">> didLoadObjects %d", [objects count]);
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
     
     if ([[objectLoader resourcePath] rangeOfString:MTE_URL_API_TSHIRTS_ALL].location!=NSNotFound)

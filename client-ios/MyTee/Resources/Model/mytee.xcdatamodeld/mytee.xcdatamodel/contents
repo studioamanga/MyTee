@@ -11,7 +11,7 @@
         <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="washs" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="MTEWash" inverseName="tshirt" inverseEntity="MTEWash" syncable="YES"/>
+        <relationship name="washs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTEWash" inverseName="tshirt" inverseEntity="MTEWash" syncable="YES"/>
         <relationship name="wears" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTEWear" inverseName="tshirt" inverseEntity="MTEWear" syncable="YES"/>
     </entity>
     <entity name="MTEWash" representedClassName="MTEWash" syncable="YES">
@@ -26,7 +26,7 @@
     </entity>
     <elements>
         <element name="MTETShirt" positionX="160" positionY="192" width="128" height="225"/>
-        <element name="MTEWear" positionX="160" positionY="192" width="128" height="90"/>
         <element name="MTEWash" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="MTEWear" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>
