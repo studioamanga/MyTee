@@ -27,6 +27,8 @@
 		1F01F17014DC161700D6EF0C /* 67-tshirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16E14DC161700D6EF0C /* 67-tshirt.png */; };
 		1F01F17114DC161700D6EF0C /* 67-tshirt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */; };
 		1F230B2F14DC98D500B65E7E /* MTEStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F230B2E14DC98D500B65E7E /* MTEStore.m */; };
+		1F230B3214DCA31A00B65E7E /* 80-shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F230B3014DCA31A00B65E7E /* 80-shopping-cart.png */; };
+		1F230B3314DCA31A00B65E7E /* 80-shopping-cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F230B3114DCA31A00B65E7E /* 80-shopping-cart@2x.png */; };
 		1F294DFB14D73BC800A24AED /* MTESyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F294DFA14D73BC800A24AED /* MTESyncManager.m */; };
 		1F294DFE14D73EE300A24AED /* NSString+NSStringURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F294DFD14D73EE300A24AED /* NSString+NSStringURL.m */; };
 		1F294E0314D7457900A24AED /* 19-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0114D7457900A24AED /* 19-check.png */; };
@@ -107,6 +109,8 @@
 		1F230B2B14DC981A00B65E7E /* mytee 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "mytee 2.xcdatamodel"; sourceTree = "<group>"; };
 		1F230B2D14DC98D500B65E7E /* MTEStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEStore.h; path = MyTee/Classes/MTEStore.h; sourceTree = SOURCE_ROOT; };
 		1F230B2E14DC98D500B65E7E /* MTEStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEStore.m; path = MyTee/Classes/MTEStore.m; sourceTree = SOURCE_ROOT; };
+		1F230B3014DCA31A00B65E7E /* 80-shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "80-shopping-cart.png"; path = "MyTee/Resources/Images/80-shopping-cart.png"; sourceTree = SOURCE_ROOT; };
+		1F230B3114DCA31A00B65E7E /* 80-shopping-cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "80-shopping-cart@2x.png"; path = "MyTee/Resources/Images/80-shopping-cart@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F294DF914D73BC800A24AED /* MTESyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESyncManager.h; path = MyTee/Classes/MTESyncManager.h; sourceTree = SOURCE_ROOT; };
 		1F294DFA14D73BC800A24AED /* MTESyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESyncManager.m; path = MyTee/Classes/MTESyncManager.m; sourceTree = SOURCE_ROOT; };
 		1F294DFC14D73EE300A24AED /* NSString+NSStringURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSStringURL.h"; path = "MyTee/Classes/NSString+NSStringURL.h"; sourceTree = SOURCE_ROOT; };
@@ -245,6 +249,8 @@
 				1F01F16414DC11E700D6EF0C /* 83-calendar@2x.png */,
 				1F01F16E14DC161700D6EF0C /* 67-tshirt.png */,
 				1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */,
+				1F230B3014DCA31A00B65E7E /* 80-shopping-cart.png */,
+				1F230B3114DCA31A00B65E7E /* 80-shopping-cart@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -621,6 +627,8 @@
 				1F01F16D14DC15CB00D6EF0C /* wash@2x.png in Resources */,
 				1F01F17014DC161700D6EF0C /* 67-tshirt.png in Resources */,
 				1F01F17114DC161700D6EF0C /* 67-tshirt@2x.png in Resources */,
+				1F230B3214DCA31A00B65E7E /* 80-shopping-cart.png in Resources */,
+				1F230B3314DCA31A00B65E7E /* 80-shopping-cart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

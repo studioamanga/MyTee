@@ -9,6 +9,7 @@
 #import "MTETShirtViewController.h"
 
 #import "MTETShirt.h"
+#import "MTEStore.h"
 
 #import "MTEWearWashViewController.h"
 
@@ -18,14 +19,7 @@
 
 @synthesize tshirt;
 @synthesize tshirtImageView;
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+@synthesize storeNameLabel;
 
 #pragma mark - View lifecycle
 
@@ -35,6 +29,8 @@
     
     [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
     self.title = tshirt.name;
+    
+    self.storeNameLabel.text = tshirt.store.name;
     
     NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:tshirt.identifier];
     UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
@@ -54,6 +50,7 @@
 - (void)viewDidUnload
 {
     [self setTshirtImageView:nil];
+    [self setStoreNameLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
