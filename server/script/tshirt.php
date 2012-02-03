@@ -41,7 +41,7 @@
 		return $wash;
 	}
 	
-	function fectch_wash_wear_for_tshirt($database, $tshirt)
+	function fectch_wash_wear_store_for_tshirt($database, $tshirt)
 	{
 		$wears = $database->fetch('mt_wear', 'wea_tshirt_id='.$tshirt['identifier'].'');
 		foreach($wears as &$wear)
@@ -52,6 +52,13 @@
 		foreach($washs as &$wash)
 			$wash = clean_wash_from_db($wash);
 		$tshirt['wash'] = $washs;
+					
+		$stores = $database->fetch('mt_store', '`sto_id`=\''.$tshirt['store_id'].'\'');
+		if (count($stores)==1)
+		{
+			$tshirt['store'] = clean_store_from_db($stores[0]);
+		}
+		unset($tshirt['store_id']);
 		
 		return $tshirt;
 	}

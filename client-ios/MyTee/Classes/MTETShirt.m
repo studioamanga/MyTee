@@ -21,6 +21,7 @@
 @dynamic note;
 @dynamic image_url;
 
+@dynamic store;
 @dynamic wears;
 @dynamic washs;
 

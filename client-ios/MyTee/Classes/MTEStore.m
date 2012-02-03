@@ -1,0 +1,24 @@
+//
+//  MTEStore.m
+//  mytee
+//
+//  Created by Vincent Tourraine on 2/3/12.
+//  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
+//
+
+#import "MTEStore.h"
+#import "MTETShirt.h"
+
+@implementation MTEStore
+
+@dynamic identifier;
+@dynamic name;
+@dynamic type;
+@dynamic address;
+@dynamic url;
+@dynamic latitude;
+@dynamic longitude;
+
+@dynamic tshirts;
+
+@end

@@ -14,9 +14,11 @@
 #import "MTETShirt.h"
 #import "MTEWash.h"
 #import "MTEWear.h"
+#import "MTEStore.h"
 
 #define MTE_URL_API @"http://www.studioamanga.com/mytee/api/"
 #define MTE_URL_API_TSHIRTS_ALL @"/tshirt/all"
+#define MTE_URL_API_STORES_ALL @"/store/all"
 #define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/store/all"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
@@ -91,6 +93,10 @@
 
 - (void)startSync
 {
+    RKManagedObjectMapping * storeMapping = [RKManagedObjectMapping mappingForClass:[MTEStore class]];
+    [storeMapping setPrimaryKeyAttribute:@"identifier"];
+    [storeMapping mapAttributes:@"identifier", @"name", @"type", @"address", @"url", nil];
+    
     RKManagedObjectMapping * wearMapping = [RKManagedObjectMapping mappingForClass:[MTEWear class]];
     [wearMapping setPrimaryKeyAttribute:@"identifier"];
     [wearMapping mapAttributes:@"identifier", @"date", nil];
@@ -104,6 +110,7 @@
     [tshirtMapping mapAttributes:@"identifier", @"name", @"size", @"color", @"condition", @"location", @"rating", @"tags", @"note", @"image_url", nil];
     [tshirtMapping mapKeyPath:@"wear" toRelationship:@"wears" withMapping:wearMapping];
     [tshirtMapping mapKeyPath:@"wash" toRelationship:@"washs" withMapping:washMapping];
+    [tshirtMapping mapKeyPath:@"store" toRelationship:@"store" withMapping:storeMapping];
     
     [[RKObjectManager sharedManager].mappingProvider setMapping:tshirtMapping forKeyPath:@""];
     

@@ -6,10 +6,9 @@
 //  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-
 #define MTE_MINIATURE_IMAGE_SIZE 44
+
+@class MTEStore;
 
 @interface MTETShirt : NSManagedObject
 
@@ -24,6 +23,7 @@
 @property (nonatomic, retain) NSString * note;
 @property (nonatomic, retain) NSString * image_url;
 
+@property (nonatomic, retain) MTEStore * store;
 @property (nonatomic, retain) NSSet * wears;
 @property (nonatomic, retain) NSSet * washs;
 
