@@ -16,6 +16,8 @@
 		1F01F15614DB3FE500D6EF0C /* linen-light-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F15414DB3FE500D6EF0C /* linen-light-bar.png */; };
 		1F01F15714DB3FE500D6EF0C /* linen-light-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F15514DB3FE500D6EF0C /* linen-light-bar@2x.png */; };
 		1F01F15A14DB464800D6EF0C /* MTETShirtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F01F15914DB464700D6EF0C /* MTETShirtCell.m */; };
+		1F01F15D14DC055900D6EF0C /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F01F15C14DC055900D6EF0C /* ShadowedTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1F01F15F14DC05FC00D6EF0C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F01F15E14DC05FC00D6EF0C /* QuartzCore.framework */; };
 		1F294DFB14D73BC800A24AED /* MTESyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F294DFA14D73BC800A24AED /* MTESyncManager.m */; };
 		1F294DFE14D73EE300A24AED /* NSString+NSStringURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F294DFD14D73EE300A24AED /* NSString+NSStringURL.m */; };
 		1F294E0314D7457900A24AED /* 19-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0114D7457900A24AED /* 19-check.png */; };
@@ -82,6 +84,9 @@
 		1F01F15514DB3FE500D6EF0C /* linen-light-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linen-light-bar@2x.png"; path = "MyTee/Resources/Images/linen-light-bar@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F01F15814DB464700D6EF0C /* MTETShirtCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtCell.h; path = MyTee/Classes/MTETShirtCell.h; sourceTree = SOURCE_ROOT; };
 		1F01F15914DB464700D6EF0C /* MTETShirtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtCell.m; path = MyTee/Classes/MTETShirtCell.m; sourceTree = SOURCE_ROOT; };
+		1F01F15B14DC055900D6EF0C /* ShadowedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadowedTableView.h; path = Libraries/ShadowedTableView/ShadowedTableView.h; sourceTree = SOURCE_ROOT; };
+		1F01F15C14DC055900D6EF0C /* ShadowedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadowedTableView.m; path = Libraries/ShadowedTableView/ShadowedTableView.m; sourceTree = SOURCE_ROOT; };
+		1F01F15E14DC05FC00D6EF0C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1F294DF914D73BC800A24AED /* MTESyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESyncManager.h; path = MyTee/Classes/MTESyncManager.h; sourceTree = SOURCE_ROOT; };
 		1F294DFA14D73BC800A24AED /* MTESyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESyncManager.m; path = MyTee/Classes/MTESyncManager.m; sourceTree = SOURCE_ROOT; };
 		1F294DFC14D73EE300A24AED /* NSString+NSStringURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSStringURL.h"; path = "MyTee/Classes/NSString+NSStringURL.h"; sourceTree = SOURCE_ROOT; };
@@ -149,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F01F15F14DC05FC00D6EF0C /* QuartzCore.framework in Frameworks */,
 				1FF7D5E614D88E65000BDE04 /* libxml2.dylib in Frameworks */,
 				1FF7D5E414D88E58000BDE04 /* SystemConfiguration.framework in Frameworks */,
 				1FF7D5E214D88E51000BDE04 /* MobileCoreServices.framework in Frameworks */,
@@ -197,6 +203,15 @@
 				1F01F15514DB3FE500D6EF0C /* linen-light-bar@2x.png */,
 			);
 			name = "Linen Nav Bar";
+			sourceTree = "<group>";
+		};
+		1F01F16014DC065500D6EF0C /* Shadowed Table View */ = {
+			isa = PBXGroup;
+			children = (
+				1F01F15B14DC055900D6EF0C /* ShadowedTableView.h */,
+				1F01F15C14DC055900D6EF0C /* ShadowedTableView.m */,
+			);
+			name = "Shadowed Table View";
 			sourceTree = "<group>";
 		};
 		1F294DF714D73B9E00A24AED /* Shared */ = {
@@ -298,6 +313,7 @@
 		1F7BF97714D4429500D7F4A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F01F15E14DC05FC00D6EF0C /* QuartzCore.framework */,
 				1FF7D5E314D88E58000BDE04 /* SystemConfiguration.framework */,
 				1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */,
 				1FF7D5DF14D88E3F000BDE04 /* CFNetwork.framework */,
@@ -405,6 +421,7 @@
 		1FDE079014D4CB9500909A11 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1F01F16014DC065500D6EF0C /* Shadowed Table View */,
 				1FDE079514D4CBB300909A11 /* Progress HUD */,
 				1FF7D5EB14D89B61000BDE04 /* MTEConstView.h */,
 			);
@@ -608,6 +625,7 @@
 				1F6AC78F14DA05DB0040A06A /* MTEWash.m in Sources */,
 				1F6AC79214DA05DC0040A06A /* MTEWear.m in Sources */,
 				1F01F15A14DB464800D6EF0C /* MTETShirtCell.m in Sources */,
+				1F01F15D14DC055900D6EF0C /* ShadowedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
