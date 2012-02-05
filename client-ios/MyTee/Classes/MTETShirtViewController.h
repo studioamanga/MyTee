@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic) MTETShirt * tshirt;
 @property (weak, nonatomic) IBOutlet UIImageView *tshirtImageView;
-@property (weak, nonatomic) IBOutlet UILabel *storeNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *storeButton;
 
 @end

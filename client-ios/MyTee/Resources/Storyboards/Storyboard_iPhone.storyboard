@@ -189,7 +189,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ONz-ct-5C9">
-                                <rect key="frame" x="20" y="359" width="135" height="37"/>
+                                <rect key="frame" x="20" y="364" width="135" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Wear History">
@@ -204,7 +204,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xgu-SI-fbE">
-                                <rect key="frame" x="165" y="359" width="135" height="37"/>
+                                <rect key="frame" x="165" y="364" width="135" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Wash History">
@@ -218,36 +218,90 @@
                                     <segue destination="K3Y-Wh-dGD" kind="push" identifier="MTEWashSegue" id="sNb-aL-rNE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Store" lineBreakMode="tailTruncation" minimumFontSize="10" id="KvU-fj-Mfc">
-                                <rect key="frame" x="54" y="327" width="246" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VPA-Hw-1eE">
+                                <rect key="frame" x="20" y="319" width="280" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="80-shopping-cart.png" id="bGS-Ge-LMZ">
-                                <rect key="frame" x="20" y="325" width="26" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Store" image="80-shopping-cart.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9VM-uu-YyO" kind="push" identifier="MTEStoreSegue" id="GdT-BR-eUh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="5Bi-o2-jda"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="storeNameLabel" destination="KvU-fj-Mfc" id="jkq-ad-zS6"/>
+                        <outlet property="storeButton" destination="VPA-Hw-1eE" id="v8U-Ih-PXc"/>
                         <outlet property="tshirtImageView" destination="pZB-kh-iHJ" id="mO7-br-JSN"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1101" y="35"/>
         </scene>
+        <scene sceneID="x6A-Cm-Vwz">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0rd-GX-wOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="9VM-uu-YyO" customClass="MTEStoreViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zuq-r2-poB" customClass="UIScrollView">
+                        <rect key="frame" x="0.0" y="64" width="320" height="395"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Store Name" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="PTL-Fa-UcH">
+                                <rect key="frame" x="20" y="41" width="280" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="72-pin.png" id="LMD-1T-wsF">
+                                <rect key="frame" x="20" y="141" width="26" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Address" lineBreakMode="tailTruncation" minimumFontSize="10" id="O14-bB-NQh">
+                                <rect key="frame" x="54" y="141" width="246" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Type" lineBreakMode="tailTruncation" minimumFontSize="10" id="hrn-q3-lMG">
+                                <rect key="frame" x="20" y="104" width="246" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Store" id="C0w-TM-1rR"/>
+                    <connections>
+                        <outlet property="addressIconImageView" destination="LMD-1T-wsF" id="ISB-of-9AB"/>
+                        <outlet property="addressLabel" destination="O14-bB-NQh" id="rg8-yb-Bw5"/>
+                        <outlet property="nameLabel" destination="PTL-Fa-UcH" id="ul9-Ua-UM9"/>
+                        <outlet property="typeLabel" destination="hrn-q3-lMG" id="DWd-0j-LWf"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1738" y="49"/>
+        </scene>
         <scene sceneID="8mz-ze-qRs">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6b-qq-Zwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="K3Y-Wh-dGD" customClass="MTEWearWashViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XtK-US-Olr" customClass="ShadowedTableView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="352"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="395"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -283,14 +337,14 @@
                     <navigationItem key="navigationItem" title="Wash History" id="rAl-9w-Oku"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1671" y="105"/>
+            <point key="canvasLocation" x="1671" y="-607"/>
         </scene>
         <scene sceneID="Zl6-37-ePq">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uo3-23-QIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="IDv-Bp-Qgf" customClass="MTEWearWashViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TYQ-EH-NuD" customClass="ShadowedTableView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="352"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="395"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -326,7 +380,7 @@
                     <navigationItem key="navigationItem" title="Wear History" id="EoT-DQ-5Dy"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1671" y="-496"/>
+            <point key="canvasLocation" x="1671" y="-1208"/>
         </scene>
         <scene sceneID="auR-ws-a1u">
             <objects>
@@ -347,6 +401,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="72-pin.png" width="10" height="20"/>
         <image name="80-shopping-cart.png" width="26" height="19"/>
         <image name="83-calendar.png" width="23" height="25"/>
     </resources>

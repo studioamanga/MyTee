@@ -46,6 +46,7 @@
 		1F6AC78F14DA05DB0040A06A /* MTEWash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78E14DA05DB0040A06A /* MTEWash.m */; };
 		1F6AC79214DA05DC0040A06A /* MTEWear.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC79114DA05DC0040A06A /* MTEWear.m */; };
 		1F74FC8F14DEEDCB0034BA02 /* MTEManagedObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F74FC8E14DEEDCB0034BA02 /* MTEManagedObjectCache.m */; };
+		1F74FC9414DEF6130034BA02 /* MTEStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F74FC9314DEF6130034BA02 /* MTEStoreViewController.m */; };
 		1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
 		1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97A14D4429500D7F4A3 /* Foundation.framework */; };
 		1F7BF97D14D4429500D7F4A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */; };
@@ -137,6 +138,8 @@
 		1F6AC79114DA05DC0040A06A /* MTEWear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEWear.m; path = MyTee/Classes/MTEWear.m; sourceTree = SOURCE_ROOT; };
 		1F74FC8D14DEEDCB0034BA02 /* MTEManagedObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEManagedObjectCache.h; path = MyTee/Classes/MTEManagedObjectCache.h; sourceTree = SOURCE_ROOT; };
 		1F74FC8E14DEEDCB0034BA02 /* MTEManagedObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEManagedObjectCache.m; path = MyTee/Classes/MTEManagedObjectCache.m; sourceTree = SOURCE_ROOT; };
+		1F74FC9214DEF6130034BA02 /* MTEStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEStoreViewController.h; path = MyTee/Classes/MTEStoreViewController.h; sourceTree = SOURCE_ROOT; };
+		1F74FC9314DEF6130034BA02 /* MTEStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEStoreViewController.m; path = MyTee/Classes/MTEStoreViewController.m; sourceTree = SOURCE_ROOT; };
 		1F7BF97414D4429500D7F4A3 /* mytee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mytee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7BF97814D4429500D7F4A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F7BF97A14D4429500D7F4A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -337,6 +340,15 @@
 			name = Specs;
 			sourceTree = "<group>";
 		};
+		1F74FC9114DEF5740034BA02 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				1F74FC9214DEF6130034BA02 /* MTEStoreViewController.h */,
+				1F74FC9314DEF6130034BA02 /* MTEStoreViewController.m */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
 		1F7BF96914D4429400D7F4A3 = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				1FF7D5EA14D89373000BDE04 /* T-Shirts */,
+				1F74FC9114DEF5740034BA02 /* Store */,
 				1FDE079714D4CE2700909A11 /* Settings */,
 				1FDE079014D4CB9500909A11 /* UI */,
 			);
@@ -687,6 +700,7 @@
 				1F01F15D14DC055900D6EF0C /* ShadowedTableView.m in Sources */,
 				1F230B2F14DC98D500B65E7E /* MTEStore.m in Sources */,
 				1F74FC8F14DEEDCB0034BA02 /* MTEManagedObjectCache.m in Sources */,
+				1F74FC9414DEF6130034BA02 /* MTEStoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

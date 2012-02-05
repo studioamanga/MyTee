@@ -12,6 +12,7 @@
 #import "MTEStore.h"
 
 #import "MTEWearWashViewController.h"
+#import "MTEStoreViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -19,7 +20,7 @@
 
 @synthesize tshirt;
 @synthesize tshirtImageView;
-@synthesize storeNameLabel;
+@synthesize storeButton;
 
 #pragma mark - View lifecycle
 
@@ -30,15 +31,15 @@
     [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
     self.title = tshirt.name;
     
-    self.storeNameLabel.text = tshirt.store.name;
+    [self.storeButton setTitle:tshirt.store.name forState:UIControlStateNormal];
     
     NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:tshirt.identifier];
     UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
     [self.tshirtImageView setImage:image];
     
-    [[self.tshirtImageView layer] setShadowRadius:7];
-    [[self.tshirtImageView layer] setShadowColor:[[UIColor blackColor] CGColor]];
-    [[self.tshirtImageView layer] setShadowOpacity:0.7];
+    //[[self.tshirtImageView layer] setShadowRadius:7];
+    //[[self.tshirtImageView layer] setShadowColor:[[UIColor blackColor] CGColor]];
+    //[[self.tshirtImageView layer] setShadowOpacity:0.7];
     [[self.tshirtImageView layer] setBorderColor:[[UIColor blackColor] CGColor]];
     [[self.tshirtImageView layer] setBorderWidth:1];
     
@@ -49,11 +50,10 @@
 
 - (void)viewDidUnload
 {
-    [self setTshirtImageView:nil];
-    [self setStoreNameLabel:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    
+    [self setTshirtImageView:nil];
+    [self setStoreButton:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -72,6 +72,11 @@
     {
         MTEWearWashViewController * viewController = segue.destinationViewController;
         viewController.datesObjects = [tshirt.washs sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
+    }
+    if ([[segue identifier] isEqualToString:@"MTEStoreSegue"])
+    {
+        MTEStoreViewController * viewController = segue.destinationViewController;
+        viewController.store = tshirt.store;
     }
 }
 
