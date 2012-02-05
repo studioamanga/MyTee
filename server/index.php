@@ -78,7 +78,7 @@
 		{
 			if($api_parameter=='all')
 			{
-				$tshirts = $database->fetch('mt_tshirt', '`tsh_user_id`=\''.$user->use_id.'\'');
+				$tshirts = $database->fetch('mt_tshirt', '`tsh_user_id`=\''.$user->use_id.'\' AND `tsh_is_mine`=\'1\'');
 		
 				foreach ($tshirts as &$tshirt) 
 				{
