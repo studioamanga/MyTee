@@ -66,12 +66,12 @@
     if ([[segue identifier] isEqualToString:@"MTEWearSegue"])
     {
         MTEWearWashViewController * viewController = segue.destinationViewController;
-        viewController.datesObjects = [tshirt.wears allObjects];
+        viewController.datesObjects = [tshirt.wears sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
     }
     if ([[segue identifier] isEqualToString:@"MTEWashSegue"])
     {
         MTEWearWashViewController * viewController = segue.destinationViewController;
-        viewController.datesObjects = [tshirt.washs allObjects];
+        viewController.datesObjects = [tshirt.washs sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
     }
 }
 
