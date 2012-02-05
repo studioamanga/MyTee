@@ -10,6 +10,7 @@
 
 #import "KeychainItemWrapper.h"
 #import "NSString+NSStringURL.h"
+#import "MTEManagedObjectCache.h"
 
 #import "MTETShirt.h"
 #import "MTEWash.h"
@@ -17,8 +18,6 @@
 #import "MTEStore.h"
 
 #define MTE_URL_API @"http://www.studioamanga.com/mytee/api/"
-#define MTE_URL_API_TSHIRTS_ALL @"/tshirt/all"
-#define MTE_URL_API_STORES_ALL @"/store/all"
 #define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/store/all"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
@@ -87,6 +86,8 @@
     
     NSTimeZone * utc = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     [RKManagedObjectMapping addDefaultDateFormatterForString:@"yyyy-MM-dd" inTimeZone:utc];
+    
+    objectManager.objectStore.managedObjectCache = [MTEManagedObjectCache new];
     
     [RKObjectManager setSharedManager:objectManager];
 }
