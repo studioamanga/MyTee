@@ -45,6 +45,10 @@
 		1F6AC78C14DA03E00040A06A /* MTEWearWashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78B14DA03E00040A06A /* MTEWearWashViewController.m */; };
 		1F6AC78F14DA05DB0040A06A /* MTEWash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78E14DA05DB0040A06A /* MTEWash.m */; };
 		1F6AC79214DA05DC0040A06A /* MTEWear.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC79114DA05DC0040A06A /* MTEWear.m */; };
+		1F6B7FD214E0811B00292B62 /* 14-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B7FD014E0811B00292B62 /* 14-tag.png */; };
+		1F6B7FD314E0811B00292B62 /* 14-tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B7FD114E0811B00292B62 /* 14-tag@2x.png */; };
+		1F6B7FD714E0813E00292B62 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B7FD514E0813E00292B62 /* 179-notepad.png */; };
+		1F6B7FD814E0813E00292B62 /* 179-notepad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6B7FD614E0813E00292B62 /* 179-notepad@2x.png */; };
 		1F74FC8F14DEEDCB0034BA02 /* MTEManagedObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F74FC8E14DEEDCB0034BA02 /* MTEManagedObjectCache.m */; };
 		1F74FC9414DEF6130034BA02 /* MTEStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F74FC9314DEF6130034BA02 /* MTEStoreViewController.m */; };
 		1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
@@ -136,6 +140,10 @@
 		1F6AC78E14DA05DB0040A06A /* MTEWash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEWash.m; path = MyTee/Classes/MTEWash.m; sourceTree = SOURCE_ROOT; };
 		1F6AC79014DA05DC0040A06A /* MTEWear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEWear.h; path = MyTee/Classes/MTEWear.h; sourceTree = SOURCE_ROOT; };
 		1F6AC79114DA05DC0040A06A /* MTEWear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEWear.m; path = MyTee/Classes/MTEWear.m; sourceTree = SOURCE_ROOT; };
+		1F6B7FD014E0811B00292B62 /* 14-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "14-tag.png"; path = "MyTee/Resources/Images/14-tag.png"; sourceTree = SOURCE_ROOT; };
+		1F6B7FD114E0811B00292B62 /* 14-tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "14-tag@2x.png"; path = "MyTee/Resources/Images/14-tag@2x.png"; sourceTree = SOURCE_ROOT; };
+		1F6B7FD514E0813E00292B62 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "179-notepad.png"; path = "MyTee/Resources/Images/179-notepad.png"; sourceTree = SOURCE_ROOT; };
+		1F6B7FD614E0813E00292B62 /* 179-notepad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "179-notepad@2x.png"; path = "MyTee/Resources/Images/179-notepad@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F74FC8D14DEEDCB0034BA02 /* MTEManagedObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEManagedObjectCache.h; path = MyTee/Classes/MTEManagedObjectCache.h; sourceTree = SOURCE_ROOT; };
 		1F74FC8E14DEEDCB0034BA02 /* MTEManagedObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEManagedObjectCache.m; path = MyTee/Classes/MTEManagedObjectCache.m; sourceTree = SOURCE_ROOT; };
 		1F74FC9214DEF6130034BA02 /* MTEStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEStoreViewController.h; path = MyTee/Classes/MTEStoreViewController.h; sourceTree = SOURCE_ROOT; };
@@ -257,6 +265,10 @@
 				1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */,
 				1F230B3014DCA31A00B65E7E /* 80-shopping-cart.png */,
 				1F230B3114DCA31A00B65E7E /* 80-shopping-cart@2x.png */,
+				1F6B7FD014E0811B00292B62 /* 14-tag.png */,
+				1F6B7FD114E0811B00292B62 /* 14-tag@2x.png */,
+				1F6B7FD514E0813E00292B62 /* 179-notepad.png */,
+				1F6B7FD614E0813E00292B62 /* 179-notepad@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -647,6 +659,10 @@
 				1F01F17114DC161700D6EF0C /* 67-tshirt@2x.png in Resources */,
 				1F230B3214DCA31A00B65E7E /* 80-shopping-cart.png in Resources */,
 				1F230B3314DCA31A00B65E7E /* 80-shopping-cart@2x.png in Resources */,
+				1F6B7FD214E0811B00292B62 /* 14-tag.png in Resources */,
+				1F6B7FD314E0811B00292B62 /* 14-tag@2x.png in Resources */,
+				1F6B7FD714E0813E00292B62 /* 179-notepad.png in Resources */,
+				1F6B7FD814E0813E00292B62 /* 179-notepad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

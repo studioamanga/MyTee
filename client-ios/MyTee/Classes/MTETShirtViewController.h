@@ -17,5 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *storeButton;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noteLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *noteIconImageView;
 
 @end

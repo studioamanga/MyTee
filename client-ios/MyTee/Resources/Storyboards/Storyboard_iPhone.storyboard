@@ -181,7 +181,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vu4-st-5UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jcc-0K-vuV" customClass="MTETShirtViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JDy-SB-qIX" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="459"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="pZB-kh-iHJ">
@@ -253,15 +253,40 @@
                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labels" lineBreakMode="tailTruncation" minimumFontSize="10" id="QMr-Nf-OQK">
+                                <rect key="frame" x="58" y="437" width="242" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="14-tag.png" id="iCl-r5-SiM">
+                                <rect key="frame" x="26" y="437" width="30" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Notes" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" id="BDm-Ef-hKG">
+                                <rect key="frame" x="58" y="478" width="242" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="179-notepad.png" id="57o-1J-cRg">
+                                <rect key="frame" x="26" y="470" width="30" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="5Bi-o2-jda"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="noteIconImageView" destination="57o-1J-cRg" id="28I-8b-c7f"/>
+                        <outlet property="noteLabel" destination="BDm-Ef-hKG" id="e2B-Pf-d40"/>
                         <outlet property="ratingLabel" destination="yy0-mO-8QP" id="hnG-YC-VqZ"/>
                         <outlet property="sizeLabel" destination="oWm-w4-Jrb" id="y3L-E0-kto"/>
                         <outlet property="storeButton" destination="VPA-Hw-1eE" id="v8U-Ih-PXc"/>
+                        <outlet property="tagsLabel" destination="QMr-Nf-OQK" id="SXb-fa-Ea6"/>
                         <outlet property="tshirtImageView" destination="pZB-kh-iHJ" id="mO7-br-JSN"/>
                     </connections>
                 </viewController>
@@ -273,7 +298,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rd-GX-wOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="9VM-uu-YyO" customClass="MTEStoreViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zuq-r2-poB" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="395"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Store Name" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="PTL-Fa-UcH">
@@ -320,7 +345,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6b-qq-Zwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="K3Y-Wh-dGD" customClass="MTEWearWashViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XtK-US-Olr" customClass="ShadowedTableView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="395"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -363,7 +388,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uo3-23-QIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="IDv-Bp-Qgf" customClass="MTEWearWashViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TYQ-EH-NuD" customClass="ShadowedTableView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="395"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -420,6 +445,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="14-tag.png" width="22" height="22"/>
+        <image name="179-notepad.png" width="22" height="28"/>
         <image name="72-pin.png" width="10" height="20"/>
         <image name="80-shopping-cart.png" width="26" height="19"/>
         <image name="83-calendar.png" width="23" height="25"/>
@@ -447,9 +474,12 @@
         <class className="MTETShirtViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="noteIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="noteLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ratingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="storeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tagsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tshirtImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
