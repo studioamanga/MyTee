@@ -21,6 +21,8 @@
 @synthesize tshirt;
 @synthesize tshirtImageView;
 @synthesize storeButton;
+@synthesize ratingLabel;
+@synthesize sizeLabel;
 
 #pragma mark - View lifecycle
 
@@ -30,6 +32,20 @@
     
     [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
     self.title = tshirt.name;
+    
+    [[self.sizeLabel layer] setBorderColor:[[UIColor blackColor] CGColor]];
+    [[self.sizeLabel layer] setBorderWidth:1];
+    [[self.sizeLabel layer] setCornerRadius:6];
+    self.sizeLabel.text = tshirt.size;
+    
+    NSMutableString * ratingString = [NSMutableString stringWithString:@""];
+    NSUInteger i = 0;
+    NSUInteger rating = [tshirt.rating intValue];
+    for( ; i<rating ; i++)
+        [ratingString appendString:@"★"];
+    for( ; i<5 ; i++)
+        [ratingString appendString:@"☆"];
+    self.ratingLabel.text = ratingString;
     
     [self.storeButton setTitle:tshirt.store.name forState:UIControlStateNormal];
     
@@ -46,11 +62,16 @@
     UIImage * woodTexture = [UIImage imageNamed:@"wood"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     [self.view setBackgroundColor:woodColor];
+    
+    [(UIScrollView*)self.view setContentSize:CGSizeMake(self.view.frame.size.width, self.storeButton.frame.origin.y+150)];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    [self setRatingLabel:nil];
+    [self setSizeLabel:nil];
     
     [self setTshirtImageView:nil];
     [self setStoreButton:nil];
