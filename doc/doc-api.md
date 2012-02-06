@@ -19,7 +19,7 @@ List all my t-shirts, as described with the following resource.
 		"location": "xxx",
 		"rating": x,
 		"tags": "xxx",
-		"store-id": "xxx",
+		"store": {...},
 		"note": "xxx",
 		"image_url": "xxx",
 		"wear": 

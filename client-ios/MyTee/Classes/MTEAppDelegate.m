@@ -17,6 +17,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
+    [[UITableView appearance] setBackgroundColor:woodColor];
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil]];
+    
+    [[UIBarButtonItem appearance] setTintColor:[UIColor darkGrayColor]];
+    
     return YES;
 }
 
