@@ -78,12 +78,12 @@
 		{
 			if($api_parameter=='all')
 			{
-				$tshirts = $database->fetch('mt_tshirt', '`tsh_user_id`=\''.$user->use_id.'\'');
+				$tshirts = $database->fetch('mt_tshirt', '`tsh_user_id`=\''.$user->use_id.'\' AND `tsh_is_mine`=\'1\'');
 		
 				foreach ($tshirts as &$tshirt) 
 				{
 					$tshirt = clean_tshirt_from_db($tshirt);
-					$tshirt = fectch_wash_wear_for_tshirt($database, $tshirt);
+					$tshirt = fectch_wash_wear_store_for_tshirt($database, $tshirt);
 				}
 		
 				output_json($tshirts);
@@ -95,7 +95,7 @@
 				if(count($tshirts)==1)
 				{	
 					$tshirt = clean_tshirt_from_db($tshirts[0]);
-					$tshirt = fectch_wash_wear_for_tshirt($database, $tshirt);
+					$tshirt = fectch_wash_wear_store_for_tshirt($database, $tshirt);
 					output_json($tshirt);
 				}
 			}
