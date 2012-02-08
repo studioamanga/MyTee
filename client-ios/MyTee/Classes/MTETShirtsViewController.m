@@ -22,12 +22,17 @@
 
 @synthesize syncManager;
 @synthesize tshirtExplorer;
+@synthesize detailViewController;
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        self.detailViewController = (MTETShirtViewController*)[[self.splitViewController.viewControllers lastObject] topViewController];
+    }
     
     self.syncManager = [MTESyncManager new];
     [self.syncManager setupSyncManager];
@@ -138,6 +143,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
+        self.detailViewController.tshirt = tshirt;
+    }
 }
 
 #pragma mark - Sync
