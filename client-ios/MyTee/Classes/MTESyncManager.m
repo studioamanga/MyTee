@@ -45,9 +45,22 @@
     return request;
 }
 
+#pragma mark - 
+
++ (KeychainItemWrapper*)keychainWrapper
+{
+    return [[KeychainItemWrapper alloc] initWithIdentifier:MTE_KEYCHAIN_IDENTIFIER accessGroup:MTE_KEYCHAIN_ACCESS_GROUP];
+}
+
++ (void)resetKeychain
+{
+    KeychainItemWrapper * keychainWrapper = [self keychainWrapper];
+    [keychainWrapper resetKeychainItem];
+}
+
 + (void)storeEmail:(NSString*)email password:(NSString*)password
 {
-    KeychainItemWrapper * keychainWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:MTE_KEYCHAIN_IDENTIFIER accessGroup:MTE_KEYCHAIN_ACCESS_GROUP];
+    KeychainItemWrapper * keychainWrapper = [self keychainWrapper];
     
     [keychainWrapper setObject:email forKey:(__bridge NSString*)kSecAttrAccount];
     [keychainWrapper setObject:password forKey:(__bridge NSString*)kSecValueData];
@@ -55,7 +68,7 @@
 
 + (NSString*)valueFromKeychainWithKey:(NSString*)key
 {
-    KeychainItemWrapper * keychainWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:MTE_KEYCHAIN_IDENTIFIER accessGroup:MTE_KEYCHAIN_ACCESS_GROUP];
+    KeychainItemWrapper * keychainWrapper = [self keychainWrapper];
     
     NSString * keychainValue = [keychainWrapper objectForKey:key];
     if ([keychainValue isEqualToString:@""])

@@ -19,6 +19,7 @@
 + (NSString*)pathForResource:(NSString*)resourcePath withEmail:(NSString*)email password:(NSString*)password;
 + (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password;
 
++ (void)resetKeychain;
 + (void)storeEmail:(NSString*)email password:(NSString*)password;
 + (NSString*)emailFromKeychain;
 + (NSString*)passwordFromKeychain;
