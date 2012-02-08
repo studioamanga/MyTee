@@ -8,11 +8,14 @@
 
 @class MTESyncManager;
 @class MTETShirtExplorer;
+@class MTETShirtViewController;
 
 @interface MTETShirtsViewController : UITableViewController
 
 @property (strong, nonatomic) MTESyncManager * syncManager;
 @property (strong, nonatomic) MTETShirtExplorer * tshirtExplorer;
+
+@property (strong, nonatomic) MTETShirtViewController * detailViewController;
 
 - (void)syncFinished:(id)sender;
 - (void)syncFailed:(id)sender;
