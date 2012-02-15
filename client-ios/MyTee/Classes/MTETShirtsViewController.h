@@ -17,7 +17,11 @@
 
 @property (strong, nonatomic) MTETShirtViewController * detailViewController;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
+
 - (void)syncFinished:(id)sender;
 - (void)syncFailed:(id)sender;
+
+- (void)startSpinningAnimation;
 
 @end

@@ -25,6 +25,8 @@
 
 @implementation MTESyncManager
 
+@synthesize isSyncing;
+
 #pragma mark - Keychain
 
 + (NSString*)pathForResource:(NSString*)resourcePath withEmail:(NSString*)email password:(NSString*)password
@@ -92,6 +94,7 @@
 - (void)setupSyncManager
 {
     //RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
+    self.isSyncing = NO;
     
     RKObjectManager * objectManager = [RKObjectManager objectManagerWithBaseURL:MTE_URL_API];
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
@@ -107,6 +110,8 @@
 
 - (void)startSync
 {
+    self.isSyncing = YES;
+    
     RKManagedObjectMapping * storeMapping = [RKManagedObjectMapping mappingForClass:[MTEStore class]];
     [storeMapping setPrimaryKeyAttribute:@"identifier"];
     [storeMapping mapAttributes:@"identifier", @"name", @"type", @"address", @"url", nil];
@@ -148,7 +153,8 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
-    NSLog(@">> didLoadObjects %d", [objects count]);
+    //NSLog(@">> didLoadObjects %d", [objects count]);
+    self.isSyncing = NO;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
     
@@ -185,6 +191,8 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error
 {
+    self.isSyncing = NO;
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 

@@ -16,6 +16,8 @@
 
 @interface MTESyncManager : NSObject <RKObjectLoaderDelegate>
 
+@property (nonatomic) BOOL isSyncing;
+
 + (NSString*)pathForResource:(NSString*)resourcePath withEmail:(NSString*)email password:(NSString*)password;
 + (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password;
 

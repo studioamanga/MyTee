@@ -41,6 +41,8 @@
 		1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F294E1714D7515A00A24AED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F294E1614D7515A00A24AED /* Security.framework */; };
 		1F294E1A14D7558600A24AED /* MTESyncManagerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1F67661614EB28F60035EF7D /* 19-gear-w.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F67661414EB28F60035EF7D /* 19-gear-w.png */; };
+		1F67661714EB28F60035EF7D /* 19-gear-w@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */; };
 		1F6AC78814D9FE890040A06A /* MTETShirtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78714D9FE890040A06A /* MTETShirtViewController.m */; };
 		1F6AC78C14DA03E00040A06A /* MTEWearWashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78B14DA03E00040A06A /* MTEWearWashViewController.m */; };
 		1F6AC78F14DA05DB0040A06A /* MTEWash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78E14DA05DB0040A06A /* MTEWash.m */; };
@@ -132,6 +134,8 @@
 		1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainItemWrapper.m; path = Libraries/KeychainItemWrapper/KeychainItemWrapper.m; sourceTree = SOURCE_ROOT; };
 		1F294E1614D7515A00A24AED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MTESyncManagerSpec.mm; path = MyTeeTests/Specs/MTESyncManagerSpec.mm; sourceTree = SOURCE_ROOT; };
+		1F67661414EB28F60035EF7D /* 19-gear-w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-gear-w.png"; path = "MyTee/Resources/Images/19-gear-w.png"; sourceTree = SOURCE_ROOT; };
+		1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-gear-w@2x.png"; path = "MyTee/Resources/Images/19-gear-w@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F6AC78614D9FE890040A06A /* MTETShirtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtViewController.h; path = MyTee/Classes/MTETShirtViewController.h; sourceTree = SOURCE_ROOT; };
 		1F6AC78714D9FE890040A06A /* MTETShirtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtViewController.m; path = MyTee/Classes/MTETShirtViewController.m; sourceTree = SOURCE_ROOT; };
 		1F6AC78A14DA03E00040A06A /* MTEWearWashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEWearWashViewController.h; path = MyTee/Classes/MTEWearWashViewController.h; sourceTree = SOURCE_ROOT; };
@@ -257,6 +261,8 @@
 			children = (
 				1F01F16A14DC15CB00D6EF0C /* wash.png */,
 				1F01F16B14DC15CB00D6EF0C /* wash@2x.png */,
+				1F67661414EB28F60035EF7D /* 19-gear-w.png */,
+				1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */,
 				1F01F16114DC11E600D6EF0C /* 72-pin.png */,
 				1F01F16214DC11E600D6EF0C /* 72-pin@2x.png */,
 				1F01F16314DC11E600D6EF0C /* 83-calendar.png */,
@@ -663,6 +669,8 @@
 				1F6B7FD314E0811B00292B62 /* 14-tag@2x.png in Resources */,
 				1F6B7FD714E0813E00292B62 /* 179-notepad.png in Resources */,
 				1F6B7FD814E0813E00292B62 /* 179-notepad@2x.png in Resources */,
+				1F67661614EB28F60035EF7D /* 19-gear-w.png in Resources */,
+				1F67661714EB28F60035EF7D /* 19-gear-w@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

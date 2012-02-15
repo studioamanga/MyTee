@@ -168,8 +168,24 @@
                             <outlet property="delegate" destination="f2x-PP-cMl" id="XUM-3b-FvQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MyTee" id="HAE-sy-cDo"/>
+                    <navigationItem key="navigationItem" title="MyTee" id="HAE-sy-cDo">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="KFv-vB-RjH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oMW-Ka-Akw">
+                                <rect key="frame" x="281" y="5" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="19-gear-w.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="settingsBarButtonItem" destination="KFv-vB-RjH" id="qYJ-lo-kVJ"/>
                         <segue destination="Snp-cF-hnH" kind="modal" identifier="MTELoginSegue" id="1gn-Jo-TYU"/>
                     </connections>
                 </tableViewController>
@@ -447,10 +463,56 @@
     <resources>
         <image name="14-tag.png" width="22" height="22"/>
         <image name="179-notepad.png" width="22" height="28"/>
+        <image name="19-gear-w.png" width="26" height="26"/>
         <image name="72-pin.png" width="10" height="20"/>
         <image name="80-shopping-cart.png" width="26" height="19"/>
         <image name="83-calendar.png" width="23" height="25"/>
     </resources>
+    <classes>
+        <class className="MTESettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTESettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MTEStoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEStoreViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addressIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="typeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MTETShirtCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtCell.h"/>
+        </class>
+        <class className="MTETShirtViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noteIconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="noteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ratingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="storeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tagsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tshirtImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="MTETShirtsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="settingsBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MTEWearWashViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEWearWashViewController.h"/>
+        </class>
+        <class className="ShadowedTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadowedTableView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

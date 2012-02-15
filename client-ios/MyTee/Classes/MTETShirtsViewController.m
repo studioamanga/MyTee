@@ -18,11 +18,14 @@
 
 #import "MTETShirtViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation MTETShirtsViewController
 
 @synthesize syncManager;
 @synthesize tshirtExplorer;
 @synthesize detailViewController;
+@synthesize settingsBarButtonItem;
 
 #pragma mark - View lifecycle
 
@@ -51,8 +54,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    
+    self.settingsBarButtonItem = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,11 +73,36 @@
     {
         NSString * email = [MTESyncManager emailFromKeychain];
         if (!email)
+        {
             [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+        }
         else
+        {
             [self.syncManager startSync];
+
+            [self startSpinningAnimation];
+        }
         
         firstTime = NO;
+    }
+}
+
+- (void)startSpinningAnimation
+{
+    CABasicAnimation * spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    spinAnimation.fromValue = [NSNumber numberWithFloat:0];
+    spinAnimation.toValue = [NSNumber numberWithFloat:2*M_PI];
+    spinAnimation.duration = 0.5;
+    spinAnimation.delegate = self;
+    
+    [self.settingsBarButtonItem.customView.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
+}
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
+{
+    if (self.syncManager.isSyncing)
+    {
+        [self startSpinningAnimation];
     }
 }
 
