@@ -68,23 +68,15 @@
 {
     [super viewDidAppear:animated];
     
-    static BOOL firstTime = YES;
-    
-    if (firstTime)
+    NSString * email = [MTESyncManager emailFromKeychain];
+    if (!email)
     {
-        NSString * email = [MTESyncManager emailFromKeychain];
-        if (!email)
-        {
-            [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
-        }
-        else
-        {
-            [self.syncManager startSync];
-
-            [self startSpinningAnimation];
-        }
-        
-        firstTime = NO;
+        [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+    }
+    else
+    {
+        [self.syncManager startSync];
+        [self startSpinningAnimation];
     }
 }
 
@@ -196,12 +188,14 @@
 
 - (void)syncFinished:(id)sender
 {
+    /*
     MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.labelText = @"Sync Successful!";
     
     [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
+    */
     
     [self.tshirtExplorer updateData];
     [self.tableView reloadData];
