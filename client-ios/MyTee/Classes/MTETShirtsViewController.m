@@ -17,6 +17,7 @@
 #import "MTEConstView.h"
 
 #import "MTETShirtViewController.h"
+#import "MTESettingsViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -129,8 +130,13 @@
     if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
     {
     }
-    
-    if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
+    else if ([[segue identifier] isEqualToString:@"MTESettingsSegue"])
+    {
+        UINavigationController * navigationController = segue.destinationViewController;
+        MTESettingsViewController * viewController = (MTESettingsViewController*)navigationController.topViewController;
+        viewController.delegate = self;
+    }
+    else if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
     {
         MTETShirtViewController * viewController = segue.destinationViewController;
         
@@ -210,5 +216,31 @@
     
     [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
 }
+
+#pragma mark - Settings view controller delegate
+
+- (void)settingsViewControllerShouldClose:(MTESettingsViewController*)settingsViewController
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController*)settingsViewController
+{
+    [self.syncManager startSync];
+    [self startSpinningAnimation];
+}
+
+- (void)settingsViewControllerShouldLogOut:(MTESettingsViewController*)settingsViewController
+{
+    [MTESyncManager resetKeychain];
+
+    self.syncManager = [MTESyncManager new];
+    [self.syncManager setupSyncManager];
+    
+    [self.tableView reloadData];
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 
 @end

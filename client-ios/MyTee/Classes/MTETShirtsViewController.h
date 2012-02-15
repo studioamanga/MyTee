@@ -6,18 +6,20 @@
 //  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
 //
 
+#import "MTESettingsViewController.h"
+
 @class MTESyncManager;
 @class MTETShirtExplorer;
 @class MTETShirtViewController;
 
-@interface MTETShirtsViewController : UITableViewController
+@interface MTETShirtsViewController : UITableViewController <MTESettingsViewDelegate>
 
 @property (strong, nonatomic) MTESyncManager * syncManager;
 @property (strong, nonatomic) MTETShirtExplorer * tshirtExplorer;
 
 @property (strong, nonatomic) MTETShirtViewController * detailViewController;
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem * settingsBarButtonItem;
 
 - (void)syncFinished:(id)sender;
 - (void)syncFailed:(id)sender;

@@ -8,17 +8,16 @@
 
 #import "MTESettingsViewController.h"
 
+#import "MTESyncManager.h"
 
 @implementation MTESettingsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize emailLabel;
+@synthesize lastSyncLabel;
+@synthesize syncNowCell;
+@synthesize logoutCell;
+
+@synthesize delegate;
 
 - (void)didReceiveMemoryWarning
 {
@@ -34,18 +33,27 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSString * email = [MTESyncManager emailFromKeychain];
+    if (email)
+    {
+        self.emailLabel.text = email;
+        self.lastSyncLabel.text = @"what?";
+    }
+    else
+    {
+        self.emailLabel.text = @"You are not logged in";
+        self.lastSyncLabel.text = @"";
+    }
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    
+    [self setEmailLabel:nil];
+    [self setLastSyncLabel:nil];
+    [self setSyncNowCell:nil];
+    [self setLogoutCell:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -71,6 +79,20 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (IBAction)didPressDone:(id)sender
+{
+    [delegate settingsViewControllerShouldClose:self];
+}
+
+- (IBAction)didPressCancel:(id)sender
+{
+    [delegate settingsViewControllerShouldClose:self];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 }
 
 @end
