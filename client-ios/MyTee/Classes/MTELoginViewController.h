@@ -1,5 +1,5 @@
 //
-//  MTESettingsViewController.h
+//  MTELoginViewController.h
 //  mytee
 //
 //  Created by Vincent Tourraine on 1/29/12.
@@ -8,7 +8,7 @@
 
 #import "MBProgressHUD.h"
 
-@interface MTESettingsViewController : UITableViewController <UITextFieldDelegate, MBProgressHUDDelegate>
+@interface MTELoginViewController : UITableViewController <UITextFieldDelegate, MBProgressHUDDelegate>
 {
     BOOL authenticationSuccessful;    
 }

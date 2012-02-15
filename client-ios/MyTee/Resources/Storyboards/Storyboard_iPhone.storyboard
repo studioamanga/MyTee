@@ -8,7 +8,7 @@
         <scene sceneID="FvS-Rw-q5d">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4G-aA-4er" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="sCN-V5-V8R" customClass="MTESettingsViewController" sceneMemberID="viewController">
+                <tableViewController id="sCN-V5-V8R" customClass="MTELoginViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="K4i-3C-Y9d">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

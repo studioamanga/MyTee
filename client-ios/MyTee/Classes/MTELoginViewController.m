@@ -1,18 +1,18 @@
 //
-//  MTESettingsViewController.m
+//  MTELoginViewController.m
 //  mytee
 //
 //  Created by Vincent Tourraine on 1/29/12.
 //  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
 //
 
-#import "MTESettingsViewController.h"
+#import "MTELoginViewController.h"
 
 #import "MTESyncManager.h"
 
 #import "MTEConstView.h"
 
-@implementation MTESettingsViewController
+@implementation MTELoginViewController
 
 @synthesize emailTextField;
 @synthesize passwordTextField;
