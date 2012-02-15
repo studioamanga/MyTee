@@ -23,5 +23,6 @@
 - (void)syncFailed:(id)sender;
 
 - (void)startSpinningAnimation;
+- (IBAction)didPressSettingsBarButtonItem:(id)sender;
 
 @end

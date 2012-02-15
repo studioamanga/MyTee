@@ -98,6 +98,12 @@
     [self.settingsBarButtonItem.customView.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
 }
 
+- (IBAction)didPressSettingsBarButtonItem:(id)sender
+{
+    [self.syncManager startSync];
+    [self startSpinningAnimation];
+}
+
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
 {
     if (self.syncManager.isSyncing)
