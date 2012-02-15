@@ -100,8 +100,10 @@
 
 - (IBAction)didPressSettingsBarButtonItem:(id)sender
 {
-    [self.syncManager startSync];
-    [self startSpinningAnimation];
+    [self performSegueWithIdentifier:@"MTESettingsSegue" sender:nil];
+    
+    //[self.syncManager startSync];
+    //[self startSpinningAnimation];
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag

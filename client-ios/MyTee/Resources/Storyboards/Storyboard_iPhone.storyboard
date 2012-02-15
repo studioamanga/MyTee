@@ -190,6 +190,7 @@
                     <connections>
                         <outlet property="settingsBarButtonItem" destination="KFv-vB-RjH" id="qYJ-lo-kVJ"/>
                         <segue destination="Snp-cF-hnH" kind="modal" identifier="MTELoginSegue" id="1gn-Jo-TYU"/>
+                        <segue destination="9ba-Tg-mkM" kind="modal" identifier="MTESettingsSegue" id="yqB-ge-Y2F"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -461,6 +462,60 @@
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="1101" y="852"/>
+        </scene>
+        <scene sceneID="528-h4-fYj">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWV-fR-4Wb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="0bt-Tu-Mpr" customClass="MTESettingsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="p1J-DG-YPq">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="zq9-eJ-cyw">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="o86-hq-MJh">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="0bt-Tu-Mpr" id="2Wf-bS-KvO"/>
+                            <outlet property="delegate" destination="0bt-Tu-Mpr" id="neL-hZ-AEQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="ZMV-6J-kP4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rvZ-Xb-IYY"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="S41-gw-Yzo"/>
+                    </navigationItem>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1627" y="1441"/>
+        </scene>
+        <scene sceneID="JO5-7f-hmO">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsM-b9-kfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="9ba-Tg-mkM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lhg-j6-jVl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0bt-Tu-Mpr" kind="relationship" relationship="rootViewController" id="Vxw-zQ-iwX"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1101" y="1441"/>
         </scene>
     </scenes>
     <resources>
