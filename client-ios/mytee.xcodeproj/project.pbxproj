@@ -70,6 +70,8 @@
 		1F7BF9C214D4526D00D7F4A3 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */; };
 		1F7BF9C414D4529400D7F4A3 /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */; };
 		1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */; };
+		1F7D901714EED2F300307F26 /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D901514EED2F200307F26 /* 11-clock.png */; };
+		1F7D901814EED2F300307F26 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D901614EED2F300307F26 /* 11-clock@2x.png */; };
 		1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */; };
 		1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079314D4CBA400909A11 /* MBProgressHUD.m */; };
 		1FDE079A14D4CE7700909A11 /* MTELoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079914D4CE7700909A11 /* MTELoginViewController.m */; };
@@ -174,6 +176,8 @@
 		1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Resources/Storyboards/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = Resources/Storyboards/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1F7BF9F714D4543A00D7F4A3 /* mytee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mytee.xcdatamodel; sourceTree = "<group>"; };
+		1F7D901514EED2F200307F26 /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock.png"; path = "MyTee/Resources/Images/11-clock.png"; sourceTree = SOURCE_ROOT; };
+		1F7D901614EED2F300307F26 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock@2x.png"; path = "MyTee/Resources/Images/11-clock@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FA8535F14EC5BCB00736DAD /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
 		1FDE079214D4CBA400909A11 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = SOURCE_ROOT; };
@@ -262,6 +266,8 @@
 		1F01F16914DC120000D6EF0C /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				1F7D901514EED2F200307F26 /* 11-clock.png */,
+				1F7D901614EED2F300307F26 /* 11-clock@2x.png */,
 				1F01F16A14DC15CB00D6EF0C /* wash.png */,
 				1F01F16B14DC15CB00D6EF0C /* wash@2x.png */,
 				1F67661414EB28F60035EF7D /* 19-gear-w.png */,
@@ -676,6 +682,8 @@
 				1F6B7FD814E0813E00292B62 /* 179-notepad@2x.png in Resources */,
 				1F67661614EB28F60035EF7D /* 19-gear-w.png in Resources */,
 				1F67661714EB28F60035EF7D /* 19-gear-w@2x.png in Resources */,
+				1F7D901714EED2F300307F26 /* 11-clock.png in Resources */,
+				1F7D901814EED2F300307F26 /* 11-clock@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
