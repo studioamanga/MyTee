@@ -616,7 +616,7 @@
 		1F7BF96B14D4429400D7F4A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Keres-Sy, Studio AMANgA";
 			};
 			buildConfigurationList = 1F7BF96E14D4429500D7F4A3 /* Build configuration list for PBXProject "mytee" */;
