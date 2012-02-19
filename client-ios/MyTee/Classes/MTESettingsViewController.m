@@ -9,23 +9,18 @@
 #import "MTESettingsViewController.h"
 
 #import "MTESyncManager.h"
+#import "MTESettingsManager.h"
 
 @implementation MTESettingsViewController
 
 @synthesize emailLabel;
 @synthesize lastSyncLabel;
+@synthesize remindersTimeCell;
 @synthesize syncNowCell;
 @synthesize logoutCell;
+@synthesize remindersSwitch;
 
 @synthesize delegate;
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 #pragma mark - View lifecycle
 
@@ -44,6 +39,9 @@
         self.emailLabel.text = @"You are not logged in";
         self.lastSyncLabel.text = @"";
     }
+    
+    self.remindersSwitch.on = [MTESettingsManager isRemindersActive];
+    [self remindersSwitchValueDidChange:nil];
 }
 
 - (void)viewDidUnload
@@ -54,26 +52,8 @@
     [self setLastSyncLabel:nil];
     [self setSyncNowCell:nil];
     [self setLogoutCell:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
+    [self setRemindersTimeCell:nil];
+    [self setRemindersSwitch:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -81,8 +61,28 @@
     return YES;
 }
 
+- (IBAction)remindersSwitchValueDidChange:(id)sender
+{
+    if (self.remindersSwitch.isOn)
+    {
+        [UIView animateWithDuration:0.33 animations:^{
+            self.remindersTimeCell.textLabel.textColor = [UIColor blackColor];
+            self.remindersTimeCell.imageView.alpha = 1;
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.33 animations:^{
+            self.remindersTimeCell.textLabel.textColor = [UIColor grayColor];
+            self.remindersTimeCell.imageView.alpha = 0.5;
+        }];
+    }
+}
+
 - (IBAction)didPressDone:(id)sender
 {
+    [MTESettingsManager setRemindersActive:self.remindersSwitch.isOn];
+    
     [delegate settingsViewControllerShouldClose:self];
 }
 

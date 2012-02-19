@@ -20,10 +20,12 @@
 
 @interface MTESettingsViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lastSyncLabel;
-@property (weak, nonatomic) IBOutlet UITableViewCell *syncNowCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *logoutCell;
+@property (weak, nonatomic) IBOutlet UILabel * emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel * lastSyncLabel;
+@property (weak, nonatomic) IBOutlet UITableViewCell *remindersTimeCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell * syncNowCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell * logoutCell;
+@property (weak, nonatomic) IBOutlet UISwitch * remindersSwitch;
 
 @property (weak, nonatomic) id <MTESettingsViewDelegate> delegate;
 

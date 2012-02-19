@@ -26,6 +26,7 @@
 		1F01F16D14DC15CB00D6EF0C /* wash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16B14DC15CB00D6EF0C /* wash@2x.png */; };
 		1F01F17014DC161700D6EF0C /* 67-tshirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16E14DC161700D6EF0C /* 67-tshirt.png */; };
 		1F01F17114DC161700D6EF0C /* 67-tshirt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */; };
+		1F02F4AD14F12915005F738B /* MTESettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F4AC14F12915005F738B /* MTESettingsManager.m */; };
 		1F230B2F14DC98D500B65E7E /* MTEStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F230B2E14DC98D500B65E7E /* MTEStore.m */; };
 		1F230B3214DCA31A00B65E7E /* 80-shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F230B3014DCA31A00B65E7E /* 80-shopping-cart.png */; };
 		1F230B3314DCA31A00B65E7E /* 80-shopping-cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F230B3114DCA31A00B65E7E /* 80-shopping-cart@2x.png */; };
@@ -117,6 +118,8 @@
 		1F01F16B14DC15CB00D6EF0C /* wash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wash@2x.png"; path = "MyTee/Resources/Images/wash@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F01F16E14DC161700D6EF0C /* 67-tshirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "67-tshirt.png"; path = "MyTee/Resources/Images/67-tshirt.png"; sourceTree = SOURCE_ROOT; };
 		1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "67-tshirt@2x.png"; path = "MyTee/Resources/Images/67-tshirt@2x.png"; sourceTree = SOURCE_ROOT; };
+		1F02F4AB14F12915005F738B /* MTESettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsManager.h; path = MyTee/Classes/MTESettingsManager.h; sourceTree = SOURCE_ROOT; };
+		1F02F4AC14F12915005F738B /* MTESettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsManager.m; path = MyTee/Classes/MTESettingsManager.m; sourceTree = SOURCE_ROOT; };
 		1F230B2B14DC981A00B65E7E /* mytee 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "mytee 2.xcdatamodel"; sourceTree = "<group>"; };
 		1F230B2D14DC98D500B65E7E /* MTEStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEStore.h; path = MyTee/Classes/MTEStore.h; sourceTree = SOURCE_ROOT; };
 		1F230B2E14DC98D500B65E7E /* MTEStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEStore.m; path = MyTee/Classes/MTEStore.m; sourceTree = SOURCE_ROOT; };
@@ -288,12 +291,22 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		1F02F4AF14F12919005F738B /* Settings Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1F02F4AB14F12915005F738B /* MTESettingsManager.h */,
+				1F02F4AC14F12915005F738B /* MTESettingsManager.m */,
+			);
+			name = "Settings Manager";
+			sourceTree = "<group>";
+		};
 		1F294DF714D73B9E00A24AED /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				1F294E1514D74F3000A24AED /* Sync Manager */,
 				1F294E1414D74F2600A24AED /* Keychain Access */,
 				1F294DFF14D73F0E00A24AED /* NSString Category */,
+				1F02F4AF14F12919005F738B /* Settings Manager */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -739,6 +752,7 @@
 				1F74FC8F14DEEDCB0034BA02 /* MTEManagedObjectCache.m in Sources */,
 				1F74FC9414DEF6130034BA02 /* MTEStoreViewController.m in Sources */,
 				1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */,
+				1F02F4AD14F12915005F738B /* MTESettingsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
