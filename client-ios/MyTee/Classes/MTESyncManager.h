@@ -26,6 +26,9 @@
 + (NSString*)emailFromKeychain;
 + (NSString*)passwordFromKeychain;
 
++ (NSDate*)lastSyncDate;
++ (void)setLastSyncDateNow;
+
 - (void)setupSyncManager;
 
 - (void)startSync;

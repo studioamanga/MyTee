@@ -23,6 +23,8 @@
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
 #define MTE_KEYCHAIN_ACCESS_GROUP @"77S3V3W24J.com.studioamanga.mytee"
 
+#define MTE_USER_DEFAULTS_LAST_SYNC_DATE @"kMTEUserDefaultsLastSyncDate"
+
 @implementation MTESyncManager
 
 @synthesize isSyncing;
@@ -87,6 +89,21 @@
 + (NSString*)passwordFromKeychain;
 {
     return [self valueFromKeychainWithKey:(__bridge NSString*)kSecValueData];
+}
+
+#pragma mark - Sync date
+
++ (NSDate*)lastSyncDate
+{
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey:MTE_USER_DEFAULTS_LAST_SYNC_DATE];
+}
+
++ (void)setLastSyncDateNow
+{
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSDate date] forKey:MTE_USER_DEFAULTS_LAST_SYNC_DATE];
+    [userDefaults synchronize];
 }
 
 #pragma mark - RestKit
@@ -156,8 +173,9 @@
     //NSLog(@">> didLoadObjects %d", [objects count]);
     self.isSyncing = NO;
     
+    [MTESyncManager setLastSyncDateNow];
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-    
+     
     if ([[objectLoader resourcePath] rangeOfString:MTE_URL_API_TSHIRTS_ALL].location!=NSNotFound)
     {
         NSFileManager * fileManager = [NSFileManager defaultManager];

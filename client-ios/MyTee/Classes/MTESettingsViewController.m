@@ -42,6 +42,8 @@
     
     self.remindersSwitch.on = [MTESettingsManager isRemindersActive];
     [self remindersSwitchValueDidChange:nil];
+    
+    [self updateSyncDateLabel];
 }
 
 - (void)viewDidUnload
@@ -54,6 +56,25 @@
     [self setLogoutCell:nil];
     [self setRemindersTimeCell:nil];
     [self setRemindersSwitch:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateSyncDateLabel) 
+												 name:MTE_NOTIFICATION_SYNC_FINISHED
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MTE_NOTIFICATION_SYNC_FINISHED
+                                                  object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -76,6 +97,24 @@
             self.remindersTimeCell.textLabel.textColor = [UIColor grayColor];
             self.remindersTimeCell.imageView.alpha = 0.5;
         }];
+    }
+}
+
+- (void)updateSyncDateLabel
+{
+    NSDate * syncDate = [MTESyncManager lastSyncDate];
+    if (syncDate) 
+    {
+        NSDateFormatter * dateFormatter = [NSDateFormatter new];
+        dateFormatter.doesRelativeDateFormatting = YES;
+        dateFormatter.dateStyle = NSDateFormatterLongStyle;
+        dateFormatter.timeStyle = NSDateFormatterShortStyle;
+        
+        self.lastSyncLabel.text = [@"Last Sync: " stringByAppendingString:[dateFormatter stringFromDate:syncDate]];
+    }
+    else 
+    {
+        self.lastSyncLabel.text = @"Never Synchronized";
     }
 }
 

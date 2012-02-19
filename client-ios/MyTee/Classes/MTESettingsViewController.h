@@ -32,4 +32,6 @@
 - (IBAction)didPressDone:(id)sender;
 - (IBAction)didPressCancel:(id)sender;
 
+- (void)updateSyncDateLabel;
+
 @end
