@@ -40,6 +40,7 @@
         self.lastSyncLabel.text = @"";
     }
     
+    self.remindersTimeCell.textLabel.text = [NSString stringWithFormat:@"Everyday at %d AM", [MTESettingsManager remindersHour]];
     self.remindersSwitch.on = [MTESettingsManager isRemindersActive];
     [self remindersSwitchValueDidChange:nil];
     
