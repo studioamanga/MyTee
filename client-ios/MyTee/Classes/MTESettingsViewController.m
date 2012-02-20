@@ -83,18 +83,27 @@
     return YES;
 }
 
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell * cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor lightGrayColor];
+
+    return  cell;
+}
+
 - (IBAction)remindersSwitchValueDidChange:(id)sender
 {
     if (self.remindersSwitch.isOn)
     {
-        [UIView animateWithDuration:0.33 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             self.remindersTimeCell.textLabel.textColor = [UIColor blackColor];
             self.remindersTimeCell.imageView.alpha = 1;
         }];
     }
     else
     {
-        [UIView animateWithDuration:0.33 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             self.remindersTimeCell.textLabel.textColor = [UIColor grayColor];
             self.remindersTimeCell.imageView.alpha = 0.5;
         }];

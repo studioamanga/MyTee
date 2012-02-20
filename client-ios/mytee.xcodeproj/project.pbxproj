@@ -84,6 +84,9 @@
 		1FF7D5E914D8936E000BDE04 /* MTETShirtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */; };
 		1FF7D5EF14D89D2B000BDE04 /* MTETShirt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */; };
 		1FF7D5F214D8A20A000BDE04 /* MTETShirtExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5F114D8A20A000BDE04 /* MTETShirtExplorer.m */; };
+		1FFAB02E14F1D42B00851D81 /* linen-light-cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFAB02C14F1D42B00851D81 /* linen-light-cell.png */; };
+		1FFAB02F14F1D42B00851D81 /* linen-light-cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFAB02D14F1D42B00851D81 /* linen-light-cell@2x.png */; };
+		1FFAB03314F1D44A00851D81 /* MTESettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAB03214F1D44A00851D81 /* MTESettingCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +202,10 @@
 		1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirt.m; path = MyTee/Classes/MTETShirt.m; sourceTree = SOURCE_ROOT; };
 		1FF7D5F014D8A20A000BDE04 /* MTETShirtExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtExplorer.h; path = MyTee/Classes/MTETShirtExplorer.h; sourceTree = SOURCE_ROOT; };
 		1FF7D5F114D8A20A000BDE04 /* MTETShirtExplorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtExplorer.m; path = MyTee/Classes/MTETShirtExplorer.m; sourceTree = SOURCE_ROOT; };
+		1FFAB02C14F1D42B00851D81 /* linen-light-cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linen-light-cell.png"; path = "MyTee/Resources/Images/linen-light-cell.png"; sourceTree = SOURCE_ROOT; };
+		1FFAB02D14F1D42B00851D81 /* linen-light-cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linen-light-cell@2x.png"; path = "MyTee/Resources/Images/linen-light-cell@2x.png"; sourceTree = SOURCE_ROOT; };
+		1FFAB03114F1D44A00851D81 /* MTESettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingCell.h; path = MyTee/Classes/MTESettingCell.h; sourceTree = SOURCE_ROOT; };
+		1FFAB03214F1D44A00851D81 /* MTESettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingCell.m; path = MyTee/Classes/MTESettingCell.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +254,8 @@
 		1F01F14414DB3E5300D6EF0C /* Linen Nav Bar */ = {
 			isa = PBXGroup;
 			children = (
+				1FFAB02C14F1D42B00851D81 /* linen-light-cell.png */,
+				1FFAB02D14F1D42B00851D81 /* linen-light-cell@2x.png */,
 				1F01F13C14DB3E4F00D6EF0C /* linen-nav-bar-landscape.png */,
 				1F01F13D14DB3E4F00D6EF0C /* linen-nav-bar-landscape@2x.png */,
 				1F01F13E14DB3E4F00D6EF0C /* linen-nav-bar.png */,
@@ -554,6 +563,8 @@
 				1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */,
 				1FDE079814D4CE7700909A11 /* MTELoginViewController.h */,
 				1FDE079914D4CE7700909A11 /* MTELoginViewController.m */,
+				1FFAB03114F1D44A00851D81 /* MTESettingCell.h */,
+				1FFAB03214F1D44A00851D81 /* MTESettingCell.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -697,6 +708,8 @@
 				1F67661714EB28F60035EF7D /* 19-gear-w@2x.png in Resources */,
 				1F7D901714EED2F300307F26 /* 11-clock.png in Resources */,
 				1F7D901814EED2F300307F26 /* 11-clock@2x.png in Resources */,
+				1FFAB02E14F1D42B00851D81 /* linen-light-cell.png in Resources */,
+				1FFAB02F14F1D42B00851D81 /* linen-light-cell@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +766,7 @@
 				1F74FC9414DEF6130034BA02 /* MTEStoreViewController.m in Sources */,
 				1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */,
 				1F02F4AD14F12915005F738B /* MTESettingsManager.m in Sources */,
+				1FFAB03314F1D44A00851D81 /* MTESettingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
