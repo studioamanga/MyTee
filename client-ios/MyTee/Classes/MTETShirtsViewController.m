@@ -222,15 +222,14 @@
 
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController*)settingsViewController
 {
-    [MTESyncManager resetKeychain];
-
-    self.syncManager = [MTESyncManager new];
-    [self.syncManager setupSyncManager];
+    [self.syncManager resetAllData];
     
+    [MTESyncManager resetKeychain];
+    
+    [self.tshirtExplorer updateData];
     [self.tableView reloadData];
     
     [self dismissModalViewControllerAnimated:YES];
 }
-
 
 @end

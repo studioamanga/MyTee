@@ -166,7 +166,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([tableView cellForRowAtIndexPath:indexPath]==self.syncNowCell)
+    UITableViewCell * selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (selectedCell==self.syncNowCell)
     {
         [self.syncManager startSync];
         [self.syncActivityIndicator startAnimating];
@@ -174,6 +176,12 @@
         self.lastSyncLabel.text = @"Syncing...";
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    else if (selectedCell==self.logoutCell)
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        [self.delegate settingsViewControllerShouldLogOut:self];
     }
 }
 

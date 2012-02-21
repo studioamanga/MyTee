@@ -29,6 +29,7 @@
 + (NSDate*)lastSyncDate;
 + (void)setLastSyncDateNow;
 
+- (void)resetAllData;
 - (void)setupSyncManager;
 
 - (void)startSync;

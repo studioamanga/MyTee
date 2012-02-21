@@ -108,6 +108,28 @@
 
 #pragma mark - RestKit
 
+- (void)resetAllData
+{
+    NSError * error = nil;
+    NSManagedObjectContext * context = [RKObjectManager sharedManager].objectStore.managedObjectContext;
+    
+    NSFetchRequest * tshirtsRequest = [MTETShirt fetchRequest];
+    [tshirtsRequest setIncludesPropertyValues:NO];
+    NSArray * tshirts = [context executeFetchRequest:tshirtsRequest error:&error];
+    for (NSManagedObject * tshirt in tshirts)
+        [context deleteObject:tshirt];
+    [context save:&error];
+    
+    NSFetchRequest * storesRequest = [MTEStore fetchRequest];
+    [storesRequest setIncludesPropertyValues:NO];
+    NSArray * stores = [context executeFetchRequest:storesRequest error:&error];
+    for (NSManagedObject * store in stores)
+        [context deleteObject:store];
+    [context save:&error];
+    
+    [[RKObjectManager sharedManager].client.requestCache invalidateAll];    
+}
+
 - (void)setupSyncManager
 {
     //RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
@@ -137,7 +159,7 @@
     [wearMapping setPrimaryKeyAttribute:@"identifier"];
     [wearMapping mapAttributes:@"identifier", @"date", nil];
     
-    RKManagedObjectMapping* washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class]];
+    RKManagedObjectMapping * washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class]];
     [washMapping setPrimaryKeyAttribute:@"identifier"];
     [washMapping mapAttributes:@"identifier", @"date", nil];
     
