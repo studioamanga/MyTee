@@ -481,7 +481,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="72l-qf-Ff8">
-                            <rect key="frame" x="0.0" y="242" width="320" height="92"/>
+                            <rect key="frame" x="0.0" y="242" width="320" height="105"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hello #email#" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="sHZ-Cp-8TL">
@@ -502,6 +502,11 @@
                                     <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="shadowOffset" width="0.0" height="1"/>
                                 </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="iCa-DO-lo7">
+                                    <rect key="frame" x="150" y="72" width="20" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                                </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -627,6 +632,7 @@
                         <outlet property="logoutCell" destination="tdj-6W-KRQ" id="Zzt-Uq-tdR"/>
                         <outlet property="remindersSwitch" destination="THh-DT-0xg" id="skI-on-nhm"/>
                         <outlet property="remindersTimeCell" destination="7FQ-bS-2dA" id="yAm-YX-qrL"/>
+                        <outlet property="syncActivityIndicator" destination="iCa-DO-lo7" id="xDz-9K-NP9"/>
                         <outlet property="syncNowCell" destination="o86-hq-MJh" id="U9p-8D-Rcg"/>
                     </connections>
                 </tableViewController>
@@ -661,68 +667,6 @@
         <image name="80-shopping-cart.png" width="26" height="19"/>
         <image name="83-calendar.png" width="23" height="25"/>
     </resources>
-    <classes>
-        <class className="MTELoginViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTELoginViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MTESettingCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTESettingCell.h"/>
-        </class>
-        <class className="MTESettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTESettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didPressCancel:"/>
-                <relationship kind="action" name="didPressDone:"/>
-                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lastSyncLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logoutCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="remindersSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="remindersTimeCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="syncNowCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="MTEStoreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEStoreViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addressIconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="typeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MTETShirtCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtCell.h"/>
-        </class>
-        <class className="MTETShirtViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="noteIconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="noteLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ratingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sizeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="storeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tagsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tshirtImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MTETShirtsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didPressSettingsBarButtonItem:"/>
-                <relationship kind="outlet" name="settingsBarButtonItem" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="MTEWearWashViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEWearWashViewController.h"/>
-        </class>
-        <class className="ShadowedTableView" superclassName="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadowedTableView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -62,6 +62,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if ([self.syncManager isSyncing])
+    {
+        [self startSpinningAnimation];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -107,16 +112,6 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
@@ -127,6 +122,7 @@
         UINavigationController * navigationController = segue.destinationViewController;
         MTESettingsViewController * viewController = (MTESettingsViewController*)navigationController.topViewController;
         viewController.delegate = self;
+        viewController.syncManager = self.syncManager;
     }
     else if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
     {

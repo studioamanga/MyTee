@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MTESettingsViewController;
+@class MTESyncManager;
 
 @protocol MTESettingsViewDelegate <NSObject>
 
@@ -26,8 +27,11 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell * syncNowCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell * logoutCell;
 @property (weak, nonatomic) IBOutlet UISwitch * remindersSwitch;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *syncActivityIndicator;
 
 @property (weak, nonatomic) id <MTESettingsViewDelegate> delegate;
+
+@property (weak, nonatomic) MTESyncManager * syncManager;
 
 - (IBAction)didPressDone:(id)sender;
 - (IBAction)didPressCancel:(id)sender;
