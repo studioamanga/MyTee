@@ -29,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tableView.backgroundView = [UIView new];
 
     NSString * email = [MTESyncManager emailFromKeychain];
     if (email)
@@ -179,9 +181,12 @@
     }
     else if (selectedCell==self.logoutCell)
     {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (!self.syncManager.isSyncing) 
+        {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        [self.delegate settingsViewControllerShouldLogOut:self];
+            [self.delegate settingsViewControllerShouldLogOut:self];
+        }
     }
 }
 

@@ -17,6 +17,8 @@
 @synthesize emailTextField;
 @synthesize passwordTextField;
 
+@synthesize delegate;
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -164,6 +166,8 @@
     if (authenticationSuccessful)
     {
         [self dismissModalViewControllerAnimated:YES];
+        
+        [delegate loginViewControllerDidLoggedIn:self];
     }
 }
 

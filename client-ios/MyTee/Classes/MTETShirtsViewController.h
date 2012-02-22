@@ -7,12 +7,13 @@
 //
 
 #import "MTESettingsViewController.h"
+#import "MTELoginViewController.h"
 
 @class MTESyncManager;
 @class MTETShirtExplorer;
 @class MTETShirtViewController;
 
-@interface MTETShirtsViewController : UITableViewController <MTESettingsViewDelegate>
+@interface MTETShirtsViewController : UITableViewController <MTESettingsViewDelegate, MTELoginViewDelegate>
 
 @property (strong, nonatomic) MTESyncManager * syncManager;
 @property (strong, nonatomic) MTETShirtExplorer * tshirtExplorer;

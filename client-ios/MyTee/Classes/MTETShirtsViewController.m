@@ -18,6 +18,7 @@
 
 #import "MTETShirtViewController.h"
 #import "MTESettingsViewController.h"
+#import "MTELoginViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -62,7 +63,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+ 
     if ([self.syncManager isSyncing])
     {
         [self startSpinningAnimation];
@@ -72,13 +73,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
     NSString * email = [MTESyncManager emailFromKeychain];
     if (!email)
     {
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
     }
-    else
+    else if (!self.syncManager.isSyncing)
     {
         [self.syncManager startSync];
         [self startSpinningAnimation];
@@ -116,6 +117,9 @@
 {
     if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
     {
+        UINavigationController * navigationController = segue.destinationViewController;
+        MTELoginViewController * viewController = (MTELoginViewController*)navigationController.topViewController;
+        viewController.delegate = self;
     }
     else if ([[segue identifier] isEqualToString:@"MTESettingsSegue"])
     {
@@ -180,6 +184,17 @@
     }
 }
 
+#pragma mark - Login
+
+- (void)loginViewControllerDidLoggedIn:(MTELoginViewController*)loginViewController
+{
+    if (!self.syncManager.isSyncing)
+    {
+        [self.syncManager startSync];
+        [self startSpinningAnimation];
+    }
+}
+
 #pragma mark - Sync
 
 - (void)syncFinished:(id)sender
@@ -222,6 +237,9 @@
 
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController*)settingsViewController
 {
+    [self.detailViewController.navigationController popToRootViewControllerAnimated:NO];
+    self.detailViewController.tshirt = nil;
+    
     [self.syncManager resetAllData];
     
     [MTESyncManager resetKeychain];
@@ -229,7 +247,9 @@
     [self.tshirtExplorer updateData];
     [self.tableView reloadData];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+    }];
 }
 
 @end
