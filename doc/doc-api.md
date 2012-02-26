@@ -1,14 +1,18 @@
 # API Documentation (v1.0 draft proposal)
 
 ## T-Shirts
+
 ### Getting all my t-shirts
+
 *GET* `/api/tshirt/mine`
+
 List all my t-shirts, as described with the following resource.
-	[
-		{…}
-	]
+    [
+        {…}
+    ]
 
 ### Getting t-shirt description
+
 *GET* `/api/tshirt/:tshirt_id`
 	{
 		"identifier": "xxx",
@@ -39,14 +43,20 @@ List all my t-shirts, as described with the following resource.
 	}
 
 ## Store
+
 ### Getting all my stores
-*GET* `/api/store/all`
+
+*GET* '/api/store/all'
+
 List all the stores, as described with the following resource.
+```
 	[
 		{…}
 	]
+```
 
 ### Getting store description
+
 *GET* `/api/store/:store_id`
 	{
 		"identifier": "xxx",
@@ -59,7 +69,9 @@ List all the stores, as described with the following resource.
 	}
 
 ## User
+
 ### Authenticating user
+
 *GET* `/api/user/me
 {
 	"identifier": "xxx",
