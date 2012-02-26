@@ -4,6 +4,7 @@
 	include_once('script/toolbox.php');
 	include_once('script/store.php');
 	include_once('script/tshirt.php');
+	include_once('script/user.php');
 	include_once('script/db.php');
 	
 	if (!isset($_GET['login']) || !isset($_GET['password']))
@@ -97,6 +98,19 @@
 					$tshirt = clean_tshirt_from_db($tshirts[0]);
 					$tshirt = fectch_wash_wear_store_for_tshirt($database, $tshirt);
 					output_json($tshirt);
+				}
+			}
+		}
+		if ($api_resource=='user')
+		{
+			if($api_parameter=='me')
+			{
+				$users = $database->fetch('mt_user', '`use_id`=\''.$user->use_id.'\'');
+		
+				if(count($users)==1)
+				{	
+					$user = clean_user_from_db($users[0]);
+					output_json($user);
 				}
 			}
 		}
