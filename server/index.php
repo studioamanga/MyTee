@@ -4,16 +4,20 @@
 	include_once('script/toolbox.php');
 	include_once('script/store.php');
 	include_once('script/tshirt.php');
+	include_once('script/user.php');
 	include_once('script/db.php');
+	include_once('script/authentication.php');
 	
-	if (!isset($_GET['login']) || !isset($_GET['password']))
+	$request_method = $_SERVER['REQUEST_METHOD'];
+	
+	$login = authentication_login($request_method);
+	$password = authentication_password($request_method);
+	
+	if (!$login || !$password)
 	{
 		header('HTTP/1.0 403 Forbidden');
 		die('403 Forbidden, sorry');
 	}
-	
-	$login = $_GET['login'];
-	$password = $_GET['password'];
 	
 	if(!filter_var($login, FILTER_VALIDATE_EMAIL) || !ctype_alnum($password))
 	{
@@ -97,6 +101,19 @@
 					$tshirt = clean_tshirt_from_db($tshirts[0]);
 					$tshirt = fectch_wash_wear_store_for_tshirt($database, $tshirt);
 					output_json($tshirt);
+				}
+			}
+		}
+		if ($api_resource=='user')
+		{
+			if($api_parameter=='me')
+			{
+				$users = $database->fetch('mt_user', '`use_id`=\''.$user->use_id.'\'');
+		
+				if(count($users)==1)
+				{	
+					$user = clean_user_from_db($users[0]);
+					output_json($user);
 				}
 			}
 		}

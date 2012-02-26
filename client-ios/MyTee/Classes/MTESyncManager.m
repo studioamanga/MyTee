@@ -18,12 +18,16 @@
 #import "MTEStore.h"
 
 #define MTE_URL_API @"http://www.studioamanga.com/mytee/api/"
-#define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/store/all"
+#define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/user/me"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
 #define MTE_KEYCHAIN_ACCESS_GROUP @"77S3V3W24J.com.studioamanga.mytee"
 
+#define MTE_USER_DEFAULTS_LAST_SYNC_DATE @"kMTEUserDefaultsLastSyncDate"
+
 @implementation MTESyncManager
+
+@synthesize isSyncing;
 
 #pragma mark - Keychain
 
@@ -37,12 +41,24 @@
     return urlString;
 }
 
+#pragma mark - Authentication
+
 + (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password
 {
     NSURL * url = [NSURL URLWithString:[self pathForResource:MTE_URL_AUTHENTICATION withEmail:email password:password]];
     NSMutableURLRequest * request = [NSURLRequest requestWithURL:url];
     
     return request;
+}
+
++ (BOOL)authenticationResponseIsSuccessful:(NSHTTPURLResponse*)response
+{
+    NSUInteger status = [(NSHTTPURLResponse*)response statusCode];
+    
+    if (status==200)
+        return YES;
+    
+    return NO;
 }
 
 #pragma mark - 
@@ -87,11 +103,49 @@
     return [self valueFromKeychainWithKey:(__bridge NSString*)kSecValueData];
 }
 
+#pragma mark - Sync date
+
++ (NSDate*)lastSyncDate
+{
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey:MTE_USER_DEFAULTS_LAST_SYNC_DATE];
+}
+
++ (void)setLastSyncDateNow
+{
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSDate date] forKey:MTE_USER_DEFAULTS_LAST_SYNC_DATE];
+    [userDefaults synchronize];
+}
+
 #pragma mark - RestKit
+
+- (void)resetAllData
+{
+    NSError * error = nil;
+    NSManagedObjectContext * context = [RKObjectManager sharedManager].objectStore.managedObjectContext;
+    
+    NSFetchRequest * tshirtsRequest = [MTETShirt fetchRequest];
+    [tshirtsRequest setIncludesPropertyValues:NO];
+    NSArray * tshirts = [context executeFetchRequest:tshirtsRequest error:&error];
+    for (NSManagedObject * tshirt in tshirts)
+        [context deleteObject:tshirt];
+    [context save:&error];
+    
+    NSFetchRequest * storesRequest = [MTEStore fetchRequest];
+    [storesRequest setIncludesPropertyValues:NO];
+    NSArray * stores = [context executeFetchRequest:storesRequest error:&error];
+    for (NSManagedObject * store in stores)
+        [context deleteObject:store];
+    [context save:&error];
+    
+    [[RKObjectManager sharedManager].client.requestCache invalidateAll];    
+}
 
 - (void)setupSyncManager
 {
     //RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
+    self.isSyncing = NO;
     
     RKObjectManager * objectManager = [RKObjectManager objectManagerWithBaseURL:MTE_URL_API];
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
@@ -107,6 +161,8 @@
 
 - (void)startSync
 {
+    self.isSyncing = YES;
+    
     RKManagedObjectMapping * storeMapping = [RKManagedObjectMapping mappingForClass:[MTEStore class]];
     [storeMapping setPrimaryKeyAttribute:@"identifier"];
     [storeMapping mapAttributes:@"identifier", @"name", @"type", @"address", @"url", nil];
@@ -115,7 +171,7 @@
     [wearMapping setPrimaryKeyAttribute:@"identifier"];
     [wearMapping mapAttributes:@"identifier", @"date", nil];
     
-    RKManagedObjectMapping* washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class]];
+    RKManagedObjectMapping * washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class]];
     [washMapping setPrimaryKeyAttribute:@"identifier"];
     [washMapping mapAttributes:@"identifier", @"date", nil];
     
@@ -148,10 +204,12 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
-    NSLog(@">> didLoadObjects %d", [objects count]);
+    //NSLog(@">> didLoadObjects %d", [objects count]);
+    self.isSyncing = NO;
     
+    [MTESyncManager setLastSyncDateNow];
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-    
+     
     if ([[objectLoader resourcePath] rangeOfString:MTE_URL_API_TSHIRTS_ALL].location!=NSNotFound)
     {
         NSFileManager * fileManager = [NSFileManager defaultManager];
@@ -185,6 +243,8 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error
 {
+    self.isSyncing = NO;
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 

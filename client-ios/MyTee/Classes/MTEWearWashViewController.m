@@ -21,7 +21,8 @@
     [super viewDidLoad];
     
     self.dateFormatter = [NSDateFormatter new];
-    [self.dateFormatter setDateStyle:NSDateFormatterFullStyle];
+    self.dateFormatter.dateStyle = NSDateFormatterFullStyle;
+    self.dateFormatter.doesRelativeDateFormatting = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

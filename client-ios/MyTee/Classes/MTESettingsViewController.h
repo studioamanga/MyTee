@@ -2,20 +2,40 @@
 //  MTESettingsViewController.h
 //  mytee
 //
-//  Created by Vincent Tourraine on 1/29/12.
+//  Created by Vincent Tourraine on 2/15/12.
 //  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
 //
 
-#import "MBProgressHUD.h"
+#import <UIKit/UIKit.h>
 
-@interface MTESettingsViewController : UITableViewController <UITextFieldDelegate, MBProgressHUDDelegate>
-{
-    BOOL authenticationSuccessful;    
-}
+@class MTESettingsViewController;
+@class MTESyncManager;
 
-@property (weak, nonatomic) IBOutlet UITextField * emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField * passwordTextField;
+@protocol MTESettingsViewDelegate <NSObject>
 
-- (void)startAuthenticatingWithEmail:(NSString*)email password:(NSString*)password;
+- (void)settingsViewControllerShouldClose:(MTESettingsViewController*)settingsViewController;
+- (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController*)settingsViewController;
+- (void)settingsViewControllerShouldLogOut:(MTESettingsViewController*)settingsViewController;
+
+@end
+
+@interface MTESettingsViewController : UITableViewController
+
+@property (weak, nonatomic) IBOutlet UILabel * emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel * lastSyncLabel;
+@property (weak, nonatomic) IBOutlet UITableViewCell *remindersTimeCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell * syncNowCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell * logoutCell;
+@property (weak, nonatomic) IBOutlet UISwitch * remindersSwitch;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *syncActivityIndicator;
+
+@property (weak, nonatomic) id <MTESettingsViewDelegate> delegate;
+
+@property (weak, nonatomic) MTESyncManager * syncManager;
+
+- (IBAction)didPressDone:(id)sender;
+- (IBAction)didPressCancel:(id)sender;
+
+- (void)updateSyncDateLabel;
 
 @end
