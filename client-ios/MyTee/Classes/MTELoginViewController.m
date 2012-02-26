@@ -124,12 +124,10 @@
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse*response, NSData*data, NSError*error){
         if(response)
         {
-            NSUInteger status = [(NSHTTPURLResponse*)response statusCode];
+            authenticationSuccessful = [MTESyncManager authenticationResponseIsSuccessful:(NSHTTPURLResponse*)response];
             
-            if (status==200)
+            if (authenticationSuccessful)
             {
-                authenticationSuccessful = YES;
-                
                 [MTESyncManager storeEmail:email password:password];
                 
                 progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
 //
 
-#import "RestKit.h"
+#import "RestKit/RestKit.h"
 
 #define MTE_URL_API_TSHIRTS_ALL @"/tshirt/all"
 #define MTE_URL_API_STORES_ALL @"/store/all"
@@ -19,7 +19,9 @@
 @property (nonatomic) BOOL isSyncing;
 
 + (NSString*)pathForResource:(NSString*)resourcePath withEmail:(NSString*)email password:(NSString*)password;
+
 + (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password;
++ (BOOL)authenticationResponseIsSuccessful:(NSHTTPURLResponse*)response;
 
 + (void)resetKeychain;
 + (void)storeEmail:(NSString*)email password:(NSString*)password;

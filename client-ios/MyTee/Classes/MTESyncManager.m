@@ -41,12 +41,24 @@
     return urlString;
 }
 
+#pragma mark - Authentication
+
 + (NSURLRequest*)requestForAuthenticatingWithEmail:(NSString*)email password:(NSString*)password
 {
     NSURL * url = [NSURL URLWithString:[self pathForResource:MTE_URL_AUTHENTICATION withEmail:email password:password]];
     NSMutableURLRequest * request = [NSURLRequest requestWithURL:url];
     
     return request;
+}
+
++ (BOOL)authenticationResponseIsSuccessful:(NSHTTPURLResponse*)response
+{
+    NSUInteger status = [(NSHTTPURLResponse*)response statusCode];
+    
+    if (status==200)
+        return YES;
+    
+    return NO;
 }
 
 #pragma mark - 
