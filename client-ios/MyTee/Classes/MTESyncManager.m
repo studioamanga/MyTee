@@ -18,7 +18,7 @@
 #import "MTEStore.h"
 
 #define MTE_URL_API @"http://www.studioamanga.com/mytee/api/"
-#define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/store/all"
+#define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/user/me"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
 #define MTE_KEYCHAIN_ACCESS_GROUP @"77S3V3W24J.com.studioamanga.mytee"
