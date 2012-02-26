@@ -6,15 +6,18 @@
 	include_once('script/tshirt.php');
 	include_once('script/user.php');
 	include_once('script/db.php');
+	include_once('script/authentication.php');
 	
-	if (!isset($_GET['login']) || !isset($_GET['password']))
+	$request_method = $_SERVER['REQUEST_METHOD'];
+	
+	$login = authentication_login($request_method);
+	$password = authentication_password($request_method);
+	
+	if (!$login || !$password)
 	{
 		header('HTTP/1.0 403 Forbidden');
 		die('403 Forbidden, sorry');
 	}
-	
-	$login = $_GET['login'];
-	$password = $_GET['password'];
 	
 	if(!filter_var($login, FILTER_VALIDATE_EMAIL) || !ctype_alnum($password))
 	{
