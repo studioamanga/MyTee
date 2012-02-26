@@ -57,3 +57,12 @@ List all the stores, as described with the following resource.
 		"latitude": xxx,
 		"longitude": xxx
 	}
+
+## User
+### Authenticating user
+*GET* `/api/user/me
+{
+	"identifier": "xxx",
+	"email": "xxx",
+	"name": ""
+}
