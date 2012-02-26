@@ -3,13 +3,15 @@
 ## T-Shirts
 
 ### Getting all my t-shirts
-
-*GET* `/api/tshirt/mine`
+**GET** `/api/store/all`
 
 List all my t-shirts, as described with the following resource.
-    [
-        {…}
-    ]
+
+```
+[
+  {…}
+]
+```
 
 ### Getting t-shirt description
 
