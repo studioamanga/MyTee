@@ -17,12 +17,17 @@
 #import "MTEConstView.h"
 
 #import "MTETShirtViewController.h"
+#import "MTESettingsViewController.h"
+#import "MTELoginViewController.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 @implementation MTETShirtsViewController
 
 @synthesize syncManager;
 @synthesize tshirtExplorer;
 @synthesize detailViewController;
+@synthesize settingsBarButtonItem;
 
 #pragma mark - View lifecycle
 
@@ -51,50 +56,79 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    
+    self.settingsBarButtonItem = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+ 
+    if ([self.syncManager isSyncing])
+    {
+        [self startSpinningAnimation];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    static BOOL firstTime = YES;
-    
-    if (firstTime)
+
+    NSString * email = [MTESyncManager emailFromKeychain];
+    if (!email)
     {
-        NSString * email = [MTESyncManager emailFromKeychain];
-        if (!email)
-            [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
-        else
-            [self.syncManager startSync];
-        
-        firstTime = NO;
+        [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+    }
+    else if (!self.syncManager.isSyncing)
+    {
+        [self.syncManager startSync];
+        [self startSpinningAnimation];
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)startSpinningAnimation
 {
-    [super viewWillDisappear:animated];
+    CABasicAnimation * spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    spinAnimation.fromValue = [NSNumber numberWithFloat:0];
+    spinAnimation.toValue = [NSNumber numberWithFloat:2*M_PI];
+    spinAnimation.duration = 0.5;
+    spinAnimation.delegate = self;
+    
+    [self.settingsBarButtonItem.customView.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (IBAction)didPressSettingsBarButtonItem:(id)sender
 {
-    [super viewDidDisappear:animated];
+    [self performSegueWithIdentifier:@"MTESettingsSegue" sender:nil];
+    
+    //[self.syncManager startSync];
+    //[self startSpinningAnimation];
+}
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
+{
+    if (self.syncManager.isSyncing)
+    {
+        [self startSpinningAnimation];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
     {
+        UINavigationController * navigationController = segue.destinationViewController;
+        MTELoginViewController * viewController = (MTELoginViewController*)navigationController.topViewController;
+        viewController.delegate = self;
     }
-    
-    if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
+    else if ([[segue identifier] isEqualToString:@"MTESettingsSegue"])
+    {
+        UINavigationController * navigationController = segue.destinationViewController;
+        MTESettingsViewController * viewController = (MTESettingsViewController*)navigationController.topViewController;
+        viewController.delegate = self;
+        viewController.syncManager = self.syncManager;
+    }
+    else if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
     {
         MTETShirtViewController * viewController = segue.destinationViewController;
         
@@ -150,16 +184,29 @@
     }
 }
 
+#pragma mark - Login
+
+- (void)loginViewControllerDidLoggedIn:(MTELoginViewController*)loginViewController
+{
+    if (!self.syncManager.isSyncing)
+    {
+        [self.syncManager startSync];
+        [self startSpinningAnimation];
+    }
+}
+
 #pragma mark - Sync
 
 - (void)syncFinished:(id)sender
 {
+    /*
     MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.labelText = @"Sync Successful!";
     
     [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
+    */
     
     [self.tshirtExplorer updateData];
     [self.tableView reloadData];
@@ -173,6 +220,36 @@
     progressHUD.labelText = @"Sync Failed";
     
     [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
+}
+
+#pragma mark - Settings view controller delegate
+
+- (void)settingsViewControllerShouldClose:(MTESettingsViewController*)settingsViewController
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController*)settingsViewController
+{
+    [self.syncManager startSync];
+    [self startSpinningAnimation];
+}
+
+- (void)settingsViewControllerShouldLogOut:(MTESettingsViewController*)settingsViewController
+{
+    [self.detailViewController.navigationController popToRootViewControllerAnimated:NO];
+    self.detailViewController.tshirt = nil;
+    
+    [self.syncManager resetAllData];
+    
+    [MTESyncManager resetKeychain];
+    
+    [self.tshirtExplorer updateData];
+    [self.tableView reloadData];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+    }];
 }
 
 @end

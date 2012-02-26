@@ -47,54 +47,66 @@
 
 - (void)configureView
 {
-    self.title = self.tshirt.name;
-    
-    [[self.sizeLabel layer] setBorderColor:[[UIColor blackColor] CGColor]];
-    [[self.sizeLabel layer] setBorderWidth:1];
-    [[self.sizeLabel layer] setCornerRadius:6];
-    self.sizeLabel.text = self.tshirt.size;
-    
-    self.tagsLabel.text = self.tshirt.tags;
-    
-    NSMutableString * ratingString = [NSMutableString stringWithString:@""];
-    NSUInteger i = 0;
-    NSUInteger rating = [self.tshirt.rating intValue];
-    for( ; i<rating ; i++)
-        [ratingString appendString:@"★"];
-    for( ; i<5 ; i++)
-        [ratingString appendString:@"☆"];
-    self.ratingLabel.text = ratingString;
-    
-    if(self.tshirt.note && ![self.tshirt.note isEqualToString:@""])
+    if (!self.tshirt)
     {
-        CGSize noteSize = [self.tshirt.note sizeWithFont:self.noteLabel.font constrainedToSize:CGSizeMake(self.noteLabel.frame.size.width, 9999)];
-        self.noteLabel.frame = CGRectMake(self.noteLabel.frame.origin.x, self.noteLabel.frame.origin.y, self.noteLabel.frame.size.width, noteSize.height);
-        self.noteLabel.text = self.tshirt.note;
-        self.noteIconImageView.hidden = NO;
+        for (UIView * view in self.view.subviews)
+        {
+            view.hidden = YES;
+        }
     }
     else
     {
-        self.noteLabel.text = @"";
-        self.noteIconImageView.hidden = YES;
+        for (UIView * view in self.view.subviews)
+        {
+            view.hidden = NO;
+        }
+        
+        self.title = self.tshirt.name;
+    
+        self.sizeLabel.layer.borderColor = [[UIColor blackColor] CGColor];
+        self.sizeLabel.layer.borderWidth = 1;
+        self.sizeLabel.layer.cornerRadius = 6;
+        self.sizeLabel.text = self.tshirt.size;
+    
+        self.tagsLabel.text = self.tshirt.tags;
+        
+        NSMutableString * ratingString = [NSMutableString stringWithString:@""];
+        NSUInteger i = 0;
+        NSUInteger rating = [self.tshirt.rating intValue];
+        for( ; i<rating ; i++)
+            [ratingString appendString:@"★"];
+        for( ; i<5 ; i++)
+            [ratingString appendString:@"☆"];
+        self.ratingLabel.text = ratingString;
+        
+        if(self.tshirt.note && ![self.tshirt.note isEqualToString:@""])
+        {
+            CGSize noteSize = [self.tshirt.note sizeWithFont:self.noteLabel.font constrainedToSize:CGSizeMake(self.noteLabel.frame.size.width, 9999)];
+            self.noteLabel.frame = CGRectMake(self.noteLabel.frame.origin.x, self.noteLabel.frame.origin.y, self.noteLabel.frame.size.width, noteSize.height);
+            self.noteLabel.text = self.tshirt.note;
+            self.noteIconImageView.hidden = NO;
+        }
+        else
+        {
+            self.noteLabel.text = @"";
+            self.noteIconImageView.hidden = YES;
+        }
+        
+        [self.storeButton setTitle:self.tshirt.store.name forState:UIControlStateNormal];
+        
+        NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:self.tshirt.identifier];
+        UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
+        self.tshirtImageView.image = image;
+        
+        self.tshirtImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+        self.tshirtImageView.layer.borderWidth = 1;
+        
+        ((UIScrollView*)self.view).contentSize = CGSizeMake(self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
     }
-    
-    [self.storeButton setTitle:self.tshirt.store.name forState:UIControlStateNormal];
-    
-    NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:self.tshirt.identifier];
-    UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
-    [self.tshirtImageView setImage:image];
-    
-    //[[self.tshirtImageView layer] setShadowRadius:7];
-    //[[self.tshirtImageView layer] setShadowColor:[[UIColor blackColor] CGColor]];
-    //[[self.tshirtImageView layer] setShadowOpacity:0.7];
-    [[self.tshirtImageView layer] setBorderColor:[[UIColor blackColor] CGColor]];
-    [[self.tshirtImageView layer] setBorderWidth:1];
     
     UIImage * woodTexture = [UIImage imageNamed:@"wood"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
-    [self.view setBackgroundColor:woodColor];
-    
-    [(UIScrollView*)self.view setContentSize:CGSizeMake(self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50)];
+    self.view.backgroundColor = woodColor;
 }
 
 - (void)viewDidLoad

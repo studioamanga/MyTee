@@ -26,6 +26,7 @@
 		1F01F16D14DC15CB00D6EF0C /* wash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16B14DC15CB00D6EF0C /* wash@2x.png */; };
 		1F01F17014DC161700D6EF0C /* 67-tshirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16E14DC161700D6EF0C /* 67-tshirt.png */; };
 		1F01F17114DC161700D6EF0C /* 67-tshirt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */; };
+		1F02F4AD14F12915005F738B /* MTESettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F4AC14F12915005F738B /* MTESettingsManager.m */; };
 		1F230B2F14DC98D500B65E7E /* MTEStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F230B2E14DC98D500B65E7E /* MTEStore.m */; };
 		1F230B3214DCA31A00B65E7E /* 80-shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F230B3014DCA31A00B65E7E /* 80-shopping-cart.png */; };
 		1F230B3314DCA31A00B65E7E /* 80-shopping-cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F230B3114DCA31A00B65E7E /* 80-shopping-cart@2x.png */; };
@@ -41,6 +42,8 @@
 		1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F294E1714D7515A00A24AED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F294E1614D7515A00A24AED /* Security.framework */; };
 		1F294E1A14D7558600A24AED /* MTESyncManagerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1F67661614EB28F60035EF7D /* 19-gear-w.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F67661414EB28F60035EF7D /* 19-gear-w.png */; };
+		1F67661714EB28F60035EF7D /* 19-gear-w@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */; };
 		1F6AC78814D9FE890040A06A /* MTETShirtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78714D9FE890040A06A /* MTETShirtViewController.m */; };
 		1F6AC78C14DA03E00040A06A /* MTEWearWashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78B14DA03E00040A06A /* MTEWearWashViewController.m */; };
 		1F6AC78F14DA05DB0040A06A /* MTEWash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78E14DA05DB0040A06A /* MTEWash.m */; };
@@ -68,8 +71,11 @@
 		1F7BF9C214D4526D00D7F4A3 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */; };
 		1F7BF9C414D4529400D7F4A3 /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */; };
 		1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */; };
+		1F7D901714EED2F300307F26 /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D901514EED2F200307F26 /* 11-clock.png */; };
+		1F7D901814EED2F300307F26 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D901614EED2F300307F26 /* 11-clock@2x.png */; };
+		1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */; };
 		1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079314D4CBA400909A11 /* MBProgressHUD.m */; };
-		1FDE079A14D4CE7700909A11 /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */; };
+		1FDE079A14D4CE7700909A11 /* MTELoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079914D4CE7700909A11 /* MTELoginViewController.m */; };
 		1FF7D5DD14D88D84000BDE04 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5DC14D88D84000BDE04 /* libRestKit.a */; };
 		1FF7D5E014D88E3F000BDE04 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5DF14D88E3F000BDE04 /* CFNetwork.framework */; };
 		1FF7D5E214D88E51000BDE04 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */; };
@@ -78,6 +84,9 @@
 		1FF7D5E914D8936E000BDE04 /* MTETShirtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5E814D8936E000BDE04 /* MTETShirtsViewController.m */; };
 		1FF7D5EF14D89D2B000BDE04 /* MTETShirt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */; };
 		1FF7D5F214D8A20A000BDE04 /* MTETShirtExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7D5F114D8A20A000BDE04 /* MTETShirtExplorer.m */; };
+		1FFAB02E14F1D42B00851D81 /* linen-light-cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFAB02C14F1D42B00851D81 /* linen-light-cell.png */; };
+		1FFAB02F14F1D42B00851D81 /* linen-light-cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFAB02D14F1D42B00851D81 /* linen-light-cell@2x.png */; };
+		1FFAB03314F1D44A00851D81 /* MTESettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAB03214F1D44A00851D81 /* MTESettingCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +121,8 @@
 		1F01F16B14DC15CB00D6EF0C /* wash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wash@2x.png"; path = "MyTee/Resources/Images/wash@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F01F16E14DC161700D6EF0C /* 67-tshirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "67-tshirt.png"; path = "MyTee/Resources/Images/67-tshirt.png"; sourceTree = SOURCE_ROOT; };
 		1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "67-tshirt@2x.png"; path = "MyTee/Resources/Images/67-tshirt@2x.png"; sourceTree = SOURCE_ROOT; };
+		1F02F4AB14F12915005F738B /* MTESettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsManager.h; path = MyTee/Classes/MTESettingsManager.h; sourceTree = SOURCE_ROOT; };
+		1F02F4AC14F12915005F738B /* MTESettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsManager.m; path = MyTee/Classes/MTESettingsManager.m; sourceTree = SOURCE_ROOT; };
 		1F230B2B14DC981A00B65E7E /* mytee 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "mytee 2.xcdatamodel"; sourceTree = "<group>"; };
 		1F230B2D14DC98D500B65E7E /* MTEStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEStore.h; path = MyTee/Classes/MTEStore.h; sourceTree = SOURCE_ROOT; };
 		1F230B2E14DC98D500B65E7E /* MTEStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEStore.m; path = MyTee/Classes/MTEStore.m; sourceTree = SOURCE_ROOT; };
@@ -132,6 +143,8 @@
 		1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainItemWrapper.m; path = Libraries/KeychainItemWrapper/KeychainItemWrapper.m; sourceTree = SOURCE_ROOT; };
 		1F294E1614D7515A00A24AED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MTESyncManagerSpec.mm; path = MyTeeTests/Specs/MTESyncManagerSpec.mm; sourceTree = SOURCE_ROOT; };
+		1F67661414EB28F60035EF7D /* 19-gear-w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-gear-w.png"; path = "MyTee/Resources/Images/19-gear-w.png"; sourceTree = SOURCE_ROOT; };
+		1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-gear-w@2x.png"; path = "MyTee/Resources/Images/19-gear-w@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F6AC78614D9FE890040A06A /* MTETShirtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtViewController.h; path = MyTee/Classes/MTETShirtViewController.h; sourceTree = SOURCE_ROOT; };
 		1F6AC78714D9FE890040A06A /* MTETShirtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtViewController.m; path = MyTee/Classes/MTETShirtViewController.m; sourceTree = SOURCE_ROOT; };
 		1F6AC78A14DA03E00040A06A /* MTEWearWashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEWearWashViewController.h; path = MyTee/Classes/MTEWearWashViewController.h; sourceTree = SOURCE_ROOT; };
@@ -169,10 +182,14 @@
 		1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Resources/Storyboards/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = Resources/Storyboards/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1F7BF9F714D4543A00D7F4A3 /* mytee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mytee.xcdatamodel; sourceTree = "<group>"; };
+		1F7D901514EED2F200307F26 /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock.png"; path = "MyTee/Resources/Images/11-clock.png"; sourceTree = SOURCE_ROOT; };
+		1F7D901614EED2F300307F26 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock@2x.png"; path = "MyTee/Resources/Images/11-clock@2x.png"; sourceTree = SOURCE_ROOT; };
+		1FA8535F14EC5BCB00736DAD /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
 		1FDE079214D4CBA400909A11 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = SOURCE_ROOT; };
 		1FDE079314D4CBA400909A11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
-		1FDE079814D4CE7700909A11 /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
-		1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		1FDE079814D4CE7700909A11 /* MTELoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTELoginViewController.h; path = MyTee/Classes/MTELoginViewController.h; sourceTree = SOURCE_ROOT; };
+		1FDE079914D4CE7700909A11 /* MTELoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTELoginViewController.m; path = MyTee/Classes/MTELoginViewController.m; sourceTree = SOURCE_ROOT; };
 		1FF7D5DC14D88D84000BDE04 /* libRestKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRestKit.a; path = "Libraries/RestKit/build/Release-iphoneos/libRestKit.a"; sourceTree = "<group>"; };
 		1FF7D5DF14D88E3F000BDE04 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -185,6 +202,10 @@
 		1FF7D5EE14D89D2B000BDE04 /* MTETShirt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirt.m; path = MyTee/Classes/MTETShirt.m; sourceTree = SOURCE_ROOT; };
 		1FF7D5F014D8A20A000BDE04 /* MTETShirtExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtExplorer.h; path = MyTee/Classes/MTETShirtExplorer.h; sourceTree = SOURCE_ROOT; };
 		1FF7D5F114D8A20A000BDE04 /* MTETShirtExplorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtExplorer.m; path = MyTee/Classes/MTETShirtExplorer.m; sourceTree = SOURCE_ROOT; };
+		1FFAB02C14F1D42B00851D81 /* linen-light-cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linen-light-cell.png"; path = "MyTee/Resources/Images/linen-light-cell.png"; sourceTree = SOURCE_ROOT; };
+		1FFAB02D14F1D42B00851D81 /* linen-light-cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linen-light-cell@2x.png"; path = "MyTee/Resources/Images/linen-light-cell@2x.png"; sourceTree = SOURCE_ROOT; };
+		1FFAB03114F1D44A00851D81 /* MTESettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingCell.h; path = MyTee/Classes/MTESettingCell.h; sourceTree = SOURCE_ROOT; };
+		1FFAB03214F1D44A00851D81 /* MTESettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingCell.m; path = MyTee/Classes/MTESettingCell.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +254,8 @@
 		1F01F14414DB3E5300D6EF0C /* Linen Nav Bar */ = {
 			isa = PBXGroup;
 			children = (
+				1FFAB02C14F1D42B00851D81 /* linen-light-cell.png */,
+				1FFAB02D14F1D42B00851D81 /* linen-light-cell@2x.png */,
 				1F01F13C14DB3E4F00D6EF0C /* linen-nav-bar-landscape.png */,
 				1F01F13D14DB3E4F00D6EF0C /* linen-nav-bar-landscape@2x.png */,
 				1F01F13E14DB3E4F00D6EF0C /* linen-nav-bar.png */,
@@ -255,8 +278,12 @@
 		1F01F16914DC120000D6EF0C /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				1F7D901514EED2F200307F26 /* 11-clock.png */,
+				1F7D901614EED2F300307F26 /* 11-clock@2x.png */,
 				1F01F16A14DC15CB00D6EF0C /* wash.png */,
 				1F01F16B14DC15CB00D6EF0C /* wash@2x.png */,
+				1F67661414EB28F60035EF7D /* 19-gear-w.png */,
+				1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */,
 				1F01F16114DC11E600D6EF0C /* 72-pin.png */,
 				1F01F16214DC11E600D6EF0C /* 72-pin@2x.png */,
 				1F01F16314DC11E600D6EF0C /* 83-calendar.png */,
@@ -273,12 +300,22 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		1F02F4AF14F12919005F738B /* Settings Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1F02F4AB14F12915005F738B /* MTESettingsManager.h */,
+				1F02F4AC14F12915005F738B /* MTESettingsManager.m */,
+			);
+			name = "Settings Manager";
+			sourceTree = "<group>";
+		};
 		1F294DF714D73B9E00A24AED /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				1F294E1514D74F3000A24AED /* Sync Manager */,
 				1F294E1414D74F2600A24AED /* Keychain Access */,
 				1F294DFF14D73F0E00A24AED /* NSString Category */,
+				1F02F4AF14F12919005F738B /* Settings Manager */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -522,8 +559,12 @@
 		1FDE079714D4CE2700909A11 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				1FDE079814D4CE7700909A11 /* MTESettingsViewController.h */,
-				1FDE079914D4CE7700909A11 /* MTESettingsViewController.m */,
+				1FA8535F14EC5BCB00736DAD /* MTESettingsViewController.h */,
+				1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */,
+				1FDE079814D4CE7700909A11 /* MTELoginViewController.h */,
+				1FDE079914D4CE7700909A11 /* MTELoginViewController.m */,
+				1FFAB03114F1D44A00851D81 /* MTESettingCell.h */,
+				1FFAB03214F1D44A00851D81 /* MTESettingCell.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -605,7 +646,7 @@
 		1F7BF96B14D4429400D7F4A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Keres-Sy, Studio AMANgA";
 			};
 			buildConfigurationList = 1F7BF96E14D4429500D7F4A3 /* Build configuration list for PBXProject "mytee" */;
@@ -663,6 +704,12 @@
 				1F6B7FD314E0811B00292B62 /* 14-tag@2x.png in Resources */,
 				1F6B7FD714E0813E00292B62 /* 179-notepad.png in Resources */,
 				1F6B7FD814E0813E00292B62 /* 179-notepad@2x.png in Resources */,
+				1F67661614EB28F60035EF7D /* 19-gear-w.png in Resources */,
+				1F67661714EB28F60035EF7D /* 19-gear-w@2x.png in Resources */,
+				1F7D901714EED2F300307F26 /* 11-clock.png in Resources */,
+				1F7D901814EED2F300307F26 /* 11-clock@2x.png in Resources */,
+				1FFAB02E14F1D42B00851D81 /* linen-light-cell.png in Resources */,
+				1FFAB02F14F1D42B00851D81 /* linen-light-cell@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,7 +748,7 @@
 				1F7BF98B14D4429500D7F4A3 /* MTEAppDelegate.m in Sources */,
 				1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */,
 				1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */,
-				1FDE079A14D4CE7700909A11 /* MTESettingsViewController.m in Sources */,
+				1FDE079A14D4CE7700909A11 /* MTELoginViewController.m in Sources */,
 				1F294DFB14D73BC800A24AED /* MTESyncManager.m in Sources */,
 				1F294DFE14D73EE300A24AED /* NSString+NSStringURL.m in Sources */,
 				1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */,
@@ -717,6 +764,9 @@
 				1F230B2F14DC98D500B65E7E /* MTEStore.m in Sources */,
 				1F74FC8F14DEEDCB0034BA02 /* MTEManagedObjectCache.m in Sources */,
 				1F74FC9414DEF6130034BA02 /* MTEStoreViewController.m in Sources */,
+				1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */,
+				1F02F4AD14F12915005F738B /* MTESettingsManager.m in Sources */,
+				1FFAB03314F1D44A00851D81 /* MTESettingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
