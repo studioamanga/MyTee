@@ -12,7 +12,7 @@
 		
 		function testToString()
 		{
-    	$this->assertTrue(1);
+    	$this->assertTrue(true);
     }
 	}
 	
