@@ -50,6 +50,23 @@
     	$result = ends_with('abcdefg', 'abc');
     	$this->assertFalse($result);
     }
+    
+    // clean_output
+    
+    function testCleanOutput()
+    {
+    	$output = clean_output('abc\/ def/ ij\\ klm\/ nop');	
+    	$this->assertEquals($output, 'abc/ def/ ij\\ klm/ nop');
+    }
+    
+    // output_json
+    
+    function testOutputJSON()
+    {
+    	$obj['abc'] = 'xyz';
+    	$this->expectOutputString('{"abc":"xyz"}');
+    	output_json($obj);
+    }
 	}
 	
 ?>
