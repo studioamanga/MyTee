@@ -1,6 +1,6 @@
 <?php
 
-	class mt_database
+	class MTEDatabase
 	{
 		private $db_connection = null;
 		
