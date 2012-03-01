@@ -1,5 +1,6 @@
 <?php
-	include_once dirname(__FILE__).'/../script/MTEToolbox.php';
+
+	require_once dirname(__FILE__).'/../script/MTEToolbox.php';
 		
 	class MTEToolboxTest extends PHPUnit_Framework_TestCase
 	{

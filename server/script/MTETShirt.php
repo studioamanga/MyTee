@@ -1,5 +1,8 @@
 <?php
 
+	require_once dirname(__FILE__).'/MTEToolbox.php';
+	require_once dirname(__FILE__).'/MTEStore.php';
+	
 	class MTETShirt
 	{
 		static function clean_tshirt_from_db($tshirt)

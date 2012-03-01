@@ -1,12 +1,12 @@
 <?php
 	header('Content-type: application/json');
 	
-	include_once('script/MTEToolbox.php');
-	include_once('script/MTEStore.php');
-	include_once('script/MTETShirt.php');
-	include_once('script/MTEUser.php');
-	include_once('script/MTEDatabase.php');
-	include_once('script/MTEAuthentication.php');
+	require_once('script/MTEToolbox.php');
+	require_once('script/MTEStore.php');
+	require_once('script/MTETShirt.php');
+	require_once('script/MTEUser.php');
+	require_once('script/MTEDatabase.php');
+	require_once('script/MTEAuthentication.php');
 	
 	$request_method = $_SERVER['REQUEST_METHOD'];
 	
