@@ -4,6 +4,8 @@
 	require_once('script/MTEToolbox.php');
 	require_once('script/MTEStore.php');
 	require_once('script/MTETShirt.php');
+	require_once('script/MTEWear.php');
+	require_once('script/MTEWash.php');
 	require_once('script/MTEUser.php');
 	require_once('script/MTEDatabase.php');
 	require_once('script/MTEAuthentication.php');
@@ -42,19 +44,18 @@
 	$request_url_components = parse_url($request_uri);
 	$request_path = $request_url_components['path'];
 	
-	$request_elements = explode('/', $request_path);
+	$request_elements_serialized = substr($request_path, strlen('/mytee/api/'));
+	$request_elements = explode('/', $request_elements_serialized);
 	
-	$api_index = array_search('api', $request_elements);
-	
-	if($api_index===false || $api_index!=(count($request_elements)-3))
+	if (count($request_elements)<2)
 	{
 		header('Status: 404 Not Found');
 		echo '404, sorry';
 	}
 	else
 	{
-		$api_resource = $request_elements[$api_index+1];
-		$api_parameter = $request_elements[$api_index+2];
+		$api_resource = $request_elements[0];
+		$api_parameter = $request_elements[1];
 		
 		if ($api_resource=='store')
 		{
@@ -78,7 +79,7 @@
 				}
 			}	
 		}
-		if ($api_resource=='tshirt')
+		elseif ($api_resource=='tshirt')
 		{
 			if($api_parameter=='all')
 			{
@@ -92,19 +93,41 @@
 		
 				MTEToolbox::output_json($tshirts);
 			}
-			if (ctype_alnum($api_parameter))
+			else if (ctype_alnum($api_parameter))
 			{
-				$tshirts = $database->fetch('mt_tshirt', '`tsh_id`=\''.$api_parameter.'\' AND `tsh_user_id`=\''.$user->use_id.'\'');
+				if ($request_method=='GET')
+				{
+					$tshirts = $database->fetch('mt_tshirt', '`tsh_id`=\''.$api_parameter.'\' AND `tsh_user_id`=\''.$user->use_id.'\'');
 			
-				if(count($tshirts)==1)
-				{	
-					$tshirt = MTETShirt::clean_tshirt_from_db($tshirts[0]);
-					$tshirt = MTETShirt::fectch_wash_wear_store_for_tshirt($database, $tshirt);
-					MTEToolbox::output_json($tshirt);
+					if(count($tshirts)==1)
+					{	
+						$tshirt = MTETShirt::clean_tshirt_from_db($tshirts[0]);
+						$tshirt = MTETShirt::fectch_wash_wear_store_for_tshirt($database, $tshirt);
+						MTEToolbox::output_json($tshirt);
+					}
+				}
+				elseif ($request_method=='POST' && isset($request_elements[2]))
+				{
+					$api_specifier = $request_elements[2];
+					
+					if ($api_specifier=='wear')
+					{
+						$post_query = MTEWear::post_request($api_parameter);
+						$database->query($post_query);
+						
+						echo '{}';
+					}
+					elseif ($api_specifier=='wash')
+					{
+						$post_query = MTEWash::post_request($api_parameter);
+						$database->query($post_query);
+						
+						echo '{}';	
+					}
 				}
 			}
 		}
-		if ($api_resource=='user')
+		elseif ($api_resource=='user')
 		{
 			if($api_parameter=='me')
 			{

@@ -26,6 +26,11 @@
 			mysql_close($this->db_connection);
 		}
 		
+		public function query($query)
+		{
+			return mysql_query($query, $this->db_connection);
+		}
+		
 		public function fetch($table_name, $condition = null)
 		{
 			$request = 'SELECT * FROM '.$table_name;
