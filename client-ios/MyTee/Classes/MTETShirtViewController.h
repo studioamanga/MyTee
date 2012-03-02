@@ -25,5 +25,7 @@
 @property (strong, nonatomic) UIPopoverController * masterPopoverController;
 
 - (void)configureView;
+- (IBAction)didPressAction:(id)sender;
+
 
 @end

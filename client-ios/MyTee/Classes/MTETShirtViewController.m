@@ -14,6 +14,8 @@
 #import "MTEWearWashViewController.h"
 #import "MTEStoreViewController.h"
 
+#import "MTESyncManager.h"
+#import "RestKit/RestKit.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation MTETShirtViewController
@@ -107,6 +109,15 @@
     UIImage * woodTexture = [UIImage imageNamed:@"wood"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.view.backgroundColor = woodColor;
+}
+
+- (IBAction)didPressAction:(id)sender
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [MTESyncManager emailFromKeychain], @"login",
+                             [MTESyncManager passwordFromKeychain], @"password", nil];
+    NSString * path = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WEAR, self.tshirt.identifier];
+    [[RKClient sharedClient] post:path params:params delegate:nil];
 }
 
 - (void)viewDidLoad

@@ -9,6 +9,7 @@
 #import "RestKit/RestKit.h"
 
 #define MTE_URL_API_TSHIRTS_ALL @"/tshirt/all"
+#define MTE_URL_API_TSHIRT_WEAR @"/tshirt/%@/wear"
 #define MTE_URL_API_STORES_ALL @"/store/all"
 
 #define MTE_NOTIFICATION_SYNC_FINISHED @"MTENotifSyncFinished"
