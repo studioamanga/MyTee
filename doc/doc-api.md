@@ -3,6 +3,7 @@
 ## T-Shirts
 
 ### Getting all my t-shirts
+
 **GET** `/api/store/all`
 
 List all my t-shirts, as described with the following resource.
@@ -46,6 +47,18 @@ List all my t-shirts, as described with the following resource.
   ]
 }
 ```
+
+### Wearing a t-shirt
+
+**POST** `/api/tshirt/:tshirt_id/wear`
+
+New `wear` record with `date = NOW`.
+
+### Washing a t-shirt
+
+**POST** `/api/tshirt/:tshirt_id/wash`
+
+New `wash` record with `date = NOW`.
 
 ## Store
 
