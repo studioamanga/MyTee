@@ -15,7 +15,6 @@
 #import "MTEStoreViewController.h"
 
 #import "MTESyncManager.h"
-#import "RestKit/RestKit.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation MTETShirtViewController
@@ -29,6 +28,7 @@
 @synthesize noteLabel;
 @synthesize noteIconImageView;
 
+@synthesize wearWashActionSheet;
 @synthesize masterPopoverController;
 
 #pragma mark - View lifecycle
@@ -113,11 +113,40 @@
 
 - (IBAction)didPressAction:(id)sender
 {
+    self.wearWashActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Wear today", @"Wash today", nil];
+    
+    [self.wearWashActionSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
                              [MTESyncManager emailFromKeychain], @"login",
                              [MTESyncManager passwordFromKeychain], @"password", nil];
-    NSString * path = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WEAR, self.tshirt.identifier];
-    [[RKClient sharedClient] post:path params:params delegate:nil];
+    NSString * resourcePath = nil;
+    
+    switch (buttonIndex)
+    {
+        case 0:
+            // Wear
+            resourcePath = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WEAR, self.tshirt.identifier];
+            [[RKClient sharedClient] post:resourcePath params:params delegate:self];
+            
+            break;
+        case 1:
+            // Wash
+            resourcePath = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WASH, self.tshirt.identifier];
+            [[RKClient sharedClient] post:resourcePath params:params delegate:self];
+            
+            break;
+    }
+    
+    self.wearWashActionSheet = nil;
+}
+
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
 }
 
 - (void)viewDidLoad
