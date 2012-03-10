@@ -46,7 +46,11 @@
     NSManagedObjectContext * context = [[[RKObjectManager sharedManager] objectStore] managedObjectContext];
     [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
     [self.tshirtExplorer updateData];
-
+    
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self selector:@selector(shouldSyncNow:) name:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self selector:@selector(syncStarted:) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
     [[NSNotificationCenter defaultCenter] 
      addObserver:self selector:@selector(syncFinished:) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
     [[NSNotificationCenter defaultCenter] 
@@ -82,7 +86,6 @@
     else if (!self.syncManager.isSyncing)
     {
         [self.syncManager startSync];
-        [self startSpinningAnimation];
     }
 }
 
@@ -102,7 +105,6 @@
     [self performSegueWithIdentifier:@"MTESettingsSegue" sender:nil];
     
     //[self.syncManager startSync];
-    //[self startSpinningAnimation];
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
@@ -191,11 +193,20 @@
     if (!self.syncManager.isSyncing)
     {
         [self.syncManager startSync];
-        [self startSpinningAnimation];
     }
 }
 
 #pragma mark - Sync
+
+- (void)shouldSyncNow:(id)sender
+{
+    [self.syncManager startSync];
+}
+
+- (void)syncStarted:(id)sender
+{
+    [self startSpinningAnimation];
+}
 
 - (void)syncFinished:(id)sender
 {
@@ -232,7 +243,6 @@
 - (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController*)settingsViewController
 {
     [self.syncManager startSync];
-    [self startSpinningAnimation];
 }
 
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController*)settingsViewController

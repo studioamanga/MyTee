@@ -161,6 +161,9 @@
 
 - (void)startSync
 {
+    if (self.isSyncing)
+        return;
+    
     self.isSyncing = YES;
     
     RKManagedObjectMapping * storeMapping = [RKManagedObjectMapping mappingForClass:[MTEStore class]];
@@ -189,6 +192,8 @@
     NSString * tshirtPath = [MTESyncManager pathForResource:MTE_URL_API_TSHIRTS_ALL withEmail:email password:password];
     
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:tshirtPath delegate:self];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_STARTED object:self];
 }
 
 #pragma mark - Object loader
@@ -205,9 +210,10 @@
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     //NSLog(@">> didLoadObjects %d", [objects count]);
-    self.isSyncing = NO;
     
     [MTESyncManager setLastSyncDateNow];
+    
+    self.isSyncing = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
      
     if ([[objectLoader resourcePath] rangeOfString:MTE_URL_API_TSHIRTS_ALL].location!=NSNotFound)

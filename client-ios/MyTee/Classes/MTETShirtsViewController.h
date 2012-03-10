@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem * settingsBarButtonItem;
 
+- (void)shouldSyncNow:(id)sender;
+- (void)syncStarted:(id)sender;
 - (void)syncFinished:(id)sender;
 - (void)syncFailed:(id)sender;
 

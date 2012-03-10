@@ -10,8 +10,11 @@
 
 #define MTE_URL_API_TSHIRTS_ALL @"/tshirt/all"
 #define MTE_URL_API_TSHIRT_WEAR @"/tshirt/%@/wear"
+#define MTE_URL_API_TSHIRT_WASH @"/tshirt/%@/wash"
 #define MTE_URL_API_STORES_ALL @"/store/all"
 
+#define MTE_NOTIFICATION_SYNC_STARTED @"MTENotifSyncStarted"
+#define MTE_NOTIFICATION_SHOULD_SYNC_NOW @"MTENotifShouldSyncNow"
 #define MTE_NOTIFICATION_SYNC_FINISHED @"MTENotifSyncFinished"
 #define MTE_NOTIFICATION_SYNC_FAILED @"MTENotifSyncFailed"
 
