@@ -108,7 +108,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="L8P-qA-toA"/>
+                    <navigationItem key="navigationItem" id="L8P-qA-toA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="4L2-C6-3UR">
+                            <connections>
+                                <action selector="didPressAction:" destination="jW0-0p-rOn" id="Z9R-J4-inR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="noteIconImageView" destination="SFt-CE-4lj" id="31v-wR-fCu"/>
                         <outlet property="noteLabel" destination="uM1-Qd-0V9" id="W2o-YQ-s20"/>

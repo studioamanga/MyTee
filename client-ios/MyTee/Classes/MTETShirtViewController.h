@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RestKit/RestKit.h"
 
 @class MTETShirt;
 
-@interface MTETShirtViewController : UIViewController <UISplitViewControllerDelegate>
+@interface MTETShirtViewController : UIViewController <UISplitViewControllerDelegate, UIActionSheetDelegate, RKRequestDelegate>
 
 @property (strong, nonatomic) MTETShirt * tshirt;
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *noteIconImageView;
 
 @property (strong, nonatomic) UIPopoverController * masterPopoverController;
+@property (strong, nonatomic) UIActionSheet * wearWashActionSheet;
 
 - (void)configureView;
 - (IBAction)didPressAction:(id)sender;
