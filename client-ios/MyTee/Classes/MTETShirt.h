@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
 //
 
-#define MTE_MINIATURE_IMAGE_SIZE 44
+#define MTE_MINIATURE_IMAGE_SIZE 80
 
 @class MTEStore;
 

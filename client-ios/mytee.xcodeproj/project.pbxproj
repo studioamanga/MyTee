@@ -74,6 +74,7 @@
 		1F7D901714EED2F300307F26 /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D901514EED2F200307F26 /* 11-clock.png */; };
 		1F7D901814EED2F300307F26 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D901614EED2F300307F26 /* 11-clock@2x.png */; };
 		1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */; };
+		1FABB691150D67EF0020C71D /* libAQGridView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FABB690150D67EF0020C71D /* libAQGridView.a */; };
 		1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079314D4CBA400909A11 /* MBProgressHUD.m */; };
 		1FDE079A14D4CE7700909A11 /* MTELoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079914D4CE7700909A11 /* MTELoginViewController.m */; };
 		1FF7D5DD14D88D84000BDE04 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5DC14D88D84000BDE04 /* libRestKit.a */; };
@@ -186,6 +187,7 @@
 		1F7D901614EED2F300307F26 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock@2x.png"; path = "MyTee/Resources/Images/11-clock@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FA8535F14EC5BCB00736DAD /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		1FABB690150D67EF0020C71D /* libAQGridView.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libAQGridView.a; path = "Libraries/AQGridView/build/Release-iphoneos/libAQGridView.a"; sourceTree = "<group>"; };
 		1FDE079214D4CBA400909A11 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = SOURCE_ROOT; };
 		1FDE079314D4CBA400909A11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		1FDE079814D4CE7700909A11 /* MTELoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTELoginViewController.h; path = MyTee/Classes/MTELoginViewController.h; sourceTree = SOURCE_ROOT; };
@@ -213,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FABB691150D67EF0020C71D /* libAQGridView.a in Frameworks */,
 				1F01F15F14DC05FC00D6EF0C /* QuartzCore.framework in Frameworks */,
 				1FF7D5E614D88E65000BDE04 /* libxml2.dylib in Frameworks */,
 				1FF7D5E414D88E58000BDE04 /* SystemConfiguration.framework in Frameworks */,
@@ -482,6 +485,7 @@
 		1F7BF9BC14D44DA600D7F4A3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				1FABB690150D67EF0020C71D /* libAQGridView.a */,
 				1FF7D5E514D88E65000BDE04 /* libxml2.dylib */,
 				1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */,
 				1FF7D5DC14D88D84000BDE04 /* libRestKit.a */,
@@ -868,7 +872,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/RestKit/\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/RestKit/\"/** \"$(PROJECT_DIR)/Libraries/AQGridView/Classes\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -885,7 +889,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/RestKit/\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/RestKit/\"/** \"$(PROJECT_DIR)/Libraries/AQGridView/Classes\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
