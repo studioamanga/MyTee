@@ -44,6 +44,11 @@
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.gridView.backgroundColor = woodColor;
     
+    self.gridView.leftContentInset = 3;
+    self.gridView.rightContentInset = 3;
+    self.gridView.gridHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 3)];
+    self.gridView.gridFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 3)];
+    
     self.syncManager = [MTESyncManager new];
     [self.syncManager setupSyncManager];
     
@@ -161,7 +166,7 @@
 
 - (CGSize)portraitGridCellSizeForGridView:(AQGridView *)gridView
 {
-    return CGSizeMake(80, 80);
+    return CGSizeMake(78, 78);
 }
 
 - (AQGridViewCell*)gridView:(AQGridView*) aGridView cellForItemAtIndex:(NSUInteger)index
@@ -173,7 +178,9 @@
     {
         cell = [[AQGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 150.0)
                                      reuseIdentifier:PlainCellIdentifier];
-        //cell.selectionGlowColor = [UIColor blueColor];
+        cell.contentView.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
     }
     
     MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
@@ -181,6 +188,7 @@
     NSString * imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
     UIImage * image = [UIImage imageWithContentsOfFile:imagePath];
     UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(3, 3, 78-2*3, 78-2*3);
     [cell.contentView addSubview:imageView];
     
     return cell;
