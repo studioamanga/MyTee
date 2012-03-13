@@ -20,6 +20,7 @@
 #import "MTESettingsViewController.h"
 #import "MTELoginViewController.h"
 
+#import "AQGridView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation MTETShirtsViewController
@@ -38,6 +39,15 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.detailViewController = (MTETShirtViewController*)[[self.splitViewController.viewControllers lastObject] topViewController];
     }
+    
+    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
+    self.gridView.backgroundColor = woodColor;
+    
+    self.gridView.leftContentInset = 3;
+    self.gridView.rightContentInset = 3;
+    self.gridView.gridHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 3)];
+    self.gridView.gridFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 3)];
     
     self.syncManager = [MTESyncManager new];
     [self.syncManager setupSyncManager];
@@ -134,8 +144,10 @@
     {
         MTETShirtViewController * viewController = segue.destinationViewController;
         
-        NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
-        MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
+        NSUInteger index = [self.gridView indexOfSelectedItem];
+        MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
+        //NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
+        //MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
         viewController.tshirt = tshirt;
     }
 }
@@ -143,6 +155,43 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+#pragma mark - Grid View Data Source
+
+- (NSUInteger) numberOfItemsInGridView: (AQGridView *) aGridView
+{
+    return [self.tshirtExplorer numberOfTShirts];
+}
+
+- (CGSize)portraitGridCellSizeForGridView:(AQGridView *)gridView
+{
+    return CGSizeMake(78, 78);
+}
+
+- (AQGridViewCell*)gridView:(AQGridView*) aGridView cellForItemAtIndex:(NSUInteger)index
+{
+    static NSString * PlainCellIdentifier = @"PlainCellIdentifier";
+    
+    AQGridViewCell * cell = [aGridView dequeueReusableCellWithIdentifier:PlainCellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[AQGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 150.0)
+                                     reuseIdentifier:PlainCellIdentifier];
+        cell.contentView.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
+    }
+    
+    MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
+    
+    NSString * imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
+    UIImage * image = [UIImage imageWithContentsOfFile:imagePath];
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(3, 3, 78-2*3, 78-2*3);
+    [cell.contentView addSubview:imageView];
+    
+    return cell;
 }
 
 #pragma mark - Table view data source
@@ -176,6 +225,19 @@
 }
 
 #pragma mark - Table view delegate
+
+- (void)gridView:(AQGridView *)gridView didSelectItemAtIndex:(NSUInteger)index
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
+        self.detailViewController.tshirt = tshirt;
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"MTETShirtSegue" sender:nil];
+    }
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -220,7 +282,8 @@
     */
     
     [self.tshirtExplorer updateData];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
+    [self.gridView reloadData];
 }
 
 - (void)syncFailed:(id)sender
@@ -255,7 +318,8 @@
     [MTESyncManager resetKeychain];
     
     [self.tshirtExplorer updateData];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
+    [self.gridView reloadData];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
