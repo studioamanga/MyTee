@@ -8,6 +8,9 @@
 
 #import "MTEAppDelegate.h"
 
+#import "MTETShirtsViewController.h"
+#import "MTESettingsViewController.h"
+
 @implementation MTEAppDelegate
 
 @synthesize window = _window;
@@ -29,10 +32,25 @@
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor darkGrayColor]];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"tabbar"]];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"selection-tab"]];
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor grayColor]];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
+    {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
+    }
+    else 
+    {
+        UITabBarController *tabBarController = (UITabBarController*)self.window.rootViewController;
+        UINavigationController * navController1 = [tabBarController.viewControllers objectAtIndex:0];
+        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController1.topViewController;
+        UINavigationController * navController2 = [tabBarController.viewControllers objectAtIndex:1];
+        MTESettingsViewController * settingsViewController = (MTESettingsViewController*)navController2.topViewController;
+        
+        settingsViewController.syncManager = tshirtsViewController.syncManager;
     }
     
     return YES;
