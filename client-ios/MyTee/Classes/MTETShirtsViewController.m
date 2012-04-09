@@ -57,6 +57,8 @@
     [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
     [self.tshirtExplorer updateData];
     
+    [self.gridView reloadData];
+    
     [[NSNotificationCenter defaultCenter] 
      addObserver:self selector:@selector(shouldSyncNow:) name:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
     [[NSNotificationCenter defaultCenter] 
