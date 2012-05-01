@@ -43,6 +43,7 @@
 		1F294E1314D74F2300A24AED /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F294E1714D7515A00A24AED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F294E1614D7515A00A24AED /* Security.framework */; };
 		1F294E1A14D7558600A24AED /* MTESyncManagerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1F2C7F2D15509760002A160C /* MTETodayTShirtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */; };
 		1F67661614EB28F60035EF7D /* 19-gear-w.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F67661414EB28F60035EF7D /* 19-gear-w.png */; };
 		1F67661714EB28F60035EF7D /* 19-gear-w@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */; };
 		1F6AC78814D9FE890040A06A /* MTETShirtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC78714D9FE890040A06A /* MTETShirtViewController.m */; };
@@ -154,6 +155,8 @@
 		1F294E1214D74F2300A24AED /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainItemWrapper.m; path = Libraries/KeychainItemWrapper/KeychainItemWrapper.m; sourceTree = SOURCE_ROOT; };
 		1F294E1614D7515A00A24AED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MTESyncManagerSpec.mm; path = MyTeeTests/Specs/MTESyncManagerSpec.mm; sourceTree = SOURCE_ROOT; };
+		1F2C7F2B15509760002A160C /* MTETodayTShirtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETodayTShirtViewController.h; path = MyTee/Classes/MTETodayTShirtViewController.h; sourceTree = SOURCE_ROOT; };
+		1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETodayTShirtViewController.m; path = MyTee/Classes/MTETodayTShirtViewController.m; sourceTree = SOURCE_ROOT; };
 		1F67661414EB28F60035EF7D /* 19-gear-w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-gear-w.png"; path = "MyTee/Resources/Images/19-gear-w.png"; sourceTree = SOURCE_ROOT; };
 		1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-gear-w@2x.png"; path = "MyTee/Resources/Images/19-gear-w@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F6AC78614D9FE890040A06A /* MTETShirtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtViewController.h; path = MyTee/Classes/MTETShirtViewController.h; sourceTree = SOURCE_ROOT; };
@@ -619,6 +622,8 @@
 				1F6AC78B14DA03E00040A06A /* MTEWearWashViewController.m */,
 				1F01F15814DB464700D6EF0C /* MTETShirtCell.h */,
 				1F01F15914DB464700D6EF0C /* MTETShirtCell.m */,
+				1F2C7F2B15509760002A160C /* MTETodayTShirtViewController.h */,
+				1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */,
 			);
 			name = "T-Shirts";
 			sourceTree = "<group>";
@@ -686,7 +691,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
-				ORGANIZATIONNAME = "Keres-Sy, Studio AMANgA";
+				ORGANIZATIONNAME = "Studio AMANgA";
 			};
 			buildConfigurationList = 1F7BF96E14D4429500D7F4A3 /* Build configuration list for PBXProject "mytee" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -815,6 +820,7 @@
 				1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */,
 				1F02F4AD14F12915005F738B /* MTESettingsManager.m in Sources */,
 				1FFAB03314F1D44A00851D81 /* MTESettingCell.m in Sources */,
+				1F2C7F2D15509760002A160C /* MTETodayTShirtViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

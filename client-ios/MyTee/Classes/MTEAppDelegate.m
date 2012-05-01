@@ -8,6 +8,7 @@
 
 #import "MTEAppDelegate.h"
 
+#import "MTETodayTShirtViewController.h"
 #import "MTETShirtsViewController.h"
 #import "MTESettingsViewController.h"
 
@@ -45,12 +46,15 @@
     else 
     {
         UITabBarController *tabBarController = (UITabBarController*)self.window.rootViewController;
-        UINavigationController * navController1 = [tabBarController.viewControllers objectAtIndex:0];
+        UINavigationController * navController0 = [tabBarController.viewControllers objectAtIndex:0];
+        MTETodayTShirtViewController * todayViewController = (MTETodayTShirtViewController*)navController0.topViewController;
+        UINavigationController * navController1 = [tabBarController.viewControllers objectAtIndex:1];
         MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController1.topViewController;
-        UINavigationController * navController2 = [tabBarController.viewControllers objectAtIndex:1];
+        UINavigationController * navController2 = [tabBarController.viewControllers objectAtIndex:2];
         MTESettingsViewController * settingsViewController = (MTESettingsViewController*)navController2.topViewController;
         
         settingsViewController.syncManager = tshirtsViewController.syncManager;
+        todayViewController.managedObjectContext = self.managedObjectContext;
     }
     
     return YES;
