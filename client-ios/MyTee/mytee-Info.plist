@@ -14,6 +14,8 @@
 		<string>Icon@2x.png</string>
 		<string>Icon_iPad.png</string>
 		<string>Icon_iPad@2x.png</string>
+		<string>Default.png</string>
+		<string>Default@2x.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -25,6 +27,8 @@
 				<string>Icon@2x.png</string>
 				<string>Icon_iPad.png</string>
 				<string>Icon_iPad@2x.png</string>
+				<string>Default.png</string>
+				<string>Default@2x.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
