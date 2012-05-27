@@ -37,6 +37,12 @@
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"selection-tab"]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor grayColor]];
     
+    UILocalNotification * localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (localNotif)
+    {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    }
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
@@ -45,13 +51,16 @@
     }
     else 
     {
-        UITabBarController *tabBarController = (UITabBarController*)self.window.rootViewController;
+        UITabBarController * tabBarController = (UITabBarController*)self.window.rootViewController;
         UINavigationController * navController0 = [tabBarController.viewControllers objectAtIndex:0];
         MTETodayTShirtViewController * todayViewController = (MTETodayTShirtViewController*)navController0.topViewController;
         UINavigationController * navController1 = [tabBarController.viewControllers objectAtIndex:1];
         MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController1.topViewController;
         UINavigationController * navController2 = [tabBarController.viewControllers objectAtIndex:2];
         MTESettingsViewController * settingsViewController = (MTESettingsViewController*)navController2.topViewController;
+        
+        if (localNotif) 
+            tabBarController.selectedIndex = [tabBarController.viewControllers indexOfObject:navController1];
         
         settingsViewController.syncManager = tshirtsViewController.syncManager;
         todayViewController.managedObjectContext = self.managedObjectContext;
