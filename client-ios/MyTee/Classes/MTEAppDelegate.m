@@ -37,12 +37,6 @@
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"selection-tab"]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor grayColor]];
     
-    UILocalNotification * localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-    if (localNotif)
-    {
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    }
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
@@ -59,6 +53,7 @@
         UINavigationController * navController2 = [tabBarController.viewControllers objectAtIndex:2];
         MTESettingsViewController * settingsViewController = (MTESettingsViewController*)navController2.topViewController;
         
+        UILocalNotification * localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
         if (localNotif) 
             tabBarController.selectedIndex = [tabBarController.viewControllers indexOfObject:navController1];
         
