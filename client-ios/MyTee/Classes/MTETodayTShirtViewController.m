@@ -43,6 +43,7 @@
     if (!error && todayTShirts && [todayTShirts count]>0) 
     {
         self.tshirt = [todayTShirts lastObject];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     }
     else
     {
