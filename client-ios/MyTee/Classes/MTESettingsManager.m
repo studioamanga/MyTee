@@ -51,7 +51,6 @@
     [userDefaults setBool:active forKey:MTE_USER_DEFAULTS_REMINDERS_ACTIVE];
     [userDefaults synchronize];
     
-    
     // Scheduling notification
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
@@ -62,6 +61,7 @@
         notification.timeZone = [NSTimeZone defaultTimeZone];
         notification.repeatInterval = kCFCalendarUnitDay;
         notification.repeatCalendar = [NSCalendar currentCalendar];
+        notification.applicationIconBadgeNumber = 1;
         notification.alertAction = @"choose";
         notification.alertBody = @"Let's choose something awesome!";
         

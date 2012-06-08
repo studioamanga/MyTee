@@ -209,8 +209,6 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
-    //NSLog(@">> didLoadObjects %d", [objects count]);
-    
     [MTESyncManager setLastSyncDateNow];
     
     self.isSyncing = NO;
