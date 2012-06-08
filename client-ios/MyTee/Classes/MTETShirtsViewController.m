@@ -25,20 +25,31 @@
 
 @implementation MTETShirtsViewController
 
-@synthesize syncManager;
+@synthesize syncManager = _syncManager;
 @synthesize tshirtExplorer;
 @synthesize detailViewController;
 @synthesize settingsBarButtonItem;
 
 #pragma mark - View lifecycle
 
+- (void)setSyncManager:(MTESyncManager *)syncManager
+{
+    _syncManager = syncManager;
+    
+    self.tshirtExplorer = [MTETShirtExplorer new];
+    NSManagedObjectContext * context = [[[RKObjectManager sharedManager] objectStore] managedObjectContext];
+    [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
+    [self.tshirtExplorer updateData];
+    
+    [self.gridView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         self.detailViewController = (MTETShirtViewController*)[[self.splitViewController.viewControllers lastObject] topViewController];
-    }
     
     UIImage * woodTexture = [UIImage imageNamed:@"wood"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
@@ -48,16 +59,6 @@
     self.gridView.rightContentInset = 3;
     self.gridView.gridHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 3)];
     self.gridView.gridFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 3)];
-    
-    self.syncManager = [MTESyncManager new];
-    [self.syncManager setupSyncManager];
-    
-    self.tshirtExplorer = [MTETShirtExplorer new];
-    NSManagedObjectContext * context = [[[RKObjectManager sharedManager] objectStore] managedObjectContext];
-    [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
-    [self.tshirtExplorer updateData];
-    
-    [self.gridView reloadData];
     
     [[NSNotificationCenter defaultCenter] 
      addObserver:self selector:@selector(shouldSyncNow:) name:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
@@ -94,10 +95,6 @@
     if (!email)
     {
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
-    }
-    else if (!self.syncManager.isSyncing)
-    {
-        [self.syncManager startSync];
     }
 }
 

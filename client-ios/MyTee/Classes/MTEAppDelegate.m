@@ -11,6 +11,7 @@
 #import "MTETodayTShirtViewController.h"
 #import "MTETShirtsViewController.h"
 #import "MTESettingsViewController.h"
+#import "MTESyncManager.h"
 
 @implementation MTEAppDelegate
 
@@ -37,11 +38,21 @@
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"selection-tab"]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor grayColor]];
     
+    MTESyncManager * syncManager = [MTESyncManager new];
+    
+    [syncManager setupSyncManager];
+    [syncManager startSync];
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
+        UINavigationController *navController0 = [splitViewController.viewControllers objectAtIndex:0];
+        UINavigationController *navController1 = [splitViewController.viewControllers objectAtIndex:1];
+        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController0.topViewController;
+        MTETShirtViewController * tshirtViewController = (MTETShirtViewController*)navController1.topViewController;
+        splitViewController.delegate = tshirtViewController;
+        
+        tshirtsViewController.syncManager = syncManager;
     }
     else 
     {
@@ -57,7 +68,9 @@
         if (localNotif) 
             tabBarController.selectedIndex = [tabBarController.viewControllers indexOfObject:navController1];
         
-        settingsViewController.syncManager = tshirtsViewController.syncManager;
+        tshirtsViewController.syncManager = syncManager;
+        settingsViewController.syncManager = syncManager;
+        
         todayViewController.managedObjectContext = self.managedObjectContext;
     }
     

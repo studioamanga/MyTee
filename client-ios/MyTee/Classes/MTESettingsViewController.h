@@ -31,7 +31,7 @@
 
 @property (weak, nonatomic) id <MTESettingsViewDelegate> delegate;
 
-@property (weak, nonatomic) MTESyncManager * syncManager;
+@property (strong, nonatomic) MTESyncManager * syncManager;
 
 - (IBAction)didPressDone:(id)sender;
 - (IBAction)didPressCancel:(id)sender;
