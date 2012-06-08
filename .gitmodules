@@ -6,7 +6,7 @@
 	url = git://github.com/jdg/MBProgressHUD.git
 [submodule "client-ios/Libraries/KeychainItemWrapper"]
 	path = client-ios/Libraries/KeychainItemWrapper
-	url = git@gist.github.com:1409718.git
+	url = git://gist.github.com/1409718.git
 [submodule "client-ios/Libraries/RestKit"]
 	path = client-ios/Libraries/RestKit
 	url = git://github.com/RestKit/RestKit.git

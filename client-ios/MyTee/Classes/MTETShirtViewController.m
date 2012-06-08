@@ -146,6 +146,7 @@
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
 {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
 }
 
@@ -160,16 +161,15 @@
 
 - (void)viewDidUnload
 {
-    [self setNoteIconImageView:nil];
     [super viewDidUnload];
     
-    [self setRatingLabel:nil];
-    [self setSizeLabel:nil];
-    [self setTagsLabel:nil];
-    [self setNoteLabel:nil];
-    
-    [self setTshirtImageView:nil];
-    [self setStoreButton:nil];
+    self.ratingLabel = nil;
+    self.sizeLabel = nil;
+    self.tagsLabel = nil;
+    self.noteLabel = nil;
+    self.tshirtImageView = nil;
+    self.storeButton = nil;
+    self.noteIconImageView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -69,6 +69,11 @@
     [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateDidStart) 
+												 name:MTE_NOTIFICATION_SYNC_STARTED
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateSyncDateLabel) 
 												 name:MTE_NOTIFICATION_SYNC_FINISHED
                                                object:nil];
@@ -83,12 +88,20 @@
         [self.syncActivityIndicator startAnimating];
         self.lastSyncLabel.text = @"Syncing...";
     }
+    else
+    {
+        [self.syncActivityIndicator stopAnimating];
+        [self updateSyncDateLabel];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MTE_NOTIFICATION_SYNC_STARTED
+                                                  object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MTE_NOTIFICATION_SYNC_FINISHED
                                                   object:nil];
@@ -127,6 +140,11 @@
             self.remindersTimeCell.imageView.alpha = 0.5;
         }];
     }
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        [MTESettingsManager setRemindersActive:self.remindersSwitch.isOn];
+    }
 }
 
 - (void)updateSyncDateLabel
@@ -154,6 +172,13 @@
     [self.syncActivityIndicator stopAnimating];
 }
 
+- (void)updateDidStart
+{
+    [self.syncActivityIndicator startAnimating];
+    
+    self.lastSyncLabel.text = @"Syncing...";
+}
+
 - (IBAction)didPressDone:(id)sender
 {
     [MTESettingsManager setRemindersActive:self.remindersSwitch.isOn];
@@ -173,9 +198,6 @@
     if (selectedCell==self.syncNowCell)
     {
         [self.syncManager startSync];
-        [self.syncActivityIndicator startAnimating];
-        
-        self.lastSyncLabel.text = @"Syncing...";
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
