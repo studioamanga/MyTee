@@ -81,7 +81,7 @@
             [ratingString appendString:@"☆"];
         self.ratingLabel.text = ratingString;
         
-        if(self.tshirt.note && ![self.tshirt.note isEqualToString:@""])
+        if (self.tshirt.note.length > 0)
         {
             CGSize noteSize = [self.tshirt.note sizeWithFont:self.noteLabel.font constrainedToSize:CGSizeMake(self.noteLabel.frame.size.width, 9999)];
             self.noteLabel.frame = CGRectMake(self.noteLabel.frame.origin.x, self.noteLabel.frame.origin.y, self.noteLabel.frame.size.width, noteSize.height);
