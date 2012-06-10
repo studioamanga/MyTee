@@ -92,8 +92,6 @@
         
         self.title = self.tshirt.name;
     
-        self.sizeLabel.layer.borderColor = [[UIColor blackColor] CGColor];
-        self.sizeLabel.layer.borderWidth = 1;
         self.sizeLabel.layer.cornerRadius = 6;
         self.sizeLabel.text = self.tshirt.size;
     
