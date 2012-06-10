@@ -3,13 +3,15 @@
 //  mytee
 //
 //  Created by Vincent Tourraine on 2/2/12.
-//  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
+//  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
 #import "MTETShirtViewController.h"
 
 #import "MTETShirt.h"
 #import "MTEStore.h"
+#import "MTEWash.h"
+#import "MTEWear.h"
 
 #import "MTEWearWashViewController.h"
 #import "MTEStoreViewController.h"
@@ -17,16 +19,41 @@
 #import "MTESyncManager.h"
 #import <QuartzCore/QuartzCore.h>
 
+
+@interface MTETShirtViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *tshirtImageView;
+@property (weak, nonatomic) IBOutlet UIButton *storeButton;
+@property (weak, nonatomic) IBOutlet UIButton *wearButton;
+@property (weak, nonatomic) IBOutlet UIButton *washButton;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noteLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *noteIconImageView;
+@property (strong, nonatomic) NSDateFormatter * dateFormatter;
+@property (strong, nonatomic) UIActionSheet * wearWashActionSheet;
+@property (strong, nonatomic) UIPopoverController * masterPopoverController;
+
+- (IBAction)didPressAction:(id)sender;
+- (NSString*)relativeDescriptionForDate:(NSDate*)date;
+
+@end
+
+
 @implementation MTETShirtViewController
 
 @synthesize tshirt = _tshirt;
 @synthesize tshirtImageView;
 @synthesize storeButton;
+@synthesize wearButton;
+@synthesize washButton;
 @synthesize ratingLabel;
 @synthesize sizeLabel;
 @synthesize tagsLabel;
 @synthesize noteLabel;
 @synthesize noteIconImageView;
+@synthesize dateFormatter;
 
 @synthesize wearWashActionSheet;
 @synthesize masterPopoverController;
@@ -96,6 +123,20 @@
         
         [self.storeButton setTitle:self.tshirt.store.name forState:UIControlStateNormal];
         
+        MTEWear * mostRecentWear = [self.tshirt mostRecentWear];
+        if (mostRecentWear)
+            [self.wearButton setTitle:[NSString stringWithFormat:@"Last worn %@", [self relativeDescriptionForDate:mostRecentWear.date]]
+                             forState:UIControlStateNormal];
+        else
+            [self.wearButton setTitle:@"Never worn before" forState:UIControlStateNormal];
+        
+        MTEWash * mostRecentWash = [self.tshirt mostRecentWash];
+        if (mostRecentWash)
+            [self.washButton setTitle:[NSString stringWithFormat:@"Last washed %@", [self relativeDescriptionForDate:mostRecentWash.date]]
+                             forState:UIControlStateNormal];
+        else
+            [self.washButton setTitle:@"Never washed before" forState:UIControlStateNormal];
+        
         NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:self.tshirt.identifier];
         UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
         self.tshirtImageView.image = image;
@@ -109,6 +150,18 @@
     UIImage * woodTexture = [UIImage imageNamed:@"wood"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.view.backgroundColor = woodColor;
+}
+
+- (NSString*)relativeDescriptionForDate:(NSDate*)date
+{
+    NSInteger nbDaysAgo = (int)[date timeIntervalSinceNow]/(-60*60*24);
+    
+    if (nbDaysAgo == 0)
+        return @"today";
+    else if (nbDaysAgo == 1)
+        return @"tomorrow";
+    
+    return [NSString stringWithFormat:@"%d days ago", nbDaysAgo];
 }
 
 - (IBAction)didPressAction:(id)sender
@@ -156,6 +209,10 @@
     
     [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
     
+    self.dateFormatter = [NSDateFormatter new];
+    self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    self.dateFormatter.doesRelativeDateFormatting = YES;
+    
     [self configureView];
 }
 
@@ -169,6 +226,8 @@
     self.noteLabel = nil;
     self.tshirtImageView = nil;
     self.storeButton = nil;
+    self.wearButton = nil;
+    self.washButton = nil;
     self.noteIconImageView = nil;
 }
 
@@ -182,12 +241,12 @@
     if ([[segue identifier] isEqualToString:@"MTEWearSegue"])
     {
         MTEWearWashViewController * viewController = segue.destinationViewController;
-        viewController.datesObjects = [self.tshirt.wears sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
+        viewController.datesObjects = [self.tshirt wearsSortedByDate];
     }
     if ([[segue identifier] isEqualToString:@"MTEWashSegue"])
     {
         MTEWearWashViewController * viewController = segue.destinationViewController;
-        viewController.datesObjects = [self.tshirt.washs sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
+        viewController.datesObjects = [self.tshirt washsSortedByDate];
     }
     if ([[segue identifier] isEqualToString:@"MTEStoreSegue"])
     {

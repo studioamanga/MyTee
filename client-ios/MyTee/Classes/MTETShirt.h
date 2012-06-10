@@ -9,6 +9,8 @@
 #define MTE_MINIATURE_IMAGE_SIZE 72
 
 @class MTEStore;
+@class MTEWear;
+@class MTEWash;
 
 @interface MTETShirt : NSManagedObject
 
@@ -29,5 +31,10 @@
 
 + (NSString*)pathToLocalImageWithIdentifier:(NSString*)identifier;
 + (NSString*)pathToMiniatureLocalImageWithIdentifier:(NSString*)identifier;
+
+- (NSArray*)wearsSortedByDate;
+- (MTEWear*)mostRecentWear;
+- (NSArray*)washsSortedByDate;
+- (MTEWash*)mostRecentWash;
 
 @end

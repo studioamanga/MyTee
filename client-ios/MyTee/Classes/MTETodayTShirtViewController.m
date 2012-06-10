@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *emptyDataLabel;
 
+- (void)configureView;
+
 @end
 
 @implementation MTETodayTShirtViewController

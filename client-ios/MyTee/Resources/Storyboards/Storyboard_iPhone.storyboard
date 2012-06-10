@@ -305,6 +305,8 @@ Etc...</string>
                         <outlet property="storeButton" destination="VPA-Hw-1eE" id="v8U-Ih-PXc"/>
                         <outlet property="tagsLabel" destination="QMr-Nf-OQK" id="SXb-fa-Ea6"/>
                         <outlet property="tshirtImageView" destination="pZB-kh-iHJ" id="mO7-br-JSN"/>
+                        <outlet property="washButton" destination="xgu-SI-fbE" id="dA4-PC-YWx"/>
+                        <outlet property="wearButton" destination="ONz-ct-5C9" id="Kfb-r5-2OL"/>
                     </connections>
                 </viewController>
             </objects>
@@ -776,6 +778,8 @@ Etc...</string>
                 <relationship kind="outlet" name="storeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tagsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tshirtImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="washButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="wearButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="MTETShirtsViewController" superclassName="AQGridViewController">
