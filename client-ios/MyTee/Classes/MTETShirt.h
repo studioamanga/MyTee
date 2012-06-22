@@ -3,12 +3,14 @@
 //  mytee
 //
 //  Created by Vincent Tourraine on 1/31/12.
-//  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
+//  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
 #define MTE_MINIATURE_IMAGE_SIZE 72
 
 @class MTEStore;
+@class MTEWear;
+@class MTEWash;
 
 @interface MTETShirt : NSManagedObject
 
@@ -29,5 +31,10 @@
 
 + (NSString*)pathToLocalImageWithIdentifier:(NSString*)identifier;
 + (NSString*)pathToMiniatureLocalImageWithIdentifier:(NSString*)identifier;
+
+- (NSArray*)wearsSortedByDate;
+- (MTEWear*)mostRecentWear;
+- (NSArray*)washsSortedByDate;
+- (MTEWash*)mostRecentWash;
 
 @end

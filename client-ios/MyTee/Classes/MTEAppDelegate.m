@@ -3,7 +3,7 @@
 //  mytee
 //
 //  Created by Vincent Tourraine on 1/28/12.
-//  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
+//  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
 #import "MTEAppDelegate.h"
@@ -22,15 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
-    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
-    [[UITableView appearance] setBackgroundColor:woodColor];
-    
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil]];
-    
-    //[[UINavigationBar appearanceWhenContainedIn:[UIPopoverController class], nil] setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor darkGrayColor]];
     

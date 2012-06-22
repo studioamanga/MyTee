@@ -3,8 +3,10 @@
 //  mytee
 //
 //  Created by Vincent Tourraine on 2/3/12.
-//  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
+//  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
+
+extern NSString * const MTEUnknownStoreIdentifier;
 
 @class MTETShirt;
 
