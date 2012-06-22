@@ -65,7 +65,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="jFs-FP-kG5" kind="push" identifier="MTEStoreSegue" id="7Ie-NY-x6A"/>
+                                    <action selector="presentStoreController:" destination="jW0-0p-rOn" eventType="touchUpInside" id="x9a-Gb-MSJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="★★★★☆" autoshrinkMode="minimumFontSize" id="uiz-PC-cRN">
@@ -128,6 +128,9 @@
                         <outlet property="tshirtImageView" destination="zRm-4s-8Oe" id="9b8-Lu-DOF"/>
                         <outlet property="washButton" destination="dID-Xv-V3D" id="nYy-xm-UVc"/>
                         <outlet property="wearButton" destination="AeR-3q-kY4" id="iAT-tb-PBe"/>
+                        <segue destination="jFs-FP-kG5" kind="push" identifier="MTEStoreSegue" id="LDf-fx-ZsI"/>
+                        <segue destination="DMA-9e-hcl" kind="push" identifier="MTEStoreRetailSegue" id="Nq2-ta-IzN"/>
+                        <segue destination="KM7-oX-3BO" kind="push" identifier="MTEStoreOnlineSegue" id="5Wc-Aa-KsL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAH-s8-QUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J11-qR-TkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2979" y="327"/>
+            <point key="canvasLocation" x="3229" y="387"/>
         </scene>
         <!--Wear Wash View Controller - Wash History-->
         <scene sceneID="YrD-uk-2BQ">
@@ -702,6 +705,112 @@
             </objects>
             <point key="canvasLocation" x="1343" y="-1911"/>
         </scene>
+        <!--Store Online View Controller - Online Store-->
+        <scene sceneID="bWG-Mt-IsF">
+            <objects>
+                <viewController id="KM7-oX-3BO" customClass="MTEStoreOnlineViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kzy-x9-chA" customClass="UIScrollView">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="Store Name" textAlignment="center" autoshrinkMode="minimumFontSize" id="CVQ-E8-6qZ">
+                                <rect key="frame" x="20" y="20" width="728" height="35"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <nil key="highlightedColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            </label>
+                            <webView clipsSubviews="YES" contentMode="scaleToFill" id="1P9-fV-ic4">
+                                <rect key="frame" x="20" y="100" width="728" height="840"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="URL" autoshrinkMode="minimumFontSize" id="dKE-ca-0f0">
+                                <rect key="frame" x="54" y="63" width="694" height="29"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <nil key="highlightedColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="71-compass-b.png" id="2P1-S6-ORb">
+                                <rect key="frame" x="20" y="63" width="26" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Online Store" id="u9S-ZA-bZo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="91e-G3-P4W">
+                            <connections>
+                                <action selector="presentActionSheet:" destination="KM7-oX-3BO" id="fI7-wH-FTv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="dKE-ca-0f0" id="J9M-Ag-gu3"/>
+                        <outlet property="nameLabel" destination="CVQ-E8-6qZ" id="qGr-8Z-i7p"/>
+                        <outlet property="webView" destination="1P9-fV-ic4" id="9I1-zG-Hn7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bZL-r7-0sD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5049" y="670"/>
+        </scene>
+        <!--Store Retail View Controller - Retail Store-->
+        <scene sceneID="c89-1j-OuV">
+            <objects>
+                <viewController id="DMA-9e-hcl" customClass="MTEStoreRetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zi1-6c-i3R" customClass="UIScrollView">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="KBt-XT-JmB">
+                                <rect key="frame" x="20" y="100" width="728" height="840"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="DMA-9e-hcl" id="1tz-FY-joT"/>
+                                </connections>
+                            </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="72-pin-b.png" id="1bG-fa-Vvd">
+                                <rect key="frame" x="20" y="63" width="26" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="Address" autoshrinkMode="minimumFontSize" id="Ncn-FG-4JC">
+                                <rect key="frame" x="54" y="63" width="694" height="29"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <nil key="highlightedColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="Store Name" textAlignment="center" autoshrinkMode="minimumFontSize" id="O4L-LN-DxW">
+                                <rect key="frame" x="20" y="20" width="728" height="35"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <nil key="highlightedColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Retail Store" id="53y-5X-IPX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="eq6-a5-CAi">
+                            <connections>
+                                <action selector="presentActionSheet:" destination="DMA-9e-hcl" id="VVv-R4-Hay"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="Ncn-FG-4JC" id="1Ue-6T-4HR"/>
+                        <outlet property="mapView" destination="KBt-XT-JmB" id="atE-j6-wTl"/>
+                        <outlet property="nameLabel" destination="O4L-LN-DxW" id="MYj-Nb-yK4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCW-Ni-kam" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4145" y="518"/>
+        </scene>
     </scenes>
     <resources>
         <image name="11-clock.png" width="25" height="25"/>
@@ -709,6 +818,8 @@
         <image name="179-notepad-b.png" width="22" height="28"/>
         <image name="19-gear-w.png" width="26" height="26"/>
         <image name="67-tshirt-b.png" width="26" height="18"/>
+        <image name="71-compass-b.png" width="24" height="24"/>
+        <image name="72-pin-b.png" width="10" height="20"/>
         <image name="72-pin.png" width="10" height="20"/>
         <image name="80-shopping-cart-b.png" width="26" height="19"/>
         <image name="83-calendar.png" width="23" height="25"/>
@@ -742,9 +853,22 @@
                 <relationship kind="outlet" name="syncNowCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
+        <class className="MTEStoreOnlineViewController" superclassName="MTEStoreViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEStoreOnlineViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="MTEStoreRetailViewController" superclassName="MTEStoreViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEStoreRetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
         <class className="MTEStoreViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEStoreViewController.h"/>
             <relationships>
+                <relationship kind="action" name="presentActionSheet:"/>
                 <relationship kind="outlet" name="addressIconImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
@@ -758,6 +882,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtViewController.h"/>
             <relationships>
                 <relationship kind="action" name="didPressAction:"/>
+                <relationship kind="action" name="presentStoreController:"/>
                 <relationship kind="outlet" name="noteIconImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="noteLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ratingLabel" candidateClass="UILabel"/>

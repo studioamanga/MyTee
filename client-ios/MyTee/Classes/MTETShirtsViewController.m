@@ -233,6 +233,8 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
+        [self.detailViewController.navigationController popToRootViewControllerAnimated:YES];
+        
         MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
         self.detailViewController.tshirt = tshirt;
     }
@@ -246,6 +248,8 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
+        [self.detailViewController.navigationController popToRootViewControllerAnimated:YES];
+        
         MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
         self.detailViewController.tshirt = tshirt;
     }
