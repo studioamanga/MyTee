@@ -3,12 +3,23 @@
 //  mytee
 //
 //  Created by Vincent Tourraine on 2/5/12.
-//  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
+//  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
 #import "MTEStoreViewController.h"
 
 #import "MTEStore.h"
+
+@interface MTEStoreViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *addressIconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
+- (IBAction)presentActionSheet:(id)sender;
+
+@end
 
 @implementation MTEStoreViewController
 
@@ -57,6 +68,13 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+#pragma mark - Actions
+
+- (IBAction)presentActionSheet:(id)sender
+{
+    
 }
 
 @end

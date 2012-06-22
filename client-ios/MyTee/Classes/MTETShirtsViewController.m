@@ -3,7 +3,7 @@
 //  mytee
 //
 //  Created by Vincent Tourraine on 1/31/12.
-//  Copyright (c) 2012 Keres-Sy, Studio AMANgA. All rights reserved.
+//  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
 #import "MTETShirtsViewController.h"
@@ -168,7 +168,7 @@
     return CGSizeMake(78, 78);
 }
 
-- (AQGridViewCell*)gridView:(AQGridView*) aGridView cellForItemAtIndex:(NSUInteger)index
+- (AQGridViewCell*)gridView:(AQGridView*)aGridView cellForItemAtIndex:(NSUInteger)index
 {
     static NSString * PlainCellIdentifier = @"PlainCellIdentifier";
     
@@ -179,6 +179,7 @@
                                      reuseIdentifier:PlainCellIdentifier];
         cell.contentView.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [UIColor clearColor];
+        cell.opaque = YES;
         cell.selectionStyle = AQGridViewCellSelectionStyleNone;
     }
     
@@ -187,6 +188,9 @@
     NSString * imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
     UIImage * image = [UIImage imageWithContentsOfFile:imagePath];
     UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.clipsToBounds = YES;
+    //imageView.layer.borderWidth = 1;
+    //imageView.layer.cornerRadius = 2;
     imageView.frame = CGRectMake(3, 3, 78-2*3, 78-2*3);
     [cell.contentView addSubview:imageView];
     
@@ -229,6 +233,8 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
+        [self.detailViewController.navigationController popToRootViewControllerAnimated:YES];
+        
         MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
         self.detailViewController.tshirt = tshirt;
     }
@@ -242,6 +248,8 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
+        [self.detailViewController.navigationController popToRootViewControllerAnimated:YES];
+        
         MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
         self.detailViewController.tshirt = tshirt;
     }
