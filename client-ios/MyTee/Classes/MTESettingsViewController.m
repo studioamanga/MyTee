@@ -31,6 +31,9 @@
     [super viewDidLoad];
     
     self.tableView.backgroundView = [UIView new];
+    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
+    [self.view setBackgroundColor:woodColor];
 
     NSString * email = [MTESyncManager emailFromKeychain];
     if (email)

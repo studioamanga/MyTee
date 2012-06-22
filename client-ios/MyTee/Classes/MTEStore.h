@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
+extern NSString * const MTEUnknownStoreIdentifier;
+
 @class MTETShirt;
 
 @interface MTEStore : NSManagedObject

@@ -12,9 +12,4 @@
 
 @property (strong, nonatomic) MTEStore * store;
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *addressIconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-
 @end

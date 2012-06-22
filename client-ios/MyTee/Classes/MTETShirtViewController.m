@@ -37,6 +37,7 @@
 
 - (IBAction)didPressAction:(id)sender;
 - (NSString*)relativeDescriptionForDate:(NSDate*)date;
+- (IBAction)presentStoreController:(id)sender;
 
 @end
 
@@ -120,6 +121,7 @@
         }
         
         [self.storeButton setTitle:self.tshirt.store.name forState:UIControlStateNormal];
+        self.storeButton.enabled = ![self.tshirt.store.identifier isEqualToString:MTEUnknownStoreIdentifier];
         
         MTEWear * mostRecentWear = [self.tshirt mostRecentWear];
         if (mostRecentWear)
@@ -160,6 +162,22 @@
         return @"tomorrow";
     
     return [NSString stringWithFormat:@"%d days ago", nbDaysAgo];
+}
+
+- (IBAction)presentStoreController:(id)sender 
+{
+    if ([self.tshirt.store.type isEqualToString:@"Retail"])
+    {
+        [self performSegueWithIdentifier:@"MTEStoreRetailSegue" sender:nil];
+    }
+    else if ([self.tshirt.store.type isEqualToString:@"Web"])
+    {
+        [self performSegueWithIdentifier:@"MTEStoreOnlineSegue" sender:nil];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"MTEStoreSegue" sender:nil];
+    }
 }
 
 - (IBAction)didPressAction:(id)sender
@@ -241,12 +259,14 @@
         MTEWearWashViewController * viewController = segue.destinationViewController;
         viewController.datesObjects = [self.tshirt wearsSortedByDate];
     }
-    if ([[segue identifier] isEqualToString:@"MTEWashSegue"])
+    else if ([[segue identifier] isEqualToString:@"MTEWashSegue"])
     {
         MTEWearWashViewController * viewController = segue.destinationViewController;
         viewController.datesObjects = [self.tshirt washsSortedByDate];
     }
-    if ([[segue identifier] isEqualToString:@"MTEStoreSegue"])
+    else if ([[segue identifier] isEqualToString:@"MTEStoreSegue"] || 
+             [[segue identifier] isEqualToString:@"MTEStoreRetailSegue"] || 
+             [[segue identifier] isEqualToString:@"MTEStoreOnlineSegue"])
     {
         MTEStoreViewController * viewController = segue.destinationViewController;
         viewController.store = self.tshirt.store;

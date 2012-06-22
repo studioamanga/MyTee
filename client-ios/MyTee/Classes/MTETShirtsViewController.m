@@ -168,7 +168,7 @@
     return CGSizeMake(78, 78);
 }
 
-- (AQGridViewCell*)gridView:(AQGridView*) aGridView cellForItemAtIndex:(NSUInteger)index
+- (AQGridViewCell*)gridView:(AQGridView*)aGridView cellForItemAtIndex:(NSUInteger)index
 {
     static NSString * PlainCellIdentifier = @"PlainCellIdentifier";
     
@@ -179,6 +179,7 @@
                                      reuseIdentifier:PlainCellIdentifier];
         cell.contentView.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [UIColor clearColor];
+        cell.opaque = YES;
         cell.selectionStyle = AQGridViewCellSelectionStyleNone;
     }
     
@@ -187,6 +188,9 @@
     NSString * imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
     UIImage * image = [UIImage imageWithContentsOfFile:imagePath];
     UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.clipsToBounds = YES;
+    //imageView.layer.borderWidth = 1;
+    //imageView.layer.cornerRadius = 2;
     imageView.frame = CGRectMake(3, 3, 78-2*3, 78-2*3);
     [cell.contentView addSubview:imageView];
     

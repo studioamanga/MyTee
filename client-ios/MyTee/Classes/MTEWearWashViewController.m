@@ -20,6 +20,10 @@
 {
     [super viewDidLoad];
     
+    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
+    self.view.backgroundColor = woodColor;
+    
     self.dateFormatter = [NSDateFormatter new];
     self.dateFormatter.dateStyle = NSDateFormatterFullStyle;
     self.dateFormatter.doesRelativeDateFormatting = YES;

@@ -10,6 +10,17 @@
 
 #import "MTEStore.h"
 
+@interface MTEStoreViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *addressIconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
+- (IBAction)presentActionSheet:(id)sender;
+
+@end
+
 @implementation MTEStoreViewController
 
 @synthesize store;
@@ -57,6 +68,13 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+#pragma mark - Actions
+
+- (IBAction)presentActionSheet:(id)sender
+{
+    
 }
 
 @end

@@ -9,6 +9,8 @@
 #import "MTEStore.h"
 #import "MTETShirt.h"
 
+NSString * const MTEUnknownStoreIdentifier = @"1";
+
 @implementation MTEStore
 
 @dynamic identifier;
