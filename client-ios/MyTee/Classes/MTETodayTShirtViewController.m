@@ -29,7 +29,7 @@
 
     NSDate * today = [NSDate date];
     NSCalendar * gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents * components = [[NSDateComponents alloc] init];
+    NSDateComponents * components;
     NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
     components = [gregorian components:unitFlags fromDate:today];
     components.hour = 0;
