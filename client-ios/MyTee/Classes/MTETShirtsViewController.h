@@ -8,13 +8,12 @@
 
 #import "MTESettingsViewController.h"
 #import "MTELoginViewController.h"
-#import "AQGridViewController.h"
 
 @class MTESyncManager;
 @class MTETShirtExplorer;
 @class MTETShirtViewController;
 
-@interface MTETShirtsViewController : AQGridViewController <MTESettingsViewDelegate, MTELoginViewDelegate>
+@interface MTETShirtsViewController : UICollectionViewController <MTESettingsViewDelegate, MTELoginViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) MTESyncManager * syncManager;
 @property (strong, nonatomic) MTETShirtExplorer * tshirtExplorer;

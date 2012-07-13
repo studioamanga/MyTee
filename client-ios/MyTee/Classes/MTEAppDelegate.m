@@ -39,12 +39,8 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navController0 = [splitViewController.viewControllers objectAtIndex:0];
-        UINavigationController *navController1 = [splitViewController.viewControllers objectAtIndex:1];
-        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController0.topViewController;
-        MTETShirtViewController * tshirtViewController = (MTETShirtViewController*)navController1.topViewController;
-        splitViewController.delegate = tshirtViewController;
+        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController.topViewController;
         
         tshirtsViewController.syncManager = syncManager;
     }

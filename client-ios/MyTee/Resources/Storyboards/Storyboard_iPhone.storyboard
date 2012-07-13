@@ -126,58 +126,50 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="f2x-PP-cMl" kind="relationship" relationship="rootViewController" id="g5D-Yz-hSe"/>
+                        <segue destination="UTn-nN-AYv" kind="relationship" relationship="rootViewController" id="wEU-R3-ODW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSU-73-Gu5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="764" y="35"/>
         </scene>
-        <!--Shirts View Controller - MyTee-->
-        <scene sceneID="T3N-NY-Is5">
+        <!--Shirts View Controller - Wardrobe-->
+        <scene sceneID="PED-hL-lrl">
             <objects>
-                <tableViewController id="f2x-PP-cMl" customClass="MTETShirtsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gIS-eL-OKQ" customClass="ShadowedTableView">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="UTn-nN-AYv" customClass="MTETShirtsViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" id="9xZ-e8-gar">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MTETShirtCell" textLabel="wbp-e1-kK0" style="IBUITableViewCellStyleDefault" id="B7p-bd-qQo" customClass="MTETShirtCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="apb-Vf-kxd">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MTETShirtCellID" id="8OK-oy-gJR">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Title" autoshrinkMode="minimumFontSize" id="wbp-e1-kK0">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="jcc-0K-vuV" kind="push" identifier="MTETShirtSegue" id="aiT-Um-c1R"/>
+                                    <segue destination="jcc-0K-vuV" kind="push" identifier="MTETShirtSegue" id="avY-7R-Ehg"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="f2x-PP-cMl" id="YTo-tY-gHA"/>
-                            <outlet property="delegate" destination="f2x-PP-cMl" id="XUM-3b-FvQ"/>
+                            <outlet property="dataSource" destination="UTn-nN-AYv" id="agj-vc-be6"/>
+                            <outlet property="delegate" destination="UTn-nN-AYv" id="UMP-Sx-YGu"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="MyTee" id="HAE-sy-cDo"/>
-                    <connections>
-                        <segue destination="Snp-cF-hnH" kind="modal" identifier="MTELoginSegue" id="1gn-Jo-TYU"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BRs-wO-P0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Wardrobe" id="AHQ-p6-7Au"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mhp-Yi-0ca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1251" y="35"/>
+            <point key="canvasLocation" x="1274" y="35"/>
         </scene>
         <!--Shirt View Controller-->
         <scene sceneID="l1x-rs-sz2">
@@ -226,7 +218,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VPA-Hw-1eE">
-                                <rect key="frame" x="20" y="346" width="280" height="44"/>
+                                <rect key="frame" x="20" y="342" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -834,9 +826,6 @@ Etc...</string>
         <image name="wash-b.png" width="26" height="26"/>
     </resources>
     <classes>
-        <class className="AQGridViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AQGridViewController.h"/>
-        </class>
         <class className="MTELoginViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTELoginViewController.h"/>
             <relationships>
@@ -902,7 +891,7 @@ Etc...</string>
                 <relationship kind="outlet" name="wearButton" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="MTETShirtsViewController" superclassName="AQGridViewController">
+        <class className="MTETShirtsViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="didPressSettingsBarButtonItem:"/>
@@ -920,6 +909,21 @@ Etc...</string>
         </class>
         <class className="ShadowedTableView" superclassName="UITableView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadowedTableView.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

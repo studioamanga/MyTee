@@ -106,7 +106,6 @@
 		1FA1EA5D15855D5600A78FA8 /* 71-compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1EA5915855D5600A78FA8 /* 71-compass.png */; };
 		1FA1EA5E15855D5600A78FA8 /* 71-compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1EA5A15855D5600A78FA8 /* 71-compass@2x.png */; };
 		1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */; };
-		1FABB691150D67EF0020C71D /* libAQGridView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FABB690150D67EF0020C71D /* libAQGridView.a */; };
 		1FD38E061583C4180060F51F /* wash-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD38E041583C4180060F51F /* wash-b.png */; };
 		1FD38E071583C4180060F51F /* wash-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD38E051583C4180060F51F /* wash-b@2x.png */; };
 		1FD38E0B1583C4CE0060F51F /* 67-tshirt-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD38E091583C4CE0060F51F /* 67-tshirt-b.png */; };
@@ -292,7 +291,6 @@
 			files = (
 				1FA1EA401585168800A78FA8 /* CoreLocation.framework in Frameworks */,
 				1FA1EA3115850FFA00A78FA8 /* MapKit.framework in Frameworks */,
-				1FABB691150D67EF0020C71D /* libAQGridView.a in Frameworks */,
 				1F01F15F14DC05FC00D6EF0C /* QuartzCore.framework in Frameworks */,
 				1FF7D5E614D88E65000BDE04 /* libxml2.dylib in Frameworks */,
 				1FF7D5E414D88E58000BDE04 /* SystemConfiguration.framework in Frameworks */,
@@ -838,7 +836,7 @@
 		1F7BF96B14D4429400D7F4A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Studio AMANgA";
 			};
 			buildConfigurationList = 1F7BF96E14D4429500D7F4A3 /* Build configuration list for PBXProject "mytee" */;
@@ -1089,6 +1087,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1108,6 +1107,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",

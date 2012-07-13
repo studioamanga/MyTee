@@ -232,25 +232,12 @@
     [self configureView];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    self.ratingLabel = nil;
-    self.sizeLabel = nil;
-    self.tagsLabel = nil;
-    self.noteLabel = nil;
-    self.tshirtImageView = nil;
-    self.storeButton = nil;
-    self.wearButton = nil;
-    self.washButton = nil;
-    self.noteIconImageView = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -273,20 +260,9 @@
     }
 }
 
-#pragma mark - Split view
-
-- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
+- (IBAction)dismissViewController:(id)sender
 {
-    barButtonItem.title = NSLocalizedString(@"T-Shirts", @"T-Shirts");
-    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-    self.masterPopoverController = popoverController;
-}
-
-- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    // Called when the view is shown again in the split view, invalidating the button and popover controller.
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    self.masterPopoverController = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

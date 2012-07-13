@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2541" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="W9Z-We-AkR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2541" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Q3E-gP-0cX">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1875"/>
@@ -10,7 +10,7 @@
             <objects>
                 <viewController id="jW0-0p-rOn" customClass="MTETShirtViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EZZ-Ez-hp7" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="44" width="540" height="576"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="zRm-4s-8Oe">
@@ -18,7 +18,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AeR-3q-kY4">
-                                <rect key="frame" x="435" y="102" width="313" height="44"/>
+                                <rect key="frame" x="435" y="102" width="85" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dID-Xv-V3D">
-                                <rect key="frame" x="435" y="146" width="313" height="44"/>
+                                <rect key="frame" x="435" y="146" width="85" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="598-tI-sSM">
-                                <rect key="frame" x="428" y="58" width="280" height="44"/>
+                                <rect key="frame" x="428" y="58" width="52" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -76,7 +76,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="XS" textAlignment="center" autoshrinkMode="minimumFontSize" id="9Wz-ex-8VP">
-                                <rect key="frame" x="706" y="28" width="42" height="22"/>
+                                <rect key="frame" x="478" y="28" width="42" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="Labels" autoshrinkMode="minimumFontSize" id="r3L-tM-9eI">
-                                <rect key="frame" x="471" y="190" width="277" height="44"/>
+                                <rect key="frame" x="471" y="190" width="49" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="highlightedColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -97,7 +97,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" text="Notes" autoshrinkMode="minimumFontSize" id="uM1-Qd-0V9">
-                                <rect key="frame" x="471" y="246" width="277" height="18"/>
+                                <rect key="frame" x="471" y="246" width="49" height="18"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="highlightedColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -112,6 +112,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="L8P-qA-toA">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="dw2-Bp-7hO">
+                            <connections>
+                                <action selector="dismissViewController:" destination="jW0-0p-rOn" id="CvG-YQ-ZC4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="4L2-C6-3UR">
                             <connections>
                                 <action selector="didPressAction:" destination="jW0-0p-rOn" id="Z9R-J4-inR"/>
@@ -145,89 +150,54 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Qg6-2w-8V2" kind="relationship" relationship="rootViewController" id="d7v-KI-nzq"/>
+                        <segue destination="s18-h6-Ei2" kind="relationship" relationship="rootViewController" id="cYc-am-Lad"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEf-f3-KNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="227" y="-610"/>
+            <point key="canvasLocation" x="-2209" y="-382"/>
         </scene>
-        <!--Shirts View Controller - T-Shirts-->
-        <scene sceneID="s0o-UO-l2m">
+        <!--Shirts View Controller-->
+        <scene sceneID="hz2-Ik-mgj">
             <objects>
-                <tableViewController id="Qg6-2w-8V2" customClass="MTETShirtsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="MjN-Wy-8Bs">
-                        <rect key="frame" x="0.0" y="64" width="320" height="788"/>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="s18-h6-Ei2" customClass="MTETShirtsViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" id="s3w-GK-sTL">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MTETShirtCell" textLabel="Zmc-Ko-IeN" style="IBUITableViewCellStyleDefault" id="DXj-lx-Foy" customClass="MTETShirtCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ITt-ht-Wb2">
+                            <size key="itemSize" width="120" height="120"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MTETShirtCellID" id="ugU-Do-A2v">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Title" autoshrinkMode="minimumFontSize" id="Zmc-Ko-IeN">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Qg6-2w-8V2" id="BVd-nf-FkS"/>
-                            <outlet property="delegate" destination="Qg6-2w-8V2" id="8vj-Oa-dhV"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="T-Shirts" id="Nv6-5g-jXq">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="kCL-yd-1eg">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pu0-Kf-lyz">
-                                <rect key="frame" x="279" y="5" width="34" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="19-gear-w.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
-                                    <action selector="didPressSettingsBarButtonItem:" destination="Qg6-2w-8V2" eventType="touchUpInside" id="3CE-Ll-IV0"/>
+                                    <segue destination="c6s-oG-17w" kind="modal" identifier="MTETShirtSegue" modalPresentationStyle="formSheet" id="TfA-y5-EgT"/>
                                 </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="s18-h6-Ei2" id="zjV-Ks-Leg"/>
+                            <outlet property="delegate" destination="s18-h6-Ei2" id="AKO-io-sHg"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="dIC-Ku-7CH"/>
                     <connections>
-                        <outlet property="settingsBarButtonItem" destination="kCL-yd-1eg" id="z8f-3i-ezL"/>
-                        <segue destination="B4R-sh-p9c" kind="modal" identifier="MTELoginSegue" modalPresentationStyle="formSheet" id="r5w-zm-OAj"/>
-                        <segue destination="JC0-Hc-I4D" kind="modal" identifier="MTESettingsSegue" modalPresentationStyle="formSheet" id="0zp-Ie-k6d"/>
+                        <segue destination="JC0-Hc-I4D" kind="modal" identifier="MTESettingsSegue" modalPresentationStyle="formSheet" id="LMX-Ty-fGX"/>
+                        <segue destination="B4R-sh-p9c" kind="modal" identifier="MTELoginSegue" modalPresentationStyle="formSheet" id="kKB-9n-xG7"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H1T-hS-d0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gPm-Dt-7uF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="697" y="-610"/>
-        </scene>
-        <!--Split View Controller-->
-        <scene sceneID="0SN-L1-wDn">
-            <objects>
-                <splitViewController id="W9Z-We-AkR" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <connections>
-                        <segue destination="Q3E-gP-0cX" kind="relationship" relationship="masterViewController" id="Q0l-uB-Aox"/>
-                        <segue destination="c6s-oG-17w" kind="relationship" relationship="detailViewController" id="D3Z-xb-Scy"/>
-                    </connections>
-                </splitViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wPd-FT-FGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-755" y="-141"/>
+            <point key="canvasLocation" x="-1141" y="-382"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="J6X-6q-ECq">
@@ -252,7 +222,7 @@
             <objects>
                 <viewController id="jFs-FP-kG5" customClass="MTEStoreViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ab1-Rt-o6u" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="Store Name" textAlignment="center" autoshrinkMode="minimumFontSize" id="vDd-Ug-ebv">
@@ -301,7 +271,7 @@
             <objects>
                 <tableViewController id="SA4-XK-2EC" customClass="MTEWearWashViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="G2l-6j-xNe" customClass="ShadowedTableView">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -346,7 +316,7 @@
             <objects>
                 <tableViewController id="XuJ-UR-q8e" customClass="MTEWearWashViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="u0P-Wp-rW7" customClass="ShadowedTableView">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -710,23 +680,23 @@
             <objects>
                 <viewController id="KM7-oX-3BO" customClass="MTEStoreOnlineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kzy-x9-chA" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="Store Name" textAlignment="center" autoshrinkMode="minimumFontSize" id="CVQ-E8-6qZ">
-                                <rect key="frame" x="20" y="20" width="728" height="35"/>
+                                <rect key="frame" x="20" y="20" width="500" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="highlightedColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                             </label>
                             <webView clipsSubviews="YES" contentMode="scaleToFill" id="1P9-fV-ic4">
-                                <rect key="frame" x="20" y="100" width="728" height="840"/>
+                                <rect key="frame" x="20" y="100" width="500" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="URL" autoshrinkMode="minimumFontSize" id="dKE-ca-0f0">
-                                <rect key="frame" x="54" y="63" width="694" height="29"/>
+                                <rect key="frame" x="54" y="63" width="466" height="29"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="highlightedColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -762,11 +732,11 @@
             <objects>
                 <viewController id="DMA-9e-hcl" customClass="MTEStoreRetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zi1-6c-i3R" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="KBt-XT-JmB">
-                                <rect key="frame" x="20" y="100" width="728" height="840"/>
+                                <rect key="frame" x="20" y="100" width="500" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="DMA-9e-hcl" id="1tz-FY-joT"/>
@@ -777,14 +747,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="Address" autoshrinkMode="minimumFontSize" id="Ncn-FG-4JC">
-                                <rect key="frame" x="54" y="63" width="694" height="29"/>
+                                <rect key="frame" x="54" y="63" width="466" height="29"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="highlightedColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" text="Store Name" textAlignment="center" autoshrinkMode="minimumFontSize" id="O4L-LN-DxW">
-                                <rect key="frame" x="20" y="20" width="728" height="35"/>
+                                <rect key="frame" x="20" y="20" width="500" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="highlightedColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -816,7 +786,6 @@
         <image name="11-clock.png" width="25" height="25"/>
         <image name="14-tag-b.png" width="22" height="22"/>
         <image name="179-notepad-b.png" width="22" height="28"/>
-        <image name="19-gear-w.png" width="26" height="26"/>
         <image name="67-tshirt-b.png" width="26" height="18"/>
         <image name="71-compass-b.png" width="24" height="24"/>
         <image name="72-pin-b.png" width="10" height="20"/>
@@ -826,9 +795,6 @@
         <image name="wash-b.png" width="26" height="26"/>
     </resources>
     <classes>
-        <class className="AQGridViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AQGridViewController.h"/>
-        </class>
         <class className="MTELoginViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTELoginViewController.h"/>
             <relationships>
@@ -882,6 +848,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtViewController.h"/>
             <relationships>
                 <relationship kind="action" name="didPressAction:"/>
+                <relationship kind="action" name="dismissViewController:"/>
                 <relationship kind="action" name="presentStoreController:"/>
                 <relationship kind="outlet" name="noteIconImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="noteLabel" candidateClass="UILabel"/>
@@ -894,7 +861,7 @@
                 <relationship kind="outlet" name="wearButton" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="MTETShirtsViewController" superclassName="AQGridViewController">
+        <class className="MTETShirtsViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTETShirtsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="didPressSettingsBarButtonItem:"/>
@@ -906,6 +873,21 @@
         </class>
         <class className="ShadowedTableView" superclassName="UITableView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShadowedTableView.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

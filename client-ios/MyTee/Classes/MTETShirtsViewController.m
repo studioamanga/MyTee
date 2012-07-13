@@ -20,15 +20,9 @@
 #import "MTESettingsViewController.h"
 #import "MTELoginViewController.h"
 
-#import "AQGridView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation MTETShirtsViewController
-
-@synthesize syncManager = _syncManager;
-@synthesize tshirtExplorer;
-@synthesize detailViewController;
-@synthesize settingsBarButtonItem;
 
 #pragma mark - View lifecycle
 
@@ -37,11 +31,9 @@
     _syncManager = syncManager;
     
     self.tshirtExplorer = [MTETShirtExplorer new];
-    NSManagedObjectContext * context = [[[RKObjectManager sharedManager] objectStore] managedObjectContext];
+    NSManagedObjectContext *context = [[[RKObjectManager sharedManager] objectStore] managedObjectContext];
     [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
     [self.tshirtExplorer updateData];
-    
-    [self.gridView reloadData];
 }
 
 - (void)viewDidLoad
@@ -51,14 +43,9 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         self.detailViewController = (MTETShirtViewController*)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
-    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
-    self.gridView.backgroundColor = woodColor;
-    
-    self.gridView.leftContentInset = 3;
-    self.gridView.rightContentInset = 3;
-    self.gridView.gridHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 3)];
-    self.gridView.gridFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 3)];
+    UIImage *woodTexture = [UIImage imageNamed:@"wood"];
+    UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
+    self.collectionView.backgroundColor = woodColor;
     
     [[NSNotificationCenter defaultCenter] 
      addObserver:self selector:@selector(shouldSyncNow:) name:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
@@ -68,13 +55,6 @@
      addObserver:self selector:@selector(syncFinished:) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
     [[NSNotificationCenter defaultCenter] 
      addObserver:self selector:@selector(syncFailed:) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    self.settingsBarButtonItem = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,16 +71,14 @@
 {
     [super viewDidAppear:animated];
 
-    NSString * email = [MTESyncManager emailFromKeychain];
+    NSString *email = [MTESyncManager emailFromKeychain];
     if (!email)
-    {
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
-    }
 }
 
 - (void)startSpinningAnimation
 {
-    CABasicAnimation * spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     spinAnimation.fromValue = [NSNumber numberWithFloat:0];
     spinAnimation.toValue = [NSNumber numberWithFloat:2*M_PI];
     spinAnimation.duration = 0.5;
@@ -128,25 +106,30 @@
 {
     if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
     {
-        UINavigationController * navigationController = segue.destinationViewController;
-        MTELoginViewController * viewController = (MTELoginViewController*)navigationController.topViewController;
+        UINavigationController *navigationController = segue.destinationViewController;
+        MTELoginViewController *viewController = (MTELoginViewController*)navigationController.topViewController;
         viewController.delegate = self;
     }
     else if ([[segue identifier] isEqualToString:@"MTESettingsSegue"])
     {
-        UINavigationController * navigationController = segue.destinationViewController;
-        MTESettingsViewController * viewController = (MTESettingsViewController*)navigationController.topViewController;
+        UINavigationController *navigationController = segue.destinationViewController;
+        MTESettingsViewController *viewController = (MTESettingsViewController*)navigationController.topViewController;
         viewController.delegate = self;
         viewController.syncManager = self.syncManager;
     }
     else if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
     {
-        MTETShirtViewController * viewController = segue.destinationViewController;
+        MTETShirtViewController *viewController = nil;
+        if ([segue.destinationViewController isMemberOfClass:[MTETShirtViewController class]])
+             viewController = segue.destinationViewController;
+        else if ([segue.destinationViewController isMemberOfClass:[UINavigationController class]])
+        {
+            UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
+            viewController = (MTETShirtViewController *)navigationController.topViewController;
+        }
         
-        NSUInteger index = [self.gridView indexOfSelectedItem];
-        MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
-        //NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
-        //MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
+        NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
+        MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
         viewController.tshirt = tshirt;
     }
 }
@@ -156,92 +139,34 @@
     return YES;
 }
 
-#pragma mark - Grid View Data Source
+#pragma mark - Collection view data source
 
-- (NSUInteger) numberOfItemsInGridView: (AQGridView *) aGridView
-{
-    return [self.tshirtExplorer numberOfTShirts];
-}
-
-- (CGSize)portraitGridCellSizeForGridView:(AQGridView *)gridView
-{
-    return CGSizeMake(78, 78);
-}
-
-- (AQGridViewCell*)gridView:(AQGridView*)aGridView cellForItemAtIndex:(NSUInteger)index
-{
-    static NSString * PlainCellIdentifier = @"PlainCellIdentifier";
-    
-    AQGridViewCell * cell = [aGridView dequeueReusableCellWithIdentifier:PlainCellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[AQGridViewCell alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 150.0)
-                                     reuseIdentifier:PlainCellIdentifier];
-        cell.contentView.backgroundColor = [UIColor clearColor];
-        cell.backgroundColor = [UIColor clearColor];
-        cell.opaque = YES;
-        cell.selectionStyle = AQGridViewCellSelectionStyleNone;
-    }
-    
-    MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
-    
-    NSString * imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
-    UIImage * image = [UIImage imageWithContentsOfFile:imagePath];
-    UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.clipsToBounds = YES;
-    //imageView.layer.borderWidth = 1;
-    //imageView.layer.cornerRadius = 2;
-    imageView.frame = CGRectMake(3, 3, 78-2*3, 78-2*3);
-    [cell.contentView addSubview:imageView];
-    
-    return cell;
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (int)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (int)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [self.tshirtExplorer numberOfTShirts];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MTETShirtCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTETShirtCellID" forIndexPath:indexPath];
     
-    MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
-    cell.textLabel.text = tshirt.name;
-
-    NSString * imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
-    UIImage * image = [UIImage imageWithContentsOfFile:imagePath];
-    if (image)
-    {
-        [cell.imageView setImage:image];
-    }
+    for (UIView *subview in cell.contentView.subviews)
+        [subview removeFromSuperview];
+    
+    MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
+    NSString *imagePath = [MTETShirt pathToLocalImageWithIdentifier:tshirt.identifier];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectInset(cell.bounds, 5, 5);
+    
+    [cell.contentView addSubview:imageView];
     
     return cell;
-}
-
-#pragma mark - Table view delegate
-
-- (void)gridView:(AQGridView *)gridView didSelectItemAtIndex:(NSUInteger)index
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-    {
-        [self.detailViewController.navigationController popToRootViewControllerAnimated:YES];
-        
-        MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:index];
-        self.detailViewController.tshirt = tshirt;
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"MTETShirtSegue" sender:nil];
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -250,14 +175,14 @@
     {
         [self.detailViewController.navigationController popToRootViewControllerAnimated:YES];
         
-        MTETShirt * tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
+        MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
         self.detailViewController.tshirt = tshirt;
     }
 }
 
 #pragma mark - Login
 
-- (void)loginViewControllerDidLoggedIn:(MTELoginViewController*)loginViewController
+- (void)loginViewControllerDidLoggedIn:(MTELoginViewController *)loginViewController
 {
     if (!self.syncManager.isSyncing)
     {
@@ -279,23 +204,13 @@
 
 - (void)syncFinished:(id)sender
 {
-    /*
-    MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
-    progressHUD.mode = MBProgressHUDModeCustomView;
-    progressHUD.labelText = @"Sync Successful!";
-    
-    [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
-    */
-    
     [self.tshirtExplorer updateData];
-    //[self.tableView reloadData];
-    [self.gridView reloadData];
+    [self.collectionView reloadData];
 }
 
 - (void)syncFailed:(id)sender
 {
-    MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
     progressHUD.mode = MBProgressHUDModeCustomView;
     progressHUD.labelText = @"Sync Failed";
@@ -305,17 +220,17 @@
 
 #pragma mark - Settings view controller delegate
 
-- (void)settingsViewControllerShouldClose:(MTESettingsViewController*)settingsViewController
+- (void)settingsViewControllerShouldClose:(MTESettingsViewController *)settingsViewController
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController*)settingsViewController
+- (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController *)settingsViewController
 {
     [self.syncManager startSync];
 }
 
-- (void)settingsViewControllerShouldLogOut:(MTESettingsViewController*)settingsViewController
+- (void)settingsViewControllerShouldLogOut:(MTESettingsViewController *)settingsViewController
 {
     [self.detailViewController.navigationController popToRootViewControllerAnimated:NO];
     self.detailViewController.tshirt = nil;
@@ -325,8 +240,7 @@
     [MTESyncManager resetKeychain];
     
     [self.tshirtExplorer updateData];
-    //[self.tableView reloadData];
-    [self.gridView reloadData];
+    [self.collectionView reloadData];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
