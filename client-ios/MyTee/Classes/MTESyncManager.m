@@ -10,7 +10,6 @@
 
 #import "KeychainItemWrapper.h"
 #import "NSString+NSStringURL.h"
-#import "MTEManagedObjectCache.h"
 
 #import "MTETShirt.h"
 #import "MTEWash.h"
@@ -123,7 +122,7 @@
 - (void)resetAllData
 {
     NSError * error = nil;
-    NSManagedObjectContext * context = [RKObjectManager sharedManager].objectStore.managedObjectContext;
+    NSManagedObjectContext * context = [RKObjectManager sharedManager].objectStore.managedObjectContextForCurrentThread;
     
     NSFetchRequest * tshirtsRequest = [MTETShirt fetchRequest];
     [tshirtsRequest setIncludesPropertyValues:NO];
@@ -147,14 +146,12 @@
     //RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
     self.isSyncing = NO;
     
-    RKObjectManager * objectManager = [RKObjectManager objectManagerWithBaseURL:MTE_URL_API];
+    RKObjectManager * objectManager = [RKObjectManager managerWithBaseURLString:MTE_URL_API];
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"mytee.sqlite"];
     
     NSTimeZone * utc = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     [RKManagedObjectMapping addDefaultDateFormatterForString:@"yyyy-MM-dd" inTimeZone:utc];
-    
-    objectManager.objectStore.managedObjectCache = [MTEManagedObjectCache new];
     
     [RKObjectManager setSharedManager:objectManager];
 }
@@ -166,19 +163,21 @@
     
     self.isSyncing = YES;
     
-    RKManagedObjectMapping * storeMapping = [RKManagedObjectMapping mappingForClass:[MTEStore class]];
+    RKManagedObjectStore *managedObjectStore = [RKObjectManager sharedManager].objectStore;
+    
+    RKManagedObjectMapping * storeMapping = [RKManagedObjectMapping mappingForClass:[MTEStore class] inManagedObjectStore:managedObjectStore];
     [storeMapping setPrimaryKeyAttribute:@"identifier"];
     [storeMapping mapAttributes:@"identifier", @"name", @"type", @"address", @"url", nil];
     
-    RKManagedObjectMapping * wearMapping = [RKManagedObjectMapping mappingForClass:[MTEWear class]];
+    RKManagedObjectMapping * wearMapping = [RKManagedObjectMapping mappingForClass:[MTEWear class] inManagedObjectStore:managedObjectStore];
     [wearMapping setPrimaryKeyAttribute:@"identifier"];
     [wearMapping mapAttributes:@"identifier", @"date", nil];
     
-    RKManagedObjectMapping * washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class]];
+    RKManagedObjectMapping * washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class] inManagedObjectStore:managedObjectStore];
     [washMapping setPrimaryKeyAttribute:@"identifier"];
     [washMapping mapAttributes:@"identifier", @"date", nil];
     
-    RKManagedObjectMapping * tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class]];
+    RKManagedObjectMapping * tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class] inManagedObjectStore:managedObjectStore];
     [tshirtMapping setPrimaryKeyAttribute:@"identifier"];
     [tshirtMapping mapAttributes:@"identifier", @"name", @"size", @"color", @"condition", @"location", @"rating", @"tags", @"note", @"image_url", nil];
     [tshirtMapping mapKeyPath:@"wear" toRelationship:@"wears" withMapping:wearMapping];

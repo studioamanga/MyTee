@@ -22,6 +22,10 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+@interface MTETShirtsViewController ()
+
+@end
+
 @implementation MTETShirtsViewController
 
 #pragma mark - View lifecycle
@@ -31,7 +35,7 @@
     _syncManager = syncManager;
     
     self.tshirtExplorer = [MTETShirtExplorer new];
-    NSManagedObjectContext *context = [[[RKObjectManager sharedManager] objectStore] managedObjectContext];
+    NSManagedObjectContext *context = [[[RKObjectManager sharedManager] objectStore] managedObjectContextForCurrentThread];
     [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
     [self.tshirtExplorer updateData];
 }
@@ -43,7 +47,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         self.detailViewController = (MTETShirtViewController*)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    UIImage *woodTexture = [UIImage imageNamed:@"wood"];
+    UIImage *woodTexture = [UIImage imageNamed:@"shelves"];
     UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.collectionView.backgroundColor = woodColor;
     
@@ -155,16 +159,27 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTETShirtCellID" forIndexPath:indexPath];
     
-    for (UIView *subview in cell.contentView.subviews)
-        [subview removeFromSuperview];
     
     MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
-    NSString *imagePath = [MTETShirt pathToLocalImageWithIdentifier:tshirt.identifier];
+    NSString *imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectInset(cell.bounds, 5, 5);
     
-    [cell.contentView addSubview:imageView];
+    UIImageView *tshirtImageView = nil;
+    if ([[cell.contentView.subviews lastObject] isMemberOfClass:[UIImageView class]])
+        tshirtImageView = [cell.contentView.subviews lastObject];
+    
+    if (!tshirtImageView)
+    {
+        tshirtImageView = [[UIImageView alloc] initWithImage:image];
+        tshirtImageView.contentMode = UIViewContentModeScaleAspectFit;
+        tshirtImageView.frame = CGRectMake(8, 16, cell.bounds.size.width - 2*8, cell.bounds.size.height - 16);
+        
+        [cell.contentView addSubview:tshirtImageView];
+    }
+    else
+    {
+        tshirtImageView.image = image;
+    }
     
     return cell;
 }

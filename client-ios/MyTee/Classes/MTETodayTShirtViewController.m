@@ -13,35 +13,33 @@
 @interface MTETodayTShirtViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *emptyDataLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *tshirtImageView;
 
 - (void)configureView;
 
 @end
 
 @implementation MTETodayTShirtViewController
-@synthesize emptyDataLabel;
-
-@synthesize managedObjectContext;
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
-    NSDate * today = [NSDate date];
-    NSCalendar * gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents * components;
+    NSDate *today = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components;
     NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
     components = [gregorian components:unitFlags fromDate:today];
     components.hour = 0;
     components.minute = 0;
-    NSDate * todayMidnight = [gregorian dateFromComponents:components];
+    NSDate *todayMidnight = [gregorian dateFromComponents:components];
     
-    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([MTETShirt class])];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ANY wears.date > %@", todayMidnight];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([MTETShirt class])];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY wears.date > %@", todayMidnight];
     [fetchRequest setPredicate:predicate];
     
-    NSError * error = nil;
-    NSArray * todayTShirts = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    NSError *error = nil;
+    NSArray *todayTShirts = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (!error && todayTShirts && [todayTShirts count]>0) 
     {
         self.tshirt = [todayTShirts lastObject];
@@ -53,17 +51,9 @@
     }
 }
 
-- (void)viewDidUnload 
-{
-    [super viewDidUnload];
-    
-    self.emptyDataLabel = nil;
-}
-
 - (void)configureView
 {
     [super configureView];
-    
     self.emptyDataLabel.hidden = (self.tshirt != nil);
 }
 

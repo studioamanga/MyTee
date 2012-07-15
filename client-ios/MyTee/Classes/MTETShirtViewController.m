@@ -22,6 +22,7 @@
 
 @interface MTETShirtViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *tshirtImageView;
 @property (weak, nonatomic) IBOutlet UIButton *storeButton;
 @property (weak, nonatomic) IBOutlet UIButton *wearButton;
@@ -43,21 +44,6 @@
 
 
 @implementation MTETShirtViewController
-
-@synthesize tshirt = _tshirt;
-@synthesize tshirtImageView;
-@synthesize storeButton;
-@synthesize wearButton;
-@synthesize washButton;
-@synthesize ratingLabel;
-@synthesize sizeLabel;
-@synthesize tagsLabel;
-@synthesize noteLabel;
-@synthesize noteIconImageView;
-@synthesize dateFormatter;
-
-@synthesize wearWashActionSheet;
-@synthesize masterPopoverController;
 
 #pragma mark - View lifecycle
 
@@ -81,7 +67,7 @@
     {
         for (UIView * view in self.view.subviews)
         {
-            view.hidden = YES;
+            //view.hidden = YES;
         }
     }
     else
@@ -144,12 +130,12 @@
         self.tshirtImageView.layer.borderColor = [[UIColor blackColor] CGColor];
         self.tshirtImageView.layer.borderWidth = 1;
         
-        ((UIScrollView*)self.view).contentSize = CGSizeMake(self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
+        self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
     }
     
-    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIImage * woodTexture = [UIImage imageNamed:@"shelves_closeup"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
-    self.view.backgroundColor = woodColor;
+    self.mainScrollView.backgroundColor = woodColor;
 }
 
 - (NSString*)relativeDescriptionForDate:(NSDate*)date
@@ -222,8 +208,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
     
     self.dateFormatter = [NSDateFormatter new];
     self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
