@@ -129,6 +129,8 @@
         
         self.tshirtImageView.layer.borderColor = [[UIColor blackColor] CGColor];
         self.tshirtImageView.layer.borderWidth = 1;
+        self.tshirtImageView.layer.cornerRadius = 6;
+        self.tshirtImageView.clipsToBounds = YES;
         
         self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
     }

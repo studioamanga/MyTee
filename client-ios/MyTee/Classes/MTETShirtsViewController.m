@@ -172,7 +172,13 @@
     {
         tshirtImageView = [[UIImageView alloc] initWithImage:image];
         tshirtImageView.contentMode = UIViewContentModeScaleAspectFit;
-        tshirtImageView.frame = CGRectMake(8, 16, cell.bounds.size.width - 2*8, cell.bounds.size.height - 16);
+        CGFloat tshirtSize = cell.bounds.size.width - 2*8;
+        tshirtImageView.frame = CGRectMake(8, (cell.bounds.size.height - tshirtSize)/2 + 8, tshirtSize, tshirtSize);
+        
+        tshirtImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+        tshirtImageView.layer.borderWidth = 1;
+        tshirtImageView.layer.cornerRadius = 4;
+        tshirtImageView.clipsToBounds = YES;
         
         [cell.contentView addSubview:tshirtImageView];
     }

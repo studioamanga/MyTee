@@ -55,6 +55,8 @@
 {
     [super configureView];
     self.emptyDataLabel.hidden = (self.tshirt != nil);
+    
+    self.title = @"Today";
 }
 
 @end
