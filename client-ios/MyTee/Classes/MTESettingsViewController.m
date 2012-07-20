@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     self.tableView.backgroundView = [UIView new];
-    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIImage * woodTexture = [UIImage imageNamed:@"shelves_free"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     [self.view setBackgroundColor:woodColor];
 

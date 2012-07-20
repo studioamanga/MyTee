@@ -50,19 +50,19 @@
     
     [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
     
-    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIImage * woodTexture = [UIImage imageNamed:@"shelves_free"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     [self.view setBackgroundColor:woodColor];
 }
 
 - (void)viewDidUnload
 {
-    [self setTypeLabel:nil];
     [super viewDidUnload];
     
-    [self setNameLabel:nil];
-    [self setAddressIconImageView:nil];
-    [self setAddressLabel:nil];
+    self.typeLabel = nil;
+    self.nameLabel = nil;
+    self.addressIconImageView = nil;
+    self.addressLabel = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
