@@ -7,6 +7,7 @@
 //
 
 #define MTE_MINIATURE_IMAGE_SIZE 90
+#define MTE_MINIATURE_IMAGE_SIZE_IPAD 142
 
 @class MTEStore;
 @class MTEWear;

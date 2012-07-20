@@ -218,6 +218,8 @@
         NSFileManager * fileManager = [NSFileManager defaultManager];
         NSOperationQueue * queue = [NSOperationQueue new];
         
+        CGFloat miniatureSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? MTE_MINIATURE_IMAGE_SIZE_IPAD : MTE_MINIATURE_IMAGE_SIZE;
+        
         for (MTETShirt * tshirt in objects) {
             if ([tshirt isMemberOfClass:[MTETShirt class]] && tshirt.image_url && ![tshirt.image_url isEqualToString:@""])
             {
@@ -233,7 +235,7 @@
                             [data writeToFile:pathToImage atomically:YES];
                         
                             UIImage * image = [UIImage imageWithData:data];
-                            UIImage * miniImage = [MTESyncManager imageWithImage:image scaledToSize:CGSizeMake(MTE_MINIATURE_IMAGE_SIZE, MTE_MINIATURE_IMAGE_SIZE)];
+                            UIImage * miniImage = [MTESyncManager imageWithImage:image scaledToSize:CGSizeMake(miniatureSize, miniatureSize)];
                             NSString * pathMini = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
                             [UIImageJPEGRepresentation(miniImage, 0.8) writeToFile:pathMini atomically:YES];
                         }

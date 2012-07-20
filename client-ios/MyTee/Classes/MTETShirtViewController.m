@@ -132,10 +132,10 @@
         self.tshirtImageView.layer.cornerRadius = 6;
         self.tshirtImageView.clipsToBounds = YES;
         
-        self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
+        self.mainScrollView.contentSize = CGSizeMake((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 540 : self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
     }
     
-    UIImage * woodTexture = [UIImage imageNamed:@"shelves_closeup"];
+    UIImage * woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-closeup"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.mainScrollView.backgroundColor = woodColor;
 }

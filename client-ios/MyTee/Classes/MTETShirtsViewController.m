@@ -47,7 +47,11 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         self.detailViewController = (MTETShirtViewController*)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    UIImage *woodTexture = [UIImage imageNamed:@"shelves"];
+    UIImage *woodTexture;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        woodTexture = [UIImage imageNamed:(UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) ? @"shelves-portrait" : @"shelves-landscape"];
+    else
+        woodTexture = [UIImage imageNamed:@"shelves"];
     UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.collectionView.backgroundColor = woodColor;
     
@@ -143,6 +147,16 @@
     return YES;
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        UIImage *woodTexture = [UIImage imageNamed:(UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) ? @"shelves-portrait" : @"shelves-landscape"];
+        UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
+        self.collectionView.backgroundColor = woodColor;
+    }
+}
+
 #pragma mark - Collection view data source
 
 - (int)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -172,8 +186,17 @@
     {
         tshirtImageView = [[UIImageView alloc] initWithImage:image];
         tshirtImageView.contentMode = UIViewContentModeScaleAspectFit;
-        CGFloat tshirtSize = cell.bounds.size.width - 2*8;
-        tshirtImageView.frame = CGRectMake(8, (cell.bounds.size.height - tshirtSize)/2 + 8, tshirtSize, tshirtSize);
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            CGFloat tshirtSize = cell.bounds.size.width - 2*20;
+            tshirtImageView.frame = CGRectMake(10, (cell.bounds.size.height - tshirtSize)/2 + 8, tshirtSize, tshirtSize);
+        }
+        else
+        {
+            CGFloat tshirtSize = cell.bounds.size.width - 2*8;
+            tshirtImageView.frame = CGRectMake(8, (cell.bounds.size.height - tshirtSize)/2 + 8, tshirtSize, tshirtSize);
+        }
         
         tshirtImageView.layer.borderColor = [[UIColor blackColor] CGColor];
         tshirtImageView.layer.borderWidth = 1;
