@@ -89,7 +89,7 @@
     CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     spinAnimation.fromValue = [NSNumber numberWithFloat:0];
     spinAnimation.toValue = [NSNumber numberWithFloat:2*M_PI];
-    spinAnimation.duration = 0.5;
+    spinAnimation.duration = 0.8;
     spinAnimation.delegate = self;
     
     [self.settingsBarButtonItem.customView.layer addAnimation:spinAnimation forKey:@"spinAnimation"];

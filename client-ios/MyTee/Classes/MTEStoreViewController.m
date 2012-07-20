@@ -48,7 +48,7 @@
         self.addressLabel.text = store.address;
     }
     
-    [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
+    ((UIScrollView*)self.view).alwaysBounceVertical = YES;
     
     UIImage * woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-free"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
