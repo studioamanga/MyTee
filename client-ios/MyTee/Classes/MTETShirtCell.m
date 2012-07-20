@@ -10,13 +10,18 @@
 
 @implementation MTETShirtCell
 
-- (void)layoutSubviews
-{  
-    [super layoutSubviews];     
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        UIImage * lightTexture = [UIImage imageNamed:@"linen-light-bar"];
+        UIColor * lightColor = [UIColor colorWithPatternImage:lightTexture];
+        [self.contentView setBackgroundColor:lightColor];
+        [self.textLabel setBackgroundColor:lightColor];
+    }
     
-    UIImage * lightTexture = [UIImage imageNamed:@"linen-light-bar"];
-    UIColor * lightColor = [UIColor colorWithPatternImage:lightTexture];
-    [self setBackgroundColor:lightColor];
+    return self;
 }
 
 @end

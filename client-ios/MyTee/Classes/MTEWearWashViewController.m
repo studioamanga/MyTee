@@ -8,7 +8,6 @@
 
 #import "MTEWearWashViewController.h"
 
-
 @implementation MTEWearWashViewController
 
 @synthesize datesObjects;
