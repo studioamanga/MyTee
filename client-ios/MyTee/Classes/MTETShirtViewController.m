@@ -18,7 +18,7 @@
 
 #import "MTESyncManager.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "RestKit.h"
 
 @interface MTETShirtViewController ()
 
@@ -59,6 +59,12 @@
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }        
+}
+
+- (void)updateAfterSync
+{
+    self.tshirt = [MTETShirt findFirstByAttribute:@"identifier" withValue:self.tshirt.identifier];
+    [self configureView];
 }
 
 - (void)configureView

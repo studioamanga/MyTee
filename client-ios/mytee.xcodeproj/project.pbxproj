@@ -52,6 +52,7 @@
 		1F2C7F2D15509760002A160C /* MTETodayTShirtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */; };
 		1F2C7F51155341CA002A160C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2C7F50155341CA002A160C /* Default.png */; };
 		1F2C7F54155341D9002A160C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2C7F53155341D9002A160C /* Default@2x.png */; };
+		1F33342515BE00D400EE6D36 /* MTEUpdatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F33342415BE00D400EE6D36 /* MTEUpdatableViewController.m */; };
 		1F42C76B1579038300A72E81 /* 14-tag-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F42C7671579038300A72E81 /* 14-tag-b.png */; };
 		1F42C76C1579038300A72E81 /* 14-tag-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F42C7681579038300A72E81 /* 14-tag-b@2x.png */; };
 		1F42C76D1579038300A72E81 /* 80-shopping-cart-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F42C7691579038300A72E81 /* 80-shopping-cart-b.png */; };
@@ -199,6 +200,8 @@
 		1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETodayTShirtViewController.m; path = MyTee/Classes/MTETodayTShirtViewController.m; sourceTree = SOURCE_ROOT; };
 		1F2C7F50155341CA002A160C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		1F2C7F53155341D9002A160C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		1F33342315BE00D400EE6D36 /* MTEUpdatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEUpdatableViewController.h; path = MyTee/Classes/MTEUpdatableViewController.h; sourceTree = SOURCE_ROOT; };
+		1F33342415BE00D400EE6D36 /* MTEUpdatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEUpdatableViewController.m; path = MyTee/Classes/MTEUpdatableViewController.m; sourceTree = SOURCE_ROOT; };
 		1F42C7671579038300A72E81 /* 14-tag-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "14-tag-b.png"; path = "MyTee/Resources/Images/14-tag-b.png"; sourceTree = SOURCE_ROOT; };
 		1F42C7681579038300A72E81 /* 14-tag-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "14-tag-b@2x.png"; path = "MyTee/Resources/Images/14-tag-b@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F42C7691579038300A72E81 /* 80-shopping-cart-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "80-shopping-cart-b.png"; path = "MyTee/Resources/Images/80-shopping-cart-b.png"; sourceTree = SOURCE_ROOT; };
@@ -506,6 +509,15 @@
 			name = Defaults;
 			sourceTree = "<group>";
 		};
+		1F33342115BE005500EE6D36 /* Updatable Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F33342315BE00D400EE6D36 /* MTEUpdatableViewController.h */,
+				1F33342415BE00D400EE6D36 /* MTEUpdatableViewController.m */,
+			);
+			name = "Updatable Controller";
+			sourceTree = "<group>";
+		};
 		1F7205251533973D00B4D60F /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,6 +754,7 @@
 		1FDE079014D4CB9500909A11 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1F33342115BE005500EE6D36 /* Updatable Controller */,
 				1F01F16014DC065500D6EF0C /* Shadowed Table View */,
 				1FDE079514D4CBB300909A11 /* Progress HUD */,
 				1FF7D5EB14D89B61000BDE04 /* MTEConstView.h */,
@@ -1025,6 +1038,7 @@
 				1F2C7F2D15509760002A160C /* MTETodayTShirtViewController.m in Sources */,
 				1FA1EA341585148B00A78FA8 /* MTEStoreRetailViewController.m in Sources */,
 				1FA1EA551585575C00A78FA8 /* MTEStoreOnlineViewController.m in Sources */,
+				1F33342515BE00D400EE6D36 /* MTEUpdatableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
