@@ -116,6 +116,8 @@
 		1FA1EA5D15855D5600A78FA8 /* 71-compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1EA5915855D5600A78FA8 /* 71-compass.png */; };
 		1FA1EA5E15855D5600A78FA8 /* 71-compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1EA5A15855D5600A78FA8 /* 71-compass@2x.png */; };
 		1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */; };
+		1FBB126F15C414AC0049AA95 /* 11-clock-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBB126D15C414AC0049AA95 /* 11-clock-b.png */; };
+		1FBB127015C414AC0049AA95 /* 11-clock-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBB126E15C414AC0049AA95 /* 11-clock-b@2x.png */; };
 		1FD38E061583C4180060F51F /* wash-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD38E041583C4180060F51F /* wash-b.png */; };
 		1FD38E071583C4180060F51F /* wash-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD38E051583C4180060F51F /* wash-b@2x.png */; };
 		1FD38E0B1583C4CE0060F51F /* 67-tshirt-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD38E091583C4CE0060F51F /* 67-tshirt-b.png */; };
@@ -278,6 +280,8 @@
 		1FA8535F14EC5BCB00736DAD /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
 		1FABB690150D67EF0020C71D /* libAQGridView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAQGridView.a; path = "Libraries/AQGridView/build/Release-iphoneos/libAQGridView.a"; sourceTree = "<group>"; };
+		1FBB126D15C414AC0049AA95 /* 11-clock-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock-b.png"; path = "MyTee/Resources/Images/11-clock-b.png"; sourceTree = SOURCE_ROOT; };
+		1FBB126E15C414AC0049AA95 /* 11-clock-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock-b@2x.png"; path = "MyTee/Resources/Images/11-clock-b@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FD38E041583C4180060F51F /* wash-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wash-b.png"; path = "MyTee/Resources/Images/wash-b.png"; sourceTree = SOURCE_ROOT; };
 		1FD38E051583C4180060F51F /* wash-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wash-b@2x.png"; path = "MyTee/Resources/Images/wash-b@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FD38E091583C4CE0060F51F /* 67-tshirt-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "67-tshirt-b.png"; path = "MyTee/Resources/Images/67-tshirt-b.png"; sourceTree = SOURCE_ROOT; };
@@ -388,14 +392,10 @@
 			children = (
 				1F7205141533921900B4D60F /* 118-coat-hanger.png */,
 				1F7205151533921900B4D60F /* 118-coat-hanger@2x.png */,
-				1F7D901514EED2F200307F26 /* 11-clock.png */,
-				1F7D901614EED2F300307F26 /* 11-clock@2x.png */,
-				1F7205191533940300B4D60F /* 19-gear.png */,
-				1F72051A1533940300B4D60F /* 19-gear@2x.png */,
-				1F67661414EB28F60035EF7D /* 19-gear-w.png */,
-				1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */,
 				1F01F16314DC11E600D6EF0C /* 83-calendar.png */,
 				1F01F16414DC11E700D6EF0C /* 83-calendar@2x.png */,
+				1FBB127115C417070049AA95 /* Clock */,
+				1FBB126B15C4140C0049AA95 /* Gear */,
 				1FA1EA5F15855D5B00A78FA8 /* Compass */,
 				1FA1EA3E1585160800A78FA8 /* Pin */,
 				1FA1EA391585158600A78FA8 /* Wash */,
@@ -751,6 +751,28 @@
 			name = Compass;
 			sourceTree = "<group>";
 		};
+		1FBB126B15C4140C0049AA95 /* Gear */ = {
+			isa = PBXGroup;
+			children = (
+				1F7205191533940300B4D60F /* 19-gear.png */,
+				1F72051A1533940300B4D60F /* 19-gear@2x.png */,
+				1F67661414EB28F60035EF7D /* 19-gear-w.png */,
+				1F67661514EB28F60035EF7D /* 19-gear-w@2x.png */,
+			);
+			name = Gear;
+			sourceTree = "<group>";
+		};
+		1FBB127115C417070049AA95 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				1F7D901514EED2F200307F26 /* 11-clock.png */,
+				1F7D901614EED2F300307F26 /* 11-clock@2x.png */,
+				1FBB126D15C414AC0049AA95 /* 11-clock-b.png */,
+				1FBB126E15C414AC0049AA95 /* 11-clock-b@2x.png */,
+			);
+			name = Clock;
+			sourceTree = "<group>";
+		};
 		1FDE079014D4CB9500909A11 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -979,6 +1001,8 @@
 				1F06907615B9B4A4003E71CE /* shelves-portrait@2x.png in Resources */,
 				1F06907915B9BFC6003E71CE /* shelves-free-form.png in Resources */,
 				1F06907A15B9BFC6003E71CE /* shelves-free-form@2x.png in Resources */,
+				1FBB126F15C414AC0049AA95 /* 11-clock-b.png in Resources */,
+				1FBB127015C414AC0049AA95 /* 11-clock-b@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
