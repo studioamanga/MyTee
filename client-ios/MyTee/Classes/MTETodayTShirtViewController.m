@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tshirtImageView;
 
 - (void)configureView;
+- (void)fetchTodaysTShirt;
 
 @end
 
@@ -25,6 +26,19 @@
 {
     [super viewWillAppear:animated];
 
+    [self fetchTodaysTShirt];
+}
+
+- (void)configureView
+{
+    [super configureView];
+    self.emptyDataLabel.hidden = (self.tshirt != nil);
+    
+    self.title = @"Today";
+}
+
+- (void)fetchTodaysTShirt
+{
     NSDate *today = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components;
@@ -40,7 +54,7 @@
     
     NSError *error = nil;
     NSArray *todayTShirts = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if (!error && todayTShirts && [todayTShirts count]>0) 
+    if (!error && todayTShirts && [todayTShirts count]>0)
     {
         self.tshirt = [todayTShirts lastObject];
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
@@ -51,12 +65,10 @@
     }
 }
 
-- (void)configureView
+- (void)updateAfterSync
 {
-    [super configureView];
-    self.emptyDataLabel.hidden = (self.tshirt != nil);
-    
-    self.title = @"Today";
+    [self fetchTodaysTShirt];
+    [self configureView];
 }
 
 @end

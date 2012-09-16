@@ -183,9 +183,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [MTESyncManager emailFromKeychain], @"login",
-                             [MTESyncManager passwordFromKeychain], @"password", nil];
+    NSDictionary * params = @{ @"login" : [MTESyncManager emailFromKeychain], @"password" : [MTESyncManager passwordFromKeychain]};
     NSString * resourcePath = nil;
     
     switch (buttonIndex)

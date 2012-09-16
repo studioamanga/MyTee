@@ -63,6 +63,7 @@
 		1F43D7F21561B5E3008D67B9 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F43D7F11561B5E3008D67B9 /* Default-Portrait@2x~ipad.png */; };
 		1F43D7F41561B5EC008D67B9 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F43D7F31561B5EC008D67B9 /* Default-Landscape~ipad.png */; };
 		1F43D7F61561B5F2008D67B9 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F43D7F51561B5F2008D67B9 /* Default-Landscape@2x~ipad.png */; };
+		1F65FF5E16027655000FE0D0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F65FF5D16027655000FE0D0 /* Default-568h@2x.png */; };
 		1F667CD715B32A5E00B374BC /* shelves-closeup.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F667CD515B32A5E00B374BC /* shelves-closeup.png */; };
 		1F667CD815B32A5E00B374BC /* shelves-closeup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F667CD615B32A5E00B374BC /* shelves-closeup@2x.png */; };
 		1F67661614EB28F60035EF7D /* 19-gear-w.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F67661414EB28F60035EF7D /* 19-gear-w.png */; };
@@ -86,6 +87,7 @@
 		1F7205231533973900B4D60F /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7205211533973900B4D60F /* tabbar.png */; };
 		1F7205241533973900B4D60F /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7205221533973900B4D60F /* tabbar@2x.png */; };
 		1F74FC9414DEF6130034BA02 /* MTEStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F74FC9314DEF6130034BA02 /* MTEStoreViewController.m */; };
+		1F75B7781606877200A43AD8 /* MTETShirtsFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75B7771606877200A43AD8 /* MTETShirtsFilterCell.m */; };
 		1F7BF97914D4429500D7F4A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97814D4429500D7F4A3 /* UIKit.framework */; };
 		1F7BF97B14D4429500D7F4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97A14D4429500D7F4A3 /* Foundation.framework */; };
 		1F7BF97D14D4429500D7F4A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7BF97C14D4429500D7F4A3 /* CoreGraphics.framework */; };
@@ -116,6 +118,12 @@
 		1FA1EA5D15855D5600A78FA8 /* 71-compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1EA5915855D5600A78FA8 /* 71-compass.png */; };
 		1FA1EA5E15855D5600A78FA8 /* 71-compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1EA5A15855D5600A78FA8 /* 71-compass@2x.png */; };
 		1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */; };
+		1FB189D515FE7F2E00208149 /* 33-cabinet-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB189D115FE7F2E00208149 /* 33-cabinet-b.png */; };
+		1FB189D615FE7F2E00208149 /* 33-cabinet-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB189D215FE7F2E00208149 /* 33-cabinet-b@2x.png */; };
+		1FB189D715FE7F2E00208149 /* 33-cabinet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB189D315FE7F2E00208149 /* 33-cabinet.png */; };
+		1FB189D815FE7F2E00208149 /* 33-cabinet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB189D415FE7F2E00208149 /* 33-cabinet@2x.png */; };
+		1FB189DF15FE80F000208149 /* 33-cabinet-w.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB189DD15FE80F000208149 /* 33-cabinet-w.png */; };
+		1FB189E015FE80F000208149 /* 33-cabinet-w@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB189DE15FE80F000208149 /* 33-cabinet-w@2x.png */; };
 		1FBB126F15C414AC0049AA95 /* 11-clock-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBB126D15C414AC0049AA95 /* 11-clock-b.png */; };
 		1FBB127015C414AC0049AA95 /* 11-clock-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBB126E15C414AC0049AA95 /* 11-clock-b@2x.png */; };
 		1FD38E061583C4180060F51F /* wash-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD38E041583C4180060F51F /* wash-b.png */; };
@@ -124,6 +132,7 @@
 		1FD38E0C1583C4CE0060F51F /* 67-tshirt-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD38E0A1583C4CE0060F51F /* 67-tshirt-b@2x.png */; };
 		1FDE079414D4CBA400909A11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079314D4CBA400909A11 /* MBProgressHUD.m */; };
 		1FDE079A14D4CE7700909A11 /* MTELoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE079914D4CE7700909A11 /* MTELoginViewController.m */; };
+		1FF381B115FBEFA0000334FC /* MTETShirtsFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF381B015FBEFA0000334FC /* MTETShirtsFilterViewController.m */; };
 		1FF7D5DD14D88D84000BDE04 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5DC14D88D84000BDE04 /* libRestKit.a */; };
 		1FF7D5E014D88E3F000BDE04 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5DF14D88E3F000BDE04 /* CFNetwork.framework */; };
 		1FF7D5E214D88E51000BDE04 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */; };
@@ -214,6 +223,7 @@
 		1F43D7F11561B5E3008D67B9 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		1F43D7F31561B5EC008D67B9 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		1F43D7F51561B5F2008D67B9 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		1F65FF5D16027655000FE0D0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1F667CD515B32A5E00B374BC /* shelves-closeup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shelves-closeup.png"; path = "MyTee/Resources/Images/shelves-closeup.png"; sourceTree = SOURCE_ROOT; };
 		1F667CD615B32A5E00B374BC /* shelves-closeup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shelves-closeup@2x.png"; path = "MyTee/Resources/Images/shelves-closeup@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F67661414EB28F60035EF7D /* 19-gear-w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-gear-w.png"; path = "MyTee/Resources/Images/19-gear-w.png"; sourceTree = SOURCE_ROOT; };
@@ -242,6 +252,8 @@
 		1F7205221533973900B4D60F /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar@2x.png"; path = "MyTee/Resources/Images/tabbar@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F74FC9214DEF6130034BA02 /* MTEStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEStoreViewController.h; path = MyTee/Classes/MTEStoreViewController.h; sourceTree = SOURCE_ROOT; };
 		1F74FC9314DEF6130034BA02 /* MTEStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEStoreViewController.m; path = MyTee/Classes/MTEStoreViewController.m; sourceTree = SOURCE_ROOT; };
+		1F75B7761606877200A43AD8 /* MTETShirtsFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtsFilterCell.h; path = MyTee/Classes/MTETShirtsFilterCell.h; sourceTree = SOURCE_ROOT; };
+		1F75B7771606877200A43AD8 /* MTETShirtsFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtsFilterCell.m; path = MyTee/Classes/MTETShirtsFilterCell.m; sourceTree = SOURCE_ROOT; };
 		1F7BF97414D4429500D7F4A3 /* mytee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mytee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7BF97814D4429500D7F4A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F7BF97A14D4429500D7F4A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -280,6 +292,12 @@
 		1FA8535F14EC5BCB00736DAD /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
 		1FABB690150D67EF0020C71D /* libAQGridView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAQGridView.a; path = "Libraries/AQGridView/build/Release-iphoneos/libAQGridView.a"; sourceTree = "<group>"; };
+		1FB189D115FE7F2E00208149 /* 33-cabinet-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet-b.png"; path = "MyTee/Resources/Images/33-cabinet-b.png"; sourceTree = SOURCE_ROOT; };
+		1FB189D215FE7F2E00208149 /* 33-cabinet-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet-b@2x.png"; path = "MyTee/Resources/Images/33-cabinet-b@2x.png"; sourceTree = SOURCE_ROOT; };
+		1FB189D315FE7F2E00208149 /* 33-cabinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet.png"; path = "MyTee/Resources/Images/33-cabinet.png"; sourceTree = SOURCE_ROOT; };
+		1FB189D415FE7F2E00208149 /* 33-cabinet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet@2x.png"; path = "MyTee/Resources/Images/33-cabinet@2x.png"; sourceTree = SOURCE_ROOT; };
+		1FB189DD15FE80F000208149 /* 33-cabinet-w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet-w.png"; path = "MyTee/Resources/Images/33-cabinet-w.png"; sourceTree = SOURCE_ROOT; };
+		1FB189DE15FE80F000208149 /* 33-cabinet-w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet-w@2x.png"; path = "MyTee/Resources/Images/33-cabinet-w@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FBB126D15C414AC0049AA95 /* 11-clock-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock-b.png"; path = "MyTee/Resources/Images/11-clock-b.png"; sourceTree = SOURCE_ROOT; };
 		1FBB126E15C414AC0049AA95 /* 11-clock-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock-b@2x.png"; path = "MyTee/Resources/Images/11-clock-b@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FD38E041583C4180060F51F /* wash-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wash-b.png"; path = "MyTee/Resources/Images/wash-b.png"; sourceTree = SOURCE_ROOT; };
@@ -290,6 +308,8 @@
 		1FDE079314D4CBA400909A11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		1FDE079814D4CE7700909A11 /* MTELoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MTELoginViewController.h; path = MyTee/Classes/MTELoginViewController.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1FDE079914D4CE7700909A11 /* MTELoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MTELoginViewController.m; path = MyTee/Classes/MTELoginViewController.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1FF381AF15FBEFA0000334FC /* MTETShirtsFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETShirtsFilterViewController.h; path = MyTee/Classes/MTETShirtsFilterViewController.h; sourceTree = SOURCE_ROOT; };
+		1FF381B015FBEFA0000334FC /* MTETShirtsFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETShirtsFilterViewController.m; path = MyTee/Classes/MTETShirtsFilterViewController.m; sourceTree = SOURCE_ROOT; };
 		1FF7D5DC14D88D84000BDE04 /* libRestKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRestKit.a; path = "Libraries/RestKit/build/Release-iphoneos/libRestKit.a"; sourceTree = "<group>"; };
 		1FF7D5DF14D88E3F000BDE04 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		1FF7D5E114D88E51000BDE04 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -390,10 +410,9 @@
 		1F01F16914DC120000D6EF0C /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				1F7205141533921900B4D60F /* 118-coat-hanger.png */,
-				1F7205151533921900B4D60F /* 118-coat-hanger@2x.png */,
-				1F01F16314DC11E600D6EF0C /* 83-calendar.png */,
-				1F01F16414DC11E700D6EF0C /* 83-calendar@2x.png */,
+				1FB189DA15FE7F3500208149 /* Cabinet */,
+				1FB189DB15FE7F3E00208149 /* Coat hanger */,
+				1FB189DC15FE7F4800208149 /* Calendar */,
 				1FBB127115C417070049AA95 /* Clock */,
 				1FBB126B15C4140C0049AA95 /* Gear */,
 				1FA1EA5F15855D5B00A78FA8 /* Compass */,
@@ -545,6 +564,7 @@
 		1F7BF96914D4429400D7F4A3 = {
 			isa = PBXGroup;
 			children = (
+				1F65FF5D16027655000FE0D0 /* Default-568h@2x.png */,
 				1F7BF98014D4429500D7F4A3 /* mytee */,
 				1F7BF99C14D4429500D7F4A3 /* myteeTests */,
 				1F7BF97714D4429500D7F4A3 /* Frameworks */,
@@ -751,6 +771,37 @@
 			name = Compass;
 			sourceTree = "<group>";
 		};
+		1FB189DA15FE7F3500208149 /* Cabinet */ = {
+			isa = PBXGroup;
+			children = (
+				1FB189DD15FE80F000208149 /* 33-cabinet-w.png */,
+				1FB189DE15FE80F000208149 /* 33-cabinet-w@2x.png */,
+				1FB189D115FE7F2E00208149 /* 33-cabinet-b.png */,
+				1FB189D215FE7F2E00208149 /* 33-cabinet-b@2x.png */,
+				1FB189D315FE7F2E00208149 /* 33-cabinet.png */,
+				1FB189D415FE7F2E00208149 /* 33-cabinet@2x.png */,
+			);
+			name = Cabinet;
+			sourceTree = "<group>";
+		};
+		1FB189DB15FE7F3E00208149 /* Coat hanger */ = {
+			isa = PBXGroup;
+			children = (
+				1F7205141533921900B4D60F /* 118-coat-hanger.png */,
+				1F7205151533921900B4D60F /* 118-coat-hanger@2x.png */,
+			);
+			name = "Coat hanger";
+			sourceTree = "<group>";
+		};
+		1FB189DC15FE7F4800208149 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				1F01F16314DC11E600D6EF0C /* 83-calendar.png */,
+				1F01F16414DC11E700D6EF0C /* 83-calendar@2x.png */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
 		1FBB126B15C4140C0049AA95 /* Gear */ = {
 			isa = PBXGroup;
 			children = (
@@ -830,6 +881,10 @@
 				1F01F15914DB464700D6EF0C /* MTETShirtCell.m */,
 				1F2C7F2B15509760002A160C /* MTETodayTShirtViewController.h */,
 				1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */,
+				1FF381AF15FBEFA0000334FC /* MTETShirtsFilterViewController.h */,
+				1FF381B015FBEFA0000334FC /* MTETShirtsFilterViewController.m */,
+				1F75B7761606877200A43AD8 /* MTETShirtsFilterCell.h */,
+				1F75B7771606877200A43AD8 /* MTETShirtsFilterCell.m */,
 			);
 			name = "T-Shirts";
 			sourceTree = "<group>";
@@ -1003,6 +1058,13 @@
 				1F06907A15B9BFC6003E71CE /* shelves-free-form@2x.png in Resources */,
 				1FBB126F15C414AC0049AA95 /* 11-clock-b.png in Resources */,
 				1FBB127015C414AC0049AA95 /* 11-clock-b@2x.png in Resources */,
+				1FB189D515FE7F2E00208149 /* 33-cabinet-b.png in Resources */,
+				1FB189D615FE7F2E00208149 /* 33-cabinet-b@2x.png in Resources */,
+				1FB189D715FE7F2E00208149 /* 33-cabinet.png in Resources */,
+				1FB189D815FE7F2E00208149 /* 33-cabinet@2x.png in Resources */,
+				1FB189DF15FE80F000208149 /* 33-cabinet-w.png in Resources */,
+				1FB189E015FE80F000208149 /* 33-cabinet-w@2x.png in Resources */,
+				1F65FF5E16027655000FE0D0 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,6 +1125,8 @@
 				1FA1EA341585148B00A78FA8 /* MTEStoreRetailViewController.m in Sources */,
 				1FA1EA551585575C00A78FA8 /* MTEStoreOnlineViewController.m in Sources */,
 				1F33342515BE00D400EE6D36 /* MTEUpdatableViewController.m in Sources */,
+				1FF381B115FBEFA0000334FC /* MTETShirtsFilterViewController.m in Sources */,
+				1F75B7781606877200A43AD8 /* MTETShirtsFilterCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

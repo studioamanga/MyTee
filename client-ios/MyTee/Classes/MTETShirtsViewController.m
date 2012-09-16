@@ -19,6 +19,7 @@
 #import "MTETShirtViewController.h"
 #import "MTESettingsViewController.h"
 #import "MTELoginViewController.h"
+#import "MTETShirtsFilterViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -70,9 +71,7 @@
     [super viewWillAppear:animated];
  
     if ([self.syncManager isSyncing])
-    {
         [self startSpinningAnimation];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -139,6 +138,12 @@
         NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
         MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
         viewController.tshirt = tshirt;
+    }
+    else if([segue.identifier isEqualToString:@"MTEFilterSegue"])
+    {
+        UINavigationController *navigationController = segue.destinationViewController;
+        MTETShirtsFilterViewController *viewController = (MTETShirtsFilterViewController*)navigationController.topViewController;
+        viewController.delegate = self;
     }
 }
 
@@ -289,6 +294,14 @@
     [self dismissViewControllerAnimated:YES completion:^{
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
     }];
+}
+
+#pragma mark - Filter view delegate
+
+- (void)tshirtsFilterViewControllerDidChangeFilter:(MTETShirtsFilterViewController *)filterController
+{
+    [self.tshirtExplorer updateData];
+    [self.collectionView reloadData];
 }
 
 @end
