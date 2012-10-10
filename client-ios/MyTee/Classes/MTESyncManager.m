@@ -20,7 +20,6 @@
 #define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/user/me"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
-#define MTE_KEYCHAIN_ACCESS_GROUP @"77S3V3W24J.com.studioamanga.mytee"
 
 #define MTE_USER_DEFAULTS_LAST_SYNC_DATE @"kMTEUserDefaultsLastSyncDate"
 
@@ -64,7 +63,7 @@
 
 + (KeychainItemWrapper*)keychainWrapper
 {
-    return [[KeychainItemWrapper alloc] initWithIdentifier:MTE_KEYCHAIN_IDENTIFIER accessGroup:MTE_KEYCHAIN_ACCESS_GROUP];
+    return [[KeychainItemWrapper alloc] initWithIdentifier:MTE_KEYCHAIN_IDENTIFIER accessGroup:nil];
 }
 
 + (void)resetKeychain

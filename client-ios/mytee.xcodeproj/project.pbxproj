@@ -1175,7 +1175,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vincent Tourraine (NMF3U5W9WV)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1190,6 +1190,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB4CA0D9-1B90-4EE1-939E-E623F4ABAF29";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1219,7 +1220,7 @@
 		1F7BF9A814D4429500D7F4A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vincent Tourraine (NMF3U5W9WV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
@@ -1230,7 +1231,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB4CA0D9-1B90-4EE1-939E-E623F4ABAF29";
 				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/RestKit/Vendor\"/** \"$(PROJECT_DIR)/Libraries/RestKit/Code\"/** \"$(PROJECT_DIR)/Libraries/AQGridView/Classes\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1239,7 +1240,7 @@
 		1F7BF9A914D4429500D7F4A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mytee/mytee-Prefix.pch";
 				INFOPLIST_FILE = "mytee/mytee-Info.plist";
