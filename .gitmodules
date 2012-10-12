@@ -10,3 +10,6 @@
 [submodule "client-ios/Libraries/RestKit"]
 	path = client-ios/Libraries/RestKit
 	url = git://github.com/RestKit/RestKit.git
+[submodule "client-ios/Libraries/ECSlidingViewController"]
+	path = client-ios/Libraries/ECSlidingViewController
+	url = git://github.com/edgecase/ECSlidingViewController.git

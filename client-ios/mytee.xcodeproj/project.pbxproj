@@ -144,6 +144,8 @@
 		1FFAB02E14F1D42B00851D81 /* linen-light-cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFAB02C14F1D42B00851D81 /* linen-light-cell.png */; };
 		1FFAB02F14F1D42B00851D81 /* linen-light-cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFAB02D14F1D42B00851D81 /* linen-light-cell@2x.png */; };
 		1FFAB03314F1D44A00851D81 /* MTESettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAB03214F1D44A00851D81 /* MTESettingCell.m */; };
+		1FFF049D16288636005A837A /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF049A16288636005A837A /* ECSlidingViewController.m */; };
+		1FFF049E16288636005A837A /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF049C16288636005A837A /* UIImage+ImageWithUIView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,7 +293,6 @@
 		1FA1EA5A15855D5600A78FA8 /* 71-compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "71-compass@2x.png"; path = "MyTee/Resources/Images/71-compass@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FA8535F14EC5BCB00736DAD /* MTESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsViewController.h; path = MyTee/Classes/MTESettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		1FA8536014EC5BCB00736DAD /* MTESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsViewController.m; path = MyTee/Classes/MTESettingsViewController.m; sourceTree = SOURCE_ROOT; };
-		1FABB690150D67EF0020C71D /* libAQGridView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAQGridView.a; path = "Libraries/AQGridView/build/Release-iphoneos/libAQGridView.a"; sourceTree = "<group>"; };
 		1FB189D115FE7F2E00208149 /* 33-cabinet-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet-b.png"; path = "MyTee/Resources/Images/33-cabinet-b.png"; sourceTree = SOURCE_ROOT; };
 		1FB189D215FE7F2E00208149 /* 33-cabinet-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet-b@2x.png"; path = "MyTee/Resources/Images/33-cabinet-b@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FB189D315FE7F2E00208149 /* 33-cabinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet.png"; path = "MyTee/Resources/Images/33-cabinet.png"; sourceTree = SOURCE_ROOT; };
@@ -326,6 +327,10 @@
 		1FFAB02D14F1D42B00851D81 /* linen-light-cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linen-light-cell@2x.png"; path = "MyTee/Resources/Images/linen-light-cell@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FFAB03114F1D44A00851D81 /* MTESettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MTESettingCell.h; path = MyTee/Classes/MTESettingCell.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1FFAB03214F1D44A00851D81 /* MTESettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MTESettingCell.m; path = MyTee/Classes/MTESettingCell.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1FFF049916288636005A837A /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		1FFF049A16288636005A837A /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		1FFF049B16288636005A837A /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		1FFF049C16288636005A837A /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -648,7 +653,6 @@
 		1F7BF9BC14D44DA600D7F4A3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				1FABB690150D67EF0020C71D /* libAQGridView.a */,
 				1FF7D5E514D88E65000BDE04 /* libxml2.dylib */,
 				1F7BF9B914D44D9A00D7F4A3 /* libCedar-StaticLib.a */,
 				1FF7D5DC14D88D84000BDE04 /* libRestKit.a */,
@@ -827,6 +831,7 @@
 		1FDE079014D4CB9500909A11 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1FFF049816288636005A837A /* ECSlidingViewController */,
 				1F33342115BE005500EE6D36 /* Updatable Controller */,
 				1F01F16014DC065500D6EF0C /* Shadowed Table View */,
 				1FDE079514D4CBB300909A11 /* Progress HUD */,
@@ -904,6 +909,18 @@
 				1F230B2E14DC98D500B65E7E /* MTEStore.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		1FFF049816288636005A837A /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1FFF049916288636005A837A /* ECSlidingViewController.h */,
+				1FFF049A16288636005A837A /* ECSlidingViewController.m */,
+				1FFF049B16288636005A837A /* UIImage+ImageWithUIView.h */,
+				1FFF049C16288636005A837A /* UIImage+ImageWithUIView.m */,
+			);
+			name = ECSlidingViewController;
+			path = ../Libraries/ECSlidingViewController/ECSlidingViewController/Vendor/ECSlidingViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1127,6 +1144,8 @@
 				1F33342515BE00D400EE6D36 /* MTEUpdatableViewController.m in Sources */,
 				1FF381B115FBEFA0000334FC /* MTETShirtsFilterViewController.m in Sources */,
 				1F75B7781606877200A43AD8 /* MTETShirtsFilterCell.m in Sources */,
+				1FFF049D16288636005A837A /* ECSlidingViewController.m in Sources */,
+				1FFF049E16288636005A837A /* UIImage+ImageWithUIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
