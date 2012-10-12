@@ -223,7 +223,7 @@
 		1F43D7F11561B5E3008D67B9 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		1F43D7F31561B5EC008D67B9 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		1F43D7F51561B5F2008D67B9 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		1F65FF5D16027655000FE0D0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1F65FF5D16027655000FE0D0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		1F667CD515B32A5E00B374BC /* shelves-closeup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shelves-closeup.png"; path = "MyTee/Resources/Images/shelves-closeup.png"; sourceTree = SOURCE_ROOT; };
 		1F667CD615B32A5E00B374BC /* shelves-closeup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shelves-closeup@2x.png"; path = "MyTee/Resources/Images/shelves-closeup@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F67661414EB28F60035EF7D /* 19-gear-w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19-gear-w.png"; path = "MyTee/Resources/Images/19-gear-w.png"; sourceTree = SOURCE_ROOT; };
@@ -520,6 +520,7 @@
 			children = (
 				1F2C7F50155341CA002A160C /* Default.png */,
 				1F2C7F53155341D9002A160C /* Default@2x.png */,
+				1F65FF5D16027655000FE0D0 /* Default-568h@2x.png */,
 				1F43D7F51561B5F2008D67B9 /* Default-Landscape@2x~ipad.png */,
 				1F43D7F31561B5EC008D67B9 /* Default-Landscape~ipad.png */,
 				1F43D7F11561B5E3008D67B9 /* Default-Portrait@2x~ipad.png */,
@@ -564,7 +565,6 @@
 		1F7BF96914D4429400D7F4A3 = {
 			isa = PBXGroup;
 			children = (
-				1F65FF5D16027655000FE0D0 /* Default-568h@2x.png */,
 				1F7BF98014D4429500D7F4A3 /* mytee */,
 				1F7BF99C14D4429500D7F4A3 /* myteeTests */,
 				1F7BF97714D4429500D7F4A3 /* Frameworks */,
