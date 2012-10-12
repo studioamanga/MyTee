@@ -191,7 +191,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="dIC-Ku-7CH">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="xkR-Z5-myE">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="xkR-Z5-myE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ar2-Aa-p4Q">
                                 <rect key="frame" x="727" y="5" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -885,9 +885,6 @@
                 <relationship kind="outlet" name="settingsBarButtonItem" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
-        <class className="MTEUpdatableViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEUpdatableViewController.h"/>
-        </class>
         <class className="MTEWearWashViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTEWearWashViewController.h"/>
         </class>
@@ -905,9 +902,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
