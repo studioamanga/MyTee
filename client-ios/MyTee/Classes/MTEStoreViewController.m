@@ -48,21 +48,21 @@
         self.addressLabel.text = store.address;
     }
     
-    [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
+    ((UIScrollView*)self.view).alwaysBounceVertical = YES;
     
-    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIImage * woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-free"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     [self.view setBackgroundColor:woodColor];
 }
 
 - (void)viewDidUnload
 {
-    [self setTypeLabel:nil];
     [super viewDidUnload];
     
-    [self setNameLabel:nil];
-    [self setAddressIconImageView:nil];
-    [self setAddressLabel:nil];
+    self.typeLabel = nil;
+    self.nameLabel = nil;
+    self.addressIconImageView = nil;
+    self.addressLabel = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

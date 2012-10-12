@@ -10,6 +10,3 @@
 [submodule "client-ios/Libraries/RestKit"]
 	path = client-ios/Libraries/RestKit
 	url = git://github.com/RestKit/RestKit.git
-[submodule "client-ios/Libraries/AQGridView"]
-	path = client-ios/Libraries/AQGridView
-	url = git://github.com/AlanQuatermain/AQGridView.git
