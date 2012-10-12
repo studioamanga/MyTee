@@ -10,7 +10,6 @@
 
 #import "KeychainItemWrapper.h"
 #import "NSString+NSStringURL.h"
-#import "MTEManagedObjectCache.h"
 
 #import "MTETShirt.h"
 #import "MTEWash.h"
@@ -21,7 +20,6 @@
 #define MTE_URL_AUTHENTICATION @"http://www.studioamanga.com/mytee/api/user/me"
 
 #define MTE_KEYCHAIN_IDENTIFIER @"MyTee credentials"
-#define MTE_KEYCHAIN_ACCESS_GROUP @"77S3V3W24J.com.studioamanga.mytee"
 
 #define MTE_USER_DEFAULTS_LAST_SYNC_DATE @"kMTEUserDefaultsLastSyncDate"
 
@@ -65,7 +63,7 @@
 
 + (KeychainItemWrapper*)keychainWrapper
 {
-    return [[KeychainItemWrapper alloc] initWithIdentifier:MTE_KEYCHAIN_IDENTIFIER accessGroup:MTE_KEYCHAIN_ACCESS_GROUP];
+    return [[KeychainItemWrapper alloc] initWithIdentifier:MTE_KEYCHAIN_IDENTIFIER accessGroup:nil];
 }
 
 + (void)resetKeychain
@@ -123,7 +121,7 @@
 - (void)resetAllData
 {
     NSError * error = nil;
-    NSManagedObjectContext * context = [RKObjectManager sharedManager].objectStore.managedObjectContext;
+    NSManagedObjectContext * context = [RKObjectManager sharedManager].objectStore.managedObjectContextForCurrentThread;
     
     NSFetchRequest * tshirtsRequest = [MTETShirt fetchRequest];
     [tshirtsRequest setIncludesPropertyValues:NO];
@@ -147,14 +145,12 @@
     //RKLogConfigureByName("RestKit/*", RKLogLevelTrace);
     self.isSyncing = NO;
     
-    RKObjectManager * objectManager = [RKObjectManager objectManagerWithBaseURL:MTE_URL_API];
+    RKObjectManager * objectManager = [RKObjectManager managerWithBaseURLString:MTE_URL_API];
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"mytee.sqlite"];
     
     NSTimeZone * utc = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     [RKManagedObjectMapping addDefaultDateFormatterForString:@"yyyy-MM-dd" inTimeZone:utc];
-    
-    objectManager.objectStore.managedObjectCache = [MTEManagedObjectCache new];
     
     [RKObjectManager setSharedManager:objectManager];
 }
@@ -166,19 +162,21 @@
     
     self.isSyncing = YES;
     
-    RKManagedObjectMapping * storeMapping = [RKManagedObjectMapping mappingForClass:[MTEStore class]];
+    RKManagedObjectStore *managedObjectStore = [RKObjectManager sharedManager].objectStore;
+    
+    RKManagedObjectMapping * storeMapping = [RKManagedObjectMapping mappingForClass:[MTEStore class] inManagedObjectStore:managedObjectStore];
     [storeMapping setPrimaryKeyAttribute:@"identifier"];
     [storeMapping mapAttributes:@"identifier", @"name", @"type", @"address", @"url", nil];
     
-    RKManagedObjectMapping * wearMapping = [RKManagedObjectMapping mappingForClass:[MTEWear class]];
+    RKManagedObjectMapping * wearMapping = [RKManagedObjectMapping mappingForClass:[MTEWear class] inManagedObjectStore:managedObjectStore];
     [wearMapping setPrimaryKeyAttribute:@"identifier"];
     [wearMapping mapAttributes:@"identifier", @"date", nil];
     
-    RKManagedObjectMapping * washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class]];
+    RKManagedObjectMapping * washMapping = [RKManagedObjectMapping mappingForClass:[MTEWash class] inManagedObjectStore:managedObjectStore];
     [washMapping setPrimaryKeyAttribute:@"identifier"];
     [washMapping mapAttributes:@"identifier", @"date", nil];
     
-    RKManagedObjectMapping * tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class]];
+    RKManagedObjectMapping * tshirtMapping = [RKManagedObjectMapping mappingForClass:[MTETShirt class] inManagedObjectStore:managedObjectStore];
     [tshirtMapping setPrimaryKeyAttribute:@"identifier"];
     [tshirtMapping mapAttributes:@"identifier", @"name", @"size", @"color", @"condition", @"location", @"rating", @"tags", @"note", @"image_url", nil];
     [tshirtMapping mapKeyPath:@"wear" toRelationship:@"wears" withMapping:wearMapping];
@@ -219,6 +217,8 @@
         NSFileManager * fileManager = [NSFileManager defaultManager];
         NSOperationQueue * queue = [NSOperationQueue new];
         
+        CGFloat miniatureSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? MTE_MINIATURE_IMAGE_SIZE_IPAD : MTE_MINIATURE_IMAGE_SIZE;
+        
         for (MTETShirt * tshirt in objects) {
             if ([tshirt isMemberOfClass:[MTETShirt class]] && tshirt.image_url && ![tshirt.image_url isEqualToString:@""])
             {
@@ -234,7 +234,7 @@
                             [data writeToFile:pathToImage atomically:YES];
                         
                             UIImage * image = [UIImage imageWithData:data];
-                            UIImage * miniImage = [MTESyncManager imageWithImage:image scaledToSize:CGSizeMake(MTE_MINIATURE_IMAGE_SIZE, MTE_MINIATURE_IMAGE_SIZE)];
+                            UIImage * miniImage = [MTESyncManager imageWithImage:image scaledToSize:CGSizeMake(miniatureSize, miniatureSize)];
                             NSString * pathMini = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
                             [UIImageJPEGRepresentation(miniImage, 0.8) writeToFile:pathMini atomically:YES];
                         }

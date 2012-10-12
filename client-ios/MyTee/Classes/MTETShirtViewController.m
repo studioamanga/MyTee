@@ -18,10 +18,11 @@
 
 #import "MTESyncManager.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "RestKit.h"
 
 @interface MTETShirtViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *tshirtImageView;
 @property (weak, nonatomic) IBOutlet UIButton *storeButton;
 @property (weak, nonatomic) IBOutlet UIButton *wearButton;
@@ -44,21 +45,6 @@
 
 @implementation MTETShirtViewController
 
-@synthesize tshirt = _tshirt;
-@synthesize tshirtImageView;
-@synthesize storeButton;
-@synthesize wearButton;
-@synthesize washButton;
-@synthesize ratingLabel;
-@synthesize sizeLabel;
-@synthesize tagsLabel;
-@synthesize noteLabel;
-@synthesize noteIconImageView;
-@synthesize dateFormatter;
-
-@synthesize wearWashActionSheet;
-@synthesize masterPopoverController;
-
 #pragma mark - View lifecycle
 
 - (void)setTshirt:(MTETShirt *)newTShirt
@@ -75,13 +61,19 @@
     }        
 }
 
+- (void)updateAfterSync
+{
+    self.tshirt = [MTETShirt findFirstByAttribute:@"identifier" withValue:self.tshirt.identifier];
+    [self configureView];
+}
+
 - (void)configureView
 {
     if (!self.tshirt)
     {
         for (UIView * view in self.view.subviews)
         {
-            view.hidden = YES;
+            //view.hidden = YES;
         }
     }
     else
@@ -143,13 +135,15 @@
         
         self.tshirtImageView.layer.borderColor = [[UIColor blackColor] CGColor];
         self.tshirtImageView.layer.borderWidth = 1;
+        self.tshirtImageView.layer.cornerRadius = 6;
+        self.tshirtImageView.clipsToBounds = YES;
         
-        ((UIScrollView*)self.view).contentSize = CGSizeMake(self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
+        self.mainScrollView.contentSize = CGSizeMake((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 540 : self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
     }
     
-    UIImage * woodTexture = [UIImage imageNamed:@"wood"];
+    UIImage * woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-closeup"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
-    self.view.backgroundColor = woodColor;
+    self.mainScrollView.backgroundColor = woodColor;
 }
 
 - (NSString*)relativeDescriptionForDate:(NSDate*)date
@@ -189,9 +183,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [MTESyncManager emailFromKeychain], @"login",
-                             [MTESyncManager passwordFromKeychain], @"password", nil];
+    NSDictionary * params = @{ @"login" : [MTESyncManager emailFromKeychain], @"password" : [MTESyncManager passwordFromKeychain]};
     NSString * resourcePath = nil;
     
     switch (buttonIndex)
@@ -223,8 +215,6 @@
 {
     [super viewDidLoad];
     
-    [(UIScrollView*)self.view setAlwaysBounceVertical:YES];
-    
     self.dateFormatter = [NSDateFormatter new];
     self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
     self.dateFormatter.doesRelativeDateFormatting = YES;
@@ -232,25 +222,12 @@
     [self configureView];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    self.ratingLabel = nil;
-    self.sizeLabel = nil;
-    self.tagsLabel = nil;
-    self.noteLabel = nil;
-    self.tshirtImageView = nil;
-    self.storeButton = nil;
-    self.wearButton = nil;
-    self.washButton = nil;
-    self.noteIconImageView = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -273,20 +250,9 @@
     }
 }
 
-#pragma mark - Split view
-
-- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
+- (IBAction)dismissViewController:(id)sender
 {
-    barButtonItem.title = NSLocalizedString(@"T-Shirts", @"T-Shirts");
-    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-    self.masterPopoverController = popoverController;
-}
-
-- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    // Called when the view is shown again in the split view, invalidating the button and popover controller.
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    self.masterPopoverController = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

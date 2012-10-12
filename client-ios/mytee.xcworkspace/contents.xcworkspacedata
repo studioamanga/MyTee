@@ -10,7 +10,4 @@
    <FileRef
       location = "group:Libraries/RestKit/RestKit.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Libraries/AQGridView/AQGridView.xcodeproj">
-   </FileRef>
 </Workspace>

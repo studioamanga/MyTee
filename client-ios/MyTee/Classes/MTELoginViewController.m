@@ -109,7 +109,7 @@
 
 #pragma mark - 
 
-- (void)startAuthenticatingWithEmail:(NSString*)email password:(NSString*)password
+- (void)startAuthenticatingWithEmail:(NSString *)email password:(NSString *)password
 {
     __block MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     progressHUD.delegate = self;
@@ -163,8 +163,7 @@
 {
     if (authenticationSuccessful)
     {
-        [self dismissModalViewControllerAnimated:YES];
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
         [delegate loginViewControllerDidLoggedIn:self];
     }
 }

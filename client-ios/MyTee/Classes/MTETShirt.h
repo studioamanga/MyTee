@@ -6,7 +6,8 @@
 //  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
-#define MTE_MINIATURE_IMAGE_SIZE 72
+#define MTE_MINIATURE_IMAGE_SIZE 90
+#define MTE_MINIATURE_IMAGE_SIZE_IPAD 142
 
 @class MTEStore;
 @class MTEWear;

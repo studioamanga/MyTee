@@ -24,7 +24,7 @@
 {
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, [UIColor blackColor], UITextAttributeTextShadowColor, nil]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowColor : [UIColor blackColor]}];
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor darkGrayColor]];
     
@@ -39,12 +39,8 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navController0 = [splitViewController.viewControllers objectAtIndex:0];
-        UINavigationController *navController1 = [splitViewController.viewControllers objectAtIndex:1];
-        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController0.topViewController;
-        MTETShirtViewController * tshirtViewController = (MTETShirtViewController*)navController1.topViewController;
-        splitViewController.delegate = tshirtViewController;
+        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController.topViewController;
         
         tshirtsViewController.syncManager = syncManager;
     }

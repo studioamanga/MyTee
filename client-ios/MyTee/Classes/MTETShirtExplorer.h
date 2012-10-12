@@ -6,7 +6,15 @@
 //  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+FOUNDATION_EXPORT NSString *const kMTETShirtsFilterType;
+FOUNDATION_EXPORT NSString *const kMTETShirtsFilterParameter;
+
+typedef enum
+{
+    MTETShirtsFilterAll = 0,
+    MTETShirtsFilterWash
+} MTETShirtsFilterType;
+
 
 @class MTETShirt;
 
