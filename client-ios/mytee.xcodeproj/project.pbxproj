@@ -105,6 +105,7 @@
 		1F7BF9C214D4526D00D7F4A3 /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */; };
 		1F7BF9C414D4529400D7F4A3 /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */; };
 		1F7BF9F814D4543A00D7F4A3 /* mytee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF9F614D4543A00D7F4A3 /* mytee.xcdatamodeld */; };
+		1F7C152F162B706D00929ECB /* MTESettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7C152E162B706D00929ECB /* MTESettingSwitchCell.m */; };
 		1F7D901714EED2F300307F26 /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D901514EED2F200307F26 /* 11-clock.png */; };
 		1F7D901814EED2F300307F26 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D901614EED2F300307F26 /* 11-clock@2x.png */; };
 		1FA1EA3115850FFA00A78FA8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA1EA2E15850F8200A78FA8 /* MapKit.framework */; };
@@ -277,6 +278,8 @@
 		1F7BF9C114D4526D00D7F4A3 /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = Resources/Storyboards/Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1F7BF9C314D4529400D7F4A3 /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPad.storyboard; path = Resources/Storyboards/Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1F7BF9F714D4543A00D7F4A3 /* mytee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mytee.xcdatamodel; sourceTree = "<group>"; };
+		1F7C152D162B706D00929ECB /* MTESettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingSwitchCell.h; path = MyTee/Classes/MTESettingSwitchCell.h; sourceTree = SOURCE_ROOT; };
+		1F7C152E162B706D00929ECB /* MTESettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingSwitchCell.m; path = MyTee/Classes/MTESettingSwitchCell.m; sourceTree = SOURCE_ROOT; };
 		1F7D901514EED2F200307F26 /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock.png"; path = "MyTee/Resources/Images/11-clock.png"; sourceTree = SOURCE_ROOT; };
 		1F7D901614EED2F300307F26 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock@2x.png"; path = "MyTee/Resources/Images/11-clock@2x.png"; sourceTree = SOURCE_ROOT; };
 		1FA1EA2E15850F8200A78FA8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -869,6 +872,8 @@
 				1FDE079914D4CE7700909A11 /* MTELoginViewController.m */,
 				1FFAB03114F1D44A00851D81 /* MTESettingCell.h */,
 				1FFAB03214F1D44A00851D81 /* MTESettingCell.m */,
+				1F7C152D162B706D00929ECB /* MTESettingSwitchCell.h */,
+				1F7C152E162B706D00929ECB /* MTESettingSwitchCell.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1146,6 +1151,7 @@
 				1F75B7781606877200A43AD8 /* MTETShirtsFilterCell.m in Sources */,
 				1FFF049D16288636005A837A /* ECSlidingViewController.m in Sources */,
 				1FFF049E16288636005A837A /* UIImage+ImageWithUIView.m in Sources */,
+				1F7C152F162B706D00929ECB /* MTESettingSwitchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

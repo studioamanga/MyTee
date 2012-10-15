@@ -12,6 +12,7 @@
 #import "MTETShirtsViewController.h"
 #import "MTESettingsViewController.h"
 #import "MTESyncManager.h"
+#import "ECSlidingViewController.h"
 
 @implementation MTEAppDelegate
 
@@ -46,22 +47,27 @@
     }
     else 
     {
-        UITabBarController * tabBarController = (UITabBarController*)self.window.rootViewController;
-        UINavigationController * navController0 = [tabBarController.viewControllers objectAtIndex:0];
-        MTETodayTShirtViewController * todayViewController = (MTETodayTShirtViewController*)navController0.topViewController;
-        UINavigationController * navController1 = [tabBarController.viewControllers objectAtIndex:1];
-        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController1.topViewController;
-        UINavigationController * navController2 = [tabBarController.viewControllers objectAtIndex:2];
-        MTESettingsViewController * settingsViewController = (MTESettingsViewController*)navController2.topViewController;
+        ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.window.rootViewController;
+        UINavigationController *tshirtsNavController = (UINavigationController *)[slidingViewController.storyboard instantiateViewControllerWithIdentifier:@"MTETShirtsNavigationController"];
+        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController *)tshirtsNavController.topViewController;
+        slidingViewController.topViewController = tshirtsNavController;
         
-        UILocalNotification * localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-        if (localNotif) 
-            tabBarController.selectedIndex = [tabBarController.viewControllers indexOfObject:navController1];
+//        UITabBarController * tabBarController = (UITabBarController*)self.window.rootViewController;
+//        UINavigationController * navController0 = [tabBarController.viewControllers objectAtIndex:0];
+//        MTETodayTShirtViewController * todayViewController = (MTETodayTShirtViewController*)navController0.topViewController;
+//        UINavigationController * navController1 = [tabBarController.viewControllers objectAtIndex:1];
+//        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController1.topViewController;
+//        UINavigationController * navController2 = [tabBarController.viewControllers objectAtIndex:2];
+//        MTESettingsViewController * settingsViewController = (MTESettingsViewController*)navController2.topViewController;
+        
+//        UILocalNotification * localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+//        if (localNotif)
+//            tabBarController.selectedIndex = [tabBarController.viewControllers indexOfObject:navController1];
         
         tshirtsViewController.syncManager = syncManager;
-        settingsViewController.syncManager = syncManager;
+//        settingsViewController.syncManager = syncManager;
         
-        todayViewController.managedObjectContext = self.managedObjectContext;
+//        todayViewController.managedObjectContext = self.managedObjectContext;
     }
     
     return YES;

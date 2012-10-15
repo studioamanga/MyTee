@@ -19,14 +19,11 @@
 
 @end
 
-@interface MTESettingsViewController : UITableViewController
+@interface MTESettingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel * emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel * lastSyncLabel;
-@property (weak, nonatomic) IBOutlet UITableViewCell *remindersTimeCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell * syncNowCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell * logoutCell;
-@property (weak, nonatomic) IBOutlet UISwitch * remindersSwitch;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *syncActivityIndicator;
 
 @property (weak, nonatomic) id <MTESettingsViewDelegate> delegate;

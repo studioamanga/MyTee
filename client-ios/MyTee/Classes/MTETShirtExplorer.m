@@ -31,7 +31,7 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"color" ascending:YES];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    [fetchRequest setSortDescriptors:@[sort]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc]
                                      initWithFetchRequest:fetchRequest

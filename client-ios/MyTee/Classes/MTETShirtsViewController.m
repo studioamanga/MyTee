@@ -20,6 +20,7 @@
 #import "MTESettingsViewController.h"
 #import "MTELoginViewController.h"
 #import "MTETShirtsFilterViewController.h"
+#import "ECSlidingViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -70,6 +71,24 @@
 {
     [super viewWillAppear:animated];
  
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        if (![self.slidingViewController.underRightViewController isKindOfClass:[UIViewController class]])
+        {
+            UINavigationController *settingsNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTESettingsNavigationController"];
+            ((MTESettingsViewController *)settingsNavigationController.topViewController).syncManager = self.syncManager;
+            self.slidingViewController.underRightViewController  = settingsNavigationController;
+        }
+    
+        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+        [self.slidingViewController setAnchorLeftRevealAmount:280];
+        
+        self.navigationController.view.clipsToBounds = NO;
+        self.navigationController.view.layer.shadowOpacity = 0.75f;
+        self.navigationController.view.layer.shadowRadius = 10.0f;
+        self.navigationController.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    }
+    
     if ([self.syncManager isSyncing])
         [self startSpinningAnimation];
 }
