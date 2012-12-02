@@ -25,8 +25,6 @@
 
 @implementation MTESyncManager
 
-@synthesize isSyncing;
-
 #pragma mark - Keychain
 
 + (NSString*)pathForResource:(NSString*)resourcePath withEmail:(NSString*)email password:(NSString*)password
@@ -53,7 +51,7 @@
 {
     NSUInteger status = [(NSHTTPURLResponse*)response statusCode];
     
-    if (status==200)
+    if (status == 200)
         return YES;
     
     return NO;

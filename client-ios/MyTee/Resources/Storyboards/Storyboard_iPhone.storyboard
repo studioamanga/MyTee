@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbC-Xg-aeP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbC-Xg-aeP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Login View Controller - Login-->
@@ -162,13 +162,7 @@
                             <outlet property="delegate" destination="UTn-nN-AYv" id="UMP-Sx-YGu"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Wardrobe" id="AHQ-p6-7Au">
-                        <barButtonItem key="rightBarButtonItem" image="33-cabinet-w.png" id="Nq3-hD-jQg">
-                            <connections>
-                                <segue destination="YaL-nG-MEE" kind="modal" identifier="MTEFilterSegue" modalTransitionStyle="coverVertical" id="A7r-c1-TlI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Wardrobe" id="AHQ-p6-7Au"/>
                     <connections>
                         <segue destination="Snp-cF-hnH" kind="modal" identifier="MTELoginSegue" id="JAW-gV-EE5"/>
                     </connections>
@@ -176,100 +170,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhp-Yi-0ca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1274" y="35"/>
-        </scene>
-        <!--Shirts Filter View Controller - Filter-->
-        <scene sceneID="mmi-Tc-aLV">
-            <objects>
-                <tableViewController id="Sf3-eh-Q2l" customClass="MTETShirtsFilterViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="K30-Gw-HxX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="yc9-T1-9vx">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NZ7-d1-w3N" customClass="MTETShirtsFilterCell">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="67-tshirt-b.png" id="Ii8-Na-cYL">
-                                                    <rect key="frame" x="11" y="9" width="26" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="All" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mXy-zE-78F">
-                                                    <rect key="frame" x="45" y="9" width="215" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="label" destination="mXy-zE-78F" id="Als-DB-jec"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="afR-SO-GK0">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="a4n-mQ-y7V" customClass="MTETShirtsFilterCell">
-                                        <rect key="frame" x="0.0" y="76" width="320" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="wash-b@2x.png" id="7Zs-I1-BP6">
-                                                    <rect key="frame" x="11" y="9" width="26" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Wash (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pbb-4x-4we">
-                                                    <rect key="frame" x="45" y="9" width="113" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" id="1QG-fa-Xvy">
-                                                    <rect key="frame" x="166" y="8" width="94" height="27"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <action selector="washParameterStepperValueChanged:" destination="Sf3-eh-Q2l" eventType="valueChanged" id="dJb-d2-jAx"/>
-                                                    </connections>
-                                                </stepper>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="label" destination="Pbb-4x-4we" id="Llj-jx-OcV"/>
-                                            <outlet property="stepper" destination="1QG-fa-Xvy" id="Y5v-zz-CZc"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="Sf3-eh-Q2l" id="PE3-ph-S6k"/>
-                            <outlet property="delegate" destination="Sf3-eh-Q2l" id="bQM-Pv-Bf2"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Filter" id="DdO-ab-Wgz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="dpl-PL-n7B">
-                            <connections>
-                                <action selector="dismiss:" destination="Sf3-eh-Q2l" id="Njq-0t-W12"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6CK-5W-AnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2342" y="-688"/>
         </scene>
         <!--Sliding View Controller-->
         <scene sceneID="Vf6-XV-CEk">
@@ -814,6 +714,63 @@ Etc...</string>
             </objects>
             <point key="canvasLocation" x="1627" y="1441"/>
         </scene>
+        <!--Shirts Filter View Controller - My T-Shirts-->
+        <scene sceneID="Azs-5T-tRA">
+            <objects>
+                <viewController id="dhp-jS-pOM" customClass="MTETShirtsFilterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VIk-ti-3gf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="t5s-GU-1zB">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.10609603102189782" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="alK-MJ-z5s">
+                                    <rect key="frame" x="0.0" y="66" width="280" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MTEFilterCell" textLabel="hDl-eF-b0C" style="IBUITableViewCellStyleDefault" id="fjI-Ho-PWU">
+                                        <rect key="frame" x="0.0" y="22" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="All my T-Shirts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hDl-eF-b0C">
+                                                    <rect key="frame" x="10" y="0.0" width="240" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <size key="shadowOffset" width="0.0" height="1"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dhp-jS-pOM" id="VkQ-U8-pvb"/>
+                                    <outlet property="delegate" destination="dhp-jS-pOM" id="elm-ud-6UU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My T-Shirts" id="Zjj-fB-LM0"/>
+                    <connections>
+                        <outlet property="tableView" destination="t5s-GU-1zB" id="1br-W7-CmZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TBG-ez-2jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="2052"/>
+        </scene>
         <!--Navigation Controller - Settings-->
         <scene sceneID="JO5-7f-hmO">
             <objects>
@@ -893,22 +850,22 @@ Etc...</string>
             <point key="canvasLocation" x="677" y="-1521"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Dod-QX-XQt">
+        <scene sceneID="kp3-41-zuh">
             <objects>
-                <navigationController id="YaL-nG-MEE" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MTEFilterNavigationController" id="SZQ-ZO-m9A" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xjl-Gq-XMt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sne-uH-Epb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Sf3-eh-Q2l" kind="relationship" relationship="rootViewController" id="Pad-ya-LpN"/>
+                        <segue destination="dhp-jS-pOM" kind="relationship" relationship="rootViewController" id="04P-U4-BYw"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2v0-3e-WjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oji-1T-QAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816" y="-688"/>
+            <point key="canvasLocation" x="1101" y="2052"/>
         </scene>
     </scenes>
     <resources>
@@ -917,14 +874,12 @@ Etc...</string>
         <image name="14-tag-b.png" width="22" height="22"/>
         <image name="179-notepad-b.png" width="22" height="28"/>
         <image name="19-gear.png" width="26" height="26"/>
-        <image name="33-cabinet-w.png" width="15" height="20"/>
         <image name="67-tshirt-b.png" width="26" height="18"/>
         <image name="71-compass-b.png" width="24" height="24"/>
         <image name="72-pin-b.png" width="10" height="20"/>
         <image name="80-shopping-cart-b.png" width="26" height="19"/>
         <image name="83-calendar.png" width="23" height="25"/>
         <image name="wash-b.png" width="26" height="26"/>
-        <image name="wash-b@2x.png" width="52" height="52"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>

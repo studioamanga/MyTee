@@ -35,12 +35,6 @@
     }
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    self.webView = nil;
-}
-
 #pragma mark - Actions
 
 - (IBAction)presentActionSheet:(id)sender
@@ -59,4 +53,5 @@
         [[UIApplication sharedApplication] openURL:URL];
     }
 }
+
 @end
