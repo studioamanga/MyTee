@@ -76,16 +76,26 @@
         if (![self.slidingViewController.underRightViewController isKindOfClass:[UIViewController class]])
         {
             UINavigationController *settingsNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTESettingsNavigationController"];
-            ((MTESettingsViewController *)settingsNavigationController.topViewController).syncManager = self.syncManager;
+            MTESettingsViewController *settingsViewController = (MTESettingsViewController *)settingsNavigationController.topViewController;
+            settingsViewController.syncManager = self.syncManager;
+            settingsViewController.delegate = self;
             self.slidingViewController.underRightViewController  = settingsNavigationController;
+        }
+        
+        if (![self.slidingViewController.underLeftViewController isKindOfClass:[UIViewController class]])
+        {
+            UINavigationController *filterNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTEFilterNavigationController"];
+            ((MTETShirtsFilterViewController *)filterNavigationController.topViewController).delegate = self;
+            self.slidingViewController.underLeftViewController  = filterNavigationController;
         }
     
         [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
         [self.slidingViewController setAnchorLeftRevealAmount:280];
+        [self.slidingViewController setAnchorRightRevealAmount:280];
         
         self.navigationController.view.clipsToBounds = NO;
-        self.navigationController.view.layer.shadowOpacity = 0.75f;
-        self.navigationController.view.layer.shadowRadius = 10.0f;
+        self.navigationController.view.layer.shadowOpacity = 0.75;
+        self.navigationController.view.layer.shadowRadius = 10;
         self.navigationController.view.layer.shadowColor = [UIColor blackColor].CGColor;
     }
     
@@ -300,9 +310,6 @@
 
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController *)settingsViewController
 {
-    [self.detailViewController.navigationController popToRootViewControllerAnimated:NO];
-    self.detailViewController.tshirt = nil;
-    
     [self.syncManager resetAllData];
     
     [MTESyncManager resetKeychain];
@@ -310,9 +317,22 @@
     [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
-    }];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [self.detailViewController.navigationController popToRootViewControllerAnimated:NO];
+        self.detailViewController.tshirt = nil;
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+        }];
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.slidingViewController resetTopViewWithAnimations:nil onComplete:^{
+            [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+        }];
+    }
 }
 
 #pragma mark - Filter view delegate

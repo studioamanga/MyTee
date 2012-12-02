@@ -20,7 +20,7 @@ enum MTESettingsViewSections {
     MTESettingsViewNumberOfSections
     };
 
-@interface MTESettingsViewController ()
+@interface MTESettingsViewController () <UIAlertViewDelegate>
 
 - (IBAction)remindersSwitchValueDidChange:(UISwitch *)sender;
 
@@ -60,20 +60,9 @@ enum MTESettingsViewSections {
 {
     [super viewWillAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateDidStart) 
-												 name:MTE_NOTIFICATION_SYNC_STARTED
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateSyncDateLabel) 
-												 name:MTE_NOTIFICATION_SYNC_FINISHED
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(syncFailed) 
-												 name:MTE_NOTIFICATION_SYNC_FAILED
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDidStart) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSyncDateLabel) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncFailed) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
     
     if ([self.syncManager isSyncing])
     {
@@ -119,11 +108,9 @@ enum MTESettingsViewSections {
     {
         case MTESettingsViewSectionReminders:
             return 2;
-            break;
         case MTESettingsViewSectionSyncNow:
         case MTESettingsViewSectionLogOut:
             return 1;
-            break;
     }
     
     return 0;
@@ -183,11 +170,13 @@ enum MTESettingsViewSections {
             if (!self.syncManager.isSyncing)
             {
                 [tableView deselectRowAtIndexPath:indexPath animated:YES];
-                [self.delegate settingsViewControllerShouldLogOut:self];
+                [[[UIAlertView alloc] initWithTitle:@"Logging Out" message:@"Are you sure you want to log out?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Log Out", nil] show];
             }
             break;
     }
 }
+
+#pragma mark - Switch delegate
 
 - (IBAction)remindersSwitchValueDidChange:(UISwitch *)sender
 {
@@ -209,6 +198,14 @@ enum MTESettingsViewSections {
     }
 
     [MTESettingsManager setRemindersActive:sender.isOn];
+}
+
+#pragma mark - Alert view delegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != alertView.cancelButtonIndex)
+        [self.delegate settingsViewControllerShouldLogOut:self];
 }
 
 - (void)updateSyncDateLabel
