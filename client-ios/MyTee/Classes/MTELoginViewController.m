@@ -50,7 +50,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section==0)
+    if (indexPath.section==0)
     {
         switch (indexPath.row)
         {
@@ -62,7 +62,7 @@
                 break;
         }
     }
-    if(indexPath.section==1)
+    if (indexPath.section==1)
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
