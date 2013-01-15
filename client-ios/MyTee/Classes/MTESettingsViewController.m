@@ -36,9 +36,11 @@ enum MTESettingsViewSections {
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
-        UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        spaceBarButtonItem.width = 40;
+        UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 128, 1)]];
         self.navigationItem.leftBarButtonItems = @[spaceBarButtonItem];
+        
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar"] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
     }
     
     NSString * email = [MTESyncManager emailFromKeychain];

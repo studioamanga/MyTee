@@ -13,3 +13,6 @@
 [submodule "client-ios/Libraries/ECSlidingViewController"]
 	path = client-ios/Libraries/ECSlidingViewController
 	url = git://github.com/edgecase/ECSlidingViewController.git
+[submodule "client-ios/Libraries/KSCustomUIPopover"]
+	path = client-ios/Libraries/KSCustomUIPopover
+	url = git@github.com:Scianski/KSCustomUIPopover.git

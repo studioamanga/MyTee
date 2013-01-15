@@ -9,6 +9,7 @@
 #import "MTETShirtExplorer.h"
 
 #import "MTETShirt.h"
+#import "MTEWear.h"
 
 NSString *const kMTETShirtsFilterType = @"kMTETShirtsFilterType";
 NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
@@ -51,14 +52,25 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSUInteger filterType = [userDefaults integerForKey:kMTETShirtsFilterType];
-    NSUInteger filterParameter = [userDefaults integerForKey:kMTETShirtsFilterParameter];
+    NSLog(@"%d", filterType);
     if (filterType == MTETShirtsFilterWash)
-        self.fetchedTShirts = [self.fetchedResultsController.fetchedObjects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(MTETShirt *evaluatedObject, NSDictionary *bindings) {
-            NSArray *orderedWashs = evaluatedObject.washsSortedByDate;
-            NSDate *latestWash = ([orderedWashs count] > 0) ? [[orderedWashs objectAtIndex:0] date] : [NSDate dateWithTimeIntervalSince1970:0];
-            NSSet *newerWears = [evaluatedObject.wears filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"date > %@", latestWash]];
-            return [newerWears count] >= filterParameter;
-        }]];
+    {
+        self.fetchedTShirts = [self.fetchedResultsController.fetchedObjects sortedArrayWithOptions:kNilOptions usingComparator:^NSComparisonResult(MTETShirt *tshirt1, MTETShirt *tshirt2) {
+            return [@([tshirt1 numberOfWearsSinceLastWash]) compare:@([tshirt2 numberOfWearsSinceLastWash])];
+        }];
+    }
+    else if (filterType == MTETShirtsFilterWear)
+    {
+        self.fetchedTShirts = [self.fetchedResultsController.fetchedObjects sortedArrayWithOptions:kNilOptions usingComparator:^NSComparisonResult(MTETShirt *tshirt1, MTETShirt *tshirt2) {
+            NSDate *tshirt1MostRecentWearDate = tshirt1.mostRecentWear.date;
+            if (!tshirt1MostRecentWearDate)
+                tshirt1MostRecentWearDate = [NSDate dateWithTimeIntervalSince1970:0];
+            NSDate *tshirt2MostRecentWearDate = tshirt2.mostRecentWear.date;
+            if (!tshirt2MostRecentWearDate)
+                tshirt2MostRecentWearDate = [NSDate dateWithTimeIntervalSince1970:0];
+            return [tshirt1MostRecentWearDate compare:tshirt2MostRecentWearDate];
+        }];
+    }
     else
         self.fetchedTShirts = self.fetchedResultsController.fetchedObjects;
     

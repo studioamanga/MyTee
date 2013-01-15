@@ -21,10 +21,13 @@
 #import "MTELoginViewController.h"
 #import "MTETShirtsFilterViewController.h"
 #import "ECSlidingViewController.h"
+#import "KSCustomPopoverBackgroundView.h"
 
 #import <QuartzCore/QuartzCore.h>
 
-@interface MTETShirtsViewController ()
+@interface MTETShirtsViewController () <UIPopoverControllerDelegate>
+
+@property (nonatomic, strong) UIPopoverController *filterPopoverController;
 
 @end
 
@@ -126,8 +129,35 @@
 - (IBAction)didPressSettingsBarButtonItem:(id)sender
 {
     [self performSegueWithIdentifier:@"MTESettingsSegue" sender:nil];
-    
-    //[self.syncManager startSync];
+}
+
+- (IBAction)showFilterViewController:(id)sender
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        if (self.filterPopoverController)
+        {
+            [self.filterPopoverController dismissPopoverAnimated:YES];
+            self.filterPopoverController = nil;
+        }
+        else
+        {
+            MTETShirtsFilterViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTETShirtsFilterViewController"];
+            viewController.delegate = self;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+            self.filterPopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+            self.filterPopoverController.popoverBackgroundViewClass = [KSCustomPopoverBackgroundView class];
+            self.filterPopoverController.delegate = self;
+            [self.filterPopoverController presentPopoverFromRect:CGRectMake(0, 0, 44, 44) inView:self.navigationController.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+    }
+    else
+        [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
+- (IBAction)showSettingsViewController:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECLeft];
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
@@ -206,7 +236,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTETShirtCellID" forIndexPath:indexPath];
-    
     
     MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
     NSString *imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
@@ -341,6 +370,24 @@
 {
     [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [self.filterPopoverController dismissPopoverAnimated:YES];
+        self.filterPopoverController = nil;
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    [self.collectionView setContentOffset:CGPointZero animated:NO];
+}
+
+#pragma mark - Popover controller
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.filterPopoverController = nil;
 }
 
 @end

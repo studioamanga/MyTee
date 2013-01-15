@@ -30,6 +30,8 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
     [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowColor : [UIColor blackColor]}];
+    [[UINavigationBar appearanceWhenContainedIn:[UIPopoverController class], nil] setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearanceWhenContainedIn:[UIPopoverController class], nil] setBackgroundImage:nil forBarMetrics:UIBarMetricsLandscapePhone];
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor darkGrayColor]];
     
@@ -56,22 +58,7 @@
         MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController *)tshirtsNavController.topViewController;
         slidingViewController.topViewController = tshirtsNavController;
         
-//        UITabBarController * tabBarController = (UITabBarController*)self.window.rootViewController;
-//        UINavigationController * navController0 = [tabBarController.viewControllers objectAtIndex:0];
-//        MTETodayTShirtViewController * todayViewController = (MTETodayTShirtViewController*)navController0.topViewController;
-//        UINavigationController * navController1 = [tabBarController.viewControllers objectAtIndex:1];
-//        MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController1.topViewController;
-//        UINavigationController * navController2 = [tabBarController.viewControllers objectAtIndex:2];
-//        MTESettingsViewController * settingsViewController = (MTESettingsViewController*)navController2.topViewController;
-        
-//        UILocalNotification * localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-//        if (localNotif)
-//            tabBarController.selectedIndex = [tabBarController.viewControllers indexOfObject:navController1];
-        
         tshirtsViewController.syncManager = self.syncManager;
-//        settingsViewController.syncManager = syncManager;
-        
-//        todayViewController.managedObjectContext = self.managedObjectContext;
     }
     
     return YES;

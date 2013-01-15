@@ -31,4 +31,7 @@
 - (void)startSpinningAnimation;
 - (IBAction)didPressSettingsBarButtonItem:(id)sender;
 
+- (IBAction)showFilterViewController:(id)sender;
+- (IBAction)showSettingsViewController:(id)sender;
+
 @end

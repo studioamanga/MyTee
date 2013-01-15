@@ -20,26 +20,18 @@
 {
     [super viewDidLoad];
     
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
+    
     self.emailTextField.text = [MTESyncManager emailFromKeychain];
     self.passwordTextField.text = [MTESyncManager passwordFromKeychain];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    [self setEmailTextField:nil];
-    [self setPasswordTextField:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     [self.emailTextField becomeFirstResponder];
 }
-
-#pragma mark - Table view data source
 
 #pragma mark - Table view delegate
 

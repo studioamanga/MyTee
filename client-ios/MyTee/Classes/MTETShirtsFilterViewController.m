@@ -8,17 +8,14 @@
 
 #import "MTETShirtsFilterViewController.h"
 
-#import "MTETShirtsFilterCell.h"
+#import "ECSlidingViewController.h"
 #import "MTETShirtExplorer.h"
 
 @interface MTETShirtsFilterViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) MTETShirtsFilterType filterType;
 @property (assign, nonatomic) NSUInteger filterWashParameter;
-@property (strong, nonatomic) IBOutlet UIStepper *washParameterStepper;
-
-- (IBAction)dismiss:(id)sender;
-- (IBAction)washParameterStepperValueChanged:(UIStepper *)sender;
 
 @end
 
@@ -28,69 +25,74 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 110, 1)]];
+    self.navigationItem.rightBarButtonItems = @[spaceBarButtonItem];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar"] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
+    }
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.filterType = [userDefaults integerForKey:kMTETShirtsFilterType];
     self.filterWashParameter = [userDefaults integerForKey:kMTETShirtsFilterParameter];
     
-    self.tableView.backgroundView = [UIView new];
-    UIImage * woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-free"];
-    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
-    [self.view setBackgroundColor:woodColor];
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:self.filterType inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+#pragma mark - Table data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [super viewWillAppear:animated];
-    
-    MTETShirtsFilterCell *cell = (MTETShirtsFilterCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:MTETShirtsFilterWash]];
-    cell.label.text = [NSString stringWithFormat:@"Wash (%d)", self.filterWashParameter];
-    cell.stepper.value = self.filterWashParameter;
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
 }
 
 #pragma mark - Table view delegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MTETShirtsFilterCell *cell = (MTETShirtsFilterCell *)[super tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MTEFilterCell"];
     
-    if (self.filterType == indexPath.section)
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    else
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    if (indexPath.section == MTETShirtsFilterWash)
-        cell.label.text = [NSString stringWithFormat:@"Wash (%d)", self.filterWashParameter];
+    switch (indexPath.row)
+    {
+        case MTETShirtsFilterAll:
+            cell.textLabel.text = @"All My T-Shirts";
+            cell.imageView.image = [UIImage imageNamed:@"33-cabinet-w"];
+            cell.imageView.highlightedImage = [UIImage imageNamed:@"33-cabinet-b"];
+            break;
+        case MTETShirtsFilterWear:
+            cell.textLabel.text = @"Wear";
+            cell.imageView.image = [UIImage imageNamed:@"67-tshirt-w"];
+            cell.imageView.highlightedImage = [UIImage imageNamed:@"67-tshirt-b"];
+            break;
+        case MTETShirtsFilterWash:
+            cell.textLabel.text = @"Wash";
+            cell.imageView.image = [UIImage imageNamed:@"wash-w"];
+            cell.imageView.highlightedImage = [UIImage imageNamed:@"wash-b"];
+            break;
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.filterType]].accessoryType = UITableViewCellAccessoryNone;
-    self.filterType = indexPath.section;
-    [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.filterType]].accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-#pragma mark - Actions
-
-- (IBAction)dismiss:(id)sender
-{
+    self.filterType = indexPath.row;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setInteger:self.filterType forKey:kMTETShirtsFilterType];
-    [userDefaults setInteger:self.filterWashParameter forKey:kMTETShirtsFilterParameter];
     [userDefaults synchronize];
     
     [self.delegate tshirtsFilterViewControllerDidChangeFilter:self];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.slidingViewController resetTopView];
 }
 
-- (IBAction)washParameterStepperValueChanged:(UIStepper *)sender
-{
-    self.filterWashParameter = sender.value;
-    ((MTETShirtsFilterCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:MTETShirtsFilterWash]]).label.text = [NSString stringWithFormat:@"Wash (%d)", self.filterWashParameter];
-}
+#pragma mark - Actions
 
 @end
