@@ -20,10 +20,14 @@
 #import "MTESettingsViewController.h"
 #import "MTELoginViewController.h"
 #import "MTETShirtsFilterViewController.h"
+#import "ECSlidingViewController.h"
+#import "KSCustomPopoverBackgroundView.h"
 
 #import <QuartzCore/QuartzCore.h>
 
-@interface MTETShirtsViewController ()
+@interface MTETShirtsViewController () <UIPopoverControllerDelegate>
+
+@property (nonatomic, strong) UIPopoverController *filterPopoverController;
 
 @end
 
@@ -70,6 +74,34 @@
 {
     [super viewWillAppear:animated];
  
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        if (![self.slidingViewController.underRightViewController isKindOfClass:[UIViewController class]])
+        {
+            UINavigationController *settingsNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTESettingsNavigationController"];
+            MTESettingsViewController *settingsViewController = (MTESettingsViewController *)settingsNavigationController.topViewController;
+            settingsViewController.syncManager = self.syncManager;
+            settingsViewController.delegate = self;
+            self.slidingViewController.underRightViewController  = settingsNavigationController;
+        }
+        
+        if (![self.slidingViewController.underLeftViewController isKindOfClass:[UIViewController class]])
+        {
+            UINavigationController *filterNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTEFilterNavigationController"];
+            ((MTETShirtsFilterViewController *)filterNavigationController.topViewController).delegate = self;
+            self.slidingViewController.underLeftViewController  = filterNavigationController;
+        }
+    
+        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+        [self.slidingViewController setAnchorLeftRevealAmount:280];
+        [self.slidingViewController setAnchorRightRevealAmount:280];
+        
+        self.navigationController.view.clipsToBounds = NO;
+        self.navigationController.view.layer.shadowOpacity = 0.75;
+        self.navigationController.view.layer.shadowRadius = 10;
+        self.navigationController.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    }
+    
     if ([self.syncManager isSyncing])
         [self startSpinningAnimation];
 }
@@ -97,8 +129,35 @@
 - (IBAction)didPressSettingsBarButtonItem:(id)sender
 {
     [self performSegueWithIdentifier:@"MTESettingsSegue" sender:nil];
-    
-    //[self.syncManager startSync];
+}
+
+- (IBAction)showFilterViewController:(id)sender
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        if (self.filterPopoverController)
+        {
+            [self.filterPopoverController dismissPopoverAnimated:YES];
+            self.filterPopoverController = nil;
+        }
+        else
+        {
+            MTETShirtsFilterViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTETShirtsFilterViewController"];
+            viewController.delegate = self;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+            self.filterPopoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+            self.filterPopoverController.popoverBackgroundViewClass = [KSCustomPopoverBackgroundView class];
+            self.filterPopoverController.delegate = self;
+            [self.filterPopoverController presentPopoverFromRect:CGRectMake(0, 0, 44, 44) inView:self.navigationController.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+    }
+    else
+        [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
+- (IBAction)showSettingsViewController:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECLeft];
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
@@ -177,7 +236,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTETShirtCellID" forIndexPath:indexPath];
-    
     
     MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
     NSString *imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
@@ -281,9 +339,6 @@
 
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController *)settingsViewController
 {
-    [self.detailViewController.navigationController popToRootViewControllerAnimated:NO];
-    self.detailViewController.tshirt = nil;
-    
     [self.syncManager resetAllData];
     
     [MTESyncManager resetKeychain];
@@ -291,9 +346,22 @@
     [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
-    }];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [self.detailViewController.navigationController popToRootViewControllerAnimated:NO];
+        self.detailViewController.tshirt = nil;
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+        }];
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.slidingViewController resetTopViewWithAnimations:nil onComplete:^{
+            [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
+        }];
+    }
 }
 
 #pragma mark - Filter view delegate
@@ -302,6 +370,24 @@
 {
     [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [self.filterPopoverController dismissPopoverAnimated:YES];
+        self.filterPopoverController = nil;
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    [self.collectionView setContentOffset:CGPointZero animated:NO];
+}
+
+#pragma mark - Popover controller
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.filterPopoverController = nil;
 }
 
 @end

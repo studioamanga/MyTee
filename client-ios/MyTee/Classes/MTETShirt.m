@@ -30,42 +30,51 @@
 
 #pragma mark - Image paths
 
-+ (NSString*)pathToLocalImageWithIdentifier:(NSString*)identifier
++ (NSString *)pathToLocalImageDirectory
 {
-    NSString * directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    return [directory stringByAppendingPathComponent:[NSString stringWithFormat:@"MTE_%@.jpg", identifier]];
+    return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-+ (NSString*)pathToMiniatureLocalImageWithIdentifier:(NSString*)identifier
++ (NSString *)pathToLocalImageWithIdentifier:(NSString*)identifier
 {
-    NSString * directory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    return [directory stringByAppendingPathComponent:[NSString stringWithFormat:@"MTE_%@_mini.jpg", identifier]];
+    return [[self pathToLocalImageDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"MTE_%@.jpg", identifier]];
+}
+
++ (NSString *)pathToMiniatureLocalImageWithIdentifier:(NSString*)identifier
+{
+    return [[self pathToLocalImageDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"MTE_%@_mini.jpg", identifier]];
 }
 
 #pragma mark - Wear/Wash
 
-- (NSArray*)wearsSortedByDate
+- (NSArray *)wearsSortedByDate
 {
-    NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-    return [self.wears sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    return [self.wears sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
 }
 
-- (MTEWear*)mostRecentWear
+- (MTEWear *)mostRecentWear
 {
     NSArray * wears = [self wearsSortedByDate];
-    return ([wears count] == 0) ? nil : [wears objectAtIndex:0];
+    return ([wears count] == 0) ? nil : wears[0];
 }
 
-- (NSArray*)washsSortedByDate
+- (NSArray *)washsSortedByDate
 {
-    NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-    return [self.washs sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    return [self.washs sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
 }
 
-- (MTEWash*)mostRecentWash
+- (MTEWash *)mostRecentWash
 {
     NSArray * washs = [self washsSortedByDate];
-    return ([washs count] == 0) ? nil : [washs objectAtIndex:0];
+    return ([washs count] == 0) ? nil : washs[0];
+}
+
+- (NSUInteger)numberOfWearsSinceLastWash
+{
+    NSDate *mostRecentWashDate = [self mostRecentWash].date;
+    return [[[NSSet setWithArray:[self wearsSortedByDate]] objectsPassingTest:^BOOL(MTEWear *wear, BOOL *stop) {
+        return [wear.date compare:mostRecentWashDate];
+    }] count];
 }
 
 @end

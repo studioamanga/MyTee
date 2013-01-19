@@ -24,9 +24,6 @@
 
 @implementation MTEStoreRetailViewController
 
-@synthesize geocoder;
-@synthesize mapView;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,12 +34,6 @@
     self.mapView.layer.cornerRadius = 4;
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    self.mapView = nil;
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -51,7 +42,7 @@
     
     if (geocodingAddress)
     {
-        [geocoder geocodeAddressString:geocodingAddress
+        [self.geocoder geocodeAddressString:geocodingAddress
                      completionHandler:^(NSArray* placemarks, NSError* error){
                          if (!error && [placemarks count] > 0)
                          {

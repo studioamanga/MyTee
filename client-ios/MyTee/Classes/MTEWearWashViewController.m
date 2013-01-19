@@ -10,9 +10,6 @@
 
 @implementation MTEWearWashViewController
 
-@synthesize datesObjects;
-@synthesize dateFormatter;
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -42,21 +39,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [datesObjects count]; 
+    return [self.datesObjects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MTEDateCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MTEDateCell"];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    id object = [datesObjects objectAtIndex:indexPath.row];
+    id object = [self.datesObjects objectAtIndex:indexPath.row];
     cell.textLabel.text = [[self.dateFormatter stringFromDate:[object date]] capitalizedString];
     
     return cell;
 }
-
-#pragma mark - Table view delegate
 
 @end

@@ -12,6 +12,7 @@ FOUNDATION_EXPORT NSString *const kMTETShirtsFilterParameter;
 typedef enum
 {
     MTETShirtsFilterAll = 0,
+    MTETShirtsFilterWear,
     MTETShirtsFilterWash
 } MTETShirtsFilterType;
 
