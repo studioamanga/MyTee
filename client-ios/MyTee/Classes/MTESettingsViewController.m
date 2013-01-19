@@ -37,7 +37,7 @@ enum MTESettingsViewSections {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
         UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 128, 1)]];
-        self.navigationItem.leftBarButtonItems = @[spaceBarButtonItem];
+        self.navigationItem.leftBarButtonItem = spaceBarButtonItem;
         
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar"] forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
@@ -95,6 +95,15 @@ enum MTESettingsViewSections {
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, UIInterfaceOrientationIsPortrait(toInterfaceOrientation) ? 128 : 380, 1)]];
+        self.navigationItem.leftBarButtonItem = spaceBarButtonItem;
+    }
 }
 
 #pragma mark - Table view data source

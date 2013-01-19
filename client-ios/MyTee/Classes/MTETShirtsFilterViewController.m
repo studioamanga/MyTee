@@ -25,11 +25,11 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 110, 1)]];
-    self.navigationItem.rightBarButtonItems = @[spaceBarButtonItem];
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
+        UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 110, 1)]];
+        self.navigationItem.rightBarButtonItem = spaceBarButtonItem;
+        
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar"] forBarMetrics:UIBarMetricsDefault];
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
     }
@@ -39,6 +39,15 @@
     self.filterWashParameter = [userDefaults integerForKey:kMTETShirtsFilterParameter];
     
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:self.filterType inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, UIInterfaceOrientationIsPortrait(toInterfaceOrientation) ? 110 : 380, 1)]];
+        self.navigationItem.rightBarButtonItem = spaceBarButtonItem;
+    }
 }
 
 #pragma mark - Table data source
@@ -92,7 +101,5 @@
     
     [self.slidingViewController resetTopView];
 }
-
-#pragma mark - Actions
 
 @end
