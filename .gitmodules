@@ -1,18 +1,1 @@
-[submodule "client-ios/Libraries/cedar"]
-	path = client-ios/Libraries/cedar
-	url = git://github.com/pivotal/cedar.git
-[submodule "client-ios/Libraries/MBProgressHUD"]
-	path = client-ios/Libraries/MBProgressHUD
-	url = git://github.com/jdg/MBProgressHUD.git
-[submodule "client-ios/Libraries/KeychainItemWrapper"]
-	path = client-ios/Libraries/KeychainItemWrapper
-	url = git://gist.github.com/1409718.git
-[submodule "client-ios/Libraries/RestKit"]
-	path = client-ios/Libraries/RestKit
-	url = git://github.com/RestKit/RestKit.git
-[submodule "client-ios/Libraries/ECSlidingViewController"]
-	path = client-ios/Libraries/ECSlidingViewController
-	url = git://github.com/edgecase/ECSlidingViewController.git
-[submodule "client-ios/Libraries/KSCustomUIPopover"]
-	path = client-ios/Libraries/KSCustomUIPopover
-	url = git@github.com:Scianski/KSCustomUIPopover.git
+

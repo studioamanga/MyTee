@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
-#import "RestKit.h"
+#import <RestKit.h>
 
 #define MTE_URL_API_TSHIRTS_ALL @"/tshirt/all"
 #define MTE_URL_API_TSHIRT_WEAR @"/tshirt/%@/wear"

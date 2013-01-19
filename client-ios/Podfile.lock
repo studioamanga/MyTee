@@ -1,0 +1,68 @@
+
+DEPENDENCIES: 
+- Cedar
+- ECSlidingViewController
+- KSCustomUIPopover
+- KeychainItemWrapper
+- MBProgressHUD
+- RestKit (= 0.10.2)
+
+SPEC CHECKSUMS: 
+  RestKit/ObjectMapping/JSON: a9f24f857c792183bcc656f891abe93d38e342ee
+  RestKit: a9f24f857c792183bcc656f891abe93d38e342ee
+  ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
+  RestKit/ObjectMapping/CoreData: a9f24f857c792183bcc656f891abe93d38e342ee
+  SOCKit: 179515c1a621dd5652a60e9be02ea4adcd25bc9b
+  LibComponentLogging-Core: 344f6045453ca28fa8f2909eb9624ec9d15ef256
+  KSCustomUIPopover: 5591b2f18458b19e07d02c41bec5f42dec2eaad3
+  RestKit/UI: a9f24f857c792183bcc656f891abe93d38e342ee
+  NSData+Base64: 8b910cb8a64f45daec6fb15936c36a9a911c57ca
+  Cedar: ead80427bbdce615530f38de681a98680d2e2f73
+  cocoa-oauth: 8f4c8b77c77ac660de37f8125557c4ec09b0118a
+  RestKit/JSON: a9f24f857c792183bcc656f891abe93d38e342ee
+  JSONKit: 3d4708953ea7ae399a49777372d8b060a43ddd27
+  LibComponentLogging-NSLog: a4bb0f6de612eef7b5fcdbd9cc96dc868ba1f2df
+  MBProgressHUD: b23ee11c42253d6d804e8e0bfabdc334e8b2571f
+  FileMD5Hash: c3b015e6fb293eea0a0c276747f61f20408c2644
+  ECSlidingViewController: 46cb6a6cc72e359a19d2f232728be08685450d90
+  KeychainItemWrapper: f537d5bec950b2ab815c80cef9bf4e30a1084dc8
+  RestKit/Network: a9f24f857c792183bcc656f891abe93d38e342ee
+
+COCOAPODS: 0.16.0
+
+PODS: 
+- Cedar (0.9.0)
+- ECSlidingViewController (0.9.0)
+- FileMD5Hash (0.0.1)
+- ISO8601DateFormatter (0.6)
+- JSONKit (1.5pre)
+- KSCustomUIPopover (0.0.1)
+- KeychainItemWrapper (1.2)
+- LibComponentLogging-Core (1.3.1)
+- LibComponentLogging-NSLog (1.0.4): 
+  - LibComponentLogging-Core (>= 1.1.6)
+- MBProgressHUD (0.5)
+- NSData+Base64 (1.0.0)
+- RestKit (0.10.2): 
+  - RestKit/JSON (= 0.10.2)
+- RestKit/JSON (0.10.2): 
+  - RestKit/Network
+  - RestKit/ObjectMapping/CoreData
+  - RestKit/ObjectMapping/JSON
+  - RestKit/UI
+- RestKit/Network (0.10.2): 
+  - FileMD5Hash
+  - LibComponentLogging-NSLog (>= 1.0.4)
+  - SOCKit
+  - cocoa-oauth
+- RestKit/ObjectMapping/CoreData (0.10.2): 
+  - ISO8601DateFormatter (>= 0.6)
+  - RestKit/Network
+- RestKit/ObjectMapping/JSON (0.10.2): 
+  - ISO8601DateFormatter (>= 0.6)
+  - JSONKit (>= 1.5pre)
+  - RestKit/Network
+- RestKit/UI (0.10.2)
+- SOCKit (1.1)
+- cocoa-oauth (0.0.1): 
+  - NSData+Base64 (~> 1.0)
