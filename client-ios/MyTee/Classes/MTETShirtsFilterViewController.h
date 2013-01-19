@@ -10,7 +10,7 @@
 
 @protocol MTETShirtsFilterViewDelegate;
 
-@interface MTETShirtsFilterViewController : UITableViewController
+@interface MTETShirtsFilterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) id <MTETShirtsFilterViewDelegate> delegate;
 

@@ -14,37 +14,24 @@
 
 @implementation MTELoginViewController
 
-@synthesize emailTextField;
-@synthesize passwordTextField;
-
-@synthesize delegate;
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    emailTextField.text = [MTESyncManager emailFromKeychain];
-    passwordTextField.text = [MTESyncManager passwordFromKeychain];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
     
-    [self setEmailTextField:nil];
-    [self setPasswordTextField:nil];
+    self.emailTextField.text = [MTESyncManager emailFromKeychain];
+    self.passwordTextField.text = [MTESyncManager passwordFromKeychain];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [emailTextField becomeFirstResponder];
+    [self.emailTextField becomeFirstResponder];
 }
-
-#pragma mark - Table view data source
 
 #pragma mark - Table view delegate
 
@@ -55,38 +42,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section==0)
+    if (indexPath.section==0)
     {
         switch (indexPath.row)
         {
             case 0:
-                [emailTextField becomeFirstResponder];
+                [self.emailTextField becomeFirstResponder];
                 break;
             case 1:
-                [passwordTextField becomeFirstResponder];
+                [self.passwordTextField becomeFirstResponder];
                 break;
         }
     }
-    if(indexPath.section==1)
+    if (indexPath.section==1)
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        if (![emailTextField text] || [[emailTextField text] isEqualToString:@""])
+        if (![self.emailTextField text] || [[self.emailTextField text] isEqualToString:@""])
         {
-            [emailTextField becomeFirstResponder];
+            [self.emailTextField becomeFirstResponder];
         }
-        else if (![passwordTextField text] || [[passwordTextField text] isEqualToString:@""])
+        else if (![self.passwordTextField text] || [[self.passwordTextField text] isEqualToString:@""])
         {
-            [passwordTextField becomeFirstResponder];
+            [self.passwordTextField becomeFirstResponder];
         }
         else
         {
-            if ([emailTextField isFirstResponder])
-                [emailTextField resignFirstResponder];
-            if ([passwordTextField isFirstResponder])
-                [passwordTextField resignFirstResponder];
+            if ([self.emailTextField isFirstResponder])
+                [self.emailTextField resignFirstResponder];
+            if ([self.passwordTextField isFirstResponder])
+                [self.passwordTextField resignFirstResponder];
         
-            [self startAuthenticatingWithEmail:[emailTextField text] password:[passwordTextField text]];
+            [self startAuthenticatingWithEmail:[self.emailTextField text] password:[self.passwordTextField text]];
         }
     }
 }
@@ -95,9 +82,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField==emailTextField)
+    if (textField == self.emailTextField)
     {
-        [passwordTextField becomeFirstResponder];
+        [self.passwordTextField becomeFirstResponder];
     }
     else
     {
@@ -164,7 +151,7 @@
     if (authenticationSuccessful)
     {
         [self dismissViewControllerAnimated:YES completion:nil];
-        [delegate loginViewControllerDidLoggedIn:self];
+        [self.delegate loginViewControllerDidLoggedIn:self];
     }
 }
 

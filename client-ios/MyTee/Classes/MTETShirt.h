@@ -38,4 +38,6 @@
 - (NSArray*)washsSortedByDate;
 - (MTEWash*)mostRecentWash;
 
+- (NSUInteger)numberOfWearsSinceLastWash;
+
 @end

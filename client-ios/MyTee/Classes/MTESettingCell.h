@@ -10,4 +10,6 @@
 
 @interface MTESettingCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *label;
+
 @end

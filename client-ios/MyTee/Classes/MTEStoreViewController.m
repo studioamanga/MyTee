@@ -23,13 +23,6 @@
 
 @implementation MTEStoreViewController
 
-@synthesize store;
-
-@synthesize nameLabel;
-@synthesize typeLabel;
-@synthesize addressIconImageView;
-@synthesize addressLabel;
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -41,11 +34,11 @@
     
     if ([self.store.type isEqualToString:@"Web"])
     {
-        self.addressLabel.text = store.url;
+        self.addressLabel.text = self.store.url;
     }
     else
     {
-        self.addressLabel.text = store.address;
+        self.addressLabel.text = self.store.address;
     }
     
     ((UIScrollView*)self.view).alwaysBounceVertical = YES;
@@ -53,16 +46,6 @@
     UIImage * woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-free"];
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     [self.view setBackgroundColor:woodColor];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    self.typeLabel = nil;
-    self.nameLabel = nil;
-    self.addressIconImageView = nil;
-    self.addressLabel = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
