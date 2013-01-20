@@ -8,7 +8,7 @@
 
 #import "MTESettingsViewController.h"
 
-#import "MTESyncManager.h"
+#import "MTEAuthenticationManager.h"
 #import "MTESettingsManager.h"
 #import "MTESettingCell.h"
 #import "MTESettingSwitchCell.h"
@@ -43,7 +43,7 @@ enum MTESettingsViewSections {
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
     }
     
-    NSString * email = [MTESyncManager emailFromKeychain];
+    NSString * email = [MTEAuthenticationManager emailFromKeychain];
     if (email)
     {
         self.emailLabel.text = email;
@@ -62,29 +62,29 @@ enum MTESettingsViewSections {
 {
     [super viewWillAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDidStart) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSyncDateLabel) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncFailed) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDidStart) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSyncDateLabel) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncFailed) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
     
-    if ([self.syncManager isSyncing])
-    {
-        [self.syncActivityIndicator startAnimating];
-        self.lastSyncLabel.text = @"Syncing...";
-    }
-    else
-    {
-        [self.syncActivityIndicator stopAnimating];
-        [self updateSyncDateLabel];
-    }
+//    if ([self.syncManager isSyncing])
+//    {
+//        [self.syncActivityIndicator startAnimating];
+//        self.lastSyncLabel.text = @"Syncing...";
+//    }
+//    else
+//    {
+//        [self.syncActivityIndicator stopAnimating];
+//        [self updateSyncDateLabel];
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -174,15 +174,15 @@ enum MTESettingsViewSections {
         case MTESettingsViewSectionReminders:
             break;
         case MTESettingsViewSectionSyncNow:
-            [self.syncManager startSync];
+//            [self.syncManager startSync];
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             break;
         case MTESettingsViewSectionLogOut:
-            if (!self.syncManager.isSyncing)
-            {
-                [tableView deselectRowAtIndexPath:indexPath animated:YES];
-                [[[UIAlertView alloc] initWithTitle:@"Logging Out" message:@"Are you sure you want to log out?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Log Out", nil] show];
-            }
+//            if (!self.syncManager.isSyncing)
+//            {
+//                [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//                [[[UIAlertView alloc] initWithTitle:@"Logging Out" message:@"Are you sure you want to log out?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Log Out", nil] show];
+//            }
             break;
     }
 }
@@ -221,19 +221,19 @@ enum MTESettingsViewSections {
 
 - (void)updateSyncDateLabel
 {
-    NSDate * syncDate = [MTESyncManager lastSyncDate];
-    if (syncDate) 
-    {
-        NSDateFormatter * dateFormatter = [NSDateFormatter new];
-        dateFormatter.doesRelativeDateFormatting = YES;
-        dateFormatter.dateStyle = NSDateFormatterLongStyle;
-        dateFormatter.timeStyle = NSDateFormatterShortStyle;
-        self.lastSyncLabel.text = [@"Last Sync: " stringByAppendingString:[dateFormatter stringFromDate:syncDate]];
-    }
-    else 
-    {
-        self.lastSyncLabel.text = @"Never Synchronized";
-    }
+//    NSDate * syncDate = [MTESyncManager lastSyncDate];
+//    if (syncDate) 
+//    {
+//        NSDateFormatter * dateFormatter = [NSDateFormatter new];
+//        dateFormatter.doesRelativeDateFormatting = YES;
+//        dateFormatter.dateStyle = NSDateFormatterLongStyle;
+//        dateFormatter.timeStyle = NSDateFormatterShortStyle;
+//        self.lastSyncLabel.text = [@"Last Sync: " stringByAppendingString:[dateFormatter stringFromDate:syncDate]];
+//    }
+//    else 
+//    {
+//        self.lastSyncLabel.text = @"Never Synchronized";
+//    }
     
     [self.syncActivityIndicator stopAnimating];
 }

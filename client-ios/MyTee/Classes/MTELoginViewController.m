@@ -8,9 +8,9 @@
 
 #import "MTELoginViewController.h"
 
-#import "MTESyncManager.h"
-
 #import "MTEConstView.h"
+#import "MTEMyTeeAPIClient.h"
+#import "MTEAuthenticationManager.h"
 
 @implementation MTELoginViewController
 
@@ -23,8 +23,8 @@
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
     
-    self.emailTextField.text = [MTESyncManager emailFromKeychain];
-    self.passwordTextField.text = [MTESyncManager passwordFromKeychain];
+    self.emailTextField.text = [MTEAuthenticationManager emailFromKeychain];
+    self.passwordTextField.text = [MTEAuthenticationManager passwordFromKeychain];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -105,44 +105,22 @@
     progressHUD.labelText = @"Authenticating...";
     
     authenticationSuccessful = NO;
-    
-    NSURLRequest * urlRequest = [MTESyncManager requestForAuthenticatingWithEmail:email password:password];
-    
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse*response, NSData*data, NSError*error){
-        if(response)
-        {
-            authenticationSuccessful = [MTESyncManager authenticationResponseIsSuccessful:(NSHTTPURLResponse*)response];
-            
-            if (authenticationSuccessful)
-            {
-                [MTESyncManager storeEmail:email password:password];
-                
-                progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
-                progressHUD.mode = MBProgressHUDModeCustomView;
-                progressHUD.labelText = @"Authentication Successful!";
-                progressHUD.detailsLabelText = nil;
-                
-                [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
-            }
-            else
-            {
-                progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
-                progressHUD.mode = MBProgressHUDModeCustomView;
-                progressHUD.labelText = @"Authentication Error";
-                progressHUD.detailsLabelText = @"Please check your credentials";
-            
-                [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
-            }
-        }
-        else
-        {
-            progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
-            progressHUD.mode = MBProgressHUDModeCustomView;
-            progressHUD.labelText = @"Authentication Error";
-            progressHUD.detailsLabelText = @"Please check your connection";
-            
-            [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
-        }
+    [[MTEMyTeeAPIClient sharedClient] sendAuthenticationRequestWithUsername:email password:password success:^{
+        [MTEAuthenticationManager storeEmail:email password:password];
+        
+        progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
+        progressHUD.mode = MBProgressHUDModeCustomView;
+        progressHUD.labelText = @"Authentication Successful!";
+        progressHUD.detailsLabelText = nil;
+        
+        [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
+    } failure:^{
+        progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
+        progressHUD.mode = MBProgressHUDModeCustomView;
+        progressHUD.labelText = @"Authentication Error";
+        progressHUD.detailsLabelText = @"Please check your credentials";
+        
+        [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
     }];
 }
 

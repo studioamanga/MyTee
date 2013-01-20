@@ -7,11 +7,10 @@
 //
 
 #import "MTEUpdatableViewController.h"
-#import "RestKit.h"
 
 @class MTETShirt;
 
-@interface MTETShirtViewController : MTEUpdatableViewController <UISplitViewControllerDelegate, UIActionSheetDelegate, RKRequestDelegate>
+@interface MTETShirtViewController : MTEUpdatableViewController <UISplitViewControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) MTETShirt *tshirt;
 

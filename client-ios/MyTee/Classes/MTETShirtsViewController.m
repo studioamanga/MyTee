@@ -8,10 +8,9 @@
 
 #import "MTETShirtsViewController.h"
 
-#import "MTESyncManager.h"
-
 #import "MTETShirt.h"
 #import "MTETShirtExplorer.h"
+#import "MTEAuthenticationManager.h"
 
 #import "MBProgressHUD.h"
 #import "MTEConstView.h"
@@ -40,8 +39,6 @@
     _syncManager = syncManager;
     
     self.tshirtExplorer = [MTETShirtExplorer new];
-    NSManagedObjectContext *context = [[[RKObjectManager sharedManager] objectStore] managedObjectContextForCurrentThread];
-    [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
     [self.tshirtExplorer updateData];
 }
 
@@ -60,14 +57,14 @@
     UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.collectionView.backgroundColor = woodColor;
     
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(shouldSyncNow:) name:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(syncStarted:) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(syncFinished:) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(syncFailed:) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
+//    [[NSNotificationCenter defaultCenter] 
+//     addObserver:self selector:@selector(shouldSyncNow:) name:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
+//    [[NSNotificationCenter defaultCenter] 
+//     addObserver:self selector:@selector(syncStarted:) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
+//    [[NSNotificationCenter defaultCenter] 
+//     addObserver:self selector:@selector(syncFinished:) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
+//    [[NSNotificationCenter defaultCenter] 
+//     addObserver:self selector:@selector(syncFailed:) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -102,15 +99,15 @@
         self.navigationController.view.layer.shadowColor = [UIColor blackColor].CGColor;
     }
     
-    if ([self.syncManager isSyncing])
-        [self startSpinningAnimation];
+//    if ([self.syncManager isSyncing])
+//        [self startSpinningAnimation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-    NSString *email = [MTESyncManager emailFromKeychain];
+    NSString *email = [MTEAuthenticationManager emailFromKeychain];
     if (!email)
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
 }
@@ -162,10 +159,10 @@
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
 {
-    if (self.syncManager.isSyncing)
-    {
-        [self startSpinningAnimation];
-    }
+//    if (self.syncManager.isSyncing)
+//    {
+//        [self startSpinningAnimation];
+//    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -291,17 +288,17 @@
 
 - (void)loginViewControllerDidLoggedIn:(MTELoginViewController *)loginViewController
 {
-    if (!self.syncManager.isSyncing)
-    {
-        [self.syncManager startSync];
-    }
+//    if (!self.syncManager.isSyncing)
+//    {
+//        [self.syncManager startSync];
+//    }
 }
 
 #pragma mark - Sync
 
 - (void)shouldSyncNow:(id)sender
 {
-    [self.syncManager startSync];
+//    [self.syncManager startSync];
 }
 
 - (void)syncStarted:(id)sender
@@ -334,14 +331,14 @@
 
 - (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController *)settingsViewController
 {
-    [self.syncManager startSync];
+//    [self.syncManager startSync];
 }
 
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController *)settingsViewController
 {
-    [self.syncManager resetAllData];
+//    [self.syncManager resetAllData];
     
-    [MTESyncManager resetKeychain];
+    [MTEAuthenticationManager resetKeychain];
     
     [self.tshirtExplorer updateData];
     [self.collectionView reloadData];

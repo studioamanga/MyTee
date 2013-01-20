@@ -16,9 +16,7 @@
 #import "MTEWearWashViewController.h"
 #import "MTEStoreViewController.h"
 
-#import "MTESyncManager.h"
 #import <QuartzCore/QuartzCore.h>
-#import "RestKit.h"
 
 @interface MTETShirtViewController ()
 
@@ -63,8 +61,8 @@
 
 - (void)updateAfterSync
 {
-    self.tshirt = [MTETShirt findFirstByAttribute:@"identifier" withValue:self.tshirt.identifier];
-    [self configureView];
+//    self.tshirt = [MTETShirt findFirstByAttribute:@"identifier" withValue:self.tshirt.identifier];
+//    [self configureView];
 }
 
 - (void)configureView
@@ -183,33 +181,33 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSDictionary * params = @{ @"login" : [MTESyncManager emailFromKeychain], @"password" : [MTESyncManager passwordFromKeychain]};
-    NSString * resourcePath = nil;
-    
-    switch (buttonIndex)
-    {
-        case 0:
-            // Wear
-            resourcePath = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WEAR, self.tshirt.identifier];
-            [[RKClient sharedClient] post:resourcePath params:params delegate:self];
-            
-            break;
-        case 1:
-            // Wash
-            resourcePath = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WASH, self.tshirt.identifier];
-            [[RKClient sharedClient] post:resourcePath params:params delegate:self];
-            
-            break;
-    }
+//    NSDictionary * params = @{ @"login" : [MTESyncManager emailFromKeychain], @"password" : [MTESyncManager passwordFromKeychain]};
+//    NSString * resourcePath = nil;
+//    
+//    switch (buttonIndex)
+//    {
+//        case 0:
+//            // Wear
+//            resourcePath = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WEAR, self.tshirt.identifier];
+//            [[RKClient sharedClient] post:resourcePath params:params delegate:self];
+//            
+//            break;
+//        case 1:
+//            // Wash
+//            resourcePath = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WASH, self.tshirt.identifier];
+//            [[RKClient sharedClient] post:resourcePath params:params delegate:self];
+//            
+//            break;
+//    }
     
     self.wearWashActionSheet = nil;
 }
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
-{
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
-}
+//- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
+//{
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
+//}
 
 - (void)viewDidLoad
 {
