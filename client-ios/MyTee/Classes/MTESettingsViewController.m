@@ -180,8 +180,8 @@ enum MTESettingsViewSections {
         case MTESettingsViewSectionLogOut:
 //            if (!self.syncManager.isSyncing)
 //            {
-//                [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//                [[[UIAlertView alloc] initWithTitle:@"Logging Out" message:@"Are you sure you want to log out?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Log Out", nil] show];
+                [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                [[[UIAlertView alloc] initWithTitle:@"Logging Out" message:@"Are you sure you want to log out?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Log Out", nil] show];
 //            }
             break;
     }

@@ -22,6 +22,7 @@
 #import "ECSlidingViewController.h"
 #import "KSCustomPopoverBackgroundView.h"
 
+#import <AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
 
 @interface MTETShirtsViewController () <UIPopoverControllerDelegate>
@@ -34,11 +35,12 @@
 
 #pragma mark - View lifecycle
 
-- (void)setSyncManager:(MTESyncManager *)syncManager
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    _syncManager = syncManager;
+    _managedObjectContext = managedObjectContext;
     
     self.tshirtExplorer = [MTETShirtExplorer new];
+    [self.tshirtExplorer setupFetchedResultsControllerWithContext:managedObjectContext];
     [self.tshirtExplorer updateData];
 }
 
@@ -77,7 +79,6 @@
         {
             UINavigationController *settingsNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTESettingsNavigationController"];
             MTESettingsViewController *settingsViewController = (MTESettingsViewController *)settingsNavigationController.topViewController;
-            settingsViewController.syncManager = self.syncManager;
             settingsViewController.delegate = self;
             self.slidingViewController.underRightViewController  = settingsNavigationController;
         }
@@ -178,7 +179,6 @@
         UINavigationController *navigationController = segue.destinationViewController;
         MTESettingsViewController *viewController = (MTESettingsViewController*)navigationController.topViewController;
         viewController.delegate = self;
-        viewController.syncManager = self.syncManager;
     }
     else if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
     {
@@ -235,8 +235,6 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTETShirtCellID" forIndexPath:indexPath];
     
     MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
-    NSString *imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
-    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     
     UIImageView *tshirtImageView = nil;
     if ([[cell.contentView.subviews lastObject] isMemberOfClass:[UIImageView class]])
@@ -244,7 +242,7 @@
     
     if (!tshirtImageView)
     {
-        tshirtImageView = [[UIImageView alloc] initWithImage:image];
+        tshirtImageView = [[UIImageView alloc] init];
         tshirtImageView.contentMode = UIViewContentModeScaleAspectFit;
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -265,10 +263,8 @@
         
         [cell.contentView addSubview:tshirtImageView];
     }
-    else
-    {
-        tshirtImageView.image = image;
-    }
+    
+    [tshirtImageView setImageWithURL:[NSURL URLWithString:tshirt.image_url]];
     
     return cell;
 }

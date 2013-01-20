@@ -16,6 +16,7 @@
 #import "MTEWearWashViewController.h"
 #import "MTEStoreViewController.h"
 
+#import <AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
 
 @interface MTETShirtViewController ()
@@ -127,9 +128,7 @@
         else
             [self.washButton setTitle:@"Never washed before" forState:UIControlStateNormal];
         
-        NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:self.tshirt.identifier];
-        UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
-        self.tshirtImageView.image = image;
+        [self.tshirtImageView setImageWithURL:[NSURL URLWithString:self.tshirt.image_url]];
         
         self.tshirtImageView.layer.borderColor = [[UIColor blackColor] CGColor];
         self.tshirtImageView.layer.borderWidth = 1;

@@ -44,7 +44,7 @@
         UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
         MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController*)navController.topViewController;
         
-        tshirtsViewController.syncManager = self.syncManager;
+        tshirtsViewController.managedObjectContext = self.managedObjectContext;
     }
     else 
     {
@@ -53,7 +53,7 @@
         MTETShirtsViewController * tshirtsViewController = (MTETShirtsViewController *)tshirtsNavController.topViewController;
         slidingViewController.topViewController = tshirtsNavController;
         
-        tshirtsViewController.syncManager = self.syncManager;
+        tshirtsViewController.managedObjectContext = self.managedObjectContext;
     }
     
     return YES;

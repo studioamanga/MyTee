@@ -52,7 +52,7 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSUInteger filterType = [userDefaults integerForKey:kMTETShirtsFilterType];
-    NSLog(@"%d", filterType);
+    
     if (filterType == MTETShirtsFilterWash)
     {
         self.fetchedTShirts = [self.fetchedResultsController.fetchedObjects sortedArrayWithOptions:kNilOptions usingComparator:^NSComparisonResult(MTETShirt *tshirt1, MTETShirt *tshirt2) {
