@@ -4,4 +4,8 @@
 xcuserdata
 
 db_parameters.json
- 
+
+/server-rails/.bundle
+/server-rails/db/*.sqlite3
+/server-rails/log/*.log
+/server-rails/tmp
