@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @tshirt.name %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @tshirt.size %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @tshirt.color %>
+</p>
+
+<p>
+  <b>Condition:</b>
+  <%= @tshirt.condition %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @tshirt.rating %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%= @tshirt.tags %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @tshirt.note %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @tshirt.image_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_tshirt_path(@tshirt) %> |
+<%= link_to 'Back', tshirts_path %>

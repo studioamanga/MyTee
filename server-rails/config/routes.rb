@@ -1,4 +1,6 @@
 ServerRails::Application.routes.draw do
+  resources :tshirts
+
   resources :washes
 
   resources :wears
