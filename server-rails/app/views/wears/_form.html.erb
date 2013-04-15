@@ -1,0 +1,21 @@
+<%= form_for(@wear) do |f| %>
+  <% if @wear.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wear.errors.count, "error") %> prohibited this wear from being saved:</h2>
+
+      <ul>
+      <% @wear.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

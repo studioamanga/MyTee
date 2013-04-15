@@ -1,4 +1,8 @@
 ServerRails::Application.routes.draw do
+  resources :washes
+
+  resources :wears
+
   resources :stores
 
   # The priority is based upon order of creation:

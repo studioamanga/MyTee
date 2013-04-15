@@ -1,0 +1,23 @@
+<h1>Listing wears</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wears.each do |wear| %>
+  <tr>
+    <td><%= wear.date %></td>
+    <td><%= link_to 'Show', wear %></td>
+    <td><%= link_to 'Edit', edit_wear_path(wear) %></td>
+    <td><%= link_to 'Destroy', wear, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wear', new_wear_path %>
