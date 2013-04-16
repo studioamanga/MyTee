@@ -9,7 +9,8 @@
     <th>Rating</th>
     <th>Tags</th>
     <th>Note</th>
-    <th>Image url</th>
+    <th>Image URL</th>
+    <th>Store</th>
     <th></th>
     <th></th>
     <th></th>
@@ -25,6 +26,7 @@
     <td><%= tshirt.tags %></td>
     <td><%= tshirt.note %></td>
     <td><%= tshirt.image_url %></td>
+    <td><%= tshirt.store %></td>
     <td><%= link_to 'Show', tshirt %></td>
     <td><%= link_to 'Edit', edit_tshirt_path(tshirt) %></td>
     <td><%= link_to 'Destroy', tshirt, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>

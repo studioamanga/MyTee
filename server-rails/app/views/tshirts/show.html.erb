@@ -36,10 +36,14 @@
 </p>
 
 <p>
-  <b>Image url:</b>
+  <b>Image URL:</b>
   <%= @tshirt.image_url %>
 </p>
 
+<p>
+  <b>Store:</b>
+  <%= @tshirt.store %>
+</p>
 
 <%= link_to 'Edit', edit_tshirt_path(@tshirt) %> |
 <%= link_to 'Back', tshirts_path %>

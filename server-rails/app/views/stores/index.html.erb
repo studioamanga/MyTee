@@ -13,7 +13,7 @@
 <% @stores.each do |store| %>
   <tr>
     <td><%= store.name %></td>
-    <td><%= store.type %></td>
+    <td><%= store.storeType %></td>
     <td><%= store.address %></td>
     <td><%= link_to 'Show', store %></td>
     <td><%= link_to 'Edit', edit_store_path(store) %></td>
