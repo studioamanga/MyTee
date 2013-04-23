@@ -43,6 +43,10 @@
     <%= f.label :image_url %><br />
     <%= f.text_field :image_url %>
   </div>
+  <div class="field">
+    <%= f.label :store %><br />
+    <%= f.collection_select :store_id, @stores, :id, :name, :include_blank => true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

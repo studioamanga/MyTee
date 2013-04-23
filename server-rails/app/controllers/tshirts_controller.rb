@@ -25,6 +25,7 @@ class TshirtsController < ApplicationController
   # GET /tshirts/new.json
   def new
     @tshirt = Tshirt.new
+    @stores = Store.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class TshirtsController < ApplicationController
   # GET /tshirts/1/edit
   def edit
     @tshirt = Tshirt.find(params[:id])
+    @stores = Store.all
   end
 
   # POST /tshirts

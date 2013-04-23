@@ -9,6 +9,7 @@ class CreateTshirts < ActiveRecord::Migration
       t.string :tags
       t.text :note
       t.string :image_url
+      t.integer :store_id
 
       t.timestamps
     end

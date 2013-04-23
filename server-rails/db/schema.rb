@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130416212650) do
     t.string   "tags"
     t.text     "note"
     t.string   "image_url"
+    t.integer  "store_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
