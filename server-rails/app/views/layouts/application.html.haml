@@ -7,5 +7,10 @@
     = csrf_meta_tags
 
   %body
+    %nav.primary
+      %a.navItem{:href => "bla"}
+        %img.navIcon{:src => "/assets/icons/white/tshirt.png"}
+        %span.navTitle T-Shirts
+        
     = yield
 

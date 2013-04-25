@@ -13,5 +13,92 @@
  */
 
 body {
+  margin: 100px 0 0 0;
+  font-family: 'Helvetica';
+  position: relative;
   background-image: url('/assets/textures/wood.jpg');
+}
+
+header {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0px 0px 50px 0px;
+  padding: 10px 0 5px 0;
+  
+  color: white;
+  background-color: black;
+
+  h1 {
+    font-size: 2em;
+    margin: 0px 0px 0px 10px;
+    padding: 10px;
+  }
+}
+
+h2 {
+  margin: 10px 0 0 0;
+}
+
+section {
+  display: block;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+footer {
+  display: block;
+  padding-bottom: 40px;
+  margin-top: 100px;
+  margin-left: 10px;
+  font-size: 0.8em;
+  color: #333;
+}
+
+a {
+  color: black;
+}
+a:ACTIVE,
+form.onebutton input[type=submit]:ACTIVE {
+  position: relative;
+  top: 1px;
+}
+
+section form {
+  display: block;
+  margin: 20px auto 50px auto;
+}
+
+form label {
+  display: inline-block;
+  width: 70px;
+  margin-bottom: 6px;
+  margin-right: 6px;
+  font-style: italic;
+  text-align: right;
+}
+form input[type=submit] {
+  margin-top: 10px;
+}
+form.onebutton {
+  display: inline-block;
+}
+form.onebutton input[type=submit] {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  
+  background-color: black;
+  color: white;
+  font-size: 1.2em;
+  border-width: 0;
+  border-radius: 5px;
+}
+
+.msg {
+  font-size: 0.8em;
+}
+.msg.error {
+  font-style: italic;
+  margin-bottom: 20px;
 }

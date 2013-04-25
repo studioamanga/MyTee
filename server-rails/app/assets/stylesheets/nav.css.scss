@@ -1,0 +1,108 @@
+nav.primary {
+  display: block;
+  position: fixed;
+  background-color: black;
+  box-shadow: 0px 0px 7px #111;
+  top: 0px;
+
+  padding: 10px;
+  font-size: 0.6em;
+  
+  width: 100%;
+  z-index: 1;
+}
+
+nav.primary .navItem {
+  display: inline-block;
+  width: 60px;
+  height: 50px;
+  background-color: #333;
+  
+  border-radius: 4px;
+  margin-right: 14px;
+  text-align: center;
+}
+nav.primary .navItem .navIcon {
+  display: block;
+    width: 26px;
+    height: 26px;
+  margin: 4px auto 4px auto;
+}
+nav.primary .navItem .navTitle {
+  display: block;
+}
+
+nav.secondary {
+  display: block;
+  padding: 10px 0px 8px 0px;
+  
+  width: 100%;
+  
+  background-color: #222;
+  box-shadow: 0px 0px 7px #333;
+  margin: 0px;
+  border: 0px;
+  position: relative;
+  top: 0px; 
+  font-size: 0.9em;
+  
+  border-bottom: 3px solid black;
+}
+
+nav.secondary a {
+  display: inline-block;
+  padding: 6px 20px 5px 20px;
+  text-align: center;
+  background-color: #333;
+  
+  margin: 0px 5px 0px 10px;
+  border-radius: 4px;
+}
+nav.secondary a:active {
+  background-color: #5b5b5b;
+}
+
+nav.primary a {
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+nav.secondary a {
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  text-shadow: 0px 1px 0px #333;
+}
+nav a.selected {
+  background-color: #555 !important;
+}
+
+@media all and (min-width: 800px) {
+  
+  nav.primary .navItem {
+    width: auto;
+  }
+  nav.primary .navItem .navIcon,
+  nav.primary .navItem .navTitle {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.6em;
+  }
+  nav.primary .navItem .navIcon {
+    margin: 12px 4px 4px 12px;
+  }
+  nav.primary .navItem .navTitle {
+    margin: 12px 12px 4px 4px;
+  }
+  
+  nav.primary a:hover {
+    background-color: #404040;
+  }
+  
+  nav.secondary a {
+    min-width: 90px;
+  }
+  nav.secondary a:hover {
+    background-color: #505050;
+  }
+}
