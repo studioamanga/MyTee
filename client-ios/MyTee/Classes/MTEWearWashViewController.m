@@ -20,6 +20,8 @@
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.view.backgroundColor = woodColor;
     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.dateFormatter = [NSDateFormatter new];
     self.dateFormatter.dateStyle = NSDateFormatterFullStyle;
     self.dateFormatter.doesRelativeDateFormatting = YES;

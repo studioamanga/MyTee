@@ -41,7 +41,9 @@
     
     self.tshirtExplorer = [MTETShirtExplorer new];
     [self.tshirtExplorer setupFetchedResultsControllerWithContext:managedObjectContext];
-    [self.tshirtExplorer updateData];
+    
+    if ([MTEAuthenticationManager emailFromKeychain])
+        [self.tshirtExplorer updateData];
 }
 
 - (void)viewDidLoad
@@ -80,7 +82,7 @@
             UINavigationController *settingsNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTESettingsNavigationController"];
             MTESettingsViewController *settingsViewController = (MTESettingsViewController *)settingsNavigationController.topViewController;
             settingsViewController.delegate = self;
-            self.slidingViewController.underRightViewController  = settingsNavigationController;
+            self.slidingViewController.underRightViewController = settingsNavigationController;
         }
         
         if (![self.slidingViewController.underLeftViewController isKindOfClass:[UIViewController class]])
@@ -116,8 +118,8 @@
 - (void)startSpinningAnimation
 {
     CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    spinAnimation.fromValue = [NSNumber numberWithFloat:0];
-    spinAnimation.toValue = [NSNumber numberWithFloat:2*M_PI];
+    spinAnimation.fromValue = @(0.f);
+    spinAnimation.toValue = @(2*M_PI);
     spinAnimation.duration = 0.8;
     spinAnimation.delegate = self;
     

@@ -1,26 +1,31 @@
+PODS:
+  - AFIncrementalStore (0.4.0):
+    - AFNetworking (>= 0.9.0)
+    - InflectorKit
+    - TransformerKit
+  - AFNetworking (1.2.1)
+  - ECSlidingViewController (0.10.0)
+  - InflectorKit (0.0.1)
+  - KeychainItemWrapper (1.2)
+  - KSCustomUIPopover (0.0.1)
+  - MBProgressHUD (0.6)
+  - TransformerKit (0.2.2)
 
-COCOAPODS: 0.16.0
+DEPENDENCIES:
+  - AFIncrementalStore
+  - ECSlidingViewController
+  - KeychainItemWrapper
+  - KSCustomUIPopover
+  - MBProgressHUD
 
-SPEC CHECKSUMS: 
-  ECSlidingViewController: 46cb6a6cc72e359a19d2f232728be08685450d90
-  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
-  MBProgressHUD: b23ee11c42253d6d804e8e0bfabdc334e8b2571f
+SPEC CHECKSUMS:
+  AFIncrementalStore: 71e6815601f999933193ca97beb8a225ee3204e1
+  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  ECSlidingViewController: fc9a9a6564d4a64c0d8c7cf5583d2b9a469ecd04
+  InflectorKit: 9dccab02f95541093995adac639342c9eb9e6c12
   KeychainItemWrapper: f537d5bec950b2ab815c80cef9bf4e30a1084dc8
   KSCustomUIPopover: 5591b2f18458b19e07d02c41bec5f42dec2eaad3
-  AFIncrementalStore: aed50c647af3b3df5793d1e74c482454044e8e37
+  MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
+  TransformerKit: c07d1de4a661db2ca420092445750ab4ad67331a
 
-PODS: 
-- AFIncrementalStore (0.3.1): 
-  - AFNetworking (>= 0.9.0)
-- AFNetworking (1.1.0)
-- ECSlidingViewController (0.9.0)
-- KSCustomUIPopover (0.0.1)
-- KeychainItemWrapper (1.2)
-- MBProgressHUD (0.5)
-
-DEPENDENCIES: 
-- AFIncrementalStore
-- ECSlidingViewController
-- KSCustomUIPopover
-- KeychainItemWrapper
-- MBProgressHUD
+COCOAPODS: 0.19.1

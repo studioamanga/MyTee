@@ -24,6 +24,8 @@
 		1F01F16D14DC15CB00D6EF0C /* wash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16B14DC15CB00D6EF0C /* wash@2x.png */; };
 		1F01F17014DC161700D6EF0C /* 67-tshirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16E14DC161700D6EF0C /* 67-tshirt.png */; };
 		1F01F17114DC161700D6EF0C /* 67-tshirt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */; };
+		1F02CC131736E00F00A28087 /* 83-calendar-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F02CC111736E00F00A28087 /* 83-calendar-b.png */; };
+		1F02CC141736E00F00A28087 /* 83-calendar-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F02CC121736E00F00A28087 /* 83-calendar-b@2x.png */; };
 		1F02F4AD14F12915005F738B /* MTESettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F4AC14F12915005F738B /* MTESettingsManager.m */; };
 		1F06906C15B99FC1003E71CE /* shelves-free.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F06906A15B99FC1003E71CE /* shelves-free.png */; };
 		1F06906D15B99FC1003E71CE /* shelves-free@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F06906B15B99FC1003E71CE /* shelves-free@2x.png */; };
@@ -189,6 +191,8 @@
 		1F01F16B14DC15CB00D6EF0C /* wash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wash@2x.png"; path = "MyTee/Resources/Images/wash@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F01F16E14DC161700D6EF0C /* 67-tshirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "67-tshirt.png"; path = "MyTee/Resources/Images/67-tshirt.png"; sourceTree = SOURCE_ROOT; };
 		1F01F16F14DC161700D6EF0C /* 67-tshirt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "67-tshirt@2x.png"; path = "MyTee/Resources/Images/67-tshirt@2x.png"; sourceTree = SOURCE_ROOT; };
+		1F02CC111736E00F00A28087 /* 83-calendar-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "83-calendar-b.png"; path = "MyTee/Resources/Images/83-calendar-b.png"; sourceTree = SOURCE_ROOT; };
+		1F02CC121736E00F00A28087 /* 83-calendar-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "83-calendar-b@2x.png"; path = "MyTee/Resources/Images/83-calendar-b@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F02F4AB14F12915005F738B /* MTESettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTESettingsManager.h; path = MyTee/Classes/MTESettingsManager.h; sourceTree = SOURCE_ROOT; };
 		1F02F4AC14F12915005F738B /* MTESettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTESettingsManager.m; path = MyTee/Classes/MTESettingsManager.m; sourceTree = SOURCE_ROOT; };
 		1F06906A15B99FC1003E71CE /* shelves-free.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shelves-free.png"; path = "MyTee/Resources/Images/shelves-free.png"; sourceTree = SOURCE_ROOT; };
@@ -824,6 +828,8 @@
 			children = (
 				1F01F16314DC11E600D6EF0C /* 83-calendar.png */,
 				1F01F16414DC11E700D6EF0C /* 83-calendar@2x.png */,
+				1F02CC111736E00F00A28087 /* 83-calendar-b.png */,
+				1F02CC121736E00F00A28087 /* 83-calendar-b@2x.png */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -1098,6 +1104,8 @@
 				1F48D053168B78AA003681C9 /* lines-w@2x.png in Resources */,
 				1F48D058168B7A10003681C9 /* gear-mini-w.png in Resources */,
 				1F48D059168B7A10003681C9 /* gear-mini-w@2x.png in Resources */,
+				1F02CC131736E00F00A28087 /* 83-calendar-b.png in Resources */,
+				1F02CC141736E00F00A28087 /* 83-calendar-b@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
