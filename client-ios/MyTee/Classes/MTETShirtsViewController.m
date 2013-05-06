@@ -60,15 +60,6 @@
         woodTexture = [UIImage imageNamed:@"shelves"];
     UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.collectionView.backgroundColor = woodColor;
-    
-//    [[NSNotificationCenter defaultCenter] 
-//     addObserver:self selector:@selector(shouldSyncNow:) name:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
-//    [[NSNotificationCenter defaultCenter] 
-//     addObserver:self selector:@selector(syncStarted:) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
-//    [[NSNotificationCenter defaultCenter] 
-//     addObserver:self selector:@selector(syncFinished:) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-//    [[NSNotificationCenter defaultCenter] 
-//     addObserver:self selector:@selector(syncFailed:) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -101,9 +92,6 @@
         self.navigationController.view.layer.shadowRadius = 10;
         self.navigationController.view.layer.shadowColor = [UIColor blackColor].CGColor;
     }
-    
-//    if ([self.syncManager isSyncing])
-//        [self startSpinningAnimation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -113,17 +101,6 @@
     NSString *email = [MTEAuthenticationManager emailFromKeychain];
     if (!email)
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
-}
-
-- (void)startSpinningAnimation
-{
-    CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    spinAnimation.fromValue = @(0.f);
-    spinAnimation.toValue = @(2*M_PI);
-    spinAnimation.duration = 0.8;
-    spinAnimation.delegate = self;
-    
-    [self.settingsBarButtonItem.customView.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
 }
 
 - (IBAction)didPressSettingsBarButtonItem:(id)sender
@@ -158,14 +135,6 @@
 - (IBAction)showSettingsViewController:(id)sender
 {
     [self.slidingViewController anchorTopViewTo:ECLeft];
-}
-
-- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
-{
-//    if (self.syncManager.isSyncing)
-//    {
-//        [self startSpinningAnimation];
-//    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -286,22 +255,16 @@
 
 - (void)loginViewControllerDidLoggedIn:(MTELoginViewController *)loginViewController
 {
-//    if (!self.syncManager.isSyncing)
-//    {
-//        [self.syncManager startSync];
-//    }
 }
 
 #pragma mark - Sync
 
 - (void)shouldSyncNow:(id)sender
 {
-//    [self.syncManager startSync];
 }
 
 - (void)syncStarted:(id)sender
 {
-    [self startSpinningAnimation];
 }
 
 - (void)syncFinished:(id)sender
@@ -329,13 +292,10 @@
 
 - (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController *)settingsViewController
 {
-//    [self.syncManager startSync];
 }
 
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController *)settingsViewController
-{
-//    [self.syncManager resetAllData];
-    
+{   
     [MTEAuthenticationManager resetKeychain];
     
     [self.tshirtExplorer updateData];

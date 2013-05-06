@@ -28,7 +28,6 @@
 - (void)syncFinished:(id)sender;
 - (void)syncFailed:(id)sender;
 
-- (void)startSpinningAnimation;
 - (IBAction)didPressSettingsBarButtonItem:(id)sender;
 
 - (IBAction)showFilterViewController:(id)sender;

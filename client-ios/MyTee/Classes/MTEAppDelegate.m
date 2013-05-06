@@ -27,6 +27,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
     [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowColor : [UIColor blackColor]}];
