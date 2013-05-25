@@ -14,20 +14,21 @@
 NSString *const kMTETShirtsFilterType = @"kMTETShirtsFilterType";
 NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 
-@interface MTETShirtExplorer ()
+@interface MTETShirtExplorer () <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, strong) NSArray *fetchedTShirts;
+@property (strong, nonatomic) NSArray *fetchedTShirts;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
 
 @implementation MTETShirtExplorer
 
-- (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext*)objectContext
+- (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext *)objectContext
 {
-    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription * entity = [NSEntityDescription entityForName:NSStringFromClass([MTETShirt class]) 
-                                               inManagedObjectContext:objectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([MTETShirt class])
+                                              inManagedObjectContext:objectContext];
     [fetchRequest setEntity:entity];
     
     
@@ -45,7 +46,7 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 
 - (BOOL)updateData
 {
-    NSError * error = nil;
+    NSError *error = nil;
     BOOL result = [self.fetchedResultsController performFetch:&error];
     if(!result)
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -82,17 +83,25 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     return [self.fetchedTShirts count];
 }
 
-- (NSArray*)allTShirt
+- (NSArray *)allTShirt
 {
     return self.fetchedTShirts;
 }
 
-- (MTETShirt*)tshirtAtIndex:(NSUInteger)index
+- (MTETShirt *)tshirtAtIndex:(NSUInteger)index
 {
     if(index >= self.numberOfTShirts)
         return nil;
     
     return [self.fetchedTShirts objectAtIndex:index];
+}
+
+#pragma mark - Fetch results controller
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    //[self updateData];
+    //[self.delegate tshirtExplorerDidUpdateData:self];
 }
 
 @end

@@ -25,7 +25,7 @@
 #import <AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface MTETShirtsViewController () <UIPopoverControllerDelegate>
+@interface MTETShirtsViewController () <UIPopoverControllerDelegate, MTETShirtExplorerDelegate>
 
 @property (nonatomic, strong) UIPopoverController *filterPopoverController;
 
@@ -40,6 +40,7 @@
     _managedObjectContext = managedObjectContext;
     
     self.tshirtExplorer = [MTETShirtExplorer new];
+    self.tshirtExplorer.delegate = self;
     [self.tshirtExplorer setupFetchedResultsControllerWithContext:managedObjectContext];
     
     if ([MTEAuthenticationManager emailFromKeychain])
@@ -343,6 +344,13 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     self.filterPopoverController = nil;
+}
+
+#pragma mark - TShirt explorer delegate
+
+- (void)tshirtExplorerDidUpdateData:(MTETShirtExplorer *)tshirtExplorer
+{
+    [self.collectionView reloadData];
 }
 
 @end

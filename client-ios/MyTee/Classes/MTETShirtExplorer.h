@@ -18,17 +18,25 @@ typedef enum
 
 
 @class MTETShirt;
+@protocol MTETShirtExplorerDelegate;
 
-@interface MTETShirtExplorer : NSObject <NSFetchedResultsControllerDelegate>
+@interface MTETShirtExplorer : NSObject
 
-@property (strong, nonatomic) NSFetchedResultsController * fetchedResultsController;
+@property (weak, nonatomic) id <MTETShirtExplorerDelegate> delegate;
 
-- (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext*)objectContext;
+- (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext *)objectContext;
 
 - (BOOL)updateData;
 
 - (NSUInteger)numberOfTShirts;
-- (NSArray*)allTShirt;
-- (MTETShirt*)tshirtAtIndex:(NSUInteger)index;
+- (NSArray *)allTShirt;
+- (MTETShirt *)tshirtAtIndex:(NSUInteger)index;
+
+@end
+
+
+@protocol MTETShirtExplorerDelegate <NSObject>
+
+- (void)tshirtExplorerDidUpdateData:(MTETShirtExplorer *)tshirtExplorer;
 
 @end

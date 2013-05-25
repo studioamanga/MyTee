@@ -48,7 +48,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MTEDateCell"];
     
-    id object = [self.datesObjects objectAtIndex:indexPath.row];
+    id object = self.datesObjects[indexPath.row];
     cell.textLabel.text = [[self.dateFormatter stringFromDate:[object date]] capitalizedString];
     
     return cell;
