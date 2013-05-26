@@ -115,14 +115,20 @@
 						$post_query = MTEWear::post_request($api_parameter);
 						$database->query($post_query);
 						
-						echo '{}';
+						$wears = $database->fetch('mt_wear', 'wea_id='.mysql_insert_id().'');
+						foreach($wears as &$wear)
+							$wear = MTETShirt::clean_wear_from_db($wear);
+						MTEToolbox::output_json($wears[0]);
 					}
 					elseif ($api_specifier=='wash')
 					{
 						$post_query = MTEWash::post_request($api_parameter);
 						$database->query($post_query);
 						
-						echo '{}';	
+						$washs = $database->fetch('mt_wash', 'was_id='.mysql_insert_id().'');
+						foreach($washs as &$wash)
+							$wash = MTETShirt::clean_wash_from_db($wash);
+						MTEToolbox::output_json($washs[0]);
 					}
 				}
 			}
