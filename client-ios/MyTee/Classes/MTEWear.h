@@ -17,4 +17,6 @@
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) MTETShirt *tshirt;
 
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

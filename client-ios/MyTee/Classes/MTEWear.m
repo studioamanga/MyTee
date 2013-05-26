@@ -15,4 +15,10 @@
 @dynamic date;
 @dynamic tshirt;
 
+- (id)initInManagedObjectContext:(NSManagedObjectContext *)context
+{
+    self = [self initWithEntity:[NSEntityDescription entityForName:NSStringFromClass([MTEWear class]) inManagedObjectContext:context] insertIntoManagedObjectContext:nil];
+    return self;
+}
+
 @end

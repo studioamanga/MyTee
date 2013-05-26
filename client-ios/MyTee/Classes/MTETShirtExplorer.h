@@ -26,8 +26,6 @@ typedef enum
 
 - (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext *)objectContext;
 
-- (BOOL)updateData;
-
 - (NSUInteger)numberOfTShirts;
 - (NSArray *)allTShirt;
 - (MTETShirt *)tshirtAtIndex:(NSUInteger)index;

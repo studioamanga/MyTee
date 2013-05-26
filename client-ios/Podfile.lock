@@ -1,5 +1,5 @@
 PODS:
-  - AFIncrementalStore (0.4.0):
+  - AFIncrementalStore (0.4.1):
     - AFNetworking (>= 0.9.0)
     - InflectorKit
     - TransformerKit
@@ -19,8 +19,8 @@ DEPENDENCIES:
   - MBProgressHUD
 
 SPEC CHECKSUMS:
-  AFIncrementalStore: 71e6815601f999933193ca97beb8a225ee3204e1
-  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  AFIncrementalStore: bbb4f113ef0442aef8901c5b3df9ae646a598970
+  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
   ECSlidingViewController: fc9a9a6564d4a64c0d8c7cf5583d2b9a469ecd04
   InflectorKit: 9dccab02f95541093995adac639342c9eb9e6c12
   KeychainItemWrapper: f537d5bec950b2ab815c80cef9bf4e30a1084dc8

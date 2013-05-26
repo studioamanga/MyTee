@@ -42,9 +42,6 @@
     self.tshirtExplorer = [MTETShirtExplorer new];
     self.tshirtExplorer.delegate = self;
     [self.tshirtExplorer setupFetchedResultsControllerWithContext:managedObjectContext];
-    
-    if ([MTEAuthenticationManager emailFromKeychain])
-        [self.tshirtExplorer updateData];
 }
 
 - (void)viewDidLoad
@@ -270,7 +267,6 @@
 
 - (void)syncFinished:(id)sender
 {
-    [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
 }
 
@@ -299,7 +295,6 @@
 {   
     [MTEAuthenticationManager resetKeychain];
     
-    [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -324,7 +319,6 @@
 
 - (void)tshirtsFilterViewControllerDidChangeFilter:(MTETShirtsFilterViewController *)filterController
 {
-    [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

@@ -19,6 +19,8 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 @property (strong, nonatomic) NSArray *fetchedTShirts;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
+- (void)updateData;
+
 @end
 
 
@@ -42,15 +44,15 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
                                      cacheName:nil];
     
     self.fetchedResultsController.delegate = self;
-}
-
-- (BOOL)updateData
-{
+    
     NSError *error = nil;
     BOOL result = [self.fetchedResultsController performFetch:&error];
     if(!result)
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    
+}
+
+- (void)updateData
+{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSUInteger filterType = [userDefaults integerForKey:kMTETShirtsFilterType];
     
@@ -75,7 +77,7 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     else
         self.fetchedTShirts = self.fetchedResultsController.fetchedObjects;
     
-    return result;
+    return;
 }
 
 - (NSUInteger)numberOfTShirts
@@ -100,8 +102,8 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    //[self updateData];
-    //[self.delegate tshirtExplorerDidUpdateData:self];
+    [self updateData];
+    [self.delegate tshirtExplorerDidUpdateData:self];
 }
 
 @end

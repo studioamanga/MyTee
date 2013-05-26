@@ -152,7 +152,7 @@
     if (nbDaysAgo == 0)
         return @"today";
     else if (nbDaysAgo == 1)
-        return @"tomorrow";
+        return @"yesterday";
     
     return [NSString stringWithFormat:@"%d days ago", nbDaysAgo];
 }
@@ -182,30 +182,30 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSDictionary * params = @{@"login":[MTEAuthenticationManager emailFromKeychain], @"password":[MTEAuthenticationManager passwordFromKeychain]};
-    NSString *path;
-    
     switch (buttonIndex)
     {
         case 0:
+        {
             // Wear
-            path = [NSString stringWithFormat:@"tshirt/%@/wear", self.tshirt.identifier];
+            MTEWear *wear = [[MTEWear alloc] initInManagedObjectContext:self.tshirt.managedObjectContext];
+            [self.tshirt.managedObjectContext insertObject:wear];
+            wear.tshirt = self.tshirt;
             break;
+        }
         case 1:
+        {
             // Wash
-            path = [NSString stringWithFormat:@"tshirt/%@/wash", self.tshirt.identifier];
+            MTEWash *wash = [[MTEWash alloc] initInManagedObjectContext:self.tshirt.managedObjectContext];
+            [self.tshirt.managedObjectContext insertObject:wash];
+            wash.tshirt = self.tshirt;
             break;
+        }
     }
     
-    [[MTEMyTeeAPIClient sharedClient] postPath:path
-                                    parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-                                        [self dismissViewControllerAnimated:YES completion:nil];
-                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                        [[[UIAlertView alloc] initWithTitle:@"Error"
-                                                                    message:[NSString stringWithFormat:@"%@ (%@)", [error localizedDescription], [error localizedRecoverySuggestion]]
-                                                                   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                                    }];
+    NSError *error = nil;
+    if (![self.tshirt.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+    }
     
     self.wearWashActionSheet = nil;
 }
