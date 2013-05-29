@@ -25,7 +25,7 @@ typedef enum
 @property (weak, nonatomic) id <MTETShirtExplorerDelegate> delegate;
 
 - (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext *)objectContext;
-
+- (void)fetchData;
 - (NSUInteger)numberOfTShirts;
 - (NSArray *)allTShirt;
 - (MTETShirt *)tshirtAtIndex:(NSUInteger)index;

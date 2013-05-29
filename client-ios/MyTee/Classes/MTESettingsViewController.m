@@ -20,7 +20,7 @@ enum MTESettingsViewSections {
     MTESettingsViewNumberOfSections
     };
 
-@interface MTESettingsViewController () <UIAlertViewDelegate>
+@interface MTESettingsViewController () <UIActionSheetDelegate>
 
 - (IBAction)remindersSwitchValueDidChange:(UISwitch *)sender;
 
@@ -44,47 +44,17 @@ enum MTESettingsViewSections {
     }
     
     NSString * email = [MTEAuthenticationManager emailFromKeychain];
-    if (email)
-    {
-        self.emailLabel.text = email;
-        self.lastSyncLabel.text = @"what?";
-    }
-    else
-    {
-        self.emailLabel.text = @"You are not logged in";
-        self.lastSyncLabel.text = @"";
-    }
-    
-    [self updateSyncDateLabel];
+    self.emailLabel.text = (email) ? email : @"You are not logged in";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDidStart) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSyncDateLabel) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncFailed) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
-    
-//    if ([self.syncManager isSyncing])
-//    {
-//        [self.syncActivityIndicator startAnimating];
-//        self.lastSyncLabel.text = @"Syncing...";
-//    }
-//    else
-//    {
-//        [self.syncActivityIndicator stopAnimating];
-//        [self updateSyncDateLabel];
-//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -143,6 +113,7 @@ enum MTESettingsViewSections {
                     [((MTESettingSwitchCell *)cell).switchControl removeTarget:self action:@selector(remindersSwitchValueDidChange:) forControlEvents:UIControlEventValueChanged];
                     [((MTESettingSwitchCell *)cell).switchControl addTarget:self action:@selector(remindersSwitchValueDidChange:) forControlEvents:UIControlEventValueChanged];
                     break;
+                    
                 case 1:
                     cell = [tableView dequeueReusableCellWithIdentifier:@"MTESettingsReminderTimeCell" forIndexPath:indexPath];
                     ((MTESettingCell *)cell).label.text = [NSString stringWithFormat:@"Everyday at %d AM", [MTESettingsManager remindersHour]];
@@ -173,16 +144,15 @@ enum MTESettingsViewSections {
     {
         case MTESettingsViewSectionReminders:
             break;
+            
         case MTESettingsViewSectionSyncNow:
-//            [self.syncManager startSync];
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [self.delegate settingsViewControllerShouldSyncNow:self];
             break;
+            
         case MTESettingsViewSectionLogOut:
-//            if (!self.syncManager.isSyncing)
-//            {
-                [tableView deselectRowAtIndexPath:indexPath animated:YES];
-                [[[UIAlertView alloc] initWithTitle:@"Logging Out" message:@"Are you sure you want to log out?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Log Out", nil] show];
-//            }
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [[[UIActionSheet alloc] initWithTitle:@"Are you sure you want to log out?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Log Out" otherButtonTitles:nil] showInView:self.view];
             break;
     }
 }
@@ -191,62 +161,33 @@ enum MTESettingsViewSections {
 
 - (IBAction)remindersSwitchValueDidChange:(UISwitch *)sender
 {
-    UITableViewCell *reminderTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:MTESettingsViewSectionReminders]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:MTESettingsViewSectionReminders];
+    UITableViewCell *reminderTimeCell = [self.tableView cellForRowAtIndexPath:indexPath];
     
-    if (sender.isOn)
-    {
-        [UIView animateWithDuration:0.3 animations:^{
-            for (UIView *subview in reminderTimeCell.contentView.subviews)
-                subview.alpha = 1;
-        }];
-    }
-    else
-    {
-        [UIView animateWithDuration:0.3 animations:^{
-            for (UIView *subview in reminderTimeCell.contentView.subviews)
-                subview.alpha = 0.5;
-        }];
-    }
+    [UIView animateWithDuration:0.3 animations:^{
+        for (UIView *subview in reminderTimeCell.contentView.subviews)
+            subview.alpha = (sender.isOn) ? 1 : 0.5;
+    }];
 
     [MTESettingsManager setRemindersActive:sender.isOn];
 }
 
-#pragma mark - Alert view delegate
+#pragma mark - Action sheet delegate
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex != alertView.cancelButtonIndex)
+    if (buttonIndex != actionSheet.cancelButtonIndex)
         [self.delegate settingsViewControllerShouldLogOut:self];
 }
 
-- (void)updateSyncDateLabel
-{
-//    NSDate * syncDate = [MTESyncManager lastSyncDate];
-//    if (syncDate) 
-//    {
-//        NSDateFormatter * dateFormatter = [NSDateFormatter new];
-//        dateFormatter.doesRelativeDateFormatting = YES;
-//        dateFormatter.dateStyle = NSDateFormatterLongStyle;
-//        dateFormatter.timeStyle = NSDateFormatterShortStyle;
-//        self.lastSyncLabel.text = [@"Last Sync: " stringByAppendingString:[dateFormatter stringFromDate:syncDate]];
-//    }
-//    else 
-//    {
-//        self.lastSyncLabel.text = @"Never Synchronized";
-//    }
-    
-    [self.syncActivityIndicator stopAnimating];
-}
+#pragma mark - Sync
 
 - (void)syncFailed
 {
-    [self.syncActivityIndicator stopAnimating];
 }
 
 - (void)updateDidStart
 {
-    [self.syncActivityIndicator startAnimating];
-    self.lastSyncLabel.text = @"Syncing...";
 }
 
 - (IBAction)didPressDone:(id)sender

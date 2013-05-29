@@ -59,10 +59,8 @@
 		1F294E0F14D74D6F00A24AED /* Icon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F294E0E14D74D6F00A24AED /* Icon_iPad.png */; };
 		1F294E1714D7515A00A24AED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F294E1614D7515A00A24AED /* Security.framework */; };
 		1F294E1A14D7558600A24AED /* MTESyncManagerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1F2C7F2D15509760002A160C /* MTETodayTShirtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */; };
 		1F2C7F51155341CA002A160C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2C7F50155341CA002A160C /* Default.png */; };
 		1F2C7F54155341D9002A160C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2C7F53155341D9002A160C /* Default@2x.png */; };
-		1F33342515BE00D400EE6D36 /* MTEUpdatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F33342415BE00D400EE6D36 /* MTEUpdatableViewController.m */; };
 		1F42C76B1579038300A72E81 /* 14-tag-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F42C7671579038300A72E81 /* 14-tag-b.png */; };
 		1F42C76C1579038300A72E81 /* 14-tag-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F42C7681579038300A72E81 /* 14-tag-b@2x.png */; };
 		1F42C76D1579038300A72E81 /* 80-shopping-cart-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F42C7691579038300A72E81 /* 80-shopping-cart-b.png */; };
@@ -232,12 +230,8 @@
 		1F294E0E14D74D6F00A24AED /* Icon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_iPad.png; path = ../Icon_iPad.png; sourceTree = "<group>"; };
 		1F294E1614D7515A00A24AED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1F294E1914D7558600A24AED /* MTESyncManagerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MTESyncManagerSpec.mm; path = MyTeeTests/Specs/MTESyncManagerSpec.mm; sourceTree = SOURCE_ROOT; };
-		1F2C7F2B15509760002A160C /* MTETodayTShirtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTETodayTShirtViewController.h; path = MyTee/Classes/MTETodayTShirtViewController.h; sourceTree = SOURCE_ROOT; };
-		1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTETodayTShirtViewController.m; path = MyTee/Classes/MTETodayTShirtViewController.m; sourceTree = SOURCE_ROOT; };
 		1F2C7F50155341CA002A160C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		1F2C7F53155341D9002A160C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
-		1F33342315BE00D400EE6D36 /* MTEUpdatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEUpdatableViewController.h; path = MyTee/Classes/MTEUpdatableViewController.h; sourceTree = SOURCE_ROOT; };
-		1F33342415BE00D400EE6D36 /* MTEUpdatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEUpdatableViewController.m; path = MyTee/Classes/MTEUpdatableViewController.m; sourceTree = SOURCE_ROOT; };
 		1F42C7671579038300A72E81 /* 14-tag-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "14-tag-b.png"; path = "MyTee/Resources/Images/14-tag-b.png"; sourceTree = SOURCE_ROOT; };
 		1F42C7681579038300A72E81 /* 14-tag-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "14-tag-b@2x.png"; path = "MyTee/Resources/Images/14-tag-b@2x.png"; sourceTree = SOURCE_ROOT; };
 		1F42C7691579038300A72E81 /* 80-shopping-cart-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "80-shopping-cart-b.png"; path = "MyTee/Resources/Images/80-shopping-cart-b.png"; sourceTree = SOURCE_ROOT; };
@@ -554,15 +548,6 @@
 			name = Defaults;
 			sourceTree = "<group>";
 		};
-		1F33342115BE005500EE6D36 /* Updatable Controller */ = {
-			isa = PBXGroup;
-			children = (
-				1F33342315BE00D400EE6D36 /* MTEUpdatableViewController.h */,
-				1F33342415BE00D400EE6D36 /* MTEUpdatableViewController.m */,
-			);
-			name = "Updatable Controller";
-			sourceTree = "<group>";
-		};
 		1F48D055168B78B0003681C9 /* Lines */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,7 +846,6 @@
 		1FDE079014D4CB9500909A11 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				1F33342115BE005500EE6D36 /* Updatable Controller */,
 				1F01F16014DC065500D6EF0C /* Shadowed Table View */,
 				1FF7D5EB14D89B61000BDE04 /* MTEConstView.h */,
 			);
@@ -905,8 +889,6 @@
 				1F6AC78B14DA03E00040A06A /* MTEWearWashViewController.m */,
 				1F01F15814DB464700D6EF0C /* MTETShirtCell.h */,
 				1F01F15914DB464700D6EF0C /* MTETShirtCell.m */,
-				1F2C7F2B15509760002A160C /* MTETodayTShirtViewController.h */,
-				1F2C7F2C15509760002A160C /* MTETodayTShirtViewController.m */,
 				1FF381AF15FBEFA0000334FC /* MTETShirtsFilterViewController.h */,
 				1FF381B015FBEFA0000334FC /* MTETShirtsFilterViewController.m */,
 			);
@@ -1173,10 +1155,8 @@
 				1FA8536114EC5BCB00736DAD /* MTESettingsViewController.m in Sources */,
 				1F02F4AD14F12915005F738B /* MTESettingsManager.m in Sources */,
 				1FFAB03314F1D44A00851D81 /* MTESettingCell.m in Sources */,
-				1F2C7F2D15509760002A160C /* MTETodayTShirtViewController.m in Sources */,
 				1FA1EA341585148B00A78FA8 /* MTEStoreRetailViewController.m in Sources */,
 				1FA1EA551585575C00A78FA8 /* MTEStoreOnlineViewController.m in Sources */,
-				1F33342515BE00D400EE6D36 /* MTEUpdatableViewController.m in Sources */,
 				1FF381B115FBEFA0000334FC /* MTETShirtsFilterViewController.m in Sources */,
 				1F7C152F162B706D00929ECB /* MTESettingSwitchCell.m in Sources */,
 				1F0D48A416AB51520076D60F /* MTEMyTeeAPIClient.m in Sources */,

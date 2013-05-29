@@ -11,6 +11,7 @@
 #import "MTETShirt.h"
 #import "MTETShirtExplorer.h"
 #import "MTEAuthenticationManager.h"
+#import "MTEAppDelegate.h"
 
 #import "MBProgressHUD.h"
 #import "MTEConstView.h"
@@ -253,6 +254,7 @@
 
 - (void)loginViewControllerDidLoggedIn:(MTELoginViewController *)loginViewController
 {
+    [self.tshirtExplorer fetchData];
 }
 
 #pragma mark - Sync
@@ -294,6 +296,7 @@
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController *)settingsViewController
 {   
     [MTEAuthenticationManager resetKeychain];
+    [((MTEAppDelegate *)[UIApplication sharedApplication].delegate) resetManagedObjectContext];
     
     [self.collectionView reloadData];
     

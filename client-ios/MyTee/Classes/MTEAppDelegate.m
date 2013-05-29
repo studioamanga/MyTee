@@ -9,7 +9,6 @@
 #import "MTEAppDelegate.h"
 
 #import "MTEMyTeeIncrementalStore.h"
-#import "MTETodayTShirtViewController.h"
 #import "MTETShirtsViewController.h"
 #import "MTESettingsViewController.h"
 #import "ECSlidingViewController.h"
@@ -17,6 +16,8 @@
 @interface MTEAppDelegate ()
 
 @property (nonatomic, strong) MTESyncManager * syncManager;
+@property (strong, nonatomic, readonly) NSURL *storeURL;
+
 @end
 
 @implementation MTEAppDelegate
@@ -29,11 +30,15 @@
 {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar"] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowColor : [UIColor blackColor]}];
-    [[UINavigationBar appearanceWhenContainedIn:[UIPopoverController class], nil] setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearanceWhenContainedIn:[UIPopoverController class], nil] setBackgroundImage:nil forBarMetrics:UIBarMetricsLandscapePhone];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar"]
+                                       forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"linen-nav-bar-landscape"]
+                                       forBarMetrics:UIBarMetricsLandscapePhone];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor whiteColor], UITextAttributeTextShadowColor: [UIColor blackColor]}];
+    [[UINavigationBar appearanceWhenContainedIn:[UIPopoverController class], nil] setBackgroundImage:nil
+                                                                                       forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearanceWhenContainedIn:[UIPopoverController class], nil] setBackgroundImage:nil
+                                                                                       forBarMetrics:UIBarMetricsLandscapePhone];
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor darkGrayColor]];
     
@@ -61,11 +66,13 @@
     return YES;
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
+- (void)applicationWillTerminate:(UIApplication *)application
+{
     [self saveContext];
 }
 
-- (void)saveContext {
+- (void)saveContext
+{
     NSError *error = nil;
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
@@ -80,8 +87,6 @@
 
 #pragma mark - Core Data
 
-// Returns the managed object context for the application.
-// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
 - (NSManagedObjectContext *)managedObjectContext {
     if (__managedObjectContext != nil) {
         return __managedObjectContext;
@@ -96,8 +101,6 @@
     return __managedObjectContext;
 }
 
-// Returns the managed object model for the application.
-// If the model doesn't already exist, it is created from the application's model.
 - (NSManagedObjectModel *)managedObjectModel
 {
     if (__managedObjectModel != nil) {
@@ -110,9 +113,8 @@
     return __managedObjectModel;
 }
 
-// Returns the persistent store coordinator for the application.
-// If the coordinator doesn't already exist, it is created and the application's store added to it.
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
     if (__persistentStoreCoordinator != nil) {
         return __persistentStoreCoordinator;
     }
@@ -121,7 +123,7 @@
     
     AFIncrementalStore *incrementalStore = (AFIncrementalStore *)[__persistentStoreCoordinator addPersistentStoreWithType:[MTEMyTeeIncrementalStore type] configuration:nil URL:nil options:nil error:nil];
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MyTee.sqlite"];
+    NSURL *storeURL = [self storeURL];
     
     NSDictionary *options = @{
     NSInferMappingModelAutomaticallyOption : @(YES),
@@ -134,15 +136,26 @@ NSMigratePersistentStoresAutomaticallyOption: @(YES)
         abort();
     }
     
-    NSLog(@"SQLite URL: %@", storeURL);
-    
     return __persistentStoreCoordinator;
+}
+
+- (void)resetManagedObjectContext
+{
+    __managedObjectContext = nil;
+    
+    NSURL *storeURL = [self storeURL];
+    [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+}
+
+- (NSURL *)storeURL
+{
+    return [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MyTee.sqlite"];
 }
 
 #pragma mark - Application's Documents directory
 
-// Returns the URL to the application's Documents directory.
-- (NSURL *)applicationDocumentsDirectory {
+- (NSURL *)applicationDocumentsDirectory
+{
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 

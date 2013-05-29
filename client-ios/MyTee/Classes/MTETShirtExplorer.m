@@ -19,7 +19,7 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 @property (strong, nonatomic) NSArray *fetchedTShirts;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
-- (void)updateData;
+- (void)filterFetchedObjects;
 
 @end
 
@@ -28,11 +28,7 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 
 - (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext *)objectContext
 {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([MTETShirt class])
-                                              inManagedObjectContext:objectContext];
-    [fetchRequest setEntity:entity];
-    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([MTETShirt class])];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"color" ascending:YES];
     [fetchRequest setSortDescriptors:@[sort]];
@@ -45,13 +41,21 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     
     self.fetchedResultsController.delegate = self;
     
+    [self fetchData];
+}
+
+- (void)fetchData
+{
     NSError *error = nil;
     BOOL result = [self.fetchedResultsController performFetch:&error];
     if(!result)
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    
+    [self filterFetchedObjects];
+    [self.delegate tshirtExplorerDidUpdateData:self];
 }
 
-- (void)updateData
+- (void)filterFetchedObjects
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSUInteger filterType = [userDefaults integerForKey:kMTETShirtsFilterType];
@@ -102,7 +106,7 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [self updateData];
+    [self filterFetchedObjects];
     [self.delegate tshirtExplorerDidUpdateData:self];
 }
 
