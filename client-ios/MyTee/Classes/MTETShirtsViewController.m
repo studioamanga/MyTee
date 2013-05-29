@@ -104,7 +104,13 @@
 
 - (IBAction)didPressSettingsBarButtonItem:(id)sender
 {
-    [self performSegueWithIdentifier:@"MTESettingsSegue" sender:nil];
+    UIStoryboard *iPhoneStoryboard = [UIStoryboard storyboardWithName:@"Storyboard_iPhone"
+                                                               bundle:[NSBundle mainBundle]];
+    UINavigationController *settingsNavigationController = [iPhoneStoryboard instantiateViewControllerWithIdentifier:@"MTESettingsNavigationController"];
+    settingsNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    MTESettingsViewController *viewController = (MTESettingsViewController*)settingsNavigationController.topViewController;
+    viewController.delegate = self;
+    [self presentViewController:settingsNavigationController animated:YES completion:nil];
 }
 
 - (IBAction)showFilterViewController:(id)sender
@@ -138,19 +144,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
+    if ([segue.identifier isEqualToString:@"MTELoginSegue"])
     {
         UINavigationController *navigationController = segue.destinationViewController;
         MTELoginViewController *viewController = (MTELoginViewController*)navigationController.topViewController;
         viewController.delegate = self;
     }
-    else if ([[segue identifier] isEqualToString:@"MTESettingsSegue"])
-    {
-        UINavigationController *navigationController = segue.destinationViewController;
-        MTESettingsViewController *viewController = (MTESettingsViewController*)navigationController.topViewController;
-        viewController.delegate = self;
-    }
-    else if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
+    else if ([segue.identifier isEqualToString:@"MTETShirtSegue"])
     {
         MTETShirtViewController *viewController = nil;
         if ([segue.destinationViewController isMemberOfClass:[MTETShirtViewController class]])
@@ -165,7 +165,7 @@
         MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
         viewController.tshirt = tshirt;
     }
-    else if([segue.identifier isEqualToString:@"MTEFilterSegue"])
+    else if ([segue.identifier isEqualToString:@"MTEFilterSegue"])
     {
         UINavigationController *navigationController = segue.destinationViewController;
         MTETShirtsFilterViewController *viewController = (MTETShirtsFilterViewController*)navigationController.topViewController;

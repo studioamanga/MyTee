@@ -36,25 +36,39 @@ enum MTESettingsViewSections {
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
-        UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 128, 1)]];
+        CGRect spaceRect = CGRectMake(0, 0, 128, 1);
+        UIBarButtonItem *spaceBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] initWithFrame:spaceRect]];
         self.navigationItem.leftBarButtonItem = spaceBarButtonItem;
         
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar"] forBarMetrics:UIBarMetricsDefault];
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar-landscape"] forBarMetrics:UIBarMetricsLandscapePhone];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar"]
+                                                      forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"linen-darker-bar-landscape"]
+                                                      forBarMetrics:UIBarMetricsLandscapePhone];
+    }
+    else
+    {
+        self.emailLabel.textColor   = [UIColor blackColor];
+        self.emailLabel.shadowColor = [UIColor clearColor];
+        
+        self.tableView.backgroundColor  = [UIColor colorWithWhite:0.9 alpha:1];
+        self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.tableView.frame = self.view.bounds;
+        
+        UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close"
+                                                                               style:UIBarButtonItemStyleBordered
+                                                                              target:self
+                                                                              action:@selector(didPressCancel:)];
+        self.navigationItem.rightBarButtonItem = closeBarButtonItem;
     }
     
     NSString * email = [MTEAuthenticationManager emailFromKeychain];
     self.emailLabel.text = (email) ? email : @"You are not logged in";
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
+    [super viewDidAppear:animated];
+//    self.tableView.frame = self.view.bounds;
 }
 
 - (NSUInteger)supportedInterfaceOrientations

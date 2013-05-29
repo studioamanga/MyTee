@@ -106,14 +106,14 @@
         [self.storeButton setTitle:self.tshirt.store.name forState:UIControlStateNormal];
         self.storeButton.enabled = ![self.tshirt.store.identifier isEqualToString:MTEUnknownStoreIdentifier];
         
-        MTEWear * mostRecentWear = [self.tshirt mostRecentWear];
+        MTEWear *mostRecentWear = [self.tshirt mostRecentWear];
         if (mostRecentWear)
             [self.wearButton setTitle:[NSString stringWithFormat:@"Last worn %@", [self relativeDescriptionForDate:mostRecentWear.date]]
                              forState:UIControlStateNormal];
         else
             [self.wearButton setTitle:@"Never worn before" forState:UIControlStateNormal];
         
-        MTEWash * mostRecentWash = [self.tshirt mostRecentWash];
+        MTEWash *mostRecentWash = [self.tshirt mostRecentWash];
         if (mostRecentWash)
             [self.washButton setTitle:[NSString stringWithFormat:@"Last washed %@", [self relativeDescriptionForDate:mostRecentWash.date]]
                              forState:UIControlStateNormal];
@@ -130,8 +130,8 @@
         self.mainScrollView.contentSize = CGSizeMake((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 540 : self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
     }
     
-    UIImage * woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-closeup"];
-    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
+    UIImage *woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-closeup"];
+    UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.mainScrollView.backgroundColor = woodColor;
 }
 
@@ -165,6 +165,9 @@
 
 - (IBAction)didPressAction:(id)sender
 {
+    if (self.wearWashActionSheet)
+        return;
+    
     self.wearWashActionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                            delegate:self
                                                   cancelButtonTitle:@"Cancel"
@@ -227,27 +230,29 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"MTEWearSegue"])
+    if ([segue.identifier isEqualToString:@"MTEWearSegue"])
     {
-        MTEWearWashViewController * viewController = segue.destinationViewController;
+        MTEWearWashViewController *viewController = segue.destinationViewController;
         viewController.datesObjects = [self.tshirt wearsSortedByDate];
     }
-    else if ([[segue identifier] isEqualToString:@"MTEWashSegue"])
+    else if ([segue.identifier isEqualToString:@"MTEWashSegue"])
     {
-        MTEWearWashViewController * viewController = segue.destinationViewController;
+        MTEWearWashViewController *viewController = segue.destinationViewController;
         viewController.datesObjects = [self.tshirt washsSortedByDate];
     }
-    else if ([[segue identifier] isEqualToString:@"MTEStoreSegue"] ||
-             [[segue identifier] isEqualToString:@"MTEStoreRetailSegue"] ||
-             [[segue identifier] isEqualToString:@"MTEStoreOnlineSegue"])
+    else if ([segue.identifier isEqualToString:@"MTEStoreSegue"] ||
+             [segue.identifier isEqualToString:@"MTEStoreRetailSegue"] ||
+             [segue.identifier isEqualToString:@"MTEStoreOnlineSegue"])
     {
-        MTEStoreViewController * viewController = segue.destinationViewController;
+        MTEStoreViewController *viewController = segue.destinationViewController;
         viewController.store = self.tshirt.store;
     }
 }
 
 - (IBAction)dismissViewController:(id)sender
 {
+    if (self.wearWashActionSheet)
+        [self.wearWashActionSheet dismissWithClickedButtonIndex:self.wearWashActionSheet.cancelButtonIndex animated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
