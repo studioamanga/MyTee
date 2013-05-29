@@ -62,27 +62,17 @@
     }
 }
 
-- (void)updateAfterSync
-{
-    //    self.tshirt = [MTETShirt findFirstByAttribute:@"identifier" withValue:self.tshirt.identifier];
-    //    [self configureView];
-}
-
 - (void)configureView
 {
     if (!self.tshirt)
     {
-        for (UIView * view in self.view.subviews)
-        {
-            //view.hidden = YES;
-        }
+        for (UIView *view in self.view.subviews)
+            view.hidden = YES;
     }
     else
     {
-        for (UIView * view in self.view.subviews)
-        {
+        for (UIView *view in self.view.subviews)
             view.hidden = NO;
-        }
         
         self.title = self.tshirt.name;
         
@@ -175,7 +165,11 @@
 
 - (IBAction)didPressAction:(id)sender
 {
-    self.wearWashActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Wear today", @"Wash today", nil];
+    self.wearWashActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                             destructiveButtonTitle:nil
+                                                  otherButtonTitles:@"Wear today", @"Wash today", nil];
     
     [self.wearWashActionSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
@@ -189,6 +183,7 @@
             // Wear
             MTEWear *wear = [[MTEWear alloc] initInManagedObjectContext:self.tshirt.managedObjectContext];
             [self.tshirt.managedObjectContext insertObject:wear];
+            wear.date   = [NSDate date];
             wear.tshirt = self.tshirt;
             break;
         }
@@ -197,6 +192,7 @@
             // Wash
             MTEWash *wash = [[MTEWash alloc] initInManagedObjectContext:self.tshirt.managedObjectContext];
             [self.tshirt.managedObjectContext insertObject:wash];
+            wash.date   = [NSDate date];
             wash.tshirt = self.tshirt;
             break;
         }
@@ -207,6 +203,7 @@
         NSLog(@"Error: %@", error);
     }
     
+    [self configureView];
     self.wearWashActionSheet = nil;
 }
 
