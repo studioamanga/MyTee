@@ -95,7 +95,7 @@ static NSString * const kMTEMyTeeAPIAuthenticationPath = @"user/me";
     }
     if ([entity.name isEqualToString:@"MTEWear"] || [entity.name isEqualToString:@"MTEWash"])
     {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSDateFormatter *formatter = [NSDateFormatter new];
         formatter.dateFormat = @"yyyy-MM-dd";
         if ([representation[@"date"] isKindOfClass:[NSString class]])
             mutablePropertyValues[@"date"] = [formatter dateFromString:representation[@"date"]];
@@ -108,7 +108,9 @@ static NSString * const kMTEMyTeeAPIAuthenticationPath = @"user/me";
                                                            ofEntity:(NSEntityDescription *)entity
                                                        fromResponse:(NSHTTPURLResponse *)response
 {
-    NSMutableDictionary *mutableRepresentations = [[super representationsForRelationshipsFromRepresentation:representation ofEntity:entity fromResponse:response] mutableCopy];
+    NSMutableDictionary *mutableRepresentations = [[super representationsForRelationshipsFromRepresentation:representation
+                                                                                                   ofEntity:entity
+                                                                                               fromResponse:response] mutableCopy];
     
     if ([entity.name isEqualToString:@"MTETShirt"])
     {

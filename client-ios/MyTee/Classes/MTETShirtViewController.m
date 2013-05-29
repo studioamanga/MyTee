@@ -50,16 +50,16 @@
 
 - (void)setTshirt:(MTETShirt *)newTShirt
 {
-    if (_tshirt != newTShirt) {
+    if (_tshirt != newTShirt)
+    {
         _tshirt = newTShirt;
         
         // Update the view.
         [self configureView];
     }
     
-    if (self.masterPopoverController != nil) {
+    if (self.masterPopoverController != nil)
         [self.masterPopoverController dismissPopoverAnimated:YES];
-    }
 }
 
 - (void)configureView

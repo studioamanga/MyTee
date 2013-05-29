@@ -20,6 +20,7 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 - (void)filterFetchedObjects;
+- (void)clearBadgeIfNecessary;
 
 @end
 
@@ -81,7 +82,22 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     else
         self.fetchedTShirts = self.fetchedResultsController.fetchedObjects;
     
+    [self clearBadgeIfNecessary];
+    
     return;
+}
+
+- (void)clearBadgeIfNecessary
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"MTEWear"];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit)
+                                               fromDate:[NSDate date]];
+    NSDate *thisMorning = [calendar dateFromComponents:components];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"date > %@", thisMorning];
+    NSUInteger countOfWearToday = [self.fetchedResultsController.managedObjectContext countForFetchRequest:fetchRequest error:nil];
+    if (countOfWearToday > 0)
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (NSUInteger)numberOfTShirts
