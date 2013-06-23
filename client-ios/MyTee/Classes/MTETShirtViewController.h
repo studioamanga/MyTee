@@ -6,12 +6,9 @@
 //  Copyright (c) 2012 Studio AMANgA. All rights reserved.
 //
 
-#import "MTEUpdatableViewController.h"
-#import "RestKit.h"
-
 @class MTETShirt;
 
-@interface MTETShirtViewController : MTEUpdatableViewController <UISplitViewControllerDelegate, UIActionSheetDelegate, RKRequestDelegate>
+@interface MTETShirtViewController : UIViewController <UISplitViewControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) MTETShirt *tshirt;
 

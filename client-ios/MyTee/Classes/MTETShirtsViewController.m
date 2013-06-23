@@ -8,10 +8,10 @@
 
 #import "MTETShirtsViewController.h"
 
-#import "MTESyncManager.h"
-
 #import "MTETShirt.h"
 #import "MTETShirtExplorer.h"
+#import "MTEAuthenticationManager.h"
+#import "MTEAppDelegate.h"
 
 #import "MBProgressHUD.h"
 #import "MTEConstView.h"
@@ -23,9 +23,10 @@
 #import "ECSlidingViewController.h"
 #import "KSCustomPopoverBackgroundView.h"
 
+#import <AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface MTETShirtsViewController () <UIPopoverControllerDelegate>
+@interface MTETShirtsViewController () <UIPopoverControllerDelegate, MTETShirtExplorerDelegate>
 
 @property (nonatomic, strong) UIPopoverController *filterPopoverController;
 
@@ -35,14 +36,13 @@
 
 #pragma mark - View lifecycle
 
-- (void)setSyncManager:(MTESyncManager *)syncManager
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    _syncManager = syncManager;
+    _managedObjectContext = managedObjectContext;
     
     self.tshirtExplorer = [MTETShirtExplorer new];
-    NSManagedObjectContext *context = [[[RKObjectManager sharedManager] objectStore] managedObjectContextForCurrentThread];
-    [self.tshirtExplorer setupFetchedResultsControllerWithContext:context];
-    [self.tshirtExplorer updateData];
+    self.tshirtExplorer.delegate = self;
+    [self.tshirtExplorer setupFetchedResultsControllerWithContext:managedObjectContext];
 }
 
 - (void)viewDidLoad
@@ -59,15 +59,6 @@
         woodTexture = [UIImage imageNamed:@"shelves"];
     UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.collectionView.backgroundColor = woodColor;
-    
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(shouldSyncNow:) name:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(syncStarted:) name:MTE_NOTIFICATION_SYNC_STARTED object:nil];
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(syncFinished:) name:MTE_NOTIFICATION_SYNC_FINISHED object:nil];
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self selector:@selector(syncFailed:) name:MTE_NOTIFICATION_SYNC_FAILED object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,9 +71,8 @@
         {
             UINavigationController *settingsNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTESettingsNavigationController"];
             MTESettingsViewController *settingsViewController = (MTESettingsViewController *)settingsNavigationController.topViewController;
-            settingsViewController.syncManager = self.syncManager;
             settingsViewController.delegate = self;
-            self.slidingViewController.underRightViewController  = settingsNavigationController;
+            self.slidingViewController.underRightViewController = settingsNavigationController;
         }
         
         if (![self.slidingViewController.underLeftViewController isKindOfClass:[UIViewController class]])
@@ -101,34 +91,26 @@
         self.navigationController.view.layer.shadowRadius = 10;
         self.navigationController.view.layer.shadowColor = [UIColor blackColor].CGColor;
     }
-    
-    if ([self.syncManager isSyncing])
-        [self startSpinningAnimation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-    NSString *email = [MTESyncManager emailFromKeychain];
+    NSString *email = [MTEAuthenticationManager emailFromKeychain];
     if (!email)
         [self performSegueWithIdentifier:@"MTELoginSegue" sender:nil];
 }
 
-- (void)startSpinningAnimation
-{
-    CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    spinAnimation.fromValue = [NSNumber numberWithFloat:0];
-    spinAnimation.toValue = [NSNumber numberWithFloat:2*M_PI];
-    spinAnimation.duration = 0.8;
-    spinAnimation.delegate = self;
-    
-    [self.settingsBarButtonItem.customView.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
-}
-
 - (IBAction)didPressSettingsBarButtonItem:(id)sender
 {
-    [self performSegueWithIdentifier:@"MTESettingsSegue" sender:nil];
+    UIStoryboard *iPhoneStoryboard = [UIStoryboard storyboardWithName:@"Storyboard_iPhone"
+                                                               bundle:[NSBundle mainBundle]];
+    UINavigationController *settingsNavigationController = [iPhoneStoryboard instantiateViewControllerWithIdentifier:@"MTESettingsNavigationController"];
+    settingsNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    MTESettingsViewController *viewController = (MTESettingsViewController*)settingsNavigationController.topViewController;
+    viewController.delegate = self;
+    [self presentViewController:settingsNavigationController animated:YES completion:nil];
 }
 
 - (IBAction)showFilterViewController:(id)sender
@@ -160,30 +142,15 @@
     [self.slidingViewController anchorTopViewTo:ECLeft];
 }
 
-- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
-{
-    if (self.syncManager.isSyncing)
-    {
-        [self startSpinningAnimation];
-    }
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"MTELoginSegue"])
+    if ([segue.identifier isEqualToString:@"MTELoginSegue"])
     {
         UINavigationController *navigationController = segue.destinationViewController;
         MTELoginViewController *viewController = (MTELoginViewController*)navigationController.topViewController;
         viewController.delegate = self;
     }
-    else if ([[segue identifier] isEqualToString:@"MTESettingsSegue"])
-    {
-        UINavigationController *navigationController = segue.destinationViewController;
-        MTESettingsViewController *viewController = (MTESettingsViewController*)navigationController.topViewController;
-        viewController.delegate = self;
-        viewController.syncManager = self.syncManager;
-    }
-    else if ([[segue identifier] isEqualToString:@"MTETShirtSegue"])
+    else if ([segue.identifier isEqualToString:@"MTETShirtSegue"])
     {
         MTETShirtViewController *viewController = nil;
         if ([segue.destinationViewController isMemberOfClass:[MTETShirtViewController class]])
@@ -198,7 +165,7 @@
         MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
         viewController.tshirt = tshirt;
     }
-    else if([segue.identifier isEqualToString:@"MTEFilterSegue"])
+    else if ([segue.identifier isEqualToString:@"MTEFilterSegue"])
     {
         UINavigationController *navigationController = segue.destinationViewController;
         MTETShirtsFilterViewController *viewController = (MTETShirtsFilterViewController*)navigationController.topViewController;
@@ -238,8 +205,6 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTETShirtCellID" forIndexPath:indexPath];
     
     MTETShirt *tshirt = [self.tshirtExplorer tshirtAtIndex:indexPath.row];
-    NSString *imagePath = [MTETShirt pathToMiniatureLocalImageWithIdentifier:tshirt.identifier];
-    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     
     UIImageView *tshirtImageView = nil;
     if ([[cell.contentView.subviews lastObject] isMemberOfClass:[UIImageView class]])
@@ -247,7 +212,7 @@
     
     if (!tshirtImageView)
     {
-        tshirtImageView = [[UIImageView alloc] initWithImage:image];
+        tshirtImageView = [[UIImageView alloc] init];
         tshirtImageView.contentMode = UIViewContentModeScaleAspectFit;
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -268,10 +233,8 @@
         
         [cell.contentView addSubview:tshirtImageView];
     }
-    else
-    {
-        tshirtImageView.image = image;
-    }
+    
+    [tshirtImageView setImageWithURL:[NSURL URLWithString:tshirt.image_url]];
     
     return cell;
 }
@@ -291,27 +254,21 @@
 
 - (void)loginViewControllerDidLoggedIn:(MTELoginViewController *)loginViewController
 {
-    if (!self.syncManager.isSyncing)
-    {
-        [self.syncManager startSync];
-    }
+    [self.tshirtExplorer fetchData];
 }
 
 #pragma mark - Sync
 
 - (void)shouldSyncNow:(id)sender
 {
-    [self.syncManager startSync];
 }
 
 - (void)syncStarted:(id)sender
 {
-    [self startSpinningAnimation];
 }
 
 - (void)syncFinished:(id)sender
 {
-    [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
 }
 
@@ -334,16 +291,13 @@
 
 - (void)settingsViewControllerShouldSyncNow:(MTESettingsViewController *)settingsViewController
 {
-    [self.syncManager startSync];
 }
 
 - (void)settingsViewControllerShouldLogOut:(MTESettingsViewController *)settingsViewController
-{
-    [self.syncManager resetAllData];
+{   
+    [MTEAuthenticationManager resetKeychain];
+    [((MTEAppDelegate *)[UIApplication sharedApplication].delegate) resetManagedObjectContext];
     
-    [MTESyncManager resetKeychain];
-    
-    [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -368,7 +322,6 @@
 
 - (void)tshirtsFilterViewControllerDidChangeFilter:(MTETShirtsFilterViewController *)filterController
 {
-    [self.tshirtExplorer updateData];
     [self.collectionView reloadData];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -388,6 +341,13 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     self.filterPopoverController = nil;
+}
+
+#pragma mark - TShirt explorer delegate
+
+- (void)tshirtExplorerDidUpdateData:(MTETShirtExplorer *)tshirtExplorer
+{
+    [self.collectionView reloadData];
 }
 
 @end

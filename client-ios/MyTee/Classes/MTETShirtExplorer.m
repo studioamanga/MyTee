@@ -14,22 +14,22 @@
 NSString *const kMTETShirtsFilterType = @"kMTETShirtsFilterType";
 NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
 
-@interface MTETShirtExplorer ()
+@interface MTETShirtExplorer () <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, strong) NSArray *fetchedTShirts;
+@property (strong, nonatomic) NSArray *fetchedTShirts;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
+- (void)filterFetchedObjects;
+- (void)clearBadgeIfNecessary;
 
 @end
 
 
 @implementation MTETShirtExplorer
 
-- (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext*)objectContext
+- (void)setupFetchedResultsControllerWithContext:(NSManagedObjectContext *)objectContext
 {
-    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription * entity = [NSEntityDescription entityForName:NSStringFromClass([MTETShirt class]) 
-                                               inManagedObjectContext:objectContext];
-    [fetchRequest setEntity:entity];
-    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([MTETShirt class])];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"color" ascending:YES];
     [fetchRequest setSortDescriptors:@[sort]];
@@ -41,18 +41,26 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
                                      cacheName:nil];
     
     self.fetchedResultsController.delegate = self;
+    
+    [self fetchData];
 }
 
-- (BOOL)updateData
+- (void)fetchData
 {
-    NSError * error = nil;
+    NSError *error = nil;
     BOOL result = [self.fetchedResultsController performFetch:&error];
     if(!result)
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     
+    [self filterFetchedObjects];
+    [self.delegate tshirtExplorerDidUpdateData:self];
+}
+
+- (void)filterFetchedObjects
+{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSUInteger filterType = [userDefaults integerForKey:kMTETShirtsFilterType];
-    NSLog(@"%d", filterType);
+    
     if (filterType == MTETShirtsFilterWash)
     {
         self.fetchedTShirts = [self.fetchedResultsController.fetchedObjects sortedArrayWithOptions:kNilOptions usingComparator:^NSComparisonResult(MTETShirt *tshirt1, MTETShirt *tshirt2) {
@@ -74,7 +82,22 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     else
         self.fetchedTShirts = self.fetchedResultsController.fetchedObjects;
     
-    return result;
+    [self clearBadgeIfNecessary];
+    
+    return;
+}
+
+- (void)clearBadgeIfNecessary
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"MTEWear"];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit)
+                                               fromDate:[NSDate date]];
+    NSDate *thisMorning = [calendar dateFromComponents:components];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"date > %@", thisMorning];
+    NSUInteger countOfWearToday = [self.fetchedResultsController.managedObjectContext countForFetchRequest:fetchRequest error:nil];
+    if (countOfWearToday > 0)
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (NSUInteger)numberOfTShirts
@@ -82,17 +105,25 @@ NSString *const kMTETShirtsFilterParameter = @"kMTETShirtsFilterParameter";
     return [self.fetchedTShirts count];
 }
 
-- (NSArray*)allTShirt
+- (NSArray *)allTShirt
 {
     return self.fetchedTShirts;
 }
 
-- (MTETShirt*)tshirtAtIndex:(NSUInteger)index
+- (MTETShirt *)tshirtAtIndex:(NSUInteger)index
 {
     if(index >= self.numberOfTShirts)
         return nil;
     
     return [self.fetchedTShirts objectAtIndex:index];
+}
+
+#pragma mark - Fetch results controller
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self filterFetchedObjects];
+    [self.delegate tshirtExplorerDidUpdateData:self];
 }
 
 @end

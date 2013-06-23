@@ -8,9 +8,9 @@
 
 #import "MTELoginViewController.h"
 
-#import "MTESyncManager.h"
-
 #import "MTEConstView.h"
+#import "MTEMyTeeAPIClient.h"
+#import "MTEAuthenticationManager.h"
 
 @implementation MTELoginViewController
 
@@ -23,13 +23,14 @@
     self.tableView.backgroundView = nil;
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
     
-    self.emailTextField.text = [MTESyncManager emailFromKeychain];
-    self.passwordTextField.text = [MTESyncManager passwordFromKeychain];
+    self.emailTextField.text = [MTEAuthenticationManager emailFromKeychain];
+    self.passwordTextField.text = [MTEAuthenticationManager passwordFromKeychain];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     [self.emailTextField becomeFirstResponder];
 }
 
@@ -42,7 +43,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0)
+    if (indexPath.section == 0)
     {
         switch (indexPath.row)
         {
@@ -54,7 +55,7 @@
                 break;
         }
     }
-    if (indexPath.section==1)
+    else if (indexPath.section == 1)
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
@@ -83,18 +84,14 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == self.emailTextField)
-    {
         [self.passwordTextField becomeFirstResponder];
-    }
     else
-    {
         [textField resignFirstResponder];
-    }
     
     return NO;
 }
 
-#pragma mark - 
+#pragma mark - Actions
 
 - (void)startAuthenticatingWithEmail:(NSString *)email password:(NSString *)password
 {
@@ -104,51 +101,33 @@
     progressHUD.dimBackground = YES;
     progressHUD.labelText = @"Authenticating...";
     
-    authenticationSuccessful = NO;
+    self.authenticationSuccessful = NO;
     
-    NSURLRequest * urlRequest = [MTESyncManager requestForAuthenticatingWithEmail:email password:password];
-    
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse*response, NSData*data, NSError*error){
-        if(response)
-        {
-            authenticationSuccessful = [MTESyncManager authenticationResponseIsSuccessful:(NSHTTPURLResponse*)response];
-            
-            if (authenticationSuccessful)
-            {
-                [MTESyncManager storeEmail:email password:password];
-                
-                progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
-                progressHUD.mode = MBProgressHUDModeCustomView;
-                progressHUD.labelText = @"Authentication Successful!";
-                progressHUD.detailsLabelText = nil;
-                
-                [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
-            }
-            else
-            {
-                progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
-                progressHUD.mode = MBProgressHUDModeCustomView;
-                progressHUD.labelText = @"Authentication Error";
-                progressHUD.detailsLabelText = @"Please check your credentials";
-            
-                [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
-            }
-        }
-        else
-        {
-            progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
-            progressHUD.mode = MBProgressHUDModeCustomView;
-            progressHUD.labelText = @"Authentication Error";
-            progressHUD.detailsLabelText = @"Please check your connection";
-            
-            [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
-        }
+    [[MTEMyTeeAPIClient sharedClient] sendAuthenticationRequestWithUsername:email password:password success:^{
+        self.authenticationSuccessful = YES;
+        [MTEAuthenticationManager storeEmail:email password:password];
+        
+        progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_SUCCESS]];
+        progressHUD.mode = MBProgressHUDModeCustomView;
+        progressHUD.labelText = @"Authentication Successful!";
+        progressHUD.detailsLabelText = nil;
+        
+        [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
+    } failure:^{
+        progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:MTE_HUD_IMAGE_ERROR]];
+        progressHUD.mode = MBProgressHUDModeCustomView;
+        progressHUD.labelText = @"Authentication Error";
+        progressHUD.detailsLabelText = @"Please check your credentials";
+        
+        [progressHUD hide:YES afterDelay:MTE_HUD_HIDE_DELAY];
     }];
 }
 
+#pragma mark - Progress HUD delegate
+
 - (void)hudWasHidden:(MBProgressHUD *)hud
 {
-    if (authenticationSuccessful)
+    if (self.authenticationSuccessful)
     {
         [self dismissViewControllerAnimated:YES completion:nil];
         [self.delegate loginViewControllerDidLoggedIn:self];

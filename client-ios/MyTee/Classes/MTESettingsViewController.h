@@ -23,8 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel * emailLabel;
-@property (weak, nonatomic) IBOutlet UILabel * lastSyncLabel;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *syncActivityIndicator;
 
 @property (weak, nonatomic) id <MTESettingsViewDelegate> delegate;
 
@@ -34,6 +32,5 @@
 - (IBAction)didPressCancel:(id)sender;
 
 - (void)updateDidStart;
-- (void)updateSyncDateLabel;
 
 @end

@@ -9,14 +9,14 @@
 #import "MTESettingsViewController.h"
 #import "MTELoginViewController.h"
 #import "MTETShirtsFilterViewController.h"
+#import <ECSlidingViewController.h>
 
-@class MTESyncManager;
 @class MTETShirtExplorer;
 @class MTETShirtViewController;
 
 @interface MTETShirtsViewController : UICollectionViewController <MTESettingsViewDelegate, MTELoginViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, MTETShirtsFilterViewDelegate>
 
-@property (strong, nonatomic) MTESyncManager * syncManager;
+@property (weak, nonatomic) NSManagedObjectContext * managedObjectContext;
 @property (strong, nonatomic) MTETShirtExplorer * tshirtExplorer;
 
 @property (strong, nonatomic) MTETShirtViewController * detailViewController;
@@ -28,7 +28,6 @@
 - (void)syncFinished:(id)sender;
 - (void)syncFailed:(id)sender;
 
-- (void)startSpinningAnimation;
 - (IBAction)didPressSettingsBarButtonItem:(id)sender;
 
 - (IBAction)showFilterViewController:(id)sender;

@@ -15,10 +15,11 @@
 
 #import "MTEWearWashViewController.h"
 #import "MTEStoreViewController.h"
+#import "MTEAuthenticationManager.h"
+#import "MTEMyTeeAPIClient.h"
 
-#import "MTESyncManager.h"
+#import <AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>
-#import "RestKit.h"
 
 @interface MTETShirtViewController ()
 
@@ -49,45 +50,35 @@
 
 - (void)setTshirt:(MTETShirt *)newTShirt
 {
-    if (_tshirt != newTShirt) {
+    if (_tshirt != newTShirt)
+    {
         _tshirt = newTShirt;
         
         // Update the view.
         [self configureView];
     }
     
-    if (self.masterPopoverController != nil) {
+    if (self.masterPopoverController != nil)
         [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
-}
-
-- (void)updateAfterSync
-{
-    self.tshirt = [MTETShirt findFirstByAttribute:@"identifier" withValue:self.tshirt.identifier];
-    [self configureView];
 }
 
 - (void)configureView
 {
     if (!self.tshirt)
     {
-        for (UIView * view in self.view.subviews)
-        {
-            //view.hidden = YES;
-        }
+        for (UIView *view in self.view.subviews)
+            view.hidden = YES;
     }
     else
     {
-        for (UIView * view in self.view.subviews)
-        {
+        for (UIView *view in self.view.subviews)
             view.hidden = NO;
-        }
         
         self.title = self.tshirt.name;
-    
+        
         self.sizeLabel.layer.cornerRadius = 6;
         self.sizeLabel.text = self.tshirt.size;
-    
+        
         self.tagsLabel.text = self.tshirt.tags;
         
         NSMutableString * ratingString = [NSMutableString stringWithString:@""];
@@ -115,23 +106,21 @@
         [self.storeButton setTitle:self.tshirt.store.name forState:UIControlStateNormal];
         self.storeButton.enabled = ![self.tshirt.store.identifier isEqualToString:MTEUnknownStoreIdentifier];
         
-        MTEWear * mostRecentWear = [self.tshirt mostRecentWear];
+        MTEWear *mostRecentWear = [self.tshirt mostRecentWear];
         if (mostRecentWear)
             [self.wearButton setTitle:[NSString stringWithFormat:@"Last worn %@", [self relativeDescriptionForDate:mostRecentWear.date]]
                              forState:UIControlStateNormal];
         else
             [self.wearButton setTitle:@"Never worn before" forState:UIControlStateNormal];
         
-        MTEWash * mostRecentWash = [self.tshirt mostRecentWash];
+        MTEWash *mostRecentWash = [self.tshirt mostRecentWash];
         if (mostRecentWash)
             [self.washButton setTitle:[NSString stringWithFormat:@"Last washed %@", [self relativeDescriptionForDate:mostRecentWash.date]]
                              forState:UIControlStateNormal];
         else
             [self.washButton setTitle:@"Never washed before" forState:UIControlStateNormal];
         
-        NSString * pathToImage = [MTETShirt pathToLocalImageWithIdentifier:self.tshirt.identifier];
-        UIImage * image = [UIImage imageWithContentsOfFile:pathToImage];
-        self.tshirtImageView.image = image;
+        [self.tshirtImageView setImageWithURL:[NSURL URLWithString:self.tshirt.image_url]];
         
         self.tshirtImageView.layer.borderColor = [[UIColor blackColor] CGColor];
         self.tshirtImageView.layer.borderWidth = 1;
@@ -141,8 +130,8 @@
         self.mainScrollView.contentSize = CGSizeMake((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 540 : self.view.frame.size.width, self.noteLabel.frame.origin.y+self.noteLabel.frame.size.height+50);
     }
     
-    UIImage * woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-closeup"];
-    UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
+    UIImage *woodTexture = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"shelves-free-form" : @"shelves-closeup"];
+    UIColor *woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.mainScrollView.backgroundColor = woodColor;
 }
 
@@ -153,12 +142,12 @@
     if (nbDaysAgo == 0)
         return @"today";
     else if (nbDaysAgo == 1)
-        return @"tomorrow";
+        return @"yesterday";
     
     return [NSString stringWithFormat:@"%d days ago", nbDaysAgo];
 }
 
-- (IBAction)presentStoreController:(id)sender 
+- (IBAction)presentStoreController:(id)sender
 {
     if ([self.tshirt.store.type isEqualToString:@"Retail"])
     {
@@ -176,39 +165,49 @@
 
 - (IBAction)didPressAction:(id)sender
 {
-    self.wearWashActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Wear today", @"Wash today", nil];
+    if (self.wearWashActionSheet)
+        return;
+    
+    self.wearWashActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                             destructiveButtonTitle:nil
+                                                  otherButtonTitles:@"Wear today", @"Wash today", nil];
     
     [self.wearWashActionSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSDictionary * params = @{ @"login" : [MTESyncManager emailFromKeychain], @"password" : [MTESyncManager passwordFromKeychain]};
-    NSString * resourcePath = nil;
-    
     switch (buttonIndex)
     {
         case 0:
+        {
             // Wear
-            resourcePath = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WEAR, self.tshirt.identifier];
-            [[RKClient sharedClient] post:resourcePath params:params delegate:self];
-            
+            MTEWear *wear = [[MTEWear alloc] initInManagedObjectContext:self.tshirt.managedObjectContext];
+            [self.tshirt.managedObjectContext insertObject:wear];
+            wear.date   = [NSDate date];
+            wear.tshirt = self.tshirt;
             break;
+        }
         case 1:
+        {
             // Wash
-            resourcePath = [NSString stringWithFormat:MTE_URL_API_TSHIRT_WASH, self.tshirt.identifier];
-            [[RKClient sharedClient] post:resourcePath params:params delegate:self];
-            
+            MTEWash *wash = [[MTEWash alloc] initInManagedObjectContext:self.tshirt.managedObjectContext];
+            [self.tshirt.managedObjectContext insertObject:wash];
+            wash.date   = [NSDate date];
+            wash.tshirt = self.tshirt;
             break;
+        }
     }
     
+    NSError *error = nil;
+    if (![self.tshirt.managedObjectContext save:&error]) {
+        NSLog(@"Error: %@", error);
+    }
+    
+    [self configureView];
     self.wearWashActionSheet = nil;
-}
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
-{
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    [[NSNotificationCenter defaultCenter] postNotificationName:MTE_NOTIFICATION_SHOULD_SYNC_NOW object:nil];
 }
 
 - (void)viewDidLoad
@@ -231,27 +230,29 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"MTEWearSegue"])
+    if ([segue.identifier isEqualToString:@"MTEWearSegue"])
     {
-        MTEWearWashViewController * viewController = segue.destinationViewController;
+        MTEWearWashViewController *viewController = segue.destinationViewController;
         viewController.datesObjects = [self.tshirt wearsSortedByDate];
     }
-    else if ([[segue identifier] isEqualToString:@"MTEWashSegue"])
+    else if ([segue.identifier isEqualToString:@"MTEWashSegue"])
     {
-        MTEWearWashViewController * viewController = segue.destinationViewController;
+        MTEWearWashViewController *viewController = segue.destinationViewController;
         viewController.datesObjects = [self.tshirt washsSortedByDate];
     }
-    else if ([[segue identifier] isEqualToString:@"MTEStoreSegue"] || 
-             [[segue identifier] isEqualToString:@"MTEStoreRetailSegue"] || 
-             [[segue identifier] isEqualToString:@"MTEStoreOnlineSegue"])
+    else if ([segue.identifier isEqualToString:@"MTEStoreSegue"] ||
+             [segue.identifier isEqualToString:@"MTEStoreRetailSegue"] ||
+             [segue.identifier isEqualToString:@"MTEStoreOnlineSegue"])
     {
-        MTEStoreViewController * viewController = segue.destinationViewController;
+        MTEStoreViewController *viewController = segue.destinationViewController;
         viewController.store = self.tshirt.store;
     }
 }
 
 - (IBAction)dismissViewController:(id)sender
 {
+    if (self.wearWashActionSheet)
+        [self.wearWashActionSheet dismissWithClickedButtonIndex:self.wearWashActionSheet.cancelButtonIndex animated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
