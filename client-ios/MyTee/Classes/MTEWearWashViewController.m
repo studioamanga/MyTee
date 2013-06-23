@@ -20,6 +20,8 @@
     UIColor * woodColor = [UIColor colorWithPatternImage:woodTexture];
     self.view.backgroundColor = woodColor;
     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.dateFormatter = [NSDateFormatter new];
     self.dateFormatter.dateStyle = NSDateFormatterFullStyle;
     self.dateFormatter.doesRelativeDateFormatting = YES;
@@ -46,7 +48,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MTEDateCell"];
     
-    id object = [self.datesObjects objectAtIndex:indexPath.row];
+    id object = self.datesObjects[indexPath.row];
     cell.textLabel.text = [[self.dateFormatter stringFromDate:[object date]] capitalizedString];
     
     return cell;
