@@ -1,15 +1,15 @@
 PODS:
-  - AFIncrementalStore (0.4.1):
-    - AFNetworking (>= 0.9.0)
+  - AFIncrementalStore (0.5.0):
+    - AFNetworking (>= 1.0)
     - InflectorKit
     - TransformerKit
-  - AFNetworking (1.2.1)
+  - AFNetworking (1.3.1)
   - ECSlidingViewController (0.10.0)
   - InflectorKit (0.0.1)
   - KeychainItemWrapper (1.2)
   - KSCustomUIPopover (0.0.1)
   - MBProgressHUD (0.6)
-  - TransformerKit (0.2.2)
+  - TransformerKit (0.2.4)
 
 DEPENDENCIES:
   - AFIncrementalStore
@@ -19,13 +19,13 @@ DEPENDENCIES:
   - MBProgressHUD
 
 SPEC CHECKSUMS:
-  AFIncrementalStore: bbb4f113ef0442aef8901c5b3df9ae646a598970
-  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
+  AFIncrementalStore: fbcc94b9cdec7091516a6db07293e84b4ddcb807
+  AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
   ECSlidingViewController: fc9a9a6564d4a64c0d8c7cf5583d2b9a469ecd04
   InflectorKit: 9dccab02f95541093995adac639342c9eb9e6c12
   KeychainItemWrapper: f537d5bec950b2ab815c80cef9bf4e30a1084dc8
   KSCustomUIPopover: 5591b2f18458b19e07d02c41bec5f42dec2eaad3
   MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
-  TransformerKit: c07d1de4a661db2ca420092445750ab4ad67331a
+  TransformerKit: 3c60759694b70d41b833dfe4005b031762d54e7f
 
 COCOAPODS: 0.19.1
