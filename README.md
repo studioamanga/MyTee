@@ -1,7 +1,7 @@
 # MyTee
 **Life is awesome. Just like your T-Shirts.**
 
-![MyTee Icon](https://raw.github.com/studioamanga/MyTee/master/client-ios/Icon_iPad@2x.png)
+![MyTee Icon](https://raw.github.com/studioamanga/MyTee-iOS/master/Icon_iPad@2x.png)
 
 MyTee is a web service, coupled with web and iOS apps, designed to manage your T-Shirts collection. Keep track of what you’ve been wearing, what you need to wash, and share what you love.
 
